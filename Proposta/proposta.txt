@@ -1,0 +1,21 @@
+Tema: Revisão de Crenças em Lógica de Descrição
+
+Problema: Como reparar uma ontologia no Protégé que se torna inconsistente após entrada de um novo fato?
+
+Hipótese: Provavelmente, fazendo uma Revisão de Crenças, usando as técnicas de Expansão, Contração e Revisão, adaptadas para o contexto do sistema, caso isso seja possível.
+
+Objetivos: Fazer um estudo sobre as técnicas de Revisão de Crenças e implementar um plug-in para o Protégé que faça o reparo em ontologias.
+
+Justificativa (3 parágrafos):
+
+Metodologia:
+
+Bibliografia:
+
+Discussão Teórica:
+
+Resumo:
+
+Cronograma:
+
+

@@ -6,13 +6,27 @@ Hipótese: Provavelmente, fazendo uma Revisão de Crenças, usando as técnicas 
 
 Objetivos: Fazer um estudo sobre as técnicas de Revisão de Crenças e implementar um plug-in para o Protégé que faça o reparo em ontologias.
 
-Justificativa (3 parágrafos):
+Justificativa (4 parágrafos, tudo o que pesquisar colocar bibliografia): 
+
+Ontologias são uma especificação explícita de uma conceitualização. Isso quer dizer que as ontologias são usadas para explicitar os seus conceitos e as relações possíveis de algum domínio. Um domínio pode ser qualquer área do conhecimento, como por exemplo, a área médica, a enologia, entre outros. Para montar as ontologias, são usadas Lógicas de Descrição. FALAR UM POUQUINHO DOS CONCEITOS E UM POUCO DO QUE É A LÓGICA DE DESCRIÇÃO.
+
+FALAR DE LÓGICAS DE DESCRIÇÃO E ONTOLOGIAS
+
+FALAR DE REVISÃO DE CRENÇAS
+
+FALAR DO PROTEGE, BUSCAS E ETC 
+
+FALAR DOS OBJETIVOS, PROBLEMA E DA HIPOTESE
+
+Bibliografia: 
+	
+	http://tomgruber.org/writing/onto-design.pdf (Gruber, 1993)	
+
+	http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.397.6454&rep=rep1&type=pdf (Schmidt-Schauß and Smolka, 1991)
 
 Metodologia:
 
-Bibliografia:
-
-Discussão Teórica:
+Discussão Teórica (SERÁ Q É NECESSÁRIO):
 
 Resumo:
 

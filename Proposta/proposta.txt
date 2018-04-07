@@ -8,21 +8,88 @@ Objetivos: Fazer um estudo sobre as técnicas de Revisão de Crenças e implemen
 
 Justificativa (4 parágrafos, tudo o que pesquisar colocar bibliografia): 
 
-Ontologias são uma especificação explícita de uma conceitualização. Isso quer dizer que as ontologias são usadas para explicitar os seus conceitos e as relações possíveis de algum domínio. Um domínio pode ser qualquer área do conhecimento, como por exemplo, a área médica, a enologia, entre outros. Para montar as ontologias, são usadas Lógicas de Descrição. FALAR UM POUQUINHO DOS CONCEITOS E UM POUCO DO QUE É A LÓGICA DE DESCRIÇÃO.
-
-FALAR DE LÓGICAS DE DESCRIÇÃO E ONTOLOGIAS
-
-FALAR DE REVISÃO DE CRENÇAS
-
-FALAR DO PROTEGE, BUSCAS E ETC 
-
-FALAR DOS OBJETIVOS, PROBLEMA E DA HIPOTESE
+Ontologias são uma especificação explícita de uma conceitualização. Isso quer dizer que as ontologias são usadas para explicitar os conceitos e as relações possíveis dentro de algum domínio. Um domínio pode ser qualquer área do conhecimento, como por exemplo, a área médica, a enologia, entre outros. Para montar as ontologias, podem ser usadas Lógicas de Descrição. Elas são sub-linguagens da Lógica de Primeira Ordem e possuem uma expressividade ótima para modelagem. A caracterização dos conceitos e relações de uma ontologia pode ser feita a partir de axiomas em Lógicas de Descrição. 
+	
+Os domínios do conhecimento se expandem com o passar do tempo. Para que uma ontologia permaneça útil, é necessário atualizá-la. No entanto, existe um obstáculo a ser enfrentado. Pode acontecer que a inclusão de um novo axioma torne a ontologia inconsistente, ou seja, tal axioma pode entrar diretamente em conflito com um outro que esteja presente no sistema ou com alguma inferência que possa ser feita. Para que a consistência da ontologia seja restaurada, e assim ela continue sendo utilizada, podem ser usadas técnicas de Revisão de Crenças. 
+	
+Uma interface utilizada para a construção de ontologias é o Protégé. Com ele, é possível analisar praticamente qualquer domínio. Todos os dados ficam em algum tipo de arquivo, sendo a OWL (Ontology Web Language) uma das extensões utilizadas. Utilizando o Protégé e uma ontologia construída, ele é capaz até de fazer buscas, como num banco de dados. Com o auxílio de plug-ins, o poder do programa aumenta. Existem plug-ins para inferências, e um deles consegue até detectar as inconsistências numa ontologia.
+	
+O objetivo deste trabalho é descobrir como reparar uma ontologia, no Protégé, que se torna inconsistente após a entrada de um novo fato. Deseja-se comprovar se, utilizando técnicas de Revisão de Crenças, tais como a Expansão, a Contração e a Revisão, uma ontologia pode ser reparada. Ou seja, fazendo um estudo sobre as técnicas de Revisão de Crenças, é possível implementar um plug-in para o Protégé que faça o reparo nas ontologias?
 
 Bibliografia: 
 	
-	http://tomgruber.org/writing/onto-design.pdf (Gruber, 1993)	
+@article{gruber1995toward,
+  title={Toward principles for the design of ontologies used for knowledge sharing?},
+  author={Gruber, Thomas R},
+  journal={International journal of human-computer studies},
+  volume={43},
+  number={5-6},
+  pages={907--928},
+  year={1995},
+  publisher={Elsevier}
+}
 
-	http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.397.6454&rep=rep1&type=pdf (Schmidt-Schauß and Smolka, 1991)
+@article{schmidt1991attributive,
+  title={Attributive concept descriptions with complements},
+  author={Schmidt-Schau{\ss}, Manfred and Smolka, Gert},
+  journal={Artificial intelligence},
+  volume={48},
+  number={1},
+  pages={1--26},
+  year={1991},
+  publisher={Elsevier}
+}
+
+@book{gardenfors2003belief,
+  title={Belief revision},
+  author={G{\"a}rdenfors, Peter},
+  volume={29},
+  year={2003},
+  publisher={Cambridge University Press}
+} 
+    
+@inproceedings{gardenfors1992belief,
+  title={Belief revision: A vade-mecum},
+  author={G{\"a}rdenfors, Peter},
+  booktitle={International Workshop on Meta-Programming in Logic},
+  pages={1--10},
+  year={1992},
+  organization={Springer}
+}
+
+@mastersthesis{resina2014belief,
+  author={Filipe Manoel Xavier Resina},
+  title={Revisão de Crenças em Lógicas de Descrição - Um Plug-In para o Protégé},
+  school={Instituto de Matemática e Estatística, USP},
+  address={São Paulo},
+  year={2014},
+}
+
+@phdthesis{cobe2014ontology,
+  author={Raphael Mendes de Oliveira Cóbe},
+  title={Integração entre múltiplas ontologias: reúso e gerência de conflitos},
+  school={Instituto de Matemática e Estatística, USP},
+  address={São Paulo},
+  year={2014},
+}
+
+@inproceedings{DBLP:conf/wonto/RibeiroW08,
+  author    = {M{\'{a}}rcio Moretto Ribeiro and
+               Renata Wassermann},
+  title     = {The Ontology Reviser Plug-In for Prot{\'{e}}g{\'{e}}},
+  booktitle = {Proceedings of the 3rd Workshop on Ontologies and their Applications,
+               Salvador, Bahia, Brazil, October 26, 2008},
+  year      = {2008},
+  crossref  = {DBLP:conf/wonto/2008},
+  url       = {http://ceur-ws.org/Vol-427/paper1.pdf},
+  timestamp = {Mon, 30 May 2016 16:57:35 +0200},
+  biburl    = {https://dblp.org/rec/bib/conf/wonto/RibeiroW08},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+Referências: 
+    
+    https://protege.stanford.edu/ (Protégé)
 
 Metodologia:
 

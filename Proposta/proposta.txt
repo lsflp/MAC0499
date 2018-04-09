@@ -73,17 +73,15 @@ Bibliografia:
   year={2014},
 }
 
-@inproceedings{DBLP:conf/wonto/RibeiroW08,
-  author    = {M{\'{a}}rcio Moretto Ribeiro and
-               Renata Wassermann},
-  title     = {The Ontology Reviser Plug-In for Prot{\'{e}}g{\'{e}}},
-  booktitle = {Proceedings of the 3rd Workshop on Ontologies and their Applications,
-               Salvador, Bahia, Brazil, October 26, 2008},
-  year      = {2008},
-  crossref  = {DBLP:conf/wonto/2008},
-  url       = {http://ceur-ws.org/Vol-427/paper1.pdf},
+@inproceedings{ribeiro2008,
+  author={Márcio Moretto Ribeiro and Renata Wassermann},
+  title={The Ontology Reviser Plug-In for Protégé}},
+  booktitle = {Proceedings of the 3rd Workshop on Ontologies and their Applications, Salvador, Bahia, Brazil, October 26, 2008},
+  year = {2008},
+  crossref = {DBLP:conf/wonto/2008},
+  url = {http://ceur-ws.org/Vol-427/paper1.pdf},
   timestamp = {Mon, 30 May 2016 16:57:35 +0200},
-  biburl    = {https://dblp.org/rec/bib/conf/wonto/RibeiroW08},
+  biburl = {https://dblp.org/rec/bib/conf/wonto/RibeiroW08},
   bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 

@@ -9,6 +9,7 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
+\usepackage{cite}
 \renewcommand*{\ttdefault}{txtt}
 \newlength{\tabcont}
 \setlength{\parindent}{0.0in}
@@ -31,11 +32,11 @@
 	
 	\section{Justificativa} 
 	
-	Ontologias são uma especificação explícita de uma conceitualização. Isso quer dizer que as ontologias são usadas para explicitar os conceitos e as relações possíveis dentro de algum domínio. Um domínio pode ser qualquer área do conhecimento, como por exemplo, a área médica, a enologia, entre outros. Para montar as ontologias, podem ser usadas Lógicas de Descrição. Elas são sub-linguagens da Lógica de Primeira Ordem e possuem uma expressividade ótima para modelagem. A caracterização dos conceitos e relações de uma ontologia pode ser feita a partir de axiomas em Lógicas de Descrição. \\
+	Ontologias são uma especificação explícita de uma conceitualização \cite{gruber1995toward}. Isso quer dizer que as ontologias são usadas para explicitar os conceitos e as relações possíveis dentro de algum domínio. Um domínio pode ser qualquer área do conhecimento, como por exemplo, a área médica, a enologia, entre outros. Para montar as ontologias, podem ser usadas Lógicas de Descrição. Elas são sub-linguagens da Lógica de Primeira Ordem e possuem uma expressividade ótima para modelagem. A caracterização dos conceitos e relações de uma ontologia pode ser feita a partir de axiomas em Lógicas de Descrição. \\
 	
-	Os domínios do conhecimento se expandem com o passar do tempo. Para que uma ontologia permaneça útil, é necessário atualizá-la. No entanto, existe um obstáculo a ser enfrentado. Pode acontecer que a inclusão de um novo axioma torne a ontologia inconsistente, ou seja, tal axioma pode entrar diretamente em conflito com um outro que esteja presente no sistema ou com alguma inferência que possa ser feita. Para que a consistência da ontologia seja restaurada, e assim ela continue sendo utilizada, podem ser usadas técnicas de Revisão de Crenças. \\
+	Os domínios do conhecimento se expandem com o passar do tempo. Para que uma ontologia permaneça útil, é necessário atualizá-la. No entanto, existe um obstáculo a ser enfrentado. Pode acontecer que a inclusão de um novo axioma torne a ontologia inconsistente, ou seja, tal axioma pode entrar diretamente em conflito com um outro que esteja presente no sistema ou com alguma inferência que possa ser feita. Para que a consistência da ontologia seja restaurada, e assim ela continue sendo utilizada, podem ser usadas técnicas de Revisão de Crenças\cite{gardenfors2003belief} \cite{gardenfors1992belief}. \\
 	
-	Uma interface utilizada para a construção de ontologias é o Protégé. Com ele, é possível analisar praticamente qualquer domínio. Todos os dados ficam em algum tipo de arquivo, sendo a OWL (\textit{Ontology Web Language}) uma das extensões utilizadas. Utilizando o Protégé e uma ontologia construída, ele é capaz até de fazer buscas, como num banco de dados. Com o auxílio de \textit{plug-ins}, o poder do programa aumenta. Existem \textit{plug-ins} para inferências, e um deles consegue até detectar as inconsistências numa ontologia. \\
+	Uma interface utilizada para a construção de ontologias é o Protégé. Com ele, é possível analisar praticamente qualquer domínio. Todos os dados ficam em algum tipo de arquivo, sendo a OWL (\textit{Ontology Web Language}) uma das extensões utilizadas. Utilizando o Protégé e uma ontologia construída, ele é capaz até de fazer buscas, como num banco de dados. Com o auxílio de \textit{plug-ins} \cite{resina2014belief} \cite{ribeiro2008}, o poder do programa aumenta. Existem \textit{plug-ins} para inferências, e um deles consegue até detectar as inconsistências \cite{cobe2014ontology} numa ontologia. \\
 	
 	O objetivo deste trabalho é descobrir como reparar uma ontologia, no Protégé, que se torna inconsistente após a entrada de um novo fato. Deseja-se comprovar se, utilizando técnicas de Revisão de Crenças, tais como a Expansão, a Contração e a Revisão, uma ontologia pode ser reparada. Ou seja, fazendo um estudo sobre as técnicas de Revisão de Crenças, é possível implementar um plug-in para o Protégé que faça o reparo nas ontologias? \\
 	
@@ -46,5 +47,8 @@
 	\section{Embasamento Teórico}
 	
 	\section{Cronograma}
+	
+	\bibliographystyle{plain}
+	\bibliography{proposta}
 	 
 \end{document}

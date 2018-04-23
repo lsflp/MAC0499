@@ -31,7 +31,7 @@
 	
 	Este trabalho busca estudos que viabilizem o reparo de uma ontologia inconsistente no Protégé. Para tal, será feita uma pesquisa, e com os conhecimentos adquiridos, atualizar os \textit{plug-ins} que cuidam do reparo e contemplar novas operações serão os objetivos.
 	
-	Serão selecionadas referências textuais na área de Lógica, em especial sobre Lógicas de Descrição, Ontologias e Revisão de Crenças, além de materiais que permitam a construção do \textit{plug-in} propriamente dito. Tal material vai embasar a teoria do projeto e auxiliar na resolução do problema.
+	Para a base teórica, serão usadas referências textuais na área de Lógica, em especial sobre Lógicas de Descrição, Ontologias e Revisão de Crenças, além de materiais que permitam a construção do \textit{plug-in} propriamente dito.
 	
 	Todo esse esforço é realizado para verificar a hipótese de que, aplicando técnicas de Revisão de Crenças, seja possível reparar uma ontologia inconsistente através de um algoritmo. Queremos também verificar o desempenho de cada \textit{plug-in}, tanto algorítmico quanto dos resultados. 
 	
@@ -47,19 +47,17 @@
 	
 	Os domínios do conhecimento se expandem com o passar do tempo. Para que uma ontologia permaneça útil, é necessário atualizá-la. No entanto, existe um obstáculo a ser enfrentado. Pode acontecer que a inclusão de um novo axioma torne a ontologia inconsistente, ou seja, tal axioma pode entrar diretamente em conflito com um outro que esteja presente no sistema ou com alguma inferência que possa ser feita. Para que a consistência da ontologia seja restaurada, e assim ela continue sendo utilizada, podem ser usadas técnicas de Revisão de Crenças\cite{gardenfors2003belief} \cite{gardenfors1992belief}. \\
 	
-	Uma interface utilizada para a construção de ontologias é o \href{https://protege.stanford.edu/}{Protégé}. Com ele, é possível analisar praticamente qualquer domínio. Todos os dados ficam em algum tipo de arquivo, sendo a OWL (\textit{Ontology Web Language}) uma das extensões utilizadas. Utilizando o Protégé e uma ontologia construída, ele é capaz até de fazer buscas, como num banco de dados. Com o auxílio de \textit{plug-ins} \cite{resina2014belief} \cite{ribeiro2008}, o poder do programa aumenta. Existem \textit{plug-ins} para inferências, e implementações para Revisão de Crenças (feitas em 2008, 2010 e 2014), que estão desatualizadas. \\ 
+	Uma interface utilizada para a construção de ontologias é o \href{https://protege.stanford.edu/}{Protégé}. Com ele, é possível analisar praticamente qualquer domínio. Todos os dados ficam em algum tipo de arquivo, sendo a OWL (\textit{Ontology Web Language}) uma das extensões utilizadas. Utilizando o Protégé e uma ontologia construída, ele é capaz até de fazer buscas, como num banco de dados. Com o auxílio de \textit{plug-ins}, o poder do programa aumenta. Existem \textit{plug-ins} para inferências, e implementações para Revisão de Crenças (feitos em 2008\cite{ribeiro2008}, 2010\cite{ribeiro2010revisao} e 2014\cite{resina2014belief}), que estão desatualizados. \\ 
 	
-	O objetivo deste trabalho é descobrir como reparar uma ontologia, no Protégé, que se torna inconsistente após a entrada de um novo fato. Deseja-se comprovar se, utilizando técnicas de Revisão de Crenças, tais como a Expansão, a Contração e a Revisão, uma ontologia pode ser reparada. Ou seja, fazendo um estudo sobre as técnicas de Revisão de Crenças, é possível implementar um plug-in para o Protégé que faça o reparo nas ontologias? Além disso, quer-se atualizar implementações prévias para as novas versões do Protégé e implantar algumas operações que ainda não foram contempladas.  \\
-	
-	\clearpage
+	O objetivo deste trabalho é descobrir como reparar uma ontologia, no Protégé, que se torna inconsistente após a entrada de um novo fato. Deseja-se comprovar se, utilizando técnicas de Revisão de Crenças, tais como a Expansão, a Contração e a Revisão, uma ontologia pode ser reparada. Ou seja, fazendo um estudo sobre as técnicas de Revisão de Crenças, é possível implementar um \textit{plug-in} para o Protégé que faça o reparo nas ontologias? Além disso, quer-se atualizar implementações prévias para as novas versões do Protégé e implantar algumas operações que ainda não foram contempladas.  \\
 	
 	\section{Metodologia}
 	
 	\begin{enumerate}
 		\item Seleção bibliográfica e estudo do material a ser aplicado: Textos de sobre Lógicas de Descrição, Ontologias e Revisão de Crenças. 
-		\item Estudo de plug-ins para o Protégé.
-		\item Descrição e Aplicação desse material: Os textos sobre Lógicas de Descrição e Ontologias serão utilizados para familiarizar o leitor com alguns termos da área. Os de Revisão de Crenças servirão como apoio principal ao desenvolvimento do trabalho. Já os estudos de plug-ins para o Protégé servirão para descobrir quais as técnicas e estruturas de dados serão usadas afim de criar um novo plug-in. 
-		\item Implementação: A partir dos estudos teóricos e com os plug-ins, tentaremos construir um para o Protégé que repara ontologias.
+		\item Estudo de \textit{plug-ins} para o Protégé.
+		\item Descrição e Aplicação desse material: Os textos sobre Lógicas de Descrição e Ontologias serão utilizados para familiarizar o leitor com alguns termos da área. Os de Revisão de Crenças servirão como apoio principal ao desenvolvimento do trabalho. Já os estudos de \textit{plug-ins} para o Protégé servirão para descobrir quais as técnicas e estruturas de dados serão usadas afim de criar um novo \textit{plug-in}. 
+		\item Implementação: A partir dos estudos teóricos e com os \textit{plug-ins}, tentaremos construir um para o Protégé que repara ontologias.
 		\item Análise e Discussão dos resultados: Com os estudos feitos, vamos verificar se o reparo das ontologias é satisfatório, ou seja, uma análise dos limites da aplicação e uma de desempenho da implementação.
 	\end{enumerate}
 	

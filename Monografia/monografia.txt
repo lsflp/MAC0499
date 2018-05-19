@@ -84,7 +84,9 @@ Usar duas colunas?
             - An INVENTORY is a representational artifact built out of singular referring terms such as proper names or alphanumeric identifiers.
         - Na teoria, qualquer um dos 5 acima teria uma relação um-a-um com as entidades a que se referem. Na prática, é possível que artefatos podem ser classificados de várias maneiras. Ex: infarto e ataque do coração se referem à mesma coisa.
         - To make a representation interpretable by a computer, it must be published in a language with a formal semantics and so converted into a FORMALIZED REPRESENTATION.
-        
+        - Sete argumentos do que colocar ou não numa ontologia. Talvez não, porque é bem médico.
+        - Different patients, clinicians and biologists have their own perspectives on one and the same reality. Talvez explicar o triângulo da semiótica.
+        - Talvez explicar conceitos e modelos.
     
     Nickles et al (2007):
 

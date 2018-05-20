@@ -87,12 +87,44 @@ Usar duas colunas?
         - Sete argumentos do que colocar ou não numa ontologia. Talvez não, porque é bem médico.
         - Different patients, clinicians and biologists have their own perspectives on one and the same reality. Talvez explicar o triângulo da semiótica.
         - Talvez explicar conceitos e modelos.
-    
-    Nickles et al (2007):
 
     Guarino (1998):
+        - Às vezes, ontologias são um nome chique para análise conceitual e modelagem de domínios.
+        - Ontologias possuem peculiaridades metodológicas e arquiteturais:
+            - Metodológicas: são muito interdisciplinares, com linguística e filosofia tendo um papel importante na análise da estrutura e na formação do vocabulário para as definições.
+            - Arquiteturais: Uma ontologia pode rodar num sistema de informação, levando à perspsctiva de sistemas de informação dirigidos a ontologias.
+        - Ontologia vs ontologias: A primeira é uma disciplina da filosofia e a segunda é nosso objeto de estudo. Cada filósofo possui a sua ontologia (tipo o Aristóteles). No campo de IA, ontologia é um artefato de engenharia.
+        - In the philosophical sense, we may refer to an ontology as a particular system of categories accounting for a certain vision of the world. 
+        - No campo de IA, ontologia é um artefacto de engenharia, constituted by a specific vocabulary used to describe a certain reality, plus a set of explicit assumptions regarding the intended meaning of the vocabulary words. Feitas em LPO -> LD
+        - So two ontologies can be different in the vocabulary used (using English or Italian words, for instance) while sharing the same conceptualization.
+        - Conceitualização: Uma conceitualização é definida (ref. 17) como um par <D(omínios), R(elações)>. 
+        - Cita gruber. Diz que "intensional account of the notion of conceptualization has to be introduced".
+        - A standard way to represent intensions (and therefore conceptual relations) is to see them as functions from possible worlds into sets.
+        - W is a set of maximal states of affairs of such domain (also called possible worlds)
+        - Uma conceitualização seria então uma tripla <D, W, R> where R is a set of conceptual relations on the domain space <D, R> (estudante de bruxelas http://ceur-ws.org/Vol-1357/paper4.pdf).
+        - Tem as leis mais simples no artigo do estudante acima.
+        - A set of intended models is therefore only a weak characterization of a conceptualization: it just excludes some absurd interpretations, without really describing the “meaning” of the vocabulary.
+        - Uma ontologia é um "set of logical axioms designed to account for the intended meaning of a vocabulary".
+        - Talvez usar o formalismo e notação dele?
+        - Às vezes não é facil (nem conveniente) achar os axiomas corretos, então uma ontologia permite modelos melhores.
+        - Therefore, an ontology can “specify” a conceptualization only in a very indirect way, since i) it can only approximate a set of intended models; ii) such a set of intended models is only a weak characterization of a conceptualization.
+        - A ontology commits to C if i) it has been designed with the purpose of characterizing C, and ii) it approximates C. C é a conceitualização.
+        -  It is important to stress that an ontology is languagedependent, while a conceptualization is language-independent.
+        - As well known, even if two systems adopt the same vocabulary, there is no guarantee that they can agree on a certain information unless they commit to the same conceptualization.
+        - FALAR DE INTEGRAÇÃO DE ONTOLOGIAS? - NAO É O FOCO DO TRABALHO, O FOCO É REPARAR UMA ONTOLOGIA
+        - Tipos de ontologias: 
+            - Top-level ontologies describe very general concepts like space, time, matter, object, event, action, etc., which are independent of a particular problem or domain: it seems therefore reasonable, at least in theory, to have unified top-level ontologies for large communities of users.
+            - Domain ontologies and task ontologies describe, respectively, the vocabulary related to a generic domain (like medicine, or automobiles) or a generic task or activity (like diagnosing or selling), by specializing the terms introduced in the top-level ontology.
+            - Application ontologies describe concepts depending both on a particular domain and task, which are often specializations of both the related ontologies. These concepts often correspond to roles played by domain entities while performing a certain activity, like replaceable unit or spare component.
+        - Ele fala de Ontology-Driven Information Systems, mas esse não é o foco do tcc.
+        
+        
+    Nickles et al (2007):
 
     Levesque (1984): 
+
+    Estudante de bruxelas (http://ceur-ws.org/Vol-1357/paper4.pdf) :
+
 
     OLHAR OS SLIDES DE SBC SOBRE ONTOLOGIA E PEGAR ALGUMAS REFERÊNCIAS
 

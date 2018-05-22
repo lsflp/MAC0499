@@ -150,7 +150,26 @@ Usar duas colunas?
         - Linguagens naturais não são ontologias. 
         - Maior parte do esforço da nossa comunidade é em criar ferramentas, e não conteúdo propriamente dito.
         - Um jeito de caracterizar ontologias é pelo número de termos que ela possui. Termos podem ser: instâncias, classes, relações e termos de funções. 
-        PG 24 However...
+        - Uma outra métrica é o número de axiomas que ela possui. 
+        - Lembrar que a IA é o ramo da CC que está preocupado com a automação de comportamento inteligente.
+        - Uma ontologia não precisa ser fortemente conectada com uma base de conhecimento, embora isso possa ajudar.
+        - Um sistema inteligente dos anos 80 de saúde foi o Mycin.
+        - O frame problem é que o mundo real é muito grande e complexo. Não é prático que um modelo tenha todo o mundo dentro dele.
+        - As ontologias ficaram "na moda" com os avanços de Semantic Web (LEMBRAR DE BASEADOS).
+        - Ontologias permitem comunicação, compartilhamento e reuso de conhecimentos.
+        - Problemas (práticos) de juntar ontologias:
+            1. Fontes operando com linguagens de representação incompatíveis (as variantes do OWL e etc)
+            2. Homonímia e sinônimos
+            3. Cobertura incompatível de conceitos
+            4. Top-level concepts e incompatible representation paradigms
+            5. Inconsistências semânticas devido a objetivo estável ou a conflitos de crenças dos participantes
+            6. Problemas de comunicação, acordo preventivo e coordenação de fontes ontológicas. Fontes ontológicas não confiáveis.
+        - Para integrar ontologias podem ser feitos as seguintes operações:
+            1. Merging: describes the process of creating a new single coherent ontology that includes the information of all merged ontologies
+            2. Mapping: describes a process where the original ontologies remain separated, but are made consistent and coherent with each other
+            3. Matching: deals with the problem of finding equalities or at least similarities among several ontologies
+        - Pode dar muitos problemas. Pode ser lento. Existem ferramentas para isso.
+        - Existem ontologias probabilísticas.
 
     Levesque (1984): 
 

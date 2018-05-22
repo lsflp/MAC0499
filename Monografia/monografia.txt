@@ -118,8 +118,39 @@ Usar duas colunas?
             - Application ontologies describe concepts depending both on a particular domain and task, which are often specializations of both the related ontologies. These concepts often correspond to roles played by domain entities while performing a certain activity, like replaceable unit or spare component.
         - Ele fala de Ontology-Driven Information Systems, mas esse não é o foco do tcc.
         
-        
     Nickles et al (2007):
+        - O termo ontologia deve ter surgido no contexto do iluminismo. Primeira aparição: Ogdoas Scholastica, Jacob Lorhard.
+        - Ficou popular em 1729 com o livro Philosophia Prima sive Ontologia, de Christiam Wolff, com a definição Ontology or First Philosophy is the science of Being in general or as Being.
+        - Dimensionalidade: 
+            1. Generalidade: One is opened up by the common properties of all entities on the one hand (being as being) and their categorial aspects on the other (categories and kinds of entities)
+            2. Objetividade: one is opened up by the distinction between external reality and the contents of thought and reason
+            - As duas primeiras são ortogonais. Ex: ultimate furniture, or the basic furniture or simply the furniture of the world.
+        - Como isso se relaciona com a definição do Gruber? É apenas coincidência que a ontologia da filosofia e a da Ciência da Computação tenham o mesmo nome???
+        - As ontologias em CC servem para representar as coisas (isso mesmo) e investigá-las.
+        - É possível quebrar as ontologias em três níveis, inspirando em alguma coisa que veio da Sintaxe (com S maiúsculo, a matéria mesmo). NOTA:  object-level use of this term (syntax as language subsystem), a meta-level use (syntax as theoretic account of this subsystem), and in a sense a transmeta-level use (syntax as subfield or branch of linguistics).
+        - Temos três níveis:
+            1. its categories (object field)
+            2. specific accounts thereof (meta-level)
+            3.  production and discussion of specific accounts of being (purview)
+        - Apenas os últimos dois são ontologias.
+        - O paralelo da filosofia com a CC é que nas ontologias precisamos definir conceitos.
+        - O gruber quis dizer que uma ontologia em CC é system of concepts that adequately characterize everything that exists in that domain: individual concepts for individuals, property concepts for properties, relation concepts for relations, second order concepts for first order concepts, etc.
+        - Esses conceitos podem ser objetivos ou não, podem ser realistas ou não, etc.
+        - Realismo: Realism is the thesis that the objects, properties and relations the world contains exist independently of our thoughts about them or our perceptions of them. Anti-realists either doubt or deny the existence of the entities the realist believes in or else doubt or deny their independence from our conceptions of them (Khlentzos 2004)
+        - É possível achar os usuários de uma ontologia, mas nem sempre o autor. É melhor assumir que elas foram evoluindo com o tempo.
+        - Faz sentido fazer ontologias sobre áreas de estudo, em detrimento de ontologias feitas por acontecimentos. Melhor fazer sobre o caso geral do que um particular.
+        - Ontologias do mesmo domínio, mesmo que diferentes, não podem ser uma verdadeira e outra falsa. they can only be more or less adequate and more or less useful.
+        - Mesmo se ela tiver sentenças falsas, ela pode ser inadequada ou menos útil por várias razões, já que isso é relativo.
+        - As ciências biológicas utilizam muito as ontologias.
+        - Linguística também, principalmente porque a linguística é usada em tudo.
+        - In computer science an information model is an abstract formal representation of entities that includes their properties and the relations that hold between them.
+        - A palavra ontologia é usada de uma maneira muito geral em computação mas nem tudo é realmente uma ontologia.
+        - Um dicionário não é uma ontologia. Sua linguagem não é formal, já que todos utilizam linguagens humanas naturais, que evoluem. 
+        - Ontologias possuem conceitos descritos em alguma linguagem formal.
+        - Linguagens naturais não são ontologias. 
+        - Maior parte do esforço da nossa comunidade é em criar ferramentas, e não conteúdo propriamente dito.
+        - Um jeito de caracterizar ontologias é pelo número de termos que ela possui. Termos podem ser: instâncias, classes, relações e termos de funções. 
+        PG 24 However...
 
     Levesque (1984): 
 
@@ -133,5 +164,6 @@ Usar duas colunas?
 3. Lógicas de Descrição ATÉ 30/06
 4. Revisão de Crenças ATÉ 21/07
 5. Protégé e o OWL (curto) ATÉ 31/07
+    - Olhar o artigo do Nickles.
 6. Implementação do Plug-In
 7. Desempenho (eficiência e eficácia)

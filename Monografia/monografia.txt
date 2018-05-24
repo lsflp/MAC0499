@@ -6,6 +6,7 @@ Usar duas colunas?
 1. Introdução
 2. Ontologias ATÉ 09/06
     - FALAR O QUE COMPOE UMA ONTOLOGIA: CONCEITOS, RELAÇÕES E PROPRIEDADES
+    - DEFINIR OS  TIPOS DE ONTOLOGIA E DIZER QUAL VAMOS USAR AQUI NESTE TRABALHO
     Patrícia Cunha França (ontoFranca):
         - O termo ontologia vem do grego óntos = ser, existir, + logos = palavra, discurso, entendida como estudo.
         - Veio emprestado da filosofia. OLHAR NO DICIONARIO O Q SIGNIFICA.
@@ -171,15 +172,10 @@ Usar duas colunas?
         - Pode dar muitos problemas. Pode ser lento. Existem ferramentas para isso.
         - Existem ontologias probabilísticas.
 
-    Levesque (1984): 
-
-    Estudante de bruxelas (http://ceur-ws.org/Vol-1357/paper4.pdf) :
-
-
-    OLHAR OS SLIDES DE SBC SOBRE ONTOLOGIA E PEGAR ALGUMAS REFERÊNCIAS
-
-
-    DEFINIR OS  TIPOS DE ONTOLOGIA E DIZER QUAL VAMOS USAR AQUI NESTE TRABALHO
+    Christophe Debruyne (2013):
+    
+    Natalya F. Noy and Deborah L. McGuinness(2001):
+    
 3. Lógicas de Descrição ATÉ 30/06
 4. Revisão de Crenças ATÉ 21/07
 5. Protégé e o OWL (curto) ATÉ 31/07

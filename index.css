@@ -29,12 +29,6 @@ p, ol, ul, a {
     line-height: 2.25em;
 }
 
-.item a:hover {
-    color: #ffffff;
-    background-color: #08949e;
-    background-color: linear-gradient(to bottom right, #08949e, #12a894);
-}
-
 .resumo {
     text-align: justify;
     text-justify: inter-word;
@@ -175,5 +169,11 @@ p {
 
     h3 {
         font-size: 2em;
+    }
+
+    .item a:hover {
+        color: #ffffff;
+        background-color: #08949e;
+        background-color: linear-gradient(to bottom right, #08949e, #12a894);
     }
 } 

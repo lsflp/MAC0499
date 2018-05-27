@@ -173,8 +173,28 @@ Usar duas colunas?
         - Existem ontologias probabilísticas.
 
     Christophe Debruyne (2013):
+        - Ele explica as regras do Guarino de um jeito que dá pra ver (codificação, rs).
+        - Uma ontologia é diferente de um esquema conceitual porque a primeira é feita para reúso de informação é geral em um domínio particular e a segunda é para ser um sistema particular de informação em uma organização.
+        - Gruber deu uma definição mas Guarino e Giereta (1995) deram uma outra definição de conceitualização, já citado acima.
+        - Guarino (1998, O DE CIMA) deu algumas definições de ontologias:
+            1. Noção extensional de Conceitualização: É um par <D, R> onde D é um domínio e R é um conjunto de relações relevantes em D. Essa noção é um pouco restritiva. Por isso, temos a próxima definição.
+            2. Espaço domínio: Um espaço domínio é um par <D, W>, onde d é um dominio e W é um conjunto de estados máximos de coisas de tal domínio (também conhecido como mundos possíveis).
+            3. Relação conceitual: Dado um espaço domínio <D,W>, uma relação conceitual rho^n de aridade em <D,W> é definida como uma função total (todo elemento de X vai pra Y) rho^n : W -> 2^D^n de W para o conjunto de todas as relações n-árias em D.
+            4. Noção intensional de conceitualização: Uma conceitualização para D é definida como uma tripla ordenada C=<D,W,R>, onde R é um conjunto de relações conceituais do espaço domínio <D,R>
+            Dada uma linguagem lógica L com um vocabulário V:
+            5. Interpretação extensional de uma linguagem: Um modelo para L é definido como uma estrutura <S,I>, onde S=<D,R> é uma estrutura de mundo e I : V -> D unido R é uma função de interpretação atribuindo elementos de D para símbolos constantes de V e elementos de R para simbolos predicados de V.
+            6. An intensional interpretation of a language is by means of a structure <C, I>, where C = <D, W, R> is a conceptualization and I : V → D ∪ R a function assigning elements of D to constant symbols of V and elements of R to predicate symbols of V . This intensional interpretation is called an ontological commitment for L. if K = <C, I> is an ontological commitment for L, we say that L commits to C by means of K, while C is the underlying conceptualization of K.
+            7. The set of intended models of a language L according to a commitment K: The set I_K(L) of all intended models of a language L that are compatible with commitment K = <C, I> are all the models of L that are compatible with K. A model <S, I> is compatible with K if: S ∈ {S_wC |w ∈ W}, where S_wC = <D, R_wC> is the intended structure of w according to C and R_wC = {ρ(w)|ρ ∈ R} is the set of extensions relative to w of the elements of R (i.e., S is one of the intended world structures of C); (ii) for each constant c, I(c) = I(c); (iii) ∃w ∈ W such that for each predicate symbol p, there exists a conceptual relation ρ such that I(p) = ρ ∧ ρ(w) = I(p).
+        - O conjunto de modelos desejados pode fornecer uma caracterização fraca de uma conceitualização, já que ele não reflete um mundo particular e pode até descrever uma situação comum a muitos mundos.
+        - Because an intended model can describe a situation common to many worlds, it only rules out absurd situations. One can merely create a set of axioms for a commitment K and a language L such that the models of the ontology approximates as close as possible IK(L). This set of axioms is what Guarino calls an ontology.
+        - Sistemas de informação abertos vs. fechados:
+            - Os dois utilizam ontologias.
+            - No aberto, deve-se tomar muito cuidado por causa de diferentes usos de linguagem e diferentes percepções de realidades.
+            - An information system is a system containing information in a database for a given application context of a given organization.
+            - Acho que isso não entra no TCC.
+            
     
-    Natalya F. Noy and Deborah L. McGuinness(2001):
+    Natalya F. Noy and Deborah L. McGuinness (2001):
     
 3. Lógicas de Descrição ATÉ 30/06
 4. Revisão de Crenças ATÉ 21/07

@@ -1,99 +1,134 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:300');
+@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Oswald');
 
-body {
-    background: #00007f;
+.titulo {
+    font-family: 'Oswald', sans-serif;
+    margin-bottom: 15px;
 }
 
-header {
-    width: 80%;
+p, ol, ul, a {
+    font-family: 'Bree Serif', serif;
+}
+
+.header, .content {
+    width: 90%;
     margin: auto;
-    display: flex;
 }
 
-h1 {
+.tfs {
+    display: block;
+    float: left;
+    width: 50%;
+    margin-top: 10px;
+}
+
+.item {
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.item a {
+    color: #000000;
+    background: #ffffff;
+    border-radius: 4px;
+    transition: color 0.25s, background-color 0.25s;
+    transition-timing-function: linear;
+    margin-left: 10px;
+    padding: 10px;
+    height: 2.25em;
+    line-height: 2.25em;
+}
+
+.item a:hover {
     color: #ffffff;
-    text-align: center;
-    font-family: 'Oswald', sans-serif;
-    width: 40%;
-    float: left;
-    display: block;
-    flex: 1;
-    font-size: 2.5em;
+    background-color: #08949e;
+    background-color: linear-gradient(to bottom right, #08949e, #12a894);
 }
 
-ul {
-    width: 40%;
-    float: left;
-    display: block;
-    flex: 1;
-}
-
-li {
-    list-style: none;
-    float: left;
-}
-
-li a {
-    font-family: 'Oswald', sans-serif;
-    text-decoration: none;
-    font-size: 1.5em;
-}
-
-.menu_item {
-    text-align: center;
-    line-height: 100%;
-}
-
-.menu_item:not(:last-of-type) {
-    margin-right: 25px;
-}
-
-content {
-    color: #ffffff;
-    font-family: 'Open Sans', sans-serif;
-    display: block;
+.content {
     clear: both;
 }
 
+.resumo {
+    width: 45%;
+    text-align: justify;
+    text-justify: inter-word;
+    display: block;
+    float: left;
+    color: #ffffff;
+    background: #722ba5;
+    background: linear-gradient(to bottom right, #722ba5, #a02990);
+    margin-right: 20px;
+    border-radius: 4px;
+}
+
+.aluno, .supervisora, .progresso, .cronograma {
+    width: 45%;
+    display: block;
+    float: left;
+    clear: right;
+    border-radius: 4px;
+}
+
+.aluno, .supervisora, .progresso, .cronograma {
+    margin-bottom: 20px;
+}
+
+.aluno {
+    color: #ffffff;
+    background: #c52323;
+    background: linear-gradient(to bottom right, #c52323, #da3208);
+}
+
+.aluno a {
+    color: #ffffff;
+}
+
+.supervisora {
+    color: #ffffff;
+    background: #348c05;
+    background: linear-gradient(to bottom right, #348c05, #2dc009)
+}
+
+.supervisora a {
+    color: #ffffff;
+}
+
+.progresso {
+    color: #ffffff;
+    background: #1e058c;
+    background: linear-gradient(to bottom right, #1e058c, #6721d6)
+}
+
+.cronograma {
+    color: #ffffff;
+    background: #8c7805;
+    background: linear-gradient(to bottom right, #8c7805, #c7ba09)
+}
+
+div {
+    padding: 10px 15px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
 h2 {
-    font-family: 'Oswald', sans-serif;
+    font-size: 2.5em;
+}
+
+h3 {
     font-size: 2em;
 }
 
-h2, p {
-    width: 80%;
-    margin: auto;
+p, a, li {
+    font-size: 1.25em;
 }
 
 a {
     text-decoration: none;
-    color: #ffffff;
-}
-
-a.cnpq {
-    font-weight: 400;
-}
-
-.renata, .resumo {
-    font-weight: bold;
-}
-
-.tema {
-    margin-bottom: 20px;
 }
 
 p {
-    margin-bottom: 5px;
-}
-
-.menu_item:after {
-    content: '';
-    display: block;
-    position: absolute;
-    bottom: 0;
-    transform: translateX(-101%);
-    transition: .5s;
-    height: 2px;
-    background-color: #ffffff;
-    width: 100%;
+    margin-bottom: 10px;
 }

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="reset.css">
         <link rel="stylesheet" href="index.css">
         <title>MAC0499</title>
         <meta charset="UTF-8">
@@ -8,41 +9,78 @@
 
     <body>
 
-        <header>
-            <h1>Trabalho de Formatura Supervisionado</h1>
+        <div class="header">
+            <h1 class="titulo tfs">Trabalho de Formatura Supervisionado (MAC0499)</h1>
             <ul>
-                <li class="menu_item"><a href="Proposta/proposta.pdf">Proposta</a></li>
-                <li class="menu_item"><a href="#">Monografia</a></li>
+                <li class="item">
+                    <a href="Proposta/proposta.pdf">Proposta</a>
+                </li>
+                <li class="item">
+                    <a href="#">Monografia</a>
+                </li>
+                <li class="item">
+                    <a href="#">Implementação</a>
+                </li>
+                <li class="item">
+                    <a href="#">Pôster</a>
+                </li>
+                <li class="item">
+                    <a href="#">Github</a>
+                </li>
             </ul>
-        </header>
+        </div>
         
-        <content>
-            <h2 class="tema">Revisão de crenças em lógica de descrição</h2>
+        <div class="content">
+            <h2 class="titulo">Revisão de crenças em lógica de descrição</h2>
+            
+            <div class="resumo">
+                <h3 class="titulo">Resumo</h3>
+                <p>
+                    As lógicas de descrição, que são sublinguagens da lógica de primeira ordem, têm vários usos. Um deles é a construção de ontologias.
+                    Ontologias são sistemas usados para representar algum conhecimento de algum domínio, como saúde ou cinema, por exemplo.
+                    Elas são baseadas em classes, propriedades das classes e relações entre elas.
+                </p>
+                
+                <p>
+                    Pode acontecer, em algum dado momento, que a inclusão de algum novo conhecimento torne a base de dados já existente inconsistente,
+                    ou seja o novo conhecimento entra em conflito com algum que já estava lá. Nestes casos, é preciso reparar a ontologia,
+                    restaurando a consistência. Técnicas de revisão de crenças podem ser usadas para isso.
+                </p>
+                
+                <p>
+                    Um sistema utilizado para definir e usar ontologias é o Protégé. É possível definir as classes, axiomas e relações. Com o
+                    auxílio de plug-ins, é possível fazer inferências e até encontrar as inconsistências. Para esse trabalho, deseja-se estudar
+                    sobre Revisão de Crenças e desenvolver um plug-in para o Protégé que faça o reparo de uma ontologia que fique inconsistente.
+                </p>
+            </div>
+            
+            <div class="aluno">
+                <h3 class="titulo">Aluno</h3>
+                <a href="https://github.com/lsflp">Luís Felipe de M. C. Silva</a>
+            </div>
 
-            <p><span class="resumo">Resumo:</span>
-                As lógicas de descrição, que são sublinguagens da lógica de primeira ordem, têm vários usos. Um deles é a construção de ontologias.
-                Ontologias são sistemas usados para representar algum conhecimento de algum domínio, como saúde ou cinema, por exemplo.
-                Elas são baseadas em classes, propriedades das classes e relações entre elas.
-            </p>
+            <div class="supervisora">
+                <h3 class="titulo">Supervisora</h3>
+                <a href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4795401A3">Renata Wassermann</a>
+            </div>
             
-            <p>
-                Pode acontecer, em algum dado momento, que a inclusão de algum novo conhecimento torne a base de dados já existente inconsistente,
-                ou seja o novo conhecimento entra em conflito com algum que já estava lá. Nestes casos, é preciso reparar a ontologia,
-                restaurando a consistência. Técnicas de revisão de crenças podem ser usadas para isso.
-            </p>
+            <div class="progresso">
+                <h3 class="titulo">Progresso atual</h3>
+                <p>No momento, estou estudando textos sobre Ontologias, para posterior escrita de um capítulo sobre isso.</p>
+            </div>
             
-            <p>
-                Um sistema utilizado para definir e usar ontologias é o Protégé. É possível definir as classes, axiomas e relações. Com o
-                auxílio de plug-ins, é possível fazer inferências e até encontrar as inconsistências. Para esse trabalho, deseja-se estudar
-                sobre Revisão de Crenças e desenvolver um plug-in para o Protégé que faça o reparo de uma ontologia que fique inconsistente.
-            </p>
-            
-            <p class="renata">Supervisora: <a class="cnpq" href="http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4795401A3">Renata Wassermann</a></p>
-            
-        </content>
+            <div class="cronograma">
+                <h3 class="titulo">Cronograma</h3>
+                <ol>
+                    <li>1. Seleção bibliográfica - Maio</li>
+                    <li>2. Estudos de plug-ins para o Protégé - Maio</li>
+                    <li>3. Descrição e Aplicação desse material - Junho e Julho</li>
+                    <li>4. Implementação - Agosto e setembro</li>
+                    <li>5. Análise e Discussão dos resultados - Outubro</li>
+                    <li>6. Escrita da Monografia - Maio até novembro</li>
+                </ol>
+            </div>
+        </div>
 
-        <footer>
-
-        </footer>
     </body>
 </html>

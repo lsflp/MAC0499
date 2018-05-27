@@ -9,20 +9,12 @@ p, ol, ul, a {
     font-family: 'Bree Serif', serif;
 }
 
-.header, .content {
-    width: 80%;
-    margin: auto;
-}
-
 .tfs {
     display: block;
-    float: left;
-    width: 50%;
     margin-top: 10px;
 }
 
 .item {
-    display: inline-block;
     text-transform: uppercase;
 }
 
@@ -32,7 +24,6 @@ p, ol, ul, a {
     border-radius: 4px;
     transition: color 0.25s, background-color 0.25s;
     transition-timing-function: linear;
-    margin-left: 10px;
     padding: 10px;
     height: 2.25em;
     line-height: 2.25em;
@@ -44,28 +35,18 @@ p, ol, ul, a {
     background-color: linear-gradient(to bottom right, #08949e, #12a894);
 }
 
-.content {
-    clear: both;
-}
-
 .resumo {
-    width: 45%;
     text-align: justify;
     text-justify: inter-word;
     display: block;
-    float: left;
     color: #ffffff;
     background: #722ba5;
     background: linear-gradient(to bottom right, #722ba5, #a02990);
-    margin-right: 20px;
     border-radius: 4px;
 }
 
 .aluno, .supervisora, .progresso, .cronograma {
-    width: 45%;
     display: block;
-    float: left;
-    clear: right;
     border-radius: 4px;
 }
 
@@ -109,18 +90,6 @@ div {
     padding: 10px 15px;
 }
 
-h1 {
-    font-size: 3em;
-}
-
-h2 {
-    font-size: 2.5em;
-}
-
-h3 {
-    font-size: 2em;
-}
-
 p, a, li {
     font-size: 1.25em;
 }
@@ -132,3 +101,79 @@ a {
 p {
     margin-bottom: 10px;
 }
+
+@media screen and (max-width: 960px) {
+    .header, .content {
+        width: 90%;
+        margin: auto;
+    }
+
+    h1, h2, h3 {
+        font-size: 2em;
+    }
+
+    .resumo {
+        margin-bottom: 20px;
+    }
+
+    .tfs, h2 {
+        text-align: center;
+    }
+    
+    .item {
+        text-align: center;
+    }
+
+    .item a {
+        font-size: 1em;
+    }
+}
+
+@media only screen and (min-width:960px) {
+    .resumo {
+        margin-right: 20px;        
+    }
+
+    .resumo, .tfs {
+        float: left;
+    }
+    
+    .resumo, .aluno, .supervisora, .progresso, .cronograma {
+        width: 45%;        
+    }
+
+    .aluno, .supervisora, .progresso, .cronograma {
+        float: left;
+        clear: right;
+    }
+
+    .content {
+        clear: both;
+    }
+
+    .header, .content {
+        width: 80%;
+        margin: auto;
+    }
+
+    .tfs {
+        width: 50%;
+    }
+
+    .item {
+        display: inline-block;
+        margin-left: 10px;
+    }
+    
+    h1 {
+        font-size: 3em;
+    }
+
+    h2 {
+        font-size: 2.5em;
+    }
+
+    h3 {
+        font-size: 2em;
+    }
+} 

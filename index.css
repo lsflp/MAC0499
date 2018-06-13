@@ -152,7 +152,7 @@ p {
 
     .item a:hover {
         color: #ffffff;
-        background-color: #08949e;
-        background-color: linear-gradient(to bottom right, #08949e, #12a894);
+        background: #722ba5;
+        background: linear-gradient(to bottom right, #722ba5, #a02990);
     }
 } 

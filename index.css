@@ -33,9 +33,6 @@ p, ol, ul, a {
     text-align: justify;
     text-justify: inter-word;
     display: block;
-    color: #ffffff;
-    background: #722ba5;
-    background: linear-gradient(to bottom right, #722ba5, #a02990);
     border-radius: 4px;
 }
 
@@ -48,36 +45,18 @@ p, ol, ul, a {
     margin-bottom: 20px;
 }
 
-.aluno {
+.degrade {
     color: #ffffff;
-    background: #c52323;
-    background: linear-gradient(to bottom right, #c52323, #da3208);
+    background: #722ba5;
+    background: linear-gradient(to bottom right, #722ba5, #a02990);
 }
 
 .aluno a {
     color: #ffffff;
 }
 
-.supervisora {
-    color: #ffffff;
-    background: #348c05;
-    background: linear-gradient(to bottom right, #348c05, #2dc009)
-}
-
 .supervisora a {
     color: #ffffff;
-}
-
-.progresso {
-    color: #ffffff;
-    background: #1e058c;
-    background: linear-gradient(to bottom right, #1e058c, #6721d6)
-}
-
-.cronograma {
-    color: #ffffff;
-    background: #8c7805;
-    background: linear-gradient(to bottom right, #8c7805, #c7ba09)
 }
 
 div {

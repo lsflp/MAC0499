@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css?family=Bree+Serif|Oswald');
+@import url('https://fonts.googleapis.com/css?family=Encode+Sans+Condensed:200,600');
 
 .titulo {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-weight: 600;
     margin-bottom: 15px;
 }
 
 p, ol, ul, a {
-    font-family: 'Bree Serif', serif;
+    font-family: 'Encode Sans Condensed', sans-serif;
+    font-weight: 200;
 }
 
 .tfs {
@@ -22,8 +24,7 @@ p, ol, ul, a {
     color: #000000;
     background: #ffffff;
     border-radius: 4px;
-    transition: color 0.25s, background-color 0.25s;
-    transition-timing-function: linear;
+    transition: 0.5s;
     padding: 10px;
     height: 2.25em;
     line-height: 2.25em;

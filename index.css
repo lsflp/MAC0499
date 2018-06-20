@@ -23,7 +23,7 @@ p, ol, ul, a {
 .item a {
     color: #000000;
     background: #ffffff;
-    border-radius: 4px;
+    border-radius: 2px;
     transition: 0.5s;
     padding: 10px;
     height: 2.25em;
@@ -34,12 +34,12 @@ p, ol, ul, a {
     text-align: justify;
     text-justify: inter-word;
     display: block;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 .aluno, .supervisora, .progresso, .cronograma {
     display: block;
-    border-radius: 4px;
+    border-radius: 2px;
 }
 
 .aluno, .supervisora, .progresso, .cronograma {

@@ -1,6 +1,24 @@
 \chapter{Lógicas de Descrição}
 
-\section{Definição}
+\lettrine{A}{} área de Inteligência Artificial é composta por diversas sub-áreas responsáveis por diversos estudos. Uma delas é a de Representação de Conhecimento, que cuida da construir formalismos adequados para expressar conhecimento sobre um domínio. Tal área tem seus estudos válidos, afinal, entidades inteligentes possuem algum tipo de conhecimento e precisam fazer inferências a partir dele. Para fazer isso, os formalismos devem possuir alguma representação.
+
+Existe um consenso, já mencionado no capítulo anterior, de que linguagens formais são uma maneira boa de caracterizar axiomas lógicos para a modelagem de uma Ontologia. O principal formalismo utilizado para representar conhecimento, com um cuidado especial para as terminologias, são as Lógicas de Descrição (LD).
+
+Essas lógicas são um subconjunto da Lógica de Primeira Ordem, que por sua vez, estende a Lógica Proposicional. As LD são utilizadas por sua expressividade. Para anotar que uma \texttt{Cancao} ou um \texttt{HinoNacional} são uma \texttt{Musica}, usando a ontologia que está sendo desenvolvida neste trabalho, poderíamos utilizar as seguintes sentenças, usando as lógicas até agora citadas:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|l|l}
+		\cline{1-2}
+		Lógica                   & Sentença & \\ \cline{1-2}
+		Proposicional     & \texttt{cancao} $\lor$ \texttt{hinoNacional} $\to$ \texttt{musica} & \\ \cline{1-2}
+		de Primeira Ordem & $\forall x(\texttt{Cancao}(x) \lor \texttt{HinoNacional}(x) \to \texttt{Musica}(x))$         & \\ \cline{1-2}
+		de Descrição      & \texttt{Cancao} $\sqcup$ \texttt{HinoNacional} $\sqsubseteq$ \texttt{Musica}  & \\ \cline{1-2}
+	\end{tabular}
+\caption{A mesma sentença expressa em diferentes lógicas}
+\end{table}
+
+Podemos observar que com a LD, temos a ideia de que a união dos conjuntos \texttt{Cancao} e \texttt{HinoNacional} está contida no conjunto \texttt{Musica}.
 
 \section{Conceitos, papéis e indivíduos}
 

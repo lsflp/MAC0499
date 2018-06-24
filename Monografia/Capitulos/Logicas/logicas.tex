@@ -2,7 +2,7 @@
 
 \lettrine{A}{} área de Inteligência Artificial é composta por diversas sub-áreas responsáveis por diversos estudos. Uma delas é a de Representação de Conhecimento, que cuida da construir formalismos adequados para expressar conhecimento sobre um domínio. Tal área tem seus estudos válidos, afinal, entidades inteligentes possuem algum tipo de conhecimento e precisam fazer inferências a partir dele. Para fazer isso, os formalismos devem possuir alguma representação.
 
-Existe um consenso, já mencionado no capítulo anterior, de que linguagens formais são uma maneira boa de caracterizar axiomas lógicos para a modelagem de uma Ontologia. O principal formalismo utilizado para representar conhecimento, com um cuidado especial para as terminologias, são as Lógicas de Descrição (LD).
+Existe um consenso, já mencionado no capítulo anterior, de que linguagens formais são uma maneira boa de caracterizar axiomas lógicos para a modelagem de uma Ontologia. O principal formalismo utilizado para representar conhecimento, com um cuidado especial para as terminologias, são as Lógicas de Descrição (doravante, LD).
 
 Essas lógicas são um subconjunto da Lógica de Primeira Ordem, que por sua vez, estende a Lógica Proposicional. As LD são utilizadas por sua expressividade. Para anotar que uma \texttt{Cancao} ou um \texttt{HinoNacional} são uma \texttt{Musica}, usando a ontologia que está sendo desenvolvida neste trabalho, poderíamos utilizar as seguintes sentenças, usando as lógicas até agora citadas:
 
@@ -18,13 +18,27 @@ Essas lógicas são um subconjunto da Lógica de Primeira Ordem, que por sua vez
 \caption{A mesma sentença expressa em diferentes lógicas}
 \end{table}
 
-Podemos observar que com a LD, temos a ideia de que a união dos conjuntos \texttt{Cancao} e \texttt{HinoNacional} está contida no conjunto \texttt{Musica}.
+Podemos observar que a notação da LD permite que a interpretação de suas sentenças seja feita usando a Teoria dos Conjuntos. Na última sentença da tabela, podemos inferir que a união dos conjuntos \texttt{Cancao} e \texttt{HinoNacional} está contida no conjunto \texttt{Musica}.
 
 \section{Conceitos, papéis e indivíduos}
 
+As LD possuem um jeito próprio de organizar o conhecimento. Elas utilizam de três definições para retratar o que é desejado. Cada uma delas é utilizada para a construção de uma ontologia. São, a seguir:
+
+\begin{itemize}
+	\item Conceitos: Também chamados de classes, representam um conjunto de indivíduos. Nas ontologias, são equivalentes às Classes.
+	\item Papéis: Podem ser denotados como propriedades e retratam as relações binárias que existem entre os indivíduos. Basicamente, são as Relações de uma ontologia. Alguns papéis podem ter uma função de caracterização, ou seja, definindo alguns atributos para o conceito. Tal função corresponde a uma Propriedade de uma Classe, em uma ontologia.
+	\item Indivíduos: Representam os particulares que existem dentro de um Conceito. Para as ontologias, são as Instâncias.
+\end{itemize}
+
+Logo, uma LD é definida por uma tripla $ <N_C, N_R, N_I> $, onde $ N_C $ é um conjunto de conceitos atômicos, $ N_R $ é um conjunto de papéis atômicos e $ N_I $ é um conjunto de nomes de indivíduos.
+
+Feita essa distinção, é possível dividir o conhecimento em duas partes, com as LD. A primeira delas é a \textit{TBox}. Ela se refere ao conhecimento terminológico, ou seja, o conhecimento intensional do domínio. Nela ficam os conceitos, as propriedades e as restrições.
+
+A outra parte é a \textit{ABox}, e nela fica o conhecimento assertivo, ou seja, o conhecimento extensional. Ela contém as asserções sobre as instâncias, ou seja, como eles se encaixam nas definições explícitas na \textit{TBox}.
+
 \section{Equivalências com a Lógica de Primeira Ordem}
 
-\section{\textit{TBox} e \textit{ABox}}
+\section{Interpretação e Consequência Lógica}
 
 \section{Outras linguagens}
 

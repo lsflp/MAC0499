@@ -10,10 +10,10 @@ Essas lógicas são um subconjunto da Lógica de Primeira Ordem, que por sua vez
 	\centering
 	\begin{tabular}{|l|l|l}
 		\cline{1-2}
-		Lógica                   & Sentença & \\ \cline{1-2}
-		Proposicional     & \texttt{cancao} $\lor$ \texttt{hinoNacional} $\to$ \texttt{musica} & \\ \cline{1-2}
-		de Primeira Ordem & $\forall x(\texttt{Cancao}(x) \lor \texttt{HinoNacional}(x) \to \texttt{Musica}(x))$         & \\ \cline{1-2}
-		de Descrição      & \texttt{Cancao} $\sqcup$ \texttt{HinoNacional} $\sqsubseteq$ \texttt{Musica}  & \\ \cline{1-2}
+		Lógica                   & Sentença                                                                             & \\ \cline{1-2}
+		Proposicional            & $c \lor h \to m$                   & \\ \cline{1-2}
+		de Primeira Ordem        & $\forall x(\texttt{Cancao}(x) \lor \texttt{HinoNacional}(x) \to \texttt{Musica}(x))$ & \\ \cline{1-2}
+		de Descrição             & \texttt{Cancao} $\sqcup$ \texttt{HinoNacional} $\sqsubseteq$ \texttt{Musica}         & \\ \cline{1-2}
 	\end{tabular}
 \caption{A mesma sentença expressa em diferentes lógicas}
 \end{table}
@@ -36,10 +36,42 @@ Feita essa distinção, é possível dividir o conhecimento em duas partes, com 
 
 A outra parte é a \textit{ABox}, e nela fica o conhecimento assertivo, ou seja, o conhecimento extensional. Ela contém as asserções sobre as instâncias, ou seja, como eles se encaixam nas definições explícitas na \textit{TBox}.
 
+\section{$\mathcal{ALC}$ e outras linguagens}
+
 \section{Equivalências com a Lógica de Primeira Ordem}
+
+As LD, como definido anteriormente, são um subconjunto das Lógicas de Primeira Ordem (LPO). Portanto, toda e qualquer expressão expressa nessa linguagem terá um equivalente em LPO. 
+
+Tal relação se estende até às definições que ela utiliza em sua constituição. Os conceitos, papéis e indivíduos acima citados, correspondem, respectivamente, a predicados unários, predicados binários e constantes em lógica de primeira ordem.
+
+Com essa elucidação, é possível elaborar uma tabela que mostra as principais equivalências entre LD e LPO, com intenção de usá-la para uma eventual tradução entre as lógicas. Definindo $t_x$ como a interpretação em $x$ de uma sentença, já que é necessária uma variável livre para a tradução, teremos:
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|l}
+		\cline{1-4}
+		Conceito    & LD                                    & Tradução                                 & LPO                              &  \\ \cline{1-4}
+		Classe      & \texttt{A}                            & $t_x(\texttt{A})$                        & $A(x)$                           &  \\ \cline{1-4}
+		União       & \texttt{A} $ \sqcup $ \texttt{B}      & $t_x(\texttt{A} \sqcup \texttt{B})$      & $A(x) \lor B(x)$                 &  \\ \cline{1-4}
+		Intersecção & \texttt{A} $ \sqcap $ \texttt{B}      & $t_x(\texttt{A} \sqcap \texttt{B})$      & $A(x) \land B(x)$                &  \\ \cline{1-4}
+		Universal   & $\forall$ \texttt{r.A}                & $t_x(\forall \texttt{r.A})$              & $\forall y(r(x,y) \to t_y(A))$   &  \\ \cline{1-4}
+		Existencial & $\exists$ \texttt{r.A}                & $t_x(\exists \texttt{r.A})$              & $\exists y(r(x,y) \land t_y(A))$ &  \\ \cline{1-4}
+		Subconjunto & \texttt{A} $ \sqsubseteq $ \texttt{B} & $t_x(\texttt{A} \sqsubseteq \texttt{B})$ & $\forall x(t_x(A) \to t_x(B))$   &  \\ \cline{1-4}
+	\end{tabular}
+	\caption{Tabela para tradução entre LD e LPO}
+\end{table}
+
+Usando a nossa ontologia como exemplo, pode-se ver como essa tradução é aplicada:
+
+\begin{enumerate}
+	\item \texttt{Pop} $ \sqsubseteq $ \texttt{Cancao} vira $\forall x(\texttt{Pop}(x) \to \texttt{Cancao}(x)$.
+	\item \texttt{Cancao} $ \sqcup $ \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Musica} é traduzida como $\forall x(\texttt{Cancao}(x) \lor \texttt{HinoNacional}(x) \to \texttt{Musica}(x))$
+	\item $ \forall $ \texttt{canta.Musica} $ \sqsubseteq $ \texttt{Cantor} corresponde a $ \forall x(\forall y(\texttt{canta}(x,y) \to \texttt{Musica}(y)) \to \texttt{Cantor}(x)) $
+	\item $ \exists $ \texttt{canta.Pop} $ \sqsubseteq $ \texttt{Cantor} $ \sqcap $ \texttt{Compositor} equivale a $ \forall x (\exists y(\texttt{canta}(x,y) \land \texttt{Pop}(y)) \to \texttt{Cantor}(x) \land \texttt{Compositor}(x))$
+\end{enumerate}
 
 \section{Interpretação e Consequência Lógica}
 
-\section{Outras linguagens}
+
 
 \section{Tableau}

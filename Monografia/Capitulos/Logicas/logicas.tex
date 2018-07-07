@@ -1,10 +1,10 @@
 \chapter{Lógicas de Descrição}
 
-\lettrine{A}{} área de Inteligência Artificial é composta por diversas sub-áreas responsáveis por diversos estudos. Uma delas é a de Representação de Conhecimento, que cuida da construir formalismos adequados para expressar conhecimento sobre um domínio. Tal área tem seus estudos válidos, afinal, entidades inteligentes possuem algum tipo de conhecimento e precisam fazer inferências a partir dele. Para fazer isso, os formalismos devem possuir alguma representação.
+\lettrine{A}{} área de Inteligência Artificial é composta por diversas subáreas, que são responsáveis por diversos estudos. Uma delas é a de Representação de Conhecimento, que cuida de construir formalismos adequados para expressar conhecimento sobre um domínio. Tal área tem seus estudos válidos, afinal, entidades inteligentes possuem algum tipo de conhecimento e precisam fazer inferências a partir dele.
 
-Existe um consenso, já mencionado no capítulo anterior, de que linguagens formais são uma maneira boa de caracterizar axiomas lógicos para a modelagem de uma Ontologia. O principal formalismo utilizado para representar conhecimento, com um cuidado especial para as terminologias, são as Lógicas de Descrição (doravante, LD).
+Existe um consenso, já mencionado no capítulo anterior, de que linguagens formais são uma maneira boa de caracterizar axiomas lógicos para a modelagem de uma ontologia. O principal formalismo utilizado para representar conhecimento, com um cuidado especial para as terminologias, são as Lógicas de Descrição (doravante, LD).
 
-Essas lógicas são um subconjunto da Lógica de Primeira Ordem, que por sua vez, estende a Lógica Proposicional. As LD são utilizadas por sua expressividade. Para anotar que uma \texttt{Cancao} ou um \texttt{HinoNacional} são uma \texttt{Musica}, usando a ontologia que está sendo desenvolvida neste trabalho, poderíamos utilizar as seguintes sentenças, usando as lógicas até agora citadas:
+Essas lógicas são um subconjunto da Lógica de Primeira Ordem (a partir de agora, LPO), que por sua vez, estende a Lógica Proposicional. As LD são utilizadas por sua expressividade. Para anotar que uma \texttt{Cancao} ou um \texttt{HinoNacional} são uma \texttt{Musica}, usando a ontologia que está sendo desenvolvida neste trabalho, podem ser utilizadas as seguintes sentenças, usando as lógicas até agora citadas:
 
 \begin{table}[H]
 	\centering
@@ -18,21 +18,21 @@ Essas lógicas são um subconjunto da Lógica de Primeira Ordem, que por sua vez
 \caption{A mesma sentença expressa em diferentes lógicas}
 \end{table}
 
-Podemos observar que a notação da LD permite que a interpretação de suas sentenças seja feita usando a Teoria dos Conjuntos. Na última sentença da tabela, podemos inferir que a união dos conjuntos \texttt{Cancao} e \texttt{HinoNacional} está contida no conjunto \texttt{Musica}.
+Podemos observar que a notação da LD permite que a interpretação de suas sentenças seja feita usando a Teoria dos Conjuntos. Na última sentença da tabela, é possível inferir que a união dos conjuntos \texttt{Cancao} e \texttt{HinoNacional} está contida no conjunto \texttt{Musica}.
 
 \section{Conceitos, papéis e indivíduos}
 
-As LD possuem um jeito próprio de organizar o conhecimento. Elas utilizam de três definições para retratar o que é desejado\cite{logicaMatos}. Cada uma delas é utilizada para a construção de uma ontologia. São, a seguir:
+As LD possuem um jeito próprio de organizar o conhecimento. Elas usam três definições para retratar o que é desejado \cite{logicaMatos}. Cada uma delas é utilizada na construção de uma ontologia. São, a seguir:
 
 \begin{itemize}
 	\item Conceitos: Também chamados de classes, representam um conjunto de indivíduos. Nas ontologias, são equivalentes às Classes.
-	\item Papéis: Podem ser denotados como propriedades e retratam as relações binárias que existem entre os indivíduos. Basicamente, são as Relações de uma ontologia. Alguns papéis podem ter uma função de caracterização, ou seja, definindo alguns atributos para o conceito. Tal função corresponde a uma Propriedade de uma Classe, em uma ontologia.
+	\item Papéis: Podem ser denotados como propriedades. Retratam as relações binárias que existem entre os indivíduos. Basicamente, são as Relações de uma ontologia. Alguns papéis podem ter uma função de caracterização, ou seja, definindo alguns atributos para o conceito. Tal função corresponde a uma Propriedade de uma Classe, em uma ontologia.
 	\item Indivíduos: Representam os particulares que existem dentro de um Conceito. Para as ontologias, são as Instâncias.
 \end{itemize}
 
-Logo, uma LD é definida por uma tripla $ (N_C, N_R, N_I) $, onde $ N_C $ é um conjunto de conceitos atômicos, $ N_R $ é um conjunto de papéis atômicos e $ N_I $ é um conjunto de nomes de indivíduos.
+Logo, uma LD é definida por uma tripla $ (N_C, N_R, N_I) $, onde $ N_C $ é um conjunto de Conceitos atômicos, $ N_R $ é um conjunto de Papéis atômicos e $ N_I $ é um conjunto de nomes de indivíduos.
 
-Feita essa distinção, é possível dividir o conhecimento em duas partes, com as LD. A primeira delas é a \textit{TBox}. Ela se refere ao conhecimento terminológico, ou seja, o conhecimento intensional do domínio. Nela ficam os conceitos, as propriedades e as restrições.
+Feita essa distinção, o conhecimento em uma ontologia é dividido em duas partes, com as LD. A primeira delas é a \textit{TBox}. Ela se refere ao conhecimento terminológico, ou seja, o conhecimento intensional do domínio. Nela ficam os conceitos, as propriedades e as restrições.
 
 A outra parte é a \textit{ABox}, e nela fica o conhecimento assertivo, ou seja, o conhecimento extensional. Ela contém as asserções sobre as instâncias, ou seja, como eles se encaixam nas definições explícitas na \textit{TBox}.
 
@@ -42,7 +42,7 @@ As pesquisas na área de Representação de Conhecimento levaram à confecção 
 
 Tais estudos levaram ao desenvolvimento da $\mathcal{ALC}$. Essa linguagem, cuja sigla significa \textit{Attributive Concept Language with Complements}, é uma das Lógicas de Descrição mais básicas que existem, embora seja uma das mais utilizadas para as atividades que envolvem raciocínio lógico. 
 
-Esta linguagem contempla os seguintes construtores, para quaisquer conceitos \texttt{A} e \texttt{B} e qualquer papel \texttt{r}:
+Ela contempla os seguintes construtores, para quaisquer conceitos \texttt{A} e \texttt{B} e qualquer papel \texttt{r}:
 
 \begin{table}[H]
 	\centering
@@ -61,9 +61,9 @@ Esta linguagem contempla os seguintes construtores, para quaisquer conceitos \te
 	\caption{Construtores da Lógica $ \mathcal{ALC} $}
 \end{table}
 
-Essa linguagem também permite que sejam escritos axiomas terminológicos, tais como a subsunção, denotada por $ \texttt{A} \sqsubseteq \texttt{B} $, e a equivalência, caracterizada como $ \texttt{A} \equiv \texttt{B} $ e que significa $ \texttt{A} \sqsubseteq \texttt{B} $ e $ \texttt{B} \sqsubseteq \texttt{A} $. Para o conhecimento assertivo também existem axiomas, tanto para conceitos ($\texttt{A}(x)$), quanto para papéis ($\texttt{r}(x,y)$).
+Essa representação também permite que sejam escritos axiomas terminológicos, tais como a subsunção, denotada por $ \texttt{A} \sqsubseteq \texttt{B} $, e a equivalência, caracterizada como $ \texttt{A} \equiv \texttt{B} $ e que significa $ \texttt{A} \sqsubseteq \texttt{B} $ e $ \texttt{B} \sqsubseteq \texttt{A} $. Para o conhecimento assertivo também existem axiomas, tanto para conceitos ($\texttt{A}(x)$), quanto para papéis ($\texttt{r}(x,y)$).
 
-A linguagem $\mathcal{ALC}$ permite que seja feita a negação de conceitos complexos (não-atômicos). Tal propriedade permite descobrir, por exemplo, se algum conceito é {\color{red}satisfazível}. Usando o símbolo $ \sim $ para demonstrar equivalência, teremos que:
+A linguagem $\mathcal{ALC}$ permite que seja feita a negação de conceitos complexos (não-atômicos). Tal propriedade permite descobrir, por exemplo, se algum conceito é satisfatível. Usando o símbolo $ \sim $ para demonstrar equivalência, teremos que:
 
 \begin{itemize}
 	\item $ \neg(\forall r.\texttt{A}) \sim \exists r.\neg \texttt{A}$ 
@@ -73,17 +73,18 @@ A linguagem $\mathcal{ALC}$ permite que seja feita a negação de conceitos comp
 	\item $ \neg \neg \texttt{A} \sim \texttt{A} $
 \end{itemize}
 
-A partir de sua constituição, é possível definir três {\color{red}sub-linguagens} da $\mathcal{ALC}$\cite{logicaSchmidt}. Tais {\color{red}sub-linguagens} são descritas a seguir.
+A partir de sua constituição, é possível definir três sublinguagens da $\mathcal{ALC}$ \cite{logicaSchmidt}, que são descritas a seguir.
 
 \begin{itemize}
 	\item $\mathcal{ALE}$: permite a descrição de conceitos simples sem a utilização de uniões; 
 	\item $\mathcal{ALU}$: deixa apenas conceitos simples serem descritos e restringe as quantificações de papéis existenciais à forma $ \exists\texttt{r}.\top $;
-	\item $\mathcal{AL}$: é a intersecção das {\color{red}sub-linguagens} acima.
+	\item $\mathcal{AL}$: é a intersecção das sublinguagens acima.
 \end{itemize}
 
-Os nomes das {\color{red}sub-linguagens} acima são derivados da seguinte maneira: $ \mathcal{ALU} $ vem da junção de $ \mathcal{AL} $ com uniões, $ \mathcal{ALE} $ é a $ \mathcal{AL} $ acrescida de quantificadores existenciais. A própria $ \mathcal{ALC} $ é uma extensão da $ \mathcal{AL} $ com adição de complementos (negações) para qualquer conceito, seja ele atômico ou complexo. 
+Os nomes das sublinguagens acima são derivados da seguinte maneira: $ \mathcal{ALU} $ vem da junção de $ \mathcal{AL} $ com uniões, $ \mathcal{ALE} $ é a $ \mathcal{AL} $ acrescida de quantificadores existenciais. A própria $ \mathcal{ALC} $ é uma extensão da $ \mathcal{AL} $ com adição de complementos (negações) para qualquer conceito, seja ele atômico ou complexo. 
 
-A $ \mathcal{ALC} $ é base para outras linguagens mais expressivas, que são construídas a partir de sua extensão. Para denotá-las, são usadas letras em suas siglas, que mostram as propriedades que as diferenciam entre si. Algumas delas são:
+Nota-se que a sigla que representa o nome de uma linguagem expressa as características que ela possui.
+A $ \mathcal{ALC} $ é base para outras linguagens mais expressivas, que são construídas a partir de sua extensão. Algumas delas são:
 
 \begin{itemize}
 	\item $ \mathcal{S} $: linguagem $ \mathcal{ALC} $ com papéis transitivos;
@@ -97,18 +98,59 @@ A $ \mathcal{ALC} $ é base para outras linguagens mais expressivas, que são co
 	\item $ \mathcal{H} $: hierarquia de papéis;
 	\item $ \mathcal{I} $: propriedades inversas;
 	\item $ \mathcal{N} $: restrições de cardinalidade;
-	\item $ \mathcal{(D)} $: usa propriedades de tipo de dados.
+	\item $ ^\mathcal{(D)} $: usa propriedades de tipo de dados.
 \end{itemize}
 
 Com essa nomenclatura, pode-se dar duas linguagens como exemplo\cite{logicaResina}. Uma delas é a $ \mathcal{SHIF}^\mathcal{(D)} $, que engloba a $ \mathcal{ALC} $ e, ainda, hierarquia de papéis, propriedades inversas, transitivas e funcionais e tipos de dados.
 
 Uma outra é a lógica $ \mathcal{SHOIN}^\mathcal{(D)}$, que envolve a  $ \mathcal{SHIF}^\mathcal{(D)} $ e restrições de cardinalidade em papéis.
 
+\section{Interpretação e Consequência Lógica}
+
+Uma interpretação $ \mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}})$ consiste em um conjunto domínio ($ \Delta^{\mathcal{I}} $) e uma função de interpretação $ \cdot^{\mathcal{I}} $ que atribui a toda descrição de conceito um subconjunto de $ \Delta^{\mathcal{I}} $, seguindo as seguintes equações\cite{logicaHorrocks}:
+
+\begin{itemize}
+	\item $ \top^\mathcal{I} = \Delta^\mathcal{I} $
+	\item $ \bot^\mathcal{I} = \emptyset $
+	\item $ (\neg \texttt{A})^\mathcal{I} = \Delta^\mathcal{I} \setminus \texttt{A}^\mathcal{I}  $
+	\item $(\texttt{A} \sqcup \texttt{B})^\mathcal{I} = \texttt{A}^\mathcal{I} \cup \texttt{B}^\mathcal{I}$  
+	\item $(\texttt{A} \sqcap \texttt{B})^\mathcal{I} = \texttt{A}^\mathcal{I} \cap \texttt{B}^\mathcal{I}$
+	\item $(\exists \texttt{r.A})^\mathcal{I} = \{a \in \Delta^\mathcal{I}\text{ }|\text{ }\exists(a, b) \in \texttt{r}^\mathcal{I} \text{ e } b \in \texttt{A}^\mathcal{I}\}$  
+	\item $(\forall \texttt{r.A})^\mathcal{I} = \{a \in \Delta^\mathcal{I}\text{ }|\text{ }\forall(a, b) \in \texttt{r}^\mathcal{I} \text{ e } b \in \texttt{A}^\mathcal{I}\}$
+\end{itemize}
+
+Com isso, podemos ver que uma interpretação $ \mathcal{I} $ satisfaz:
+
+\begin{multicols}{2}
+	\begin{itemize}
+		\item \texttt{A} $ \equiv $ \texttt{B} se e somente se $ \texttt{A}^\mathcal{I} $ = $ \texttt{B}^\mathcal{I} $ 
+		\item \texttt{A} $ \sqsubseteq $ \texttt{B} se e somente se $ \texttt{A}^\mathcal{I} \subseteq \texttt{B}^\mathcal{I} $
+		\item a \textit{TBox} $ \mathcal{T} $ se e somente se satisfaz todos os elementos de $ \mathcal{T} $
+		\item $ \texttt{A}(a) $ se e somente se $ a^\mathcal{I} \in A^\mathcal{I} $
+		\item $ \texttt{r}(a, b) $ se e somente se $ (a^\mathcal{I}, b^\mathcal{I}) \in A^\mathcal{I} $
+		\item a \textit{ABox} $ \mathcal{A} $ se e somente se satisfaz todos os elementos de $ \mathcal{A} $
+	\end{itemize}
+\end{multicols}
+
+Uma Base de Conhecimento $ \mathcal{ALC} $ é um par $ \Sigma = (\mathcal{T}, \mathcal{A}) $ onde $ \mathcal{T} $ é uma \textit{TBox} e $ \mathcal{A} $, uma \textit{TBox}. Logo, pode ser dito que uma interpretação $ \mathcal{I} $ é um modelo de $ \Sigma $ se satisfaz $ \mathcal{T} $ e $ \mathcal{A} $. Uma base de conhecimento $ \Sigma $ é satisfatível se admite um modelo.
+
+Com isso, podemos definir Consequência Lógica como $ \Sigma \models \phi $ se todo modelo de $ \Sigma $ é um modelo de $ \phi $. Na ontologia desse texto, isso pode ser aplicado da seguinte maneira, sendo:
+
+\begin{itemize}
+	\item $ \Sigma = (\mathcal{T}, \mathcal{A}) $, onde:
+	\begin{itemize}
+		\item $ \mathcal{T} $ é a \textit{TBox}: $ \exists \texttt{HinoNacional} \sqsubseteq \texttt{Musica}$
+		\item $ \mathcal{A} $ é a \textit{ABox}: \texttt{HinoNacional(hinoNacionalBrasileiro)}
+	\end{itemize}
+\end{itemize}
+
+É possível observar que $ \Sigma \models \texttt{Musica(hinoNacionalBrasileiro)} $ será uma consequência lógica.
+
 \section{Equivalências com a Lógica de Primeira Ordem}
 
-As LD, como definido anteriormente, são um subconjunto das Lógicas de Primeira Ordem (LPO). Portanto, toda e qualquer expressão expressa nessa linguagem terá um equivalente em LPO. 
+As LD, como definido anteriormente, são um subconjunto das LPO. Portanto, toda e qualquer expressão expressa nessa linguagem terá um equivalente em LPO. 
 
-Tal relação se estende até às definições que ela utiliza em sua constituição. Os conceitos, papéis e indivíduos acima citados, correspondem, respectivamente, a predicados unários, predicados binários e constantes em lógica de primeira ordem.
+Tal relação se estende até às definições que ela utiliza em sua constituição. Os conceitos, papéis e indivíduos acima citados, correspondem, respectivamente, a predicados unários, predicados binários e constantes em Lógica de Primeira Ordem.
 
 Com essa elucidação, é possível elaborar uma tabela que mostra as principais equivalências entre LD e LPO, com intenção de usá-la para uma eventual tradução entre as lógicas. Definindo $t_x$ como a interpretação em $x$ de uma sentença, já que é necessária uma variável livre para a tradução, teremos:
 
@@ -128,7 +170,7 @@ Com essa elucidação, é possível elaborar uma tabela que mostra as principais
 	\caption{Tabela para tradução entre LD e LPO}
 \end{table}
 
-Usando a nossa ontologia como exemplo, pode-se ver como essa tradução é aplicada:
+Usando a ontologia de música como exemplo, pode-se ver como essa tradução é aplicada:
 
 \begin{enumerate}
 	\item \texttt{Pop} $ \sqsubseteq $ \texttt{Cancao} vira $\forall x(\texttt{Pop}(x) \to \texttt{Cancao}(x)$.
@@ -137,51 +179,21 @@ Usando a nossa ontologia como exemplo, pode-se ver como essa tradução é aplic
 	\item $ \exists $ \texttt{canta.Pop} $ \sqsubseteq $ \texttt{Cantor} $ \sqcap $ \texttt{Compositor} equivale a $ \forall x (\exists y(\texttt{canta}(x,y) \land \texttt{Pop}(y)) \to \texttt{Cantor}(x) \land \texttt{Compositor}(x))$
 \end{enumerate}
 
-\section{Interpretação e Consequência Lógica}
-
-Uma interpretação $ \mathcal{I} = (D^{\mathcal{I}}, \cdot^{\mathcal{I}})$ consiste em um conjunto domínio ($ D^{\mathcal{I}} $) e uma função de interpretação $ \cdot^{\mathcal{I}} $ que atribui a toda descrição de conceito um subconjunto de $ D^{\mathcal{I}} $, seguindo as seguintes equações\cite{logicaHorrocks}:
-
-\begin{itemize}
-	\item $ \top^\mathcal{I} = D^\mathcal{I} $
-	\item $ \bot^\mathcal{I} = \emptyset $
-	\item $ (\neg \texttt{A})^\mathcal{I} = D^\mathcal{I} \setminus \texttt{A}^\mathcal{I}  $
-	\item $(\texttt{A} \sqcup \texttt{B})^\mathcal{I} = \texttt{A}^\mathcal{I} \cup \texttt{B}^\mathcal{I}$  
-	\item $(\texttt{A} \sqcap \texttt{B})^\mathcal{I} = \texttt{A}^\mathcal{I} \cap \texttt{B}^\mathcal{I}$
-	\item $(\exists \texttt{r.A})^\mathcal{I} = \{a \in D^\mathcal{I} | \exists(a, b) \in \texttt{r}^\mathcal{I} \text{ e } b \in \texttt{A}^\mathcal{I}\}$  
-	\item $(\forall \texttt{r.A})^\mathcal{I} = \{a \in D^\mathcal{I} | \forall(a, b) \in \texttt{r}^\mathcal{I} \text{ e } b \in \texttt{A}^\mathcal{I}\}$
-\end{itemize}
-
-Com isso, podemos ver que uma interpretação $ \mathcal{I} $ satisfaz:
-
-\begin{multicols}{2}
-	\begin{itemize}
-		\item \texttt{A} $ \equiv $ \texttt{B} se e somente se $ \texttt{A}^\mathcal{I} $ = $ \texttt{B}^\mathcal{I} $ 
-		\item \texttt{A} $ \sqsubseteq $ \texttt{B} se e somente se $ \texttt{A}^\mathcal{I} \subseteq \texttt{B}^\mathcal{I} $
-		\item a \textit{TBox} $ \mathcal{T} $ se e somente se satisfaz todos os elementos de $ \mathcal{T} $
-		\item $ \texttt{A}(a) $ se e somente se $ a^\mathcal{I} \in A^\mathcal{I} $
-		\item $ \texttt{r}(a, b) $ se e somente se $ (a^\mathcal{I}, b^\mathcal{I}) \in A^\mathcal{I} $
-		\item a \textit{ABox} $ \mathcal{A} $ se e somente se satisfaz todos os elementos de $ \mathcal{A} $
-	\end{itemize}
-\end{multicols}
-
-Uma base de conhecimento $ \mathcal{ALC} $ é um par $ \Sigma = (\mathcal{T}, \mathcal{A}) $ onde $ \mathcal{T} $ é uma \textit{TBox} e $ \mathcal{A} $, uma \textit{TBox}. Logo, pode ser dito que uma interpretação $ \mathcal{I} $ é um modelo de $ \Sigma $ se satisfaz $ \mathcal{T} $ e $ \mathcal{A} $. Uma base de conhecimento $ \Sigma $ é satisfatível se admite um modelo.
-
-Com isso, podemos definir Consequência Lógica como $ \Sigma \models \phi $ se todo modelo de $ \Sigma $ é um modelo de $ \phi $. Em nossa ontologia, se tivermos a \textit{TBox}: $ \exists \texttt{HinoNacional} \sqsubseteq \texttt{Musica}$ e a \textit{ABox}: \texttt{HinoNacional(hinoNacionalBrasileiro)}, $ \Sigma \models \texttt{Musica(hinoNacionalBrasileiro)} $ será uma consequência possível.
 
 \section{Consistência}
 
-Após uma base de conhecimento ser feita, é necessário que ela seja consistente, ou seja, se ela não contradiz a si própria, no caso que podemos inferir um conceito e sua negação ao mesmo tempo. 
+Após uma Base de Conhecimento ser feita, é necessário que ela seja consistente, ou seja, ela não pode se contradizer. Isso acontece quando a inferência de um conceito e sua negação, ao mesmo tempo, é possível. 
 
-Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau} para Lógicas de Descrição. Com elas, é possível determinar de maneira algorítmica a consistência de uma base de conhecimento. São elas:
+Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau} para Lógicas de Descrição. Com elas, é possível determinar de maneira algorítmica a consistência de uma Base de Conhecimento. São elas:
 
 \begin{enumerate}
-	\item a regra E (ou \textit{$ \sqcap $-rule}): se $(\texttt{A} \sqcap \texttt{B})(a)$ está em $ \mathcal{A} $, mas \texttt{A}$ (a) $ e \texttt{B}$ (a) $ não estão os dois em $ \mathcal{A} $, então a \textit{ABox} $ \mathcal{A} $ será acrescida de \texttt{A}$ (a) $ e \texttt{B}$ (a) $.
-	\item a regra OU (ou \textit{$ \sqcup $-rule}): quando $(\texttt{A} \sqcup \texttt{B})(a)$ está em $ \mathcal{A} $, mas nem \texttt{A}$ (a) $ nem \texttt{B}$ (a) $ está em $ \mathcal{A} $, então a \textit{ABox} $ \mathcal{A} $ será acrescida de \texttt{A}$ (a) $ ou de \texttt{B}$ (a) $.
-	\item a regra EXISTE (ou \textit{$ \exists $-rule}): se $(\exists \texttt{r.A})(a)$ está em $ \mathcal{A} $, e não há nenhum indivíduo $ c $ tal que \texttt{r}$ (a,c) $ e \texttt{A}$ (c) $ estejam em $ \mathcal{A} $, então tanto \texttt{r}$ (a,b) $ quanto \texttt{A}$ (b) $ serão adicionados a $ \mathcal{A} $, onde $ b $ é um novo indivíduo.
-	\item a regra PARA TODO (ou \textit{$ \forall $-rule}): quando se $(\forall \texttt{r.A})(a)$ e \texttt{r}$ (a,b) $ estão em $ \mathcal{A} $, mas \texttt{A}$ (c) $ não está, esse último será colocado em $ \mathcal{A} $.  
+	\item a regra \texttt{E} (ou \textit{$ \sqcap $-rule}): se $(\texttt{A} \sqcap \texttt{B})(a)$ está em $ \mathcal{A} $, mas \texttt{A}$ (a) $ e \texttt{B}$ (a) $ não estão os dois em $ \mathcal{A} $, então a \textit{ABox} $ \mathcal{A} $ será acrescida de \texttt{A}$ (a) $ e \texttt{B}$ (a) $.
+	\item a regra \texttt{OU} (ou \textit{$ \sqcup $-rule}): quando $(\texttt{A} \sqcup \texttt{B})(a)$ está em $ \mathcal{A} $, mas nem \texttt{A}$ (a) $ nem \texttt{B}$ (a) $ está em $ \mathcal{A} $, então à \textit{ABox} $ \mathcal{A} $ será incluído \texttt{A}$ (a) $ ou \texttt{B}$ (a) $.
+	\item a regra \texttt{EXISTE} (ou \textit{$ \exists $-rule}): se $(\exists \texttt{r.A})(a)$ está em $ \mathcal{A} $, e não há nenhum indivíduo $ c $ tal que \texttt{r}$ (a,c) $ e \texttt{A}$ (c) $ estejam em $ \mathcal{A} $, então tanto \texttt{r}$ (a,b) $ quanto \texttt{A}$ (b) $ serão adicionados a $ \mathcal{A} $, onde $ b $ é um novo indivíduo.
+	\item a regra \texttt{PARA TODO} (ou \textit{$ \forall $-rule}): quando se $(\forall \texttt{r.A})(a)$ e \texttt{r}$ (a,b) $ estão em $ \mathcal{A} $, mas \texttt{A}$ (c) $ não está, esse último será colocado em $ \mathcal{A} $.  
 \end{enumerate}
 
-Para descobrir se uma fórmula é insatisfazível, basta aplicar essas regras na sentença lógica. Se no final chegarmos em um \textit{Clash}, ou seja, um choque, que é quando temos um conceito e sua negação na \textit{ABox}, a sentença é insatisfazível.
+Para descobrir se uma fórmula é insatisfatível, basta aplicar essas regras na sentença lógica. Se, no final, um \textit{Clash} (choque) for alcançado, isto é, quando temos um conceito e sua negação na \textit{ABox}, a sentença é insatisfatível.
 
 Koubarakis \cite{logicaKoubarakis} deu um exemplo para aplicar essas regras:
 
@@ -191,8 +203,6 @@ Koubarakis \cite{logicaKoubarakis} deu um exemplo para aplicar essas regras:
 		\caption{Exemplo de aplicação das regras de \textit{Tableau}}
 	\end{figure}
 
-Como um \textit{Clash} foi atingido, a sentença é insatisfazível.
-
 Note que nesse exemplo não há uso da \textit{$ \sqcup $-rule}. Quando ela é usada, são criados dois ramos. Para que a fórmula seja insatisfazível, os dois devem resultar em choque (\textit{Clash}).
 
-Para verificar que sentenças no estilo $ \texttt{C} \sqsubseteq \texttt{D} $ são válidas, podemos verificar a satisfazibilidade de $ \texttt{C} \sqcap \neg \texttt{D} $. Se essa última for insatisfazível, a primeira é válida.
+Para verificar que sentenças no estilo $ \texttt{C} \sqsubseteq \texttt{D} $ são válidas, deve ser verificada a satisfazibilidade de $ \texttt{C} \sqcap \neg \texttt{D} $. Se essa última for insatisfatível, a primeira é válida.

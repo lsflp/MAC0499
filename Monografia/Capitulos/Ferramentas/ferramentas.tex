@@ -1,0 +1,39 @@
+\chapter{Ferramentas Computacionais}
+
+\lettrine{O}{} interesse no estudo de Desenvolvimento de Ontologias, Lógicas de Descrição e Revisão de Crenças, deve-se, em parte, às aplicações computacionais que tais áreas possuem. Neste capítulo, algumas delas serão abordadas.
+
+\section{OWL}
+
+O final da década de 1990 foi a época de surgimento da ideia de Web Semântica. Essa ideia, já consolidada hoje, representa uma extensão da \textit{World Wide Web} onde é possível o trabalho cooperativo entre as máquinas e os seres humanos. Ele ocorre a partir dos significados que são dados aos conteúdos disponíveis na rede para que ele seja compreensível por ambos os agentes.
+
+Foram feitos grandes esforços com o objetivo de criar alguma linguagem de representação para essa finalidade. Tais esforços passaram por linguagens baseadas em HTML, XML, linguagens baseadas em frames e abordagens de aquisição de conhecimento.
+
+No início dos anos 2000, a W3C (sigla para Consórcio para a \textit{World Wide Web}) fundou o "\textit{Web Ontology Working Group}", para que alguma Linguagem de Representação fosse criada. 
+
+Em julho de 2002, os primeiros rascunhos foram publicados, e em fevereiro de 2004, a OWL (\textit{Web Ontology Language}) tornou-se um padrão recomendado pela W3C para o processamento de ontologias.
+
+Em outubro de 2007, um novo grupo foi concebido para adicionar alguns recursos à linguagem. Dois anos depois, a W3C fez o lançamento da OWL 2, que seria compatível com editores e raciocinadores semânticos.
+
+Abaixo temos algumas características das duas versões da OWL, que foi baseada em RDF e RDFS.
+
+\subsection{OWL Web Ontology Language}
+
+Possui três sublinguagens, cada uma com suas particularidades:
+
+\begin{itemize}
+	\item \textit{Lite}: Sublinguagem mais simples, feita para hierarquias de classificação com restrições simples. Suporta restrições de cardinalidade simples (apenas 0 ou 1).  Foi demonstrado que OWL-Lite é equivalente a $ \mathcal{SHIF^{(D)}} $.
+	\item DL: É equivalente a $ \mathcal{SHOIN^{(D)}} $. Oferece expressividade máxima evitando alguns problemas de decidibilidade. Inclui todos os construtores da OWL. Possui mais complexidade formal do que a sublinguagem \textit{Lite}.
+	\item \textit{Full}: Versão mais completa, oferecendo expressividade máxima e a liberdade sintática do RDF, só que sem garantias computacionais. Nessa sublinguagem, pode acontecer de uma Classe ser tratada como uma coleção de indivíduos ou como um indivíduo, o que acarreta problemas de decidibilidade. Não corresponde a uma lógica de descrição.
+\end{itemize}
+
+\subsection{OWL 2 Web Ontology Language}
+
+\begin{itemize}
+	\item EL: Corresponde à lógica $ \mathcal{EL} $++. Funciona bem para ontologias com muitas classes e/ou propriedades. Permite a existência de algoritmos de inferência polinimiais.
+	\item QL: Baseada na lógica de descrição DL-\textit{Lite}, foi feita para aplicações em que o volume de instâncias é muito grande e que a consulta de dados é a tarefa mais realizada. Tais consultas podem ser implementadas usando sistemas de bancos de dados convencionais.
+	\item RL: Criada para ontologias que precisam de raciocínio escalável, ou seja, que são possivelmente grandes em número de instâncias, mas que precisam de uma sublinguagem que mantenha um bom poder expressivo. É baseada em uma lógica de descrição chamada DLP.
+	\item DL: Assim como no lançamento anterior, oferece bastante expressividade, sem esbarrar em problemas de execução por causa da indecibilidade. Ela pode ser mapeada para a LD $ \mathcal{SROIQ^{(D)}} $. 
+	\item \textit{Full}: Análoga à da primeira versão, muito expressiva, porém, indecidível.
+\end{itemize}
+
+\section{\textit{Protégé}}

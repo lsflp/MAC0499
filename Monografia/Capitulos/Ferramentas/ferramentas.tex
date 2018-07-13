@@ -53,6 +53,7 @@ Para os exemplos dessa seção, será usado como exemplo parte da ontologia cria
 	\begin{itemize}
 		\item \texttt{Musica} $ \equiv $ \texttt{Cancao} $ \sqcup $ \texttt{HinoNacional}.
 		\item \texttt{Pop} $ \sqsubseteq $ \texttt{Cancao};
+		\item \texttt{EDM} $ \sqsubseteq $ \texttt{Cancao};
 		\item \texttt{Pessoa} $ \equiv $ \texttt{Cantor} $ \sqcup $ \texttt{Compositor}.
 	\end{itemize}
 	\item As propriedades:
@@ -64,17 +65,56 @@ Para os exemplos dessa seção, será usado como exemplo parte da ontologia cria
 	\begin{itemize}
 		\item \texttt{MarinaAndTheDiamonds}, instância da classe \texttt{Cantor};
 		\item \texttt{Primadonna}, instância da classe \texttt{Pop};
-		\item \texttt{MarinaAndTheDiamonds \textbf{canta} Primadonna}.
+		\item \texttt{MarinaAndTheDiamonds \textbf{canta} Primadonna};
 		\item \texttt{Froot}, instância da classe \texttt{Pop};
-		\item \texttt{MarinaAndTheDiamonds \textbf{canta} Froot}.	
+		\item \texttt{MarinaAndTheDiamonds \textbf{canta} Froot};
+		\item \texttt{Disconnect}, instância da classe \texttt{EDM};
+		\item \texttt{MarinaAndTheDiamonds \textbf{canta} Disconnect}.	
 	\end{itemize}
 \end{itemize}
 
+No \textit{Protégé}, a ontologia fica assim:
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width=0.95\linewidth]{Capitulos/Ferramentas/classes}
+		\caption{A hierarquia das classes.}
+	\end{subfigure}%
+	\begin{subfigure}{.475\textwidth}
+		\centering
+		\includegraphics[width=0.95\linewidth]{Capitulos/Ferramentas/propriedades}
+		\caption{As propriedades da ontologia.}
+	\end{subfigure}
+	\begin{subfigure}{.3\textwidth}
+		\centering
+		\includegraphics[width=0.95\linewidth]{Capitulos/Ferramentas/individuos}
+		\caption{As instâncias definidas.}
+	\end{subfigure}
+	\caption{A representação da ontologia do \textit{Protégé}}
+\end{figure}
+ 
 \subsection{Raciocinadores}
 
-Um aspecto interessante sobre esse arcabouço é o uso de plug-ins de \textit{raciocínio}, como o {\color{red} Colocar o que utilizei.}. A partir deles, é possível fazer inferências. 
+Um aspecto interessante sobre esse arcabouço é o uso de plug-ins de \textit{raciocínio}, como o HermiT \cite{ferramentasHermit}. A partir deles, é possível fazer inferências a partir dos axiomas lógicos que criamos.
 
-{\color{red} Colocar o exemplo da inferência que Froot é cantada por Marina and the Diamonds.}
+No fragmento da ontologia, temos que \texttt{MarinaAndTheDiamonds \textbf{canta} Primadonna}. É possível inferir que \texttt{Primadonna \textbf{cantadaPor} MarinaAndTheDiamonds}, e o Protégé faz isso, com o auxílio do raciocinador:
+
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.9\linewidth]{Capitulos/Ferramentas/marinacanta}
+		\caption{Músicas que \texttt{MarinaAndTheDiamonds} canta.}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.95\linewidth]{Capitulos/Ferramentas/inferencia}
+		\caption{Com o raciocinador, é mostrado quem canta Primadonna. O destaque indica inferência.}
+	\end{subfigure}
+	\caption{A asserção feita na construção da ontologia e a inferência feita.}
+\end{figure}
 
 \subsection{Buscas}
 
@@ -84,6 +124,19 @@ SPARQL é um acrônimo recursivo para \textit{SPARQL Protocol and RDF Query Lang
 
 Vale notar que a busca funciona apenas com a terminologia e as asserções gravadas no arquivo da ontologia. Para que as buscas funcionem sobre as inferências, é necessário exportá-las para um novo arquivo.
 
-{\color{red} Colocar o exemplo de quais são as músicas pop que a Marina canta.}
+No exemplo utilizado, temos que \texttt{MarinaAndTheDiamonds} canta música de dois ritmos diferentes. Para descobrir quais são as músicas \texttt{Pop} que ela canta, podemos rodar uma consulta:
 
-{\color{red} Colocar o logo do Protégé.}
+\begin{figure}[H]
+	\centering
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.95\linewidth]{Capitulos/Ferramentas/query}
+		\caption{Fragmento da consulta para a pergunta. Note que o prefixo \texttt{onto} refere-se a definições desta ontologia.}
+	\end{subfigure}%
+	\begin{subfigure}{.5\textwidth}
+		\centering
+		\includegraphics[width=0.95\linewidth]{Capitulos/Ferramentas/resultado}
+		\caption{A consulta gera uma tabela com as músicas do ritmo \texttt{Pop} que \texttt{MarinaAndTheDiamonds} canta.}
+	\end{subfigure}
+	\caption{A consulta feita e seu resultado.}
+\end{figure}

@@ -4,21 +4,19 @@
 
 \section{OWL}
 
-O final da década de 1990 foi a época de surgimento da ideia de Web Semântica. Essa ideia, já consolidada hoje, representa uma extensão da \textit{World Wide Web} onde é possível o trabalho cooperativo entre as máquinas e os seres humanos. Ele ocorre a partir dos significados que são dados aos conteúdos disponíveis na rede para que ele seja compreensível por ambos os agentes.
+O final da década de 1990 foi a época de surgimento da ideia de Web Semântica. Essa ideia, já consolidada hoje, representa uma extensão da \textit{World Wide Web} onde é possível o trabalho cooperativo entre as máquinas e os seres humanos. Ele ocorre a partir dos significados que são dados aos conteúdos disponíveis na rede para que ele seja compreensível por ambos os agentes \cite{ferramentasHerman}.
 
-Foram feitos grandes esforços com o objetivo de criar alguma linguagem de representação para essa finalidade. Tais esforços passaram por linguagens baseadas em HTML, XML, linguagens baseadas em frames e abordagens de aquisição de conhecimento.
+No início dos anos 2000, a \href{https://www.w3.org}{W3C} (sigla para Consórcio para a \textit{World Wide Web}) fundou o "\textit{Web Ontology Working Group}" \cite{ferramentasGrupo}, para que alguma Linguagem de Representação fosse criada. 
 
-No início dos anos 2000, a W3C (sigla para Consórcio para a \textit{World Wide Web}) fundou o "\textit{Web Ontology Working Group}", para que alguma Linguagem de Representação fosse criada. 
+Em julho de 2002, os primeiros rascunhos foram publicados, e em fevereiro de 2004 \cite{ferramentasReco}, a OWL (\textit{Web Ontology Language}) tornou-se um padrão recomendado pela W3C para o processamento de ontologias.
 
-Em julho de 2002, os primeiros rascunhos foram publicados, e em fevereiro de 2004, a OWL (\textit{Web Ontology Language}) tornou-se um padrão recomendado pela W3C para o processamento de ontologias.
-
-Em outubro de 2007, um novo grupo foi concebido para adicionar alguns recursos à linguagem. Dois anos depois, a W3C fez o lançamento da OWL 2, que seria compatível com editores e raciocinadores semânticos.
+Em outubro de 2007 \cite{ferramentasOWLGrupo2}, um novo grupo foi concebido para adicionar alguns recursos à linguagem. Dois anos depois, a W3C fez o lançamento da OWL 2, que seria compatível com editores e raciocinadores semânticos. Ela foi recomendada oficialmente pela W3C em dezembro de 2012 \cite{ferramentasOWLReco2}.
 
 Abaixo temos algumas características das duas versões da OWL, que foi baseada em RDF e RDFS.
 
 \subsection{OWL Web Ontology Language}
 
-Possui três sublinguagens, cada uma com suas particularidades:
+Possui três sublinguagens \cite{ferramentasOWL1}, cada uma com suas particularidades:
 
 \begin{itemize}
 	\item \textit{Lite}: Sublinguagem mais simples, feita para hierarquias de classificação com restrições simples. Suporta restrições de cardinalidade simples (apenas 0 ou 1).  Foi demonstrado que OWL-Lite é equivalente a $ \mathcal{SHIF^{(D)}} $.
@@ -28,12 +26,64 @@ Possui três sublinguagens, cada uma com suas particularidades:
 
 \subsection{OWL 2 Web Ontology Language}
 
+Assim como a primeira versão, também possui sublinguagens \cite{ferramentasOWL2}. Elas são:
+
 \begin{itemize}
 	\item EL: Corresponde à lógica $ \mathcal{EL} $++. Funciona bem para ontologias com muitas classes e/ou propriedades. Permite a existência de algoritmos de inferência polinimiais.
 	\item QL: Baseada na lógica de descrição DL-\textit{Lite}, foi feita para aplicações em que o volume de instâncias é muito grande e que a consulta de dados é a tarefa mais realizada. Tais consultas podem ser implementadas usando sistemas de bancos de dados convencionais.
 	\item RL: Criada para ontologias que precisam de raciocínio escalável, ou seja, que são possivelmente grandes em número de instâncias, mas que precisam de uma sublinguagem que mantenha um bom poder expressivo. É baseada em uma lógica de descrição chamada DLP.
 	\item DL: Assim como no lançamento anterior, oferece bastante expressividade, sem esbarrar em problemas de execução por causa da indecibilidade. Ela pode ser mapeada para a LD $ \mathcal{SROIQ^{(D)}} $. 
-	\item \textit{Full}: Análoga à da primeira versão, muito expressiva, porém, indecidível.
+	\item \textit{Full}: Análoga à da primeira versão. Muito expressiva, porém, indecidível.
 \end{itemize}
 
+{\color{red} Colocar parte do arquivo owl da ontologia?}
+
 \section{\textit{Protégé}}
+
+O \href{https://protege.stanford.edu}{\textit{Protégé}} é um editor semântico, compatível com a OWL 2. Ele foi desenvolvido pelo Centro de Pesquisa para Informática Biomédica da Universidade de Stanford, em colaboração com alguns programadores da Universidade de Manchester \cite{ferramentasProtege}. Sua primeira versão foi lançada em 1999, e a atual é de 2017.
+
+Seguindo os princípios do \textit{Software} Livre, ele é um arcabouço gratuito e de código aberto, feito para a construção de sistemas inteligentes, com o uso ou não de uma interface gráfica.
+
+Assim como o ambiente de desenvolvimento integrado Eclipse, o \textit{Protégé} é bastante flexível porque é possível desenvolver uma grande variedade \textit{plug-ins} para serem acoplados a ele.
+
+Para os exemplos dessa seção, será usado como exemplo parte da ontologia criada neste estudo:
+
+\begin{itemize}
+	\item Os conceitos: 
+	\begin{itemize}
+		\item \texttt{Musica} $ \equiv $ \texttt{Cancao} $ \sqcup $ \texttt{HinoNacional}.
+		\item \texttt{Pop} $ \sqsubseteq $ \texttt{Cancao};
+		\item \texttt{Pessoa} $ \equiv $ \texttt{Cantor} $ \sqcup $ \texttt{Compositor}.
+	\end{itemize}
+	\item As propriedades:
+	\begin{itemize}
+		\item \textbf{\texttt{canta}}, com domínio \texttt{Cantor} e contradomínio \texttt{Musica};
+		\item \textbf{\texttt{cantadaPor}}, inversa da propriedade acima.
+	\end{itemize}
+	\item As instâncias e asserções:
+	\begin{itemize}
+		\item \texttt{MarinaAndTheDiamonds}, instância da classe \texttt{Cantor};
+		\item \texttt{Primadonna}, instância da classe \texttt{Pop};
+		\item \texttt{MarinaAndTheDiamonds \textbf{canta} Primadonna}.
+		\item \texttt{Froot}, instância da classe \texttt{Pop};
+		\item \texttt{MarinaAndTheDiamonds \textbf{canta} Froot}.	
+	\end{itemize}
+\end{itemize}
+
+\subsection{Raciocinadores}
+
+Um aspecto interessante sobre esse arcabouço é o uso de plug-ins de \textit{raciocínio}, como o {\color{red} Colocar o que utilizei.}. A partir deles, é possível fazer inferências. 
+
+{\color{red} Colocar o exemplo da inferência que Froot é cantada por Marina and the Diamonds.}
+
+\subsection{Buscas}
+
+A partir de uma ontologia e de uma base de dados, é possível fazer buscas no arcabouço, utilizando, entre várias linguagens de busca, o SPARQL, por exemplo.
+
+SPARQL é um acrônimo recursivo para \textit{SPARQL Protocol and RDF Query Language} \cite{ferramentasSPARQL}. Tem uma sintaxe que lembra a do SQL, e com seu uso, é possível tratar a ontologia como uma base de dados.  
+
+Vale notar que a busca funciona apenas com a terminologia e as asserções gravadas no arquivo da ontologia. Para que as buscas funcionem sobre as inferências, é necessário exportá-las para um novo arquivo.
+
+{\color{red} Colocar o exemplo de quais são as músicas pop que a Marina canta.}
+
+{\color{red} Colocar o logo do Protégé.}

@@ -48,8 +48,8 @@ p, ol, ul, a {
 
 .degrade {
     color: #ffffff;
-    background: #014d48;
-    background: linear-gradient(to bottom right, #014d48,#036d67);
+    background: #96281B;
+    background: linear-gradient(to bottom right, #96281B,#F22613);
 }
 
 .aluno a {
@@ -153,7 +153,7 @@ p {
 
     .item a:hover {
         color: #ffffff;
-        background: #014d48;
-        background: linear-gradient(to bottom right, #014d48,#036d67);
+        background: #96281B;
+        background: linear-gradient(to bottom right, #96281B,#F22613);
     }
 } 

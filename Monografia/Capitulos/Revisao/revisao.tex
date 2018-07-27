@@ -1,0 +1,40 @@
+
+\chapter{Revisão de Crenças}
+
+\lettrine{A}{} área de pesquisa que trata do reparo de uma ontologia quando ela fica inconsistente é conhecida como Revisão de Crenças, que dá nome a este capítulo. Como escrito anteriormente, uma ontologia (ou um sistema de crenças) fica inconsistente quando alguma informação $ \alpha $, que é incompatível com o conhecimento já existente, chega até a base de conhecimento estudada. 
+
+De uma forma geral, esse campo da pesquisa de Inteligência Artificial estuda qualquer alteração de estados epistêmicos, desde a simples adição de algum novo conhecimento que não entra em conflito com o que já está na ontologia. Além disso, ele lida também com a remoção segura de alguma informação, ou seja, quando ela é removida, não pode ser inferida.
+
+O estado epistêmico de um agente nada mais é do que o conjunto de tudo o que ele acredita e como elas se relacionam num certo instante. Pode-se entender um estado epistêmico também como uma representação idealizada do estado cognitivo de um agente em determinado momento, como explicou Gärdenfors \cite{revisaoGardenfors}.
+
+Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que entra em choque com as informações que ele possui no estado epistêmico atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima.
+
+O paradigma AGM, que será usada neste trabalho, recebe este nome por causa dos autores do artigo considerado o pontapé inicial desta área de pesquisa \cite{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas que $ K $. Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. 
+
+As sentenças citadas acima são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz:
+
+\begin{description}
+	\item[tarskianicidade] a lógica é monotônica (todas as consequências dedutíveis continuam assim mesmo após a adição de alguma sentença que não interfere nessa dedução), idempotente e satisfaz inclusão;
+	\item[dedução] $ \alpha \in \text{Cn}(K) $ se e somente se $ \beta \to \alpha \in \text{Cn}(K) $, onde $ \alpha $ e $ \beta $ são sentenças lógicas;
+	\item[compacidade] se $ \alpha \in Cn(K) $, então existe $ K’ \subseteq K $ finito tal que $ \alpha \in \text{Cn}(K’) $;
+	\item[supraclassicalidade] toda consequência da lógica $ (L, \text{Cn}) $ é também uma consequência da lógica proposicional.
+\end{description} 
+
+Para verificar que a área de Revisão de Crenças possui seus estudos válidos, seja o seguinte exemplo do assunto da ontologia descrita neste trabalho, assumindo que ela possui os fragmentos de conhecimento abaixo em alguma linguagem formal de representação, e que ela está consistente e equilibrada, epistemicamente.
+
+\begin{enumerate}
+	\item \textit{Toda música brasileira pertence ao subgênero MPB;}
+	\item \textit{Todos os cantores brasileiros cantam músicas brasileiras;}
+	\item \textit{Ivete Sangalo é uma cantora brasileira;}
+	\item \textit{Ivete Sangalo canta a música "Sorte Grande".}
+\end{enumerate}
+
+Com esse conjunto de informações, é possível inferir que a música "Sorte Grande" pertence ao subgênero MPB. No entanto, suponha que a seguinte informação chegue até o agente:
+
+\begin{center}
+	\textit{A música "Sorte Grande" pertence ao subgênero Axé.}
+\end{center}
+
+Como pode-se ver, a nova informação entra em choque direto com a inferência realizada. As maneiras de reparar a ontologia e qual delas escolher para fazê-lo serão descritas nesse capítulo.
+
+\section{Como tratar a informação}

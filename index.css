@@ -48,8 +48,8 @@ p, ol, ul, a {
 
 .degrade {
     color: #ffffff;
-    background: #96281B;
-    background: linear-gradient(to bottom right, #96281B,#F22613);
+    background: #22313F;
+    background: linear-gradient(to bottom right, #22313F,#34495E);
 }
 
 .aluno a {
@@ -65,7 +65,7 @@ div {
 }
 
 p, a, li {
-    font-size: 1.25em;
+    font-size: 1.5rem;
 }
 
 a {
@@ -83,7 +83,7 @@ p {
     }
 
     h1, h2, h3 {
-        font-size: 2em;
+        font-size: 2rem;
     }
 
     .resumo {
@@ -99,7 +99,7 @@ p {
     }
 
     .item a {
-        font-size: 1em;
+        font-size: 1rem;
     }
 }
 
@@ -110,6 +110,15 @@ p {
 
     .resumo, .tfs {
         float: left;
+    }
+
+    .tfs {
+        width: 50%;
+    }
+
+    .menu {
+        float: right;
+        width: 45%;
     }
     
     .resumo, .aluno, .supervisora, .progresso, .cronograma {
@@ -130,30 +139,26 @@ p {
         margin: auto;
     }
 
-    .tfs {
-        width: 50%;
-    }
-
     .item {
         display: inline-block;
         margin-left: 10px;
     }
     
     h1 {
-        font-size: 3em;
+        font-size: 3rem;
     }
 
     h2 {
-        font-size: 2.5em;
+        font-size: 2.5rem;
     }
 
     h3 {
-        font-size: 2em;
+        font-size: 2rem;
     }
 
     .item a:hover {
         color: #ffffff;
-        background: #96281B;
-        background: linear-gradient(to bottom right, #96281B,#F22613);
+        background: #22313F;
+        background: linear-gradient(to bottom right, #22313F,#34495E);
     }
 } 

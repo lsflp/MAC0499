@@ -75,6 +75,31 @@ Para as definições que serão feitas será usada uma lógica $ L $, que é bas
 
 A única operação definida diretamente recebe a notação $ K + \alpha $. Ela é também a mais simples, já que representa a chegada de algum conhecimento à base sem que os anteriores sofram modificações. Além disso, as crenças que podem ser inferidas também são adicionadas.
 
-O conjunto resultante é, portanto, formado pelo fecho lógico da união do conjunto inicial com a informação nova, o que significa que $ K + \alpha = \text{Cn}(K + \alpha) $.
+O conjunto resultante é, portanto, formado pelo fecho lógico da união do conjunto inicial com a informação nova, o que significa que $ K + \alpha = \text{Cn}(K + \alpha) $. Vale ressaltar que o conjunto deve permanecer consistente.
 
-A informação $ \alpha $ era indeterminada. Depois da operação de expansão, tal conhecimento passa a ser aceito.
+A informação $ \alpha $ era indeterminada. Depois da operação de expansão, tal conhecimento passa a ser aceito, se $ \alpha $ é consistente com $ K $.
+
+\subsection{Contração}
+
+Esta operação seria o contrário da anterior. Em vez de uma nova informação ser adicionada à base de conhecimento, deseja-se que algum conhecimento seja removido. A operação é caracterizada por $ K - \alpha $. No entanto, as analogias com a expansão acabam por aí.
+
+Como a consistência é um resultado desejável, às vezes, só retirar $ \alpha $ de $ K $ não é suficiente. Nesses casos, é necessário desistir de algumas crenças do conjunto. As sentenças que são abandonadas são aquelas que implicam $ \alpha $. O critério da mudança mínima deve ser aplicado aqui, removendo o mínimo de sentenças possíveis, ou as que possuem prioridade menor.
+
+A informação $ \alpha $, que era aceita, agora é indeterminada. Agora, o conjunto resultante $ K - \alpha $ não possui $ \alpha $ explicitamente nem implicitamente. 
+
+Os postulados de racionalidade que regem a contração seguem abaixo, com uma sucinta explicação sobre o seu significado.
+
+\begin{description}
+	\item[Fecho] $ K - \alpha = \text{Cn}(K - \alpha) $ \\ Após a contração, o fecho lógico do conjunto é mantido.
+	\item[Inclusão] $ K - \alpha \subseteq K$ \\ A operação não permite que novas sentenças sejam adicionadas ao conjunto, resultando em um conjunto com o mesmo número de sentenças ou menos.
+	\item[Vacuidade] Se $ \alpha \notin K $, então $ K - \alpha = K $ \\ Quando a fórmula que se deseja realizar a contração não está no conjunto, o mesmo é inalterado.
+	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin K - \alpha $ \\ A não ser que $ \alpha $ seja uma tautologia, ela não estará contida no conjunto resultante da operação.
+	\item[Equivalência] Se $ \text{Cn}(\alpha) = \text{Cn}(\beta) $, então, $ K - \alpha = K - \beta $ \\ Se duas fórmulas possuem consequências lógicas iguais (são logicamente equivalentes), a contração por uma terá o mesmo resultado do que a contração pela outra, embora $ \alpha \neq \beta $, em alguns casos.
+	\item[Recuperação] $ K \subseteq (K - \alpha) + \alpha $ \\ A operação de contração é desfeita pela expansão.
+	\item[Intersecção conjuntiva] $ (K - \alpha) \cap (K - \beta) \subseteq K - (\alpha \land \beta) $ \\ As crenças que não foram descartadas na contração por $ \alpha $ ou por $ \beta $ serão mantidas na contração por $ \alpha \land \beta $.
+	\item[Inclusão conjuntiva] Se $ \alpha \notin K - (\alpha \land \beta) $ então, $ K - (\alpha \land \beta) \subseteq K - \alpha$ \\ Se a sentença $ \alpha $ é deletada na contração por $  (\alpha \land \beta )$, então tudo o que seria removido na contração por $ \alpha $ apenas, será removido. 
+\end{description}
+
+Os seis primeiros postulados são os chamados postulados básicos. Os últimos dois são os postulados suplementares.
+
+Ainda para a contração existem dois construtores especiais para essa operação, que serão discutidos mais à frente.

@@ -24,11 +24,11 @@ Podemos observar que a notação da LD permite que a interpretação de suas sen
 
 As LD possuem um jeito próprio de organizar o conhecimento. Elas usam três definições para retratar o que é desejado \cite{logicaMatos}. Cada uma delas é utilizada na construção de uma ontologia. São, a seguir:
 
-\begin{itemize}
-	\item Conceitos: Também chamados de classes, representam um conjunto de indivíduos. Nas ontologias, são equivalentes às Classes.
-	\item Papéis: Podem ser denotados como propriedades. Retratam as relações binárias que existem entre os indivíduos. Basicamente, são as Relações de uma ontologia. Alguns papéis podem ter uma função de caracterização, ou seja, definindo alguns atributos para o conceito. Tal função corresponde a uma Propriedade de uma Classe, em uma ontologia.
-	\item Indivíduos: Representam os particulares que existem dentro de um Conceito. Para as ontologias, são as Instâncias.
-\end{itemize}
+\begin{description}
+	\item[Conceitos] Também chamados de classes, representam um conjunto de indivíduos. Nas ontologias, são equivalentes às Classes.
+	\item[Papéis] Podem ser denotados como propriedades. Retratam as relações binárias que existem entre os indivíduos. Basicamente, são as Relações de uma ontologia. Alguns papéis podem ter uma função de caracterização, ou seja, definindo alguns atributos para o conceito. Tal função corresponde a uma Propriedade de uma Classe, em uma ontologia.
+	\item[Indivíduos] Representam os particulares que existem dentro de um Conceito. Para as ontologias, são as Instâncias.
+\end{description}
 
 Logo, uma LD é definida por uma tripla $ (N_C, N_R, N_I) $, onde $ N_C $ é um conjunto de Conceitos atômicos, $ N_R $ é um conjunto de Papéis atômicos e $ N_I $ é um conjunto de nomes de indivíduos.
 
@@ -186,12 +186,12 @@ Após uma Base de Conhecimento ser feita, é necessário que ela seja consistent
 
 Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau} para Lógicas de Descrição. Com elas, é possível determinar de maneira algorítmica a consistência de uma Base de Conhecimento. São elas:
 
-\begin{enumerate}
-	\item a regra \texttt{E} (ou \textit{$ \sqcap $-rule}): se $(\texttt{A} \sqcap \texttt{B})(a)$ está em $ \mathcal{A} $, mas \texttt{A}$ (a) $ e \texttt{B}$ (a) $ não estão os dois em $ \mathcal{A} $, então a \textit{ABox} $ \mathcal{A} $ será acrescida de \texttt{A}$ (a) $ e \texttt{B}$ (a) $.
-	\item a regra \texttt{OU} (ou \textit{$ \sqcup $-rule}): quando $(\texttt{A} \sqcup \texttt{B})(a)$ está em $ \mathcal{A} $, mas nem \texttt{A}$ (a) $ nem \texttt{B}$ (a) $ está em $ \mathcal{A} $, então à \textit{ABox} $ \mathcal{A} $ será incluído \texttt{A}$ (a) $ ou \texttt{B}$ (a) $.
-	\item a regra \texttt{EXISTE} (ou \textit{$ \exists $-rule}): se $(\exists \texttt{r.A})(a)$ está em $ \mathcal{A} $, e não há nenhum indivíduo $ c $ tal que \texttt{r}$ (a,c) $ e \texttt{A}$ (c) $ estejam em $ \mathcal{A} $, então tanto \texttt{r}$ (a,b) $ quanto \texttt{A}$ (b) $ serão adicionados a $ \mathcal{A} $, onde $ b $ é um novo indivíduo.
-	\item a regra \texttt{PARA TODO} (ou \textit{$ \forall $-rule}): quando se $(\forall \texttt{r.A})(a)$ e \texttt{r}$ (a,b) $ estão em $ \mathcal{A} $, mas \texttt{A}$ (c) $ não está, esse último será colocado em $ \mathcal{A} $.  
-\end{enumerate}
+\begin{description}
+	\item[Regra \texttt{E} (ou \textit{$ \sqcap $-rule})] Se $(\texttt{A} \sqcap \texttt{B})(a)$ está em $ \mathcal{A} $, mas \texttt{A}$ (a) $ e \texttt{B}$ (a) $ não estão os dois em $ \mathcal{A} $, então a \textit{ABox} $ \mathcal{A} $ será acrescida de \texttt{A}$ (a) $ e \texttt{B}$ (a) $.
+	\item[Regra \texttt{OU} (ou \textit{$ \sqcup $-rule})] Quando $(\texttt{A} \sqcup \texttt{B})(a)$ está em $ \mathcal{A} $, mas nem \texttt{A}$ (a) $ nem \texttt{B}$ (a) $ está em $ \mathcal{A} $, então à \textit{ABox} $ \mathcal{A} $ será incluído \texttt{A}$ (a) $ ou \texttt{B}$ (a) $.
+	\item[Regra \texttt{EXISTE} (ou \textit{$ \exists $-rule})] Se $(\exists \texttt{r.A})(a)$ está em $ \mathcal{A} $, e não há nenhum indivíduo $ c $ tal que \texttt{r}$ (a,c) $ e \texttt{A}$ (c) $ estejam em $ \mathcal{A} $, então tanto \texttt{r}$ (a,b) $ quanto \texttt{A}$ (b) $ serão adicionados a $ \mathcal{A} $, onde $ b $ é um novo indivíduo.
+	\item[Regra \texttt{PARA TODO} (ou \textit{$ \forall $-rule})] Quando se $(\forall \texttt{r.A})(a)$ e \texttt{r}$ (a,b) $ estão em $ \mathcal{A} $, mas \texttt{A}$ (c) $ não está, esse último será colocado em $ \mathcal{A} $.  
+\end{description}
 
 Para descobrir se uma fórmula é insatisfatível, basta aplicar essas regras na sentença lógica. Se, no final, um \textit{Clash} (choque) for alcançado, isto é, quando temos um conceito e sua negação na \textit{ABox}, a sentença é insatisfatível.
 

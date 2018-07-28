@@ -9,7 +9,7 @@ O estado epistêmico de um agente nada mais é do que o conjunto de tudo o que e
 
 Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que entra em choque com as informações que ele possui no estado epistêmico atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima.
 
-O paradigma AGM, que será usada neste trabalho, recebe este nome por causa dos autores do artigo considerado o pontapé inicial desta área de pesquisa \cite{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas que $ K $. Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. 
+O paradigma AGM, que será usada neste trabalho, recebe este nome por causa dos autores do artigo considerado o pontapé inicial desta área de pesquisa \cite{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas que $ K $. Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. Com $ K $ sendo logicamente fechado, se $ K \vdash \psi $, sendo $ \psi $ uma sentença qualquer, tem-se que $ \psi \in K $
 
 As sentenças citadas acima são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz:
 
@@ -37,4 +37,44 @@ Com esse conjunto de informações, é possível inferir que a música "Sorte Gr
 
 Como pode-se ver, a nova informação entra em choque direto com a inferência realizada. As maneiras de reparar a ontologia e qual delas escolher para fazê-lo serão descritas nesse capítulo.
 
-\section{Como tratar a informação}
+\section{Tratamento da informação}
+
+Antes de ver como é possível tratar as inconsistências causadas pela entrada de alguma informação nova, é necessário observar como uma sentença $ \alpha $ qualquer é tratada em algum conjuntos de crenças $ K $.
+
+Existem três tipo de tratamento, a serem descritos abaixo:
+
+\begin{enumerate}
+	\item $ \alpha $ é aceita pelo conjunto de crenças. Isso pode acontecer de duas maneiras diferentes:
+	\begin{enumerate}
+		\item $ \alpha $ é aceita explicitamente. Quando isso acontece, temos que $ \alpha \in K $;
+		\item $ \alpha $ é aceita implicitamente. Esse caso ocorre quando $ \alpha \in \text{Cn}(K) \setminus K $.
+	\end{enumerate}
+	\item $ \alpha $ é rejeitada. Aqui, temos que $ \lnot \alpha \in K $. 
+	\item $ \alpha $ é indeterminada. Deste modo, $ K $ não possui conhecimento sobre a sentença $ \alpha $, assim, $ \lnot \alpha \notin K $ e $ \alpha \notin K $.
+\end{enumerate}
+
+Existem também algumas questões metodológicas que precisam ser resolvidas, ou pelo menos observadas antes de alguma revisão de crenças. Gärdenfors \cite{revisaoGardenfors2} definiu algumas delas.
+
+A primeira é em relação à representação das crenças na base de dados. Vale notar que, como definido no capítulo 2, é necessário o uso de alguma linguagem formal de representação. A maioria das bases de dados trabalha com fatos e regras como formas primitivas de informação. O mecanismo escolhido para a revisão deve levar em conta o formalismo escolhido para a representação.
+
+Uma outra questão se preocupa com os elementos explicitamente representados na base de crenças e os que podem ser derivados desses. Existem bases que dão algum \textit{status} especial aos elementos explícitos, e outras que dão a mesma importância para todos. 
+
+Neste trabalho, apenas os casos que a aceitação de $ \alpha $, pois serão estudados apenas sistemas de crenças logicamente fechados (também conhecidos como bases de crenças), onde vale o equilíbrio epistêmico. O uso de bases de crenças aumenta a eficiência do reparo \cite{revisaoHansson}.  
+
+A última questão é referente a qual retração, ou seja, qual edição fazer na base de dados. A lógica, propriamente dita, não é suficiente para definir quais são os melhores elementos para serem removidos ou mantidos. Uma das ideias referentes a isso é que a quantidade informação perdida durante o reparo seja a mínima possível. 
+
+Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-se remover as que possuem menor prioridade, em detrimento daquelas com maior importância. Tudo isso depende de como a base de crenças está estruturada.
+
+\section{Operações clássicas de Revisão de Crenças}
+
+Existem três operações clássicas de Revisão de Crenças. São elas a expansão, a revisão e a contração. Apenas a expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
+
+Para as definições que serão feitas será usada uma lógica $ L $, que é baseada na Lógica de Primeira Ordem. As variáveis, que são as sentenças lógicas, serão representadas pelo alfabeto grego. Os conjuntos de crenças, com letras latinas maiúsculas.
+
+\subsection{Expansão}
+
+A única operação definida diretamente recebe a notação $ K + \alpha $. Ela é também a mais simples, já que representa a chegada de algum conhecimento à base sem que os anteriores sofram modificações. Além disso, as crenças que podem ser inferidas também são adicionadas.
+
+O conjunto resultante é, portanto, formado pelo fecho lógico da união do conjunto inicial com a informação nova, o que significa que $ K + \alpha = \text{Cn}(K + \alpha) $.
+
+A informação $ \alpha $ era indeterminada. Depois da operação de expansão, tal conhecimento passa a ser aceito.

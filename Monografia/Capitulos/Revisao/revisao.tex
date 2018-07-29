@@ -77,7 +77,7 @@ A única operação definida diretamente recebe a notação $ K + \alpha $. Ela 
 
 O conjunto resultante é, portanto, formado pelo fecho lógico da união do conjunto inicial com a informação nova, o que significa que $ K + \alpha = \text{Cn}(K + \alpha) $. Vale ressaltar que o conjunto deve permanecer consistente.
 
-A informação $ \alpha $ era indeterminada. Depois da operação de expansão, tal conhecimento passa a ser aceito, se $ \alpha $ é consistente com $ K $.
+A informação $ \alpha $ era indeterminada. Depois da operação de expansão, tal conhecimento passa a ser aceito.
 
 \subsection{Contração}
 
@@ -85,7 +85,7 @@ Esta operação seria o contrário da anterior. Em vez de uma nova informação 
 
 Como a consistência é um resultado desejável, às vezes, só retirar $ \alpha $ de $ K $ não é suficiente. Nesses casos, é necessário desistir de algumas crenças do conjunto. As sentenças que são abandonadas são aquelas que implicam $ \alpha $. O critério da mudança mínima deve ser aplicado aqui, removendo o mínimo de sentenças possíveis, ou as que possuem prioridade menor.
 
-A informação $ \alpha $, que era aceita, agora é indeterminada. Agora, o conjunto resultante $ K - \alpha $ não possui $ \alpha $ explicitamente nem implicitamente. 
+A informação $ \alpha $, que era aceita, agora é indeterminada, já que foi abandonada. Agora, o conjunto resultante $ K - \alpha $ não possui $ \alpha $ explicitamente nem implicitamente. 
 
 Os postulados de racionalidade que regem a contração seguem abaixo, com uma sucinta explicação sobre o seu significado.
 
@@ -97,9 +97,35 @@ Os postulados de racionalidade que regem a contração seguem abaixo, com uma su
 	\item[Equivalência] Se $ \text{Cn}(\alpha) = \text{Cn}(\beta) $, então, $ K - \alpha = K - \beta $ \\ Se duas fórmulas possuem consequências lógicas iguais (são logicamente equivalentes), a contração por uma terá o mesmo resultado do que a contração pela outra, embora $ \alpha \neq \beta $, em alguns casos.
 	\item[Recuperação] $ K \subseteq (K - \alpha) + \alpha $ \\ A operação de contração é desfeita pela expansão.
 	\item[Intersecção conjuntiva] $ (K - \alpha) \cap (K - \beta) \subseteq K - (\alpha \land \beta) $ \\ As crenças que não foram descartadas na contração por $ \alpha $ ou por $ \beta $ serão mantidas na contração por $ \alpha \land \beta $.
-	\item[Inclusão conjuntiva] Se $ \alpha \notin K - (\alpha \land \beta) $ então, $ K - (\alpha \land \beta) \subseteq K - \alpha$ \\ Se a sentença $ \alpha $ é deletada na contração por $  (\alpha \land \beta )$, então tudo o que seria removido na contração por $ \alpha $ apenas, será removido. 
+	\item[Inclusão conjuntiva] Se $ \alpha \notin K - (\alpha \land \beta) $ então, $ K - (\alpha \land \beta) \subseteq K - \alpha $ \\ Se a sentença $ \alpha $ é deletada na contração por $  (\alpha \land \beta) $, então tudo o que seria removido na contração por $ \alpha $ apenas, será removido. 
 \end{description}
 
 Os seis primeiros postulados são os chamados postulados básicos. Os últimos dois são os postulados suplementares.
 
-Ainda para a contração existem dois construtores especiais para essa operação, que serão discutidos mais à frente.
+Ainda para a contração existem dois construtores especiais definidos, que serão discutidos mais à frente.
+
+\subsection{Revisão}
+
+A revisão, assim como a expansão, tem a ver com adicionar alguma crença $ \alpha $ ao conjunto $ K $. O conjunto resultante é indicado por $ K \ast \alpha $. A nova informação $ \alpha $ era aceita e passa a ser rejeitada, ou vice-versa.
+
+Como na operação anterior, o conjunto anterior precisa se mostrar consistente. Para isso, é necessário apagar o mínimo possível das fórmulas de $ K $. De mesmo modo que a contração, ela não é definida diretamente, mas sim por oito postulados, os seis primeiros, básicos, e os dois últimos, suplementares. São os postulados:
+
+\begin{description}
+	\item[Fecho] $ K \ast \alpha = \text{Cn}(K \ast \alpha) $ \\ Após a revisão, o fecho lógico do conjunto é mantido.
+	\item[Sucesso] $ \alpha \in \text{Cn}(K \ast \alpha) $ \\ A operação garante que o conjunto resultante contenha a nova informação.
+	\item[Inclusão] $ K \ast \alpha \subseteq K + \alpha $ \\ A revisão não adiciona nada a mais do que a expansão adicionaria no conjunto.
+	\item[Preservação] Se $ \not \alpha \notin K $, então $ K + \alpha \subseteq K \ast \alpha $ \\ Quando a fórmula que se deseja realizar a revisão não está no conjunto, é garantido que tudo que seria acrescentado na expansão será adicionado na revisão. Juntando esse postulado com o \textbf{Inclusão}, temos que, sendo a revisão feita por uma fórmula logicamente consistente com $ K $, o mesmo resultado seria alcançado por uma expansão, ou seja, $ K + \alpha = K \ast \alpha $. 
+	\item[Consistência] $ K \ast \alpha = L \leftrightarrow \lnot \alpha \in \text(Cn)(\varnothing)$ \\ A operação de revisão gera um conjunto consistente, e vice-versa. Neste postulado, $ L $ representa um conjunto consistente qualquer.
+	\item[Equivalência] Se $ \text{Cn}(\alpha) = \text{Cn}(\beta) $, então, $ K \ast \alpha = K \ast \beta $ \\ Se duas fórmulas possuem consequências lógicas iguais (são logicamente equivalentes), a revisão por uma terá o mesmo resultado do que a revisão pela outra.
+	\item[Conjunção] $ K \ast (\alpha \land \beta) \subseteq (K \ast \alpha) + \beta $ \\ O resultado de revisar pela conjunção de duas fórmulas está contido naquele obtido pela revisão por uma fórmula e posterior expansão pela outra.
+	\item[Vacuidade] Se $ \lnot \beta \notin K \ast \alpha $ então, $ (K \ast \alpha) + \beta \subseteq K \ast (\alpha \land \beta) $ \\ Se a negação de $ \beta $ é inconsistente com a revisão por $ \alpha $, então a revisão por $ \alpha $ e posterior expansão por $ \beta $ resulta em um conjunto que está contido no que é obtido pela revisão pela conjunção dessas fórmulas. Unindo com \textbf{Conjunção}, se a revisão $ K \ast \alpha $ for feita e não resultar em $ \not \beta $, e então a expansão por $ \beta $ for realizada, o mesmo resultado seria alcançado pela revisão de $ K $ por $ (\alpha \land \beta) $, ou seja, $ (K \ast \alpha) + \beta = K \ast (\alpha \land \beta) $    
+\end{description}
+
+\subsection{Relações entre as operações}
+
+A revisão e a contração podem ser construídas uma em função da outra, como escreveu Gärdenfors \cite{revisaoGardenfors}. Isso pode ser alcançado por duas relações:
+
+\begin{description}
+	\item[Identidade de Levi] $ K \ast \alpha = (K - \lnot \alpha) + \alpha $ \\ Ela mostra que a revisão por uma fórmula $ \alpha $ resulta no mesmo conjunto que a contração por $ \lnot \alpha $ e consecutiva expansão por $ \alpha $. Essa é a fórmula da revisão interna. Foi proposto, em 1993 \cite{revisaoHansson2}, a fórmula da revisão externa, que é $ K \ast \alpha = K + \alpha - \lnot \alpha $. Ela significa que primeiro o conhecimento é adicionado à base e então o que o contradiz é removido. Observando as duas fórmulas, pode-se notar que não importa a ordem das operações, desde que seja feita a contração pela negação e a expansão pela afirmação. De qualquer jeito, o resultado será o mesmo do que o da revisão.
+	\item[Identidade de Harper] $ K - \alpha = (K \ast \alpha) \cap K $ \\ A contração por uma fórmula pode ser obtida pela intersecção entre o conjunto resultante após uma revisão pela fórmula e o conjunto inicial.
+\end{description}

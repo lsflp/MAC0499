@@ -140,7 +140,13 @@ Existem dois construtores especiais para a contração. Esses construtores são 
 
 Essa construção quer atingir o critério da mudança mínima. Tal critério é atingido por meio da obtenção de conjuntos maximais onde a sentença $ \alpha $ não é válida. A operação fornecerá um resultado baseado em um conjunto de conjuntos maximais, chamado de conjunto-resíduo.
 
-Essa operação possui algumas definições. São:
+A \textbf{Contração \textit{Partial Meet}} para Teorias é definida da seguinte forma: 
+
+\begin{center}
+	$ K -_{\gamma} \alpha = \bigcap \gamma(K \bot \alpha) $
+\end{center}
+
+Onde $ -_{\gamma} $ é a operação chamada de contração \textit{partial meet}, $ \gamma $ é uma função de seleção, e $ \bot $ é a representação de um conjunto-resíduo, definidas abaixo:
 
 \begin{description}
 	\item[Conjunto-resíduo] Definido como $ T \bot \alpha $, onde $ T $ é um conjunto que está contido na lógica $ L $ e $ \alpha \in L $. Ele é o conjunto de todos os subconjuntos maximais de $ T $ que não implicam $ \alpha $. Formalmente, para quaisquer conjuntos $ R $ e $ S $, o conjunto $ S $ pertence a $ T \bot \alpha $ se e somente se:
@@ -151,18 +157,12 @@ Essa operação possui algumas definições. São:
 	\end{itemize}
 	\item[Função de seleção] É uma função $ \gamma $ que seleciona algumas crenças de um conjunto $ T $, ou seja, $ \forall \alpha \in L $:
 	\begin{itemize}
-		\item $ T \bot \alpha \neq \varnothing \to \varnothing \gamma(T \bot \alpha) \subseteq T \bot \alpha $;
+		\item $ T \bot \alpha \neq \varnothing \to \varnothing \neq \gamma(T \bot \alpha) \subseteq T \bot \alpha $;
 		\item caso contrário, $ \gamma(T \bot \alpha) = \{T\} $.
 	\end{itemize}
 \end{description}
 
-Com isso, a \textbf{Contração \textit{Partial Meet}} para Teorias é definida da seguinte forma: 
-
-\begin{center}
-	$ K -_{\gamma} \alpha = \bigcap \gamma(K \bot \alpha) $
-\end{center}
-
-O conjunto resultante da contração \textit{partial meet} é a intersecção dos subconjuntos maximais que não implicam $ \alpha $, escolhidos pela função de seleção $ \gamma $ e são as crenças que o agente acredita de forma mais arraigada. Fazendo uma conexão com os postulados da contração, uma operação $ - $ satisfaz os seis postulados básicos se e somente se $ - $ é uma contração \textit{partial meet}.
+É possível entender, portanto, que o conjunto resultante da contração \textit{partial meet} é a intersecção dos subconjuntos maximais que não implicam $ \alpha $, escolhidos pela função de seleção $ \gamma $ e são as crenças que o agente acredita de forma mais arraigada. Fazendo uma conexão com os postulados da contração, uma operação $ - $ satisfaz os seis postulados básicos se e somente se $ - $ é uma contração \textit{partial meet}.
 
 \subsubsection{Para Bases de Crenças}
 
@@ -179,4 +179,51 @@ A operação definida acima pode ser generalizada para bases de crenças. Segund
 	Se $ \beta $ for removido na contração $ B - \alpha $, então, de alguma maneira, $ \beta $ tem relação com o fato que $ B \vdash \alpha$. Esse postulado assegura que elementos que não possuem bons motivos para a remoção fiquem na base de crenças.
 	\item[Uniformidade] Se, $ \forall.B' \subseteq B $, valer que $ \alpha \in \text{Cn}(B') $, se e somente se $ \beta \in \text{Cn}(B') $, então $ B - \alpha = B - \beta $ \\
 	Se em todos os subconjuntos de B que implicam $ \alpha $ também for implicado $ \beta $, ou vice-versa, a contração por qualquer uma dessas fórmulas terá o mesmo resultado.
+\end{description}
+
+\subsection{Contração \textit{Kernel}}
+
+\subsubsection{Para Teorias}
+
+Assim como a contração \textit{Partial Meet}, a \textit{Kernel} precisa de algumas definições para ser discutida. Ela tenta encontrar conjuntos minimais que implicam a informação $ \alpha $ que se deseja contrair, e então remover pelo menos um elemento de cada um desses conjuntos, para que $ \alpha $ torne-se inválida. 
+
+Ela é definida da seguinte forma:
+
+\begin{center}
+	$ K -_{\sigma} \alpha = K \setminus \sigma(K \kcont \alpha) $
+\end{center}
+
+Onde $ -_{\sigma} $ é a operação chamada de contração \textit{kernel}, $ sigma $ é uma função de incisão, e $ \kcont $ é a representação de um conjunto-\textit{kernel}, definidas abaixo:
+
+\begin{description}
+	\item[Conjunto-\textit{kernel}] Sendo $ K \bot \alpha $, onde $ K $ é um conjunto que está contido na lógica $ L $ e $ \alpha \in L $, o conjunto-\textit{kernel}, denotado por $ K \kcont \alpha $ é o conjunto de todos os subconjuntos minimais de T que implicam $ \alpha $. Formalmente, para quaisquer conjuntos $ I $ e $ J $, $ J $ pertence a $ K \kcont \alpha $ se e somente se:
+	\begin{itemize}
+		\item $ J \subseteq K $;
+		\item $ \alpha \in \text{Cn}Y $;
+		\item $ I \subsetneq J \to \alpha \in \text{Cn}(K) $
+	\end{itemize} 	
+	\item[Função de incisão] É uma função $ \sigma $, para um conjunto de crenças $ K $, que seleciona no mínimo uma fórmula de cada elemento de um conjunto-\textit{kernel}, ou seja, para todo $ \alpha in L $:
+	\begin{itemize}
+		\item $ \sigma (K \kcont \alpha) \subseteq (K \kcont \alpha) $;
+		\item $ J \neq \varnothing \to J \cap \sigma(K \kcont \alpha),\text{ } \forall J \in K \kcont \alpha $
+	\end{itemize}
+\end{description}
+
+Com isso, pode-se concluir que a função de incisão escolhe, dentre os subconjuntos maximais de $ K $ tais que $ K \vdash \alpha $, os "piores" de cada, de acordo com algum critério arbitrário. As remoções desses escolhidos do conjunto fornece o resultado da operação.
+
+\subsubsection{Para Bases de Crenças}
+
+Asiim como generalização feita para a contração \textit{partial meet} de teorias para bases de crenças, existe uma para a contração \textit{kernel}. Um operador $ - $ para uma base B qualquer pe uma contração \textit{kernel} se e somente se satisfazer os seguintes postulados:
+
+\begin{description}
+	\item[Inclusão] $ B - \alpha \subseteq B$ \\ Semelhante ao da contração \textit{partial meet}.
+	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin B - \alpha $ \\ Funciona como no construtor anterior.
+	\item[\textit{Core-retainment}] $ \beta \in B \setminus (B - \alpha) \to \exists. B' \text{ tal que } B' \subseteq B $, onde:
+	\begin{itemize}
+		\item $ \alpha \notin \text{Cn}(B') $
+		\item $ \alpha \in \text{Cn}(B' \cup \{\beta\}) $ 
+	\end{itemize}
+	Uma versão mais fraca do postulado \textbf{Relevância} apresentado acima.
+	\item[Uniformidade] Se, $ \forall.B' \subseteq B $, valer que $ \alpha \in \text{Cn}(B') $, se e somente se $ \beta \in \text{Cn}(B') $, então $ B - \alpha = B - \beta $ \\
+	Análogo ao da contração \textit{partial meet}. 
 \end{description}

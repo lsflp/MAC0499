@@ -1,28 +1,9 @@
-
 \chapter{Revisão de Crenças}
+\label{chap:revisao}
 
 \lettrine{A}{} área de pesquisa que trata do reparo de uma ontologia quando ela fica inconsistente é conhecida como Revisão de Crenças. Como escrito anteriormente, uma ontologia (ou um sistema de crenças) fica inconsistente quando alguma informação incompatível com as crenças estabelecidas até o momento.
 
-De uma forma geral, esse campo da Inteligência Artificial estuda qualquer alteração dos estados epistêmicos, desde a simples adição de algum novo conhecimento que não entra em conflito com o que já está na ontologia. Além disso, ele lida também com a remoção segura de alguma informação. Para que uma remoção seja considerada segura, é necessário deletar, além da informação propriamente dita, aquelas que a implicam. 
-
-O estado epistêmico de um agente nada mais é do que o conjunto de tudo o que ele acredita e como as suas crenças se relacionam num certo instante. Pode-se entender um estado epistêmico também como uma representação idealizada do estado cognitivo de um agente em determinado momento, como explicou Gärdenfors \cite{revisaoGardenfors}.
-
-Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima.
-
-O paradigma AGM, que será usada neste trabalho, recebe este nome por causa dos autores do artigo considerado o pontapé inicial desta área de pesquisa \cite{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas que $ K $. Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. Com $ K $ sendo logicamente fechado, se $ K \vdash \psi $, sendo $ \psi $ uma sentença qualquer, tem-se que $ \psi \in K $
-
-As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz:
-
-\begin{description}
-	\item[Tarskianicidade] A lógica é monotônica (todas as consequências dedutíveis continuam assim mesmo após a adição de alguma sentença que não interfere nessa dedução), idempotente e satisfaz inclusão;
-	\item[Dedução] $ \alpha \in \text{Cn}(K) $ se e somente se $ \beta \to \alpha \in \text{Cn}(K) $, onde $ \alpha $ e $ \beta $ são sentenças lógicas;
-	\item[Compacidade] se $ \alpha \in \text{Cn}(K) $, então existe $ K’ \subseteq K $ finito tal que $ \alpha \in \text{Cn}(K’) $;
-	\item[Supraclassicalidade] Toda consequência da lógica $ (L, \text{Cn}) $ é também uma consequência da lógica proposicional.
-\end{description} 
-
-% ATÉ AQUI REVISADO
-
-Para verificar que a área de Revisão de Crenças possui seus estudos válidos, seja o seguinte exemplo do assunto da ontologia descrita neste trabalho, assumindo que ela possui os fragmentos de conhecimento abaixo em alguma linguagem formal de representação, e que ela está consistente e equilibrada, epistemicamente.
+Para entender os estudos dessa área, seja o seguinte exemplo do assunto da ontologia descrita neste trabalho, assumindo que ela possui os fragmentos de conhecimento abaixo em alguma linguagem formal de representação.
 
 \begin{enumerate}
 	\item \textit{Toda música brasileira pertence ao subgênero MPB;}
@@ -37,13 +18,32 @@ Com esse conjunto de informações, é possível inferir que a música "Sorte Gr
 	\textit{A música "Sorte Grande" pertence ao subgênero Axé.}
 \end{center}
 
-Como pode-se ver, a nova informação entra em choque direto com a inferência realizada. As maneiras de reparar a ontologia e qual delas escolher para fazê-lo serão descritas nesse capítulo.
+Como pode-se ver, a nova informação entra em choque direto com a inferência realizada e, se absorvida, deixará a ontologia inconsistente. Para isso, é necessário fazer uso de alguma operação estudada na área.
+
+De uma forma geral, esse campo da Inteligência Artificial estuda qualquer alteração dos estados epistêmicos, desde a simples adição de algum novo conhecimento que não entra em conflito com o que já está na ontologia. Além disso, ele lida também com a remoção segura de alguma informação. Para que uma remoção seja considerada segura, é necessário deletar, além da informação propriamente dita, aquelas que a implicam. 
+
+O estado epistêmico de um agente nada mais é do que o conjunto de tudo o que ele acredita e como as suas crenças se relacionam num certo instante. Pode-se entender um estado epistêmico também como uma representação idealizada do estado cognitivo de um agente em determinado momento, como explicou Gärdenfors \cite{revisaoGardenfors}.
+
+Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima.
+
+O paradigma AGM, que será usado neste trabalho, recebe este nome por causa dos autores do artigo considerado o pontapé inicial desta área de pesquisa \cite{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas que $ K $. 
+
+Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. Com $ K $ sendo logicamente fechado, se $ K \vdash \psi $, sendo $ \psi $ uma sentença qualquer, tem-se que $ \psi \in K $. Um sistema de crenças em equilíbrio epistêmico é chamado de base de crenças.  O uso de bases de crenças aumenta a eficiência do reparo \cite{revisaoHansson}.
+
+As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz:
+
+\begin{description}
+	\item[Tarskianicidade] A lógica é monotônica (todas as consequências dedutíveis continuam assim mesmo após a adição de alguma sentença que não interfere nessa dedução), idempotente e satisfaz inclusão;
+	\item[Dedução] $ \alpha \in \text{Cn}(K) $ se e somente se $ \beta \to \alpha \in \text{Cn}(K) $, onde $ \alpha $ e $ \beta $ são sentenças lógicas;
+	\item[Compacidade] se $ \alpha \in \text{Cn}(K) $, então existe $ K’ \subseteq K $ finito tal que $ \alpha \in \text{Cn}(K’) $;
+	\item[Supraclassicalidade] Toda consequência da lógica $ (L, \text{Cn}) $ é também uma consequência da lógica proposicional.
+\end{description} 
 
 \section{Tratamento da informação}
 
 Antes de ver como é possível tratar as inconsistências causadas pela entrada de alguma informação nova, é necessário observar como uma sentença $ \alpha $ qualquer é tratada em algum conjuntos de crenças $ K $.
 
-Existem três tipo de tratamento, a serem descritos abaixo:
+Existem três tipo de tratamento, descritos abaixo:
 
 \begin{enumerate}
 	\item $ \alpha $ é aceita pelo conjunto de crenças. Isso pode acontecer de duas maneiras diferentes:
@@ -52,20 +52,20 @@ Existem três tipo de tratamento, a serem descritos abaixo:
 		\item $ \alpha $ é aceita implicitamente. Esse caso ocorre quando $ \alpha \in \text{Cn}(K) \setminus K $.
 	\end{enumerate}
 	\item $ \alpha $ é rejeitada. Aqui, temos que $ \lnot \alpha \in K $. 
-	\item $ \alpha $ é indeterminada. Deste modo, $ K $ não possui conhecimento sobre a sentença $ \alpha $, assim, $ \lnot \alpha \notin K $ e $ \alpha \notin K $.
+	\item $ \alpha $ é indeterminada. Deste modo, $ K $ não conhece a sentença $ \alpha $, assim, $ \lnot \alpha \notin K $ e $ \alpha \notin K $.
 \end{enumerate}
 
 Existem também algumas questões metodológicas que precisam ser resolvidas, ou pelo menos observadas antes de alguma revisão de crenças. Gärdenfors \cite{revisaoGardenfors2} definiu algumas delas.
 
-A primeira é em relação à representação das crenças na base de dados. Vale notar que, como definido no capítulo 2, é necessário o uso de alguma linguagem formal de representação. A maioria das bases de dados trabalha com fatos e regras como formas primitivas de informação. O mecanismo escolhido para a revisão deve levar em conta o formalismo escolhido para a representação.
+A primeira é em relação à representação das crenças na base de dados. Vale notar que, como definido no \autoref{chap:ontologias}, é necessário o uso de alguma linguagem formal de representação. A maioria das bases de dados trabalha com fatos e regras como formas primitivas de informação. O mecanismo escolhido para a revisão deve levar em conta o formalismo escolhido para a representação.
 
 Uma outra questão se preocupa com os elementos explicitamente representados na base de crenças e os que podem ser derivados desses. Existem bases que dão algum \textit{status} especial aos elementos explícitos, e outras que dão a mesma importância para todos. 
 
-Neste trabalho, apenas os casos que a aceitação de $ \alpha $, pois serão estudados apenas sistemas de crenças logicamente fechados (também conhecidos como bases de crenças), onde vale o equilíbrio epistêmico. O uso de bases de crenças aumenta a eficiência do reparo \cite{revisaoHansson}.  
+A última questão é referente a qual retração fazer, ou seja, qual edição fazer na base de dados. A lógica, propriamente dita, não é suficiente para definir quais são os melhores elementos para serem removidos ou mantidos. Uma das ideias referentes a isso é que a quantidade informação perdida durante o reparo seja a mínima possível. 
 
-A última questão é referente a qual retração, ou seja, qual edição fazer na base de dados. A lógica, propriamente dita, não é suficiente para definir quais são os melhores elementos para serem removidos ou mantidos. Uma das ideias referentes a isso é que a quantidade informação perdida durante o reparo seja a mínima possível. 
+Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-se remover as que possuem menor prioridade, em detrimento daquelas com maior importância. Tudo isso depende de como o sistema de crenças está estruturada.
 
-Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-se remover as que possuem menor prioridade, em detrimento daquelas com maior importância. Tudo isso depende de como a base de crenças está estruturada.
+% REVISAO COMPLETA ATE AQUI
 
 \section{Operações clássicas de Revisão de Crenças}
 

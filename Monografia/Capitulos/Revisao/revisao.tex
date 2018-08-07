@@ -24,13 +24,13 @@ De uma forma geral, esse campo da Inteligência Artificial estuda qualquer alter
 
 O estado epistêmico de um agente nada mais é do que o conjunto de tudo o que ele acredita e como as suas crenças se relacionam num certo instante. Pode-se entender um estado epistêmico também como uma representação idealizada do estado cognitivo de um agente em determinado momento, como explicou Gärdenfors \cite{revisaoGardenfors}.
 
-Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima.
+Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima \cite{logicaResina}.
 
 O paradigma AGM, que será usado neste trabalho, recebe este nome por causa dos autores do artigo considerado o pontapé inicial desta área de pesquisa \cite{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas que $ K $. 
 
 Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. Com $ K $ sendo logicamente fechado, se $ K \vdash \psi $, sendo $ \psi $ uma sentença qualquer, tem-se que $ \psi \in K $. Um sistema de crenças em equilíbrio epistêmico é chamado de base de crenças.  O uso de bases de crenças aumenta a eficiência do reparo \cite{revisaoHansson}.
 
-As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz:
+As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz \cite{revisaoRibeiro}:
 
 \begin{description}
 	\item[Tarskianicidade] A lógica é monotônica (todas as consequências dedutíveis continuam assim mesmo após a adição de alguma sentença que não interfere nessa dedução), idempotente e satisfaz inclusão;
@@ -67,7 +67,7 @@ Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-s
 
 \section{Operações clássicas de Revisão de Crenças}
 
-Existem três operações clássicas de Revisão de Crenças. São elas a Expansão, a Revisão e a Contração. Apenas a expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
+Existem três operações clássicas de Revisão de Crenças \cite{revisaoGardenfors3}. São elas a Expansão, a Revisão e a Contração. Apenas a expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
 
 Para as definições que serão feitas será usada uma lógica $ L $, que é baseada na Lógica de Primeira Ordem. As variáveis, que são as sentenças lógicas, serão representadas pelo alfabeto grego. Os conjuntos de crenças, com letras latinas maiúsculas.
 
@@ -102,7 +102,7 @@ Os postulados de racionalidade que regem a Contração seguem abaixo, com uma su
 
 Os seis primeiros postulados são os chamados postulados básicos. Os últimos dois são os postulados suplementares.
 
-Ainda para a Contração existem dois construtores especiais definidos, que serão discutidos à frente.
+Ainda para a Contração existem dois construtores especiais definidos \cite{logicaMatos}, que serão discutidos à frente.
 
 \subsection{Revisão}
 
@@ -138,7 +138,7 @@ Existem dois construtores especiais para a Contração. Esses construtores são 
 
 \subsubsection{Para Teorias}
 
-Essa construção quer atingir o critério da mudança mínima. Tal critério é atingido por meio da obtenção de conjuntos maximais onde a sentença $ \alpha $ não é válida. A operação fornecerá um resultado baseado em um conjunto de conjuntos maximais, chamado de conjunto-resíduo.
+Essa construção quer atingir o critério da mudança mínima. Tal critério é atingido por meio da obtenção de conjuntos maximais onde a sentença $ \alpha $ não é válida. A operação fornecerá um resultado baseado em um conjunto de conjuntos maximais, chamado de conjunto-resíduo \cite{revisaoCobe}.
 
 A \textbf{Contração \textit{Partial Meet}} para Teorias é definida da seguinte forma: 
 
@@ -185,7 +185,7 @@ A operação definida acima pode ser generalizada para bases de crenças. Segund
 
 \subsubsection{Para Teorias}
 
-Assim como a Contração \textit{Partial Meet}, a \textit{Kernel} precisa de algumas definições para ser discutida. Ela tenta encontrar conjuntos minimais que implicam a informação $ \alpha $ que se deseja contrair, e então remover pelo menos um elemento de cada um desses conjuntos, para que $ \alpha $ torne-se inválida. 
+Assim como a Contração \textit{Partial Meet}, a \textit{Kernel} precisa de algumas definições para ser discutida. Ela tenta encontrar conjuntos minimais que implicam a informação $ \alpha $ que se deseja contrair, e então remover pelo menos um elemento de cada um desses conjuntos, para que $ \alpha $ torne-se inválida \cite{revisaoCobe}. 
 
 Ela é definida da seguinte forma:
 

@@ -1,7 +1,7 @@
 \chapter{Lógicas de Descrição}
 \label{chap:logicas}
 
-\lettrine{A}{} área de Inteligência Artificial é composta por diversas subáreas, que são responsáveis por diversos estudos. Uma delas é a de Representação de Conhecimento, que cuida de construir formalismos adequados para expressar conhecimento sobre um domínio. Tal área tem seus estudos válidos, afinal, entidades inteligentes possuem algum tipo de conhecimento e precisam fazer inferências a partir dele.
+\lettrine{A}{} área de Inteligência Artificial é composta por diversas subáreas. Uma delas é a de Representação de Conhecimento, que cuida de construir formalismos adequados para expressar conhecimento sobre um domínio. Tal área estuda entidades inteligentes, que possuem algum tipo de conhecimento e precisam fazer inferências a partir dele.
 
 Existe um consenso, já mencionado no \autoref{chap:ontologias}, de que linguagens formais são uma maneira boa de caracterizar axiomas lógicos para a modelagem de uma ontologia. O principal formalismo utilizado para representar conhecimento, com um cuidado especial para as terminologias, são as Lógicas de Descrição (doravante, LD).
 
@@ -19,7 +19,9 @@ Essas lógicas são um subconjunto da Lógica de Primeira Ordem (a partir de ago
 \caption{A mesma sentença expressa em diferentes lógicas}
 \end{table}
 
-Podemos observar que a notação da LD permite que a interpretação de suas sentenças seja feita usando a Teoria dos Conjuntos. Na última sentença da tabela, é possível inferir que a união dos conjuntos \texttt{Cancao} e \texttt{HinoNacional} está contida no conjunto \texttt{Musica}.
+Pode-se observar que a notação da LD permite que o entendimento de suas sentenças seja feito usando a Teoria dos Conjuntos. A última sentença da tabela leva a entender que a ''união'' dos ''conjuntos'' \texttt{Cancao} e \texttt{HinoNacional} está contida no ''conjunto'' \texttt{Musica}.
+
+No entanto, é necessário certo cuidado com essa compreensão. Os conceitos, na verdade, são mapeados a conjuntos. Esses, por sua vez, são subconjuntos de um domínio. Quem faz o mapeamento é uma função de interpretação. As definições necessárias para o entendimento desse parágrafo estão diluídas pelo capítulo.
 
 \section{Conceitos, papéis e indivíduos}
 
@@ -116,8 +118,8 @@ Uma interpretação $ \mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}})$
 	\item $ (\neg \texttt{A})^\mathcal{I} = \Delta^\mathcal{I} \setminus \texttt{A}^\mathcal{I}  $
 	\item $(\texttt{A} \sqcup \texttt{B})^\mathcal{I} = \texttt{A}^\mathcal{I} \cup \texttt{B}^\mathcal{I}$  
 	\item $(\texttt{A} \sqcap \texttt{B})^\mathcal{I} = \texttt{A}^\mathcal{I} \cap \texttt{B}^\mathcal{I}$
-	\item $(\exists \texttt{r.A})^\mathcal{I} = \{a \in \Delta^\mathcal{I}\text{ }|\text{ }\exists(a, b) \in \texttt{r}^\mathcal{I} \text{ e } b \in \texttt{A}^\mathcal{I}\}$  
-	\item $(\forall \texttt{r.A})^\mathcal{I} = \{a \in \Delta^\mathcal{I}\text{ }|\text{ }\forall(a, b) \in \texttt{r}^\mathcal{I} \text{ e } b \in \texttt{A}^\mathcal{I}\}$
+	\item $(\exists \texttt{r.A})^\mathcal{I} = \{a \in \Delta^\mathcal{I}\text{ }|\text{ existe } b \in \Delta^\mathcal{I} \text{ tal que } (a, b) \in \texttt{r}^\mathcal{I}\}$  
+	\item $(\forall \texttt{r.A})^\mathcal{I} = \{a \in \Delta^\mathcal{I}\text{ }| \text{ para todo } b \in \Delta^\mathcal{I}\text{, se } (a, b) \in \texttt{r}^\mathcal{I}\text{, então } b \in \texttt{A}^\mathcal{I}\}$
 \end{itemize}
 
 Com isso, podemos ver que uma interpretação $ \mathcal{I} $ satisfaz:
@@ -128,19 +130,19 @@ Com isso, podemos ver que uma interpretação $ \mathcal{I} $ satisfaz:
 		\item \texttt{A} $ \sqsubseteq $ \texttt{B} se e somente se $ \texttt{A}^\mathcal{I} \subseteq \texttt{B}^\mathcal{I} $
 		\item a \textit{TBox} $ \mathcal{T} $ se e somente se satisfaz todos os elementos de $ \mathcal{T} $
 		\item $ \texttt{A}(a) $ se e somente se $ a^\mathcal{I} \in A^\mathcal{I} $
-		\item $ \texttt{r}(a, b) $ se e somente se $ (a^\mathcal{I}, b^\mathcal{I}) \in A^\mathcal{I} $
+		\item $ \texttt{r}(a, b) $ se e somente se $ (a^\mathcal{I}, b^\mathcal{I}) \in \texttt{r}^\mathcal{I} $
 		\item a \textit{ABox} $ \mathcal{A} $ se e somente se satisfaz todos os elementos de $ \mathcal{A} $
 	\end{itemize}
 \end{multicols}
 
 Uma Base de Conhecimento $ \mathcal{ALC} $ é um par $ \Sigma = (\mathcal{T}, \mathcal{A}) $ onde $ \mathcal{T} $ é uma \textit{TBox} e $ \mathcal{A} $, uma \textit{TBox}. Logo, pode ser dito que uma interpretação $ \mathcal{I} $ é um modelo de $ \Sigma $ se satisfaz $ \mathcal{T} $ e $ \mathcal{A} $. Uma base de conhecimento $ \Sigma $ é satisfatível se admite um modelo.
 
-Com isso, podemos definir Consequência Lógica como $ \Sigma \models \phi $ se todo modelo de $ \Sigma $ é um modelo de $ \phi $. Na ontologia desse texto, isso pode ser aplicado da seguinte maneira, sendo:
+Com isso, podemos definir Consequência Lógica como $ \Sigma \models \phi $ se todo modelo de $ \Sigma $ é um modelo de $ \phi $. Na ontologia deste texto, isso pode ser aplicado da seguinte maneira, sendo:
 
 \begin{itemize}
 	\item $ \Sigma = (\mathcal{T}, \mathcal{A}) $, onde:
 	\begin{itemize}
-		\item $ \mathcal{T} $ é a \textit{TBox}: $ \exists \texttt{HinoNacional} \sqsubseteq \texttt{Musica}$
+		\item $ \mathcal{T} $ é a \textit{TBox}: $ \texttt{HinoNacional} \sqsubseteq \texttt{Musica} $
 		\item $ \mathcal{A} $ é a \textit{ABox}: \texttt{HinoNacional(hinoNacionalBrasileiro)}
 	\end{itemize}
 \end{itemize}
@@ -175,15 +177,15 @@ Usando a ontologia de música como exemplo, pode-se ver como essa tradução é 
 
 \begin{enumerate}
 	\item \texttt{Pop} $ \sqsubseteq $ \texttt{Cancao} vira $\forall x(\texttt{Pop}(x) \to \texttt{Cancao}(x))$.
-	\item \texttt{Cancao} $ \sqcup $ \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Musica} é traduzida como $\forall x(\texttt{Cancao}(x) \lor \texttt{HinoNacional}(x) \to \texttt{Musica}(x))$
-	\item $ \forall $ \texttt{canta.Musica} $ \sqsubseteq $ \texttt{Cantor} corresponde a $ \forall x(\forall y(\texttt{canta}(x,y) \to \texttt{Musica}(y)) \to \texttt{Cantor}(x)) $
-	\item $ \exists $ \texttt{canta.Pop} $ \sqsubseteq $ \texttt{Cantor} $ \sqcap $ \texttt{Compositor} equivale a $ \forall x (\exists y(\texttt{canta}(x,y) \land \texttt{Pop}(y)) \to \texttt{Cantor}(x) \land \texttt{Compositor}(x))$
+	\item \texttt{Cancao} $ \sqcup $ \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Musica} é traduzida como $\forall x(\texttt{Cancao}(x) \lor \texttt{HinoNacional}(x) \\ \to \texttt{Musica}(x))$.
+	\item $ \forall $ \texttt{canta.Musica} $ \sqsubseteq $ \texttt{Cantor} corresponde a $ \forall x(\forall y(\texttt{canta}(x,y) \to \texttt{Musica}(y)) \to \\ \texttt{Cantor}(x)) $.
+	\item $ \exists $ \texttt{canta.Pop} $ \sqsubseteq $ \texttt{Cantor} $ \sqcap $ \texttt{Compositor} equivale a $ \forall x (\exists y(\texttt{canta}(x,y) \land \texttt{Pop}(y)) \to \\ \texttt{Cantor}(x) \land \texttt{Compositor}(x))$.
 \end{enumerate}
 
 
 \section{Consistência}
 
-Após uma Base de Conhecimento ser feita, é necessário que ela seja consistente, ou seja, ela não pode se contradizer. Isso acontece quando a inferência de um conceito e sua negação, ao mesmo tempo, é possível. 
+Após uma Base de Conhecimento ser feita, é necessário que ela seja consistente, ou seja, ela não pode se contradizer. A inconsistência acontece quando a inferência de um conceito e sua negação, ao mesmo tempo, é possível. 
 
 Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau} para Lógicas de Descrição. Com elas, é possível determinar de maneira algorítmica a consistência de uma Base de Conhecimento. São elas:
 
@@ -191,7 +193,7 @@ Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau
 	\item[Regra \texttt{E} (ou \textit{$ \sqcap $-rule})] Se $(\texttt{A} \sqcap \texttt{B})(a)$ está em $ \mathcal{A} $, mas \texttt{A}$ (a) $ e \texttt{B}$ (a) $ não estão os dois em $ \mathcal{A} $, então a \textit{ABox} $ \mathcal{A} $ será acrescida de \texttt{A}$ (a) $ e \texttt{B}$ (a) $.
 	\item[Regra \texttt{OU} (ou \textit{$ \sqcup $-rule})] Quando $(\texttt{A} \sqcup \texttt{B})(a)$ está em $ \mathcal{A} $, mas nem \texttt{A}$ (a) $ nem \texttt{B}$ (a) $ está em $ \mathcal{A} $, então à \textit{ABox} $ \mathcal{A} $ será incluído \texttt{A}$ (a) $ ou \texttt{B}$ (a) $.
 	\item[Regra \texttt{EXISTE} (ou \textit{$ \exists $-rule})] Se $(\exists \texttt{r.A})(a)$ está em $ \mathcal{A} $, e não há nenhum indivíduo $ c $ tal que \texttt{r}$ (a,c) $ e \texttt{A}$ (c) $ estejam em $ \mathcal{A} $, então tanto \texttt{r}$ (a,b) $ quanto \texttt{A}$ (b) $ serão adicionados a $ \mathcal{A} $, onde $ b $ é um novo indivíduo.
-	\item[Regra \texttt{PARA TODO} (ou \textit{$ \forall $-rule})] Quando se $(\forall \texttt{r.A})(a)$ e \texttt{r}$ (a,b) $ estão em $ \mathcal{A} $, mas \texttt{A}$ (c) $ não está, esse último será colocado em $ \mathcal{A} $.  
+	\item[Regra \texttt{PARA TODO} (ou \textit{$ \forall $-rule})] Quando se $(\forall \texttt{r.A})(a)$ e \texttt{r}$ (a,b) $ estão em $ \mathcal{A} $, mas \texttt{A}$ (b) $ não está, esse último será colocado em $ \mathcal{A} $.  
 \end{description}
 
 Para descobrir se uma fórmula é insatisfatível, basta aplicar essas regras na sentença lógica. Se, no final, um \textit{Clash} (choque) for alcançado, isto é, quando temos um conceito e sua negação na \textit{ABox}, a sentença é insatisfatível.
@@ -206,4 +208,4 @@ Koubarakis \cite{logicaKoubarakis} deu um exemplo para aplicar essas regras:
 
 Note que nesse exemplo não há uso da \textit{$ \sqcup $-rule}. Quando ela é usada, são criados dois ramos. Para que a fórmula seja insatisfazível, os dois devem resultar em choque (\textit{Clash}).
 
-Para verificar que sentenças no estilo $ \texttt{C} \sqsubseteq \texttt{D} $ são válidas, deve ser verificada a satisfazibilidade de $ \texttt{C} \sqcap \neg \texttt{D} $. Se essa última for insatisfatível, a primeira é válida.
+Para verificar que sentenças no estilo $ \texttt{C} \sqsubseteq \texttt{D} $ são válidas, deve ser verificada a satisfazibilidade de $ \texttt{C} \sqcap \neg \texttt{D} $. Se essa última for insatisfatível, a primeira é consequência lógica da base de conhecimento.

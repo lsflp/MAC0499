@@ -144,10 +144,10 @@ Essa construção quer atingir o critério da mudança mínima. Tal critério é
 A \textbf{Contração \textit{Partial Meet}} para Teorias é definida da seguinte forma: 
 
 \begin{center}
-	$ K -_{\gamma} \alpha = \bigcap \gamma(K \bot \alpha) $
+	$ K -_{\gamma} \alpha = \bigcap \gamma(K \bot \alpha) $,
 \end{center}
 
-Onde $ -_{\gamma} $ é a operação chamada de Contração \textit{Partial Meet}, $ \gamma $ é uma função de seleção, e $ \bot $ é a representação de um conjunto-resíduo, definidas abaixo:
+onde $ -_{\gamma} $ é a operação chamada de Contração \textit{Partial Meet}, $ \gamma $ é uma função de seleção, e $ \bot $ é a representação de um conjunto-resíduo, definidas abaixo:
 
 \begin{description}
 	\item[Conjunto-resíduo] Definido como $ T \bot \alpha $, onde $ T $ é um conjunto que está contido na lógica $ L $ e $ \alpha \in L $. Ele é o conjunto de todos os subconjuntos maximais de $ T $ que não implicam $ \alpha $. Formalmente, para quaisquer conjuntos $ R $ e $ S $, o conjunto $ S $ pertence a $ T \bot \alpha $ se e somente se:
@@ -167,18 +167,18 @@ Onde $ -_{\gamma} $ é a operação chamada de Contração \textit{Partial Meet}
 
 \subsubsection{Para Bases de Crenças}
 
-A operação definida acima pode ser generalizada para bases de crenças. Segundo Hansson \cite{revisaoHansson2}, uma operação $ - $ para uma base $ B $ é uma Contração \textit{Partial Meet} se e só se satisfaz os seguintes postulados:
+A operação definida acima pode ser generalizada para bases de crenças. Segundo Hansson \cite{revisaoHansson2}, uma operação $ -_{\gamma} $ para uma base $ B $ é uma Contração \textit{Partial Meet} se e só se satisfaz os seguintes postulados:
 
 \begin{description}
-	\item[Inclusão] $ B - \alpha \subseteq B$ \\ A operação não permite que novas sentenças sejam adicionadas ao conjunto, resultando em um conjunto com o mesmo número de sentenças ou menos.
-	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(B - \alpha) $ \\ A não ser que $ \alpha $ seja uma tautologia, ela não será consequência do no conjunto resultante da operação.
-	\item[Relevância] Se $ \beta \in B \setminus (B - \alpha) $ então existe  $ B' $ tal que $B - \alpha \subseteq B' \subseteq B $, onde:
+	\item[Inclusão] $ B -_{\gamma} \alpha \subseteq B$ \\ A operação não permite que novas sentenças sejam adicionadas ao conjunto, resultando em um conjunto com o mesmo número de sentenças ou menos.
+	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(B -_{\gamma} \alpha) $ \\ A não ser que $ \alpha $ seja uma tautologia, ela não será consequência do no conjunto resultante da operação.
+	\item[Relevância] Se $ \beta \in B \setminus (B -_{\gamma} \alpha) $ então existe  $ B' $ tal que $B -_{\gamma} \alpha \subseteq B' \subseteq B $, onde:
 	\begin{itemize}
 		\item $ \alpha \notin \text{Cn}(B') $
 		\item $ \alpha \in \text{Cn}(B' \cup \{\beta\}) $ 
 	\end{itemize}
-	Se $ \beta $ for removido na Contração $ B - \alpha $, então, de alguma maneira, $ \beta $ tem relação com o fato que $ B \models \alpha$. Esse postulado assegura que elementos que não possuem bons motivos para a remoção fiquem na base de crenças.
-	\item[Uniformidade] Se, para todo $B' \subseteq B $, valer que $ \alpha \in \text{Cn}(B') $, se e somente se $ \beta \in \text{Cn}(B') $, então $ B - \alpha = B - \beta $ \\
+	Se $ \beta $ for removido na Contração $ B -_{\gamma} \alpha $, então, de alguma maneira, $ \beta $ tem relação com o fato que $ B \models \alpha$. Esse postulado assegura que elementos que não possuem bons motivos para a remoção fiquem na base de crenças.
+	\item[Uniformidade] Se, para todo $B' \subseteq B $, valer que $ \alpha \in \text{Cn}(B') $, se e somente se $ \beta \in \text{Cn}(B') $, então $ B -_{\gamma} \alpha = B -_{\gamma} \beta $ \\
 	Se em todos os subconjuntos de B que implicam $ \alpha $ também for implicado $ \beta $ e vice-versa, a Contração por qualquer uma dessas fórmulas terá o mesmo resultado.
 \end{description}
 
@@ -191,10 +191,10 @@ Assim como a Contração \textit{Partial Meet}, a \textit{Kernel} precisa de alg
 Ela é definida da seguinte forma:
 
 \begin{center}
-	$ K -_{\sigma} \alpha = K \setminus \sigma(K \kcont \alpha) $
+	$ K -_{\sigma} \alpha = K \setminus \sigma(K \kcont \alpha) $,
 \end{center}
 
-Onde $ -_{\sigma} $ é a operação chamada de Contração \textit{Kernel}, $ \sigma $, uma função de incisão, e $ \kcont $, a representação de um conjunto-\textit{Kernel}, definidas abaixo:
+onde $ -_{\sigma} $ é a operação chamada de Contração \textit{Kernel}, $ \sigma $, uma função de incisão, e $ \kcont $, a representação de um conjunto-\textit{Kernel}, definidas abaixo:
 
 \begin{description}
 	\item[Conjunto-\textit{Kernel}] Sendo $ K \bot \alpha $, onde $ K $ é um conjunto que está contido na lógica $ L $ e $ \alpha \in L $, o conjunto-\textit{Kernel}, denotado por $ K \kcont \alpha $ é o conjunto de todos os subconjuntos minimais de $ K $ que implicam $ \alpha $. Formalmente, para quaisquer conjuntos $ I $ e $ J $, $ J $ pertence a $ K \kcont \alpha $ se e somente se:
@@ -214,17 +214,49 @@ Com isso, pode-se concluir que a função de incisão escolhe, dentre os subconj
 
 \subsubsection{Para Bases de Crenças}
 
-Assim como generalização feita para a Contração \textit{Partial Meet} de teorias para bases de crenças, existe uma para a Contração \textit{Kernel}. Um operador $ - $ para uma base $ B $ qualquer é uma Contração \textit{Kernel} se e somente se satisfaz os seguintes postulados:
+Assim como generalização feita para a Contração \textit{Partial Meet} de teorias para bases de crenças, existe uma para a Contração \textit{Kernel}. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração \textit{Kernel} se e somente se satisfaz os seguintes postulados:
 
 \begin{description}
-	\item[Inclusão] $ B - \alpha \subseteq B$ \\ Semelhante ao da Contração \textit{Partial Meet}.
-	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(B - \alpha) $ \\ Funciona como no construtor anterior.
-	\item[\textit{Core-retainment}] se $ \beta \in B \setminus (B - \alpha) $, então existe $ B' \text{ tal que } B' \subseteq B $, onde:
+	\item[Inclusão] $ B -_{\sigma} \alpha \subseteq B$ \\ Semelhante ao da Contração \textit{Partial Meet}.
+	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(B -_{\sigma} \alpha) $ \\ Funciona como no construtor anterior.
+	\item[\textit{Core-retainment}] se $ \beta \in B \setminus (B -_{\sigma} \alpha) $, então existe $ B' \text{ tal que } B' \subseteq B $, onde:
 	\begin{itemize}
 		\item $ \alpha \notin \text{Cn}(B') $
 		\item $ \alpha \in \text{Cn}(B' \cup \{\beta\}) $ 
 	\end{itemize}
 	É uma versão mais fraca do postulado \textbf{Relevância} apresentado acima.
-	\item[Uniformidade] Se, para todo $ B' \subseteq B $, valer que $ \alpha \in \text{Cn}(B') $, se e somente se $ \beta \in \text{Cn}(B') $, então $ B - \alpha = B - \beta $ \\
+	\item[Uniformidade] Se, para todo $ B' \subseteq B $, valer que $ \alpha \in \text{Cn}(B') $, se e somente se $ \beta \in \text{Cn}(B') $, então $ B -_{\sigma} \alpha = B -_{\sigma} \beta $ \\
 	Análogo ao da Contração \textit{Partial Meet}. 
 \end{description}
+
+\section{Pseudocontração}
+
+Uma contração \textit{partial meet} pode ser aplicada a uma base de crenças e não resultar no conjunto desejado. Se a aplicarmos no conjunto $ K = \{\alpha_1 \land \alpha_2 \land ... \land \alpha_n\} $, o resultado será $ K - \alpha_i = \varnothing $, por \textbf{inclusão}. Esse não é o resultado da mesma operação sob o conjunto $ K' = \{\alpha_1, \alpha_2, ..., \alpha_n\} $, embora Cn$(K)$ = Cn$(K')$.
+	
+O que pode ser feito para evitar esse tipo de resultado é substituir o postulado da inclusão por um mais fraco \cite{revisaoHansson3}:
+
+\begin{description}
+	\item[Inclusão lógica] Cn$(K - \alpha) \subseteq $ Cn$(K)$ 
+\end{description}
+
+Com isso, a operação executada será chamada de pseudocontração \cite{revisaoHansson4}.
+\subsection{Pseudocontração SRW}
+
+Uma proposta de pseudocontração foi proposta em 2015 \cite{revisaoSantos}. Ela utiliza um operador de consequência lógica Cn*, tarskiano. Tal operação é chamada de Pseudocontração SRW. 
+
+Ela é definida da seguinte forma:
+
+\begin{center}
+	$ K -_* \alpha = \bigcap \gamma(\text{Cn*}(K) \bot \alpha) $,
+\end{center}
+
+onde $ -_{\gamma} $ é a operação chamada de Pseudocontração SRW, $ \gamma $ é uma função de seleção, e $ \bot $ é a representação de um conjunto-resíduo. Essa operação satisfaz os seguintes postulados:
+
+\begin{description}
+	\item[Inclusão*] $ K -_* \alpha \subseteq \text{Cn*}(K)$
+	\item[Relevância*] Se $ \beta \in \text{Cn*}(K) \setminus (K -_* \alpha) $ então existe  $ K' $ tal que $ K -_* \alpha \subseteq K' \subseteq \text{Cn*}(K') $, mas $ \alpha \in \text{Cn}(K' \cup \{\beta\}) $
+	\item[Uniformidade*] Se, para todo $K' \subseteq \text{Cn*}(K) $, valer que $ \alpha \in \text{Cn*}(K') $, se e somente se $ \beta \in \text{Cn}(K') $, então $ B -_* \alpha = K -_* \beta $
+	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(K - \alpha) $
+\end{description}
+
+Nota-se que o postulado do sucesso é o mesmo da contração \textit{Partial Meet}. Isso ocorre porque é necessário que a fórmula pseudocontraída não seja classicamente implicada pelo conjunto resultante da operação. Os demais postulados são versões enfraquecidas dos postulados da contração \textit{Partial Meet}.

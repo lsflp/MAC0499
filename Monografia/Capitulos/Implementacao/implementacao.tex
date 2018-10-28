@@ -1,0 +1,73 @@
+\chapter{Implementação do \textit{plug-in}}
+\label{chap:implementacao}
+
+O \textit{plug-in} construído para este trabalho é, na verdade, uma reunião de implementações realizadas em trabalhos anteriores. As operações cobertas pelo \textit{plug-in} e suas respectivas construções anteriores são:
+
+\begin{description}
+	\item[Contração] O \textit{plug-in} possui os dois construtores descritos neste trabalho, a contração \textit{Partial Meet} e a \textit{Kernel}. Ambas foram baseadas em implementações de algoritmos feitas na tese de doutorado de Cóbe \cite{revisaoCobe}.
+	\item[Revisão] Para essa operação, os códigos feitos por Resina para o seu trabalho de mestrado \cite{logicaResina} foram reconstruídos. 
+	\item[Pseudocontração SRW] Essa operação foi completamente absorvida ao \textit{plug-in} do código feito por Matos, em seu trabalho de conclusão de curso. \cite{logicaMatos}
+\end{description} 
+
+Todo o código-fonte está disponível no \href{https://github.com/lsflp/ontology-repair/}{GitHub}, assim como os arquivos
+compilados e instruções de compilação e execução.
+
+O programa consiste em uma interface com o usuário pelo terminal. Ele recebe os parâmetros pela linha de comando. A saída é um arquivo OWL com uma ontologia que pode ser aberto no Protégé. As informações de entrada e saída podem ser acessadas no \href{https://github.com/lsflp/ontology-repair/blob/master/README.md}{README} do projeto.
+
+\section{Desenvolvimento}
+
+O projeto foi inteiramente feito no IntelliJ versão 2018.2 \footnote{https://www.jetbrains.com/idea/}. Esse \textit{software} não é gratuito, mas oferece uma versão de uso para estudantes. As dependências foram gerenciadas pelo \textit{Apache Maven} 3.5.2 \footnote{https://maven.apache.org/}.
+
+Para as lógicas internas, são necessários a \textit{OWL API} 5.1.6 \footnote{http://owlcs.github.io/owlapi/}, usada para todo o trabalho com os axiomas e o \textit{HermiT Reasoner} \footnote{http://www.hermit-reasoner.com/}1.3.8, um motor de inferências. Para facilitar a entrada dos parâmetros, foi utilizado o \textit{JCommander} 1.58 \footnote{http://jcommander.org}.
+
+\section{Algoritmo \textit{BlackBox}}
+
+A implementação das três operações tem a sua parte principal em um algoritmo \textit{BlackBox}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma. Ele possui algumas variações, para o cálculo do conjunto-resíduo, do conjunto-\textit{kernel} para a contração e do conjunto-\textit{kernel} da revisão.
+
+\subsection{\textit{BlackBox} para o conjunto-resíduo}
+
+Para o cálculo do conjunto-resíduo, utilizado na contração \textit{Partial Meet} e na Pseudocontração SRW, foi utilizada a implementação adaptada por Matos da implementação original de Cóbe \cite{logicaMatos}. Ela consiste em duas funções:
+
+\begin{description}
+	\item[\textsc{RemainderBlackBox}] É uma função que recebe um conjunto de axiomas $ B $, uma sentença $ A $ e um conjunto de axiomas $ X $, tal que $ X \nvdash A $ e constrói um elemento do conjunto resíduo $ (B \bot A) $, que contém todos os elementos de $ X $. O conjunto devolvido $ X' $ é tal que $ X' \subseteq X \in B \bot A $. O método começa com $ X $  e acrescenta todos os axiomas de $ B $ que não façam o conjunto resultante implicar $ A $. De acordo como o laço principal é implementado, resultados diferentes podem ser alcançados. No entanto, isso não é um problema, porque a função que chama esta só pede um item do conjunto resíduo. O seu código segue abaixo: \\
+	\begin{algorithmic}
+		\Function{RemainderBlackBox}{B, A, X}
+		\State $ X' \gets X$
+		\ForAll{$ \beta \in B \setminus X $}
+		\If{$ X' \cup \{\beta\} \nvdash A $}
+		\State $ X' \gets X' \cup \{\beta\} $
+		\EndIf 
+		\EndFor
+		\State \Return $ X' $
+		\EndFunction
+	\end{algorithmic}
+
+	\item[\textsc{RemainderSet}] Usando a função acima, ela constrói o conjunto-resíduo. Seja $ X $ um conjunto, tal que $ X \nvdash A$, inicialmente vazio. Implicitamente, uma árvore é construída. Sua raiz é um elemento do conjunto-resíduo obtido a partir de $ X $, e para cada axioma $ s $ fora desse conjunto, se $ X \cup \{s\} \nvdash A $, o algoritmo cria um nó filho na árvore com um conjunto-resíduo obtido a partir de $ X' = X \cup \{s\} $. Como se deseja apenas gerar o conjunto, a árvore não é construída por completo. Ao invés disso, os elementos são criados como se a árvore fosse percorrida por uma busca em largura, por isso o uso da fila. O seu código segue abaixo: \\
+	\begin{algorithmic}
+		\Function{RemainderSet}{B, A}
+		\State $ fila \gets $ fila vazia
+		\State $ S \gets $ \Call{RemainderBlackBox}{B, A, $ \varnothing $}
+		\State $ remainder \gets \{S\} $
+		\ForAll{$ s \in B \setminus S $}
+		\State coloque $ s $ em $ fila $
+		\EndFor
+		\While{$ fila $ não está vazia}
+		\State {$ Hn \gets $ o próximo de $ fila $}
+		\If{$ Hn \nvdash A $}
+		\State $ S \gets $ \Call{RemainderBlackBox}{B, A, Hn}
+		\State $ remainder \gets remainder \cup \{S\} $
+		\ForAll{$ s \in B \setminus S $}
+		\State coloque $ Hn \cup \{s\} $ em $ fila $
+		\EndFor
+		\EndIf
+		\EndWhile
+		\State \Return $ remainder $
+		\EndFunction
+	\end{algorithmic}
+\end{description}
+
+\subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a contração}
+
+\subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a revisão}
+
+\section{Exemplos}

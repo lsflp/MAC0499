@@ -22,7 +22,11 @@ Para as lógicas internas, são necessários a \textit{OWL API} 5.1.6 \footnote{
 
 \section{Algoritmo \textit{BlackBox}}
 
-A implementação das três operações tem a sua parte principal em um algoritmo \textit{BlackBox}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma. Ele possui algumas variações, para o cálculo do conjunto-resíduo, do conjunto-\textit{kernel} para a contração e do conjunto-\textit{kernel} da revisão.
+A implementação das três operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina \cite{logicaResina}, onde tiveram suas corretudes provadas. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma. Ele possui algumas variações, para o cálculo do conjunto-resíduo, do conjunto-\textit{kernel} para a contração e do conjunto-\textit{kernel} da revisão.
+
+Para efeitos de otimização, foi colocado um limite tanto nas filas utilizadas nos algoritmos abaixo quanto nos conjuntos que serão retornados. Tais limites podem ser definidos pelo usuário, opcionalmente.
+
+As funções de seleção e de incisão utilizadas têm sua implementação bem simplificada, devolvendo qualquer elemento (apenas um) do conjunto-resíduo ou do conjunto-\textit{kernel}. 
 
 \subsection{\textit{BlackBox} para o conjunto-resíduo}
 
@@ -68,6 +72,150 @@ Para o cálculo do conjunto-resíduo, utilizado na contração \textit{Partial M
 
 \subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a contração}
 
+Para o cálculo do conjunto-\textit{kernel}, usado na contração \textit{Kernel}, foi utilizada uma implementação do código de Cóbe \cite{logicaMatos}. Ela consiste em duas funções:
+
+\begin{description}
+	\item[\textsc{KernelBlackBox}] É uma função que recebe um conjunto de axiomas $ B $ e uma sentença $ A $. Ela constrói um conjunto minimal de $ B $ que implica $ A $. Essa função é uma adaptação da estudada por Resina \cite{logicaResina}, e se divide em duas partes: expansão, onde são adicionam todos os axiomas de B, caso $ B \vdash A $, a um conjunto $ B' $, definido previamente como vazio; e encolhimento, onde cada elemento $ \beta $ de $ B' $ é analisado individualmente. Caso $ B' \setminus \{\beta\}$ implique $ A $, $ \beta $ é apagado de $ B' $. Logo, o conjunto devolvido é um conjunto minimal de $ B $ que implica $ A $, portanto, um elemento do Kernel. Seu código é o seguinte: \\
+	\begin{algorithmic}
+		\Function{KernelBlackBox}{B, A}
+		\State $ B' \gets \varnothing $
+		\If{$ B \vdash A $}
+		\State $ B' \gets B $
+		\EndIf
+		\ForAll{$ \beta \in B' $}
+		\If{$ B' \setminus \{\beta\} \vdash A $}
+		\State $ B' \gets B' \cup \{\beta\}$
+		\EndIf
+		\EndFor
+		\EndFunction
+	\end{algorithmic}
+
+	\item[\textsc{KernelSet}] É uma função que recebe os mesmos parâmetros citados acima, e utiliza a função supracitada. Ela começa com um elemento do Kernel. Assim como o construtor do conjunto-resíduo, ele constrói uma árvore, fazendo percorrendo em largura. Para cada elemento $ Hn $ da fila, o algoritmo o remove de $ B $ e, se $ B $ ainda implica $ A $, computa-se o menor subconjunto S de $ B \setminus Hn $ que implica $ A $, e então, tem-se em S um novo elemento do Kernel. Depois disso, $ B $ é restaurado. Seu código está abaixo: \\
+	
+	\begin{algorithmic}
+		\Function{KernelSet}{B, A}
+		\If{$ B \nvdash A $}
+		\State \Return $ \varnothing $
+		\EndIf
+		\State $ fila \gets $ fila vazia
+		\State $ S \gets $ \Call{KernelBlackBox}{B, A}
+		\State $ kernel \gets \{S\} $
+		\ForAll{$ s \in S $}
+		\State coloque $ s $ em $ fila $
+		\EndFor
+		\While{$ fila $ não está vazia}
+		\State {$ Hn \gets $ o próximo de $ fila $}
+		\State $ B \gets B \setminus Hn $
+		\If{$ B \vdash A $}
+		\State $ S  \gets $ \Call{KernelBlackBox}{B, A}
+		\State $ kernel \gets kernel \cup \{S\} $
+		\ForAll{$ s \in S $}
+		\State coloque $ Hn \cup \{s\} $ em $ fila $
+		\EndFor
+		\EndIf
+		\State $ B \gets B \cup Hn $
+		\EndWhile
+		\State \Return $ kernel $
+		\EndFunction
+	\end{algorithmic}
+\end{description}
+
 \subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a revisão}
 
-\section{Exemplos}
+\section{Exemplos da execução}
+
+São feitos aqui alguns exemplos simples para ilustrar a funcionalidade do \textit{plug-in}. Todos os exemplos estão relacionados à ontologia discutida neste trabalho.
+
+\subsection{Pseudocontração SRW}
+
+Para a Pseudocontração SRW, serão consideradas as classes \texttt{Cantor} e \texttt{Compositor} da ontologia musical, e o seguinte axioma: \texttt{Compositor} $ \sqsubseteq $ \texttt{Cantor}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw1.png}
+	\caption{A estrutura da ontologia.}
+\end{figure}
+
+Ela possui um indivíduo, \texttt{markRonson}, pertencente à classe \texttt{Compositor}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw2.png}
+	\caption{A instância da ontologia.}
+\end{figure}
+
+Tudo isso implica que \texttt{markRonson} também é um \texttt{Cantor}, o que está errado. 
+
+A operação pode ser feita com o seguinte comando:
+
+\begin{small}
+	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -srw -i pessoa.owl \\ -o output.owl -f "markRonson Type: Cantor"}
+\end{small}
+
+Depois da operação, temos que \texttt{Compositor} deixa de ser subclasse de \texttt{Cantor}, e então, \texttt{markRonson} não pertence mais à classe \texttt{Cantor}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw3.png}
+	\caption{O resultado da operação.}
+\end{figure}
+
+\subsection{Contração \textit{Partial Meet}}
+
+Para a contração \textit{Partial Meet}, o exemplo utilizado tem as classes \texttt{Musica}, \texttt{Cancao} e \texttt{HinoNacional}, e os seguintes axiomas: 
+
+\begin{itemize}
+	\item \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Cancao}
+	\item \texttt{Cancao} $ \sqsubseteq $ \texttt{Musica}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/cpm1.png}
+	\caption{A estrutura da ontologia.}
+\end{figure}
+
+Como definido anteriormente, na verdade, \texttt{Cancao} e \texttt{HinoNacional} são classes na mesma hierarquia. A operação é realizada com o seguinte comando:
+
+\begin{small}
+	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --relevance -i musica.owl \\ -o output.owl -f "HinoNacional SubClassOf Cancao"}
+\end{small}
+
+Após a sua execução, acontece o desejado, mas aparentemente, esse não é o melhor resultado.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/cpm2.png}
+	\caption{O resultado da operação.}
+\end{figure}
+
+\subsection{Contração \textit{Kernel}}
+
+Para a contração \textit{Kernel}, será usado um exemplo análogo. As classes estudadas aqui são \texttt{Cancao}, \texttt{Pop} e \texttt{SynthPop}. Os axiomas da ontologia são:
+
+\begin{itemize}
+	\item \texttt{SynthPop} $ \sqsubseteq $ \texttt{Pop}
+	\item \texttt{Pop} $ \sqsubseteq $ \texttt{Cancao}
+\end{itemize}
+
+Suponha que o subgênero \texttt{SynthPop} evoluiu e está distante do \texttt{Pop}, mas ainda mantém o nome. Portanto, não se deseja mais que ele seja uma subclasse de \texttt{Pop}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/ck1.png}
+	\caption{As classes da ontologia.}
+\end{figure}
+
+Com o comando abaixo, a operação é realizada.
+
+\begin{small}
+	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --core-retainment -i cancao.owl \\ -o output.owl -f "ElectroPop SubClassOf Pop"}
+\end{small}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/ck2.png}
+	\caption{O resultado da operação.}
+\end{figure}
+
+\subsection{Revisão}

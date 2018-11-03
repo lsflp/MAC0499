@@ -4,29 +4,29 @@
 
 \section{OWL}
 
-O final da década de 1990 foi a época em que surgiu a ideia de Web Semântica. Esse conceito, já consolidado hoje, seria uma parte da \textit{World Wide Web} onde é possível o trabalho cooperativo entre as máquinas e os seres humanos. Ele ocorre a partir dos significados que são dados aos conteúdos disponíveis na rede, para que haja compreensão por ambos os tipos de agentes \cite{ferramentasHerman}.
+O final da década de 1990 foi a época em que surgiu a ideia de Web Semântica. Esse conceito, já consolidado hoje, seria uma parte da \textit{World Wide Web} onde é possível o trabalho cooperativo entre as máquinas e os seres humanos. Ele ocorre a partir dos significados que são dados aos conteúdos disponíveis na rede, para que haja compreensão por ambos os tipos de agentes \citep{ferramentasHerman}.
 
-A fim de que alguma Linguagem de Representação fosse criada, a \href{https://www.w3.org}{W3C} (sigla para Consórcio para a \textit{World Wide Web}) fundou o "\textit{Web Ontology Working Group}" \cite{ferramentasGrupo}, no início dos anos 2000. 
+A fim de que alguma Linguagem de Representação fosse criada, a \href{https://www.w3.org}{W3C} (sigla para Consórcio para a \textit{World Wide Web}) fundou o "\textit{Web Ontology Working Group}", no início dos anos 2000  \citep{ferramentasGrupo}. 
 
-Os primeiros rascunhos foram publicados em julho de 2002, e em fevereiro de 2004 \cite{ferramentasReco}, a OWL (\textit{Web Ontology Language}) tornou-se o padrão recomendado pela W3C para o processamento de ontologias.
+Os primeiros rascunhos foram publicados em julho de 2002, e em fevereiro de 2004, a OWL (\textit{Web Ontology Language}) tornou-se o padrão recomendado pela W3C para o processamento de ontologias \citep{ferramentasReco}.
 
-Em outubro de 2007 \cite{ferramentasOWLGrupo2}, um novo grupo foi concebido para adicionar alguns recursos à linguagem. Dois anos depois, a W3C fez o lançamento da OWL 2, que seria compatível com editores e raciocinadores semânticos. Ela foi recomendada oficialmente pela W3C em dezembro de 2012 \cite{ferramentasOWLReco2}.
+Em outubro de 2007, um novo grupo foi concebido para adicionar alguns recursos à linguagem. Dois anos depois, a W3C fez o lançamento da OWL 2, que seria compatível com editores e raciocinadores semânticos \citep{ferramentasOWLGrupo2}. Ela foi recomendada oficialmente pela W3C em dezembro de 2012 \citep{ferramentasOWLReco2}.
 
 Abaixo estão algumas características das duas versões da OWL.
 
 \subsection{OWL Web Ontology Language}
 
-A primeira versão possui três sublinguagens \cite{ferramentasOWL1}, cada uma com suas particularidades:
+A primeira versão possui três sublinguagens \citep{ferramentasOWL1}. Cada uma possui suas particularidades:
 
 \begin{itemize}
-	\item \textit{Lite}: Sublinguagem mais simples, feita para hierarquias de classificação com restringimentos simples. Suporta restrições de cardinalidade simples (apenas 0 ou 1).  Foi demonstrado que OWL-Lite é equivalente a $ \mathcal{SHIF^{(D)}} $ \cite{ferramentasGrau}.
+	\item \textit{Lite}: Sublinguagem mais simples, feita para hierarquias de classificação com restringimentos simples. Suporta restrições de cardinalidade simples (apenas 0 ou 1).  Foi demonstrado que OWL-Lite é equivalente a $ \mathcal{SHIF^{(D)}} $ \citep{ferramentasGrau}.
 	\item DL: É equivalente a $ \mathcal{SHOIN^{(D)}} $. Oferece expressividade máxima evitando alguns problemas de decidibilidade. Inclui todos os construtores da OWL. Possui mais complexidade formal do que a sublinguagem \textit{Lite}.
 	\item \textit{Full}: Versão mais completa, oferecendo expressividade máxima e a liberdade sintática do RDF, só que sem garantias computacionais. Nessa sublinguagem, pode acontecer de uma Classe ser tratada como uma coleção de indivíduos ou como um indivíduo, o que acarreta problemas de decidibilidade. Não corresponde a nenhuma lógica de descrição.
 \end{itemize}
 
 \subsection{OWL 2 Web Ontology Language}
 
-A segunda versão também possui sublinguagens \cite{ferramentasOWL2}. Elas são:
+A segunda versão também possui sublinguagens \citep{ferramentasOWL2}. Elas são:
 
 \begin{itemize}
 	\item EL: Corresponde à lógica $ \mathcal{EL} $++. Funciona bem para ontologias com muitas classes e/ou propriedades. Permite a existência de algoritmos de inferência polinimiais.
@@ -38,13 +38,14 @@ A segunda versão também possui sublinguagens \cite{ferramentasOWL2}. Elas são
 
 \section{\textit{Protégé}}
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Ferramentas/protege}
 	\caption{O logotipo do Protégé.}
+	\label{img:Protege}
 \end{figure}
 
-O \href{https://protege.stanford.edu}{\textit{Protégé}} é um editor semântico, compatível com a OWL 2. Ele foi desenvolvido pelo Centro de Pesquisa para Informática Biomédica da Universidade de Stanford, em colaboração com alguns programadores da Universidade de Manchester \cite{ferramentasProtege}. Sua primeira versão foi lançada em 1999, e a atual é de 2017.
+O \href{https://protege.stanford.edu}{\textit{Protégé}} é um editor semântico, compatível com a OWL 2. Ele foi desenvolvido pelo Centro de Pesquisa para Informática Biomédica da Universidade de Stanford, em colaboração com alguns programadores da Universidade de Manchester \footnote{\url{https://protege.stanford.edu/about.php}}. Sua primeira versão foi lançada em 1999, e a atual é de 2017. Seu logotipo está exibido em \ref{img:Protege}
 
 Seguindo os princípios do \textit{Software} Livre, ele é um arcabouço gratuito e de código aberto, feito para a construção de sistemas inteligentes, com o uso ou não de uma interface gráfica.
 
@@ -101,7 +102,7 @@ No \textit{Protégé}, a ontologia fica assim:
  
 \subsection{Raciocinadores}
 
-Um aspecto interessante sobre esse arcabouço é o uso de \textit{plug-ins} de \textit{raciocínio}, como o HermiT \cite{ferramentasHermit}. A partir deles, é possível fazer inferências a partir dos axiomas lógicos que foram criados.
+Um aspecto interessante sobre esse arcabouço é o uso de \textit{plug-ins} de \textit{raciocínio}, como o HermiT \footnote{\url{http://www.hermit-reasoner.com/}}. A partir deles, é possível fazer inferências a partir dos axiomas lógicos que foram criados.
 
 No fragmento da ontologia, temos que \texttt{MarinaAndTheDiamonds \textbf{canta} Primadonna}. É possível inferir que \texttt{Primadonna \textbf{cantadaPor} MarinaAndTheDiamonds}. O Protégé consegue fazer isso com o auxílio do raciocinador:
 
@@ -124,7 +125,7 @@ No fragmento da ontologia, temos que \texttt{MarinaAndTheDiamonds \textbf{canta}
 
 A partir de uma ontologia e de uma base de dados, é possível fazer buscas neste arcabouço, utilizando, entre várias linguagens de busca, o SPARQL.
 
-SPARQL é um acrônimo recursivo para SPARQL \textit{Protocol and RDF Query Language} \cite{ferramentasSPARQL}. Ele tem uma sintaxe que lembra a do SQL, e com seu uso, é possível tratar a ontologia como uma base de dados.  
+SPARQL é um acrônimo recursivo para SPARQL \textit{Protocol and RDF Query Language}  \citep{ferramentasSPARQL}. Ele tem uma sintaxe que lembra a do SQL, e com seu uso, é possível tratar a ontologia como uma base de dados.  
 
 Vale notar que as buscas funcionam apenas com a terminologia e as asserções gravadas no arquivo da ontologia. Para que as buscas funcionem sobre as inferências, é necessário exportá-las para um novo arquivo.
 

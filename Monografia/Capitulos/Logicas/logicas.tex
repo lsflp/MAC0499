@@ -25,7 +25,7 @@ No entanto, é necessário certo cuidado com essa compreensão. Os conceitos, na
 
 \section{Conceitos, papéis e indivíduos}
 
-As LD possuem um jeito próprio de organizar o conhecimento. Elas usam três definições para retratar o que é desejado \cite{logicaMatos}. Cada uma delas é utilizada na construção de uma ontologia. São, a seguir:
+As LD possuem um jeito próprio de organizar o conhecimento. Elas usam três definições para retratar o que é desejado \citep{logicaMatos}. Cada uma delas é utilizada na construção de uma ontologia. São, a seguir:
 
 \begin{description}
 	\item[Conceitos] Também chamados de classes, representam um conjunto de indivíduos. Nas ontologias, são equivalentes às Classes.
@@ -76,7 +76,7 @@ A linguagem $\mathcal{ALC}$ permite que seja feita a negação de conceitos comp
 	\item $ \neg \neg \texttt{A} \sim \texttt{A} $
 \end{itemize}
 
-A partir de sua constituição, é possível definir três sublinguagens da $\mathcal{ALC}$ \cite{logicaSchmidt}, que são descritas a seguir.
+A partir de sua constituição, é possível definir três sublinguagens da $\mathcal{ALC}$  \citep{logicaSchmidt}. Elas estão descritas a seguir:
 
 \begin{itemize}
 	\item $\mathcal{ALE}$: permite a descrição de conceitos simples sem a utilização de uniões; 
@@ -104,13 +104,13 @@ A $ \mathcal{ALC} $ é base para outras linguagens mais expressivas, que são co
 	\item $ ^\mathcal{(D)} $: usa propriedades de tipo de dados.
 \end{itemize}
 
-Com essa nomenclatura, pode-se dar duas linguagens como exemplo\cite{logicaResina}. Uma delas é a $ \mathcal{SHIF}^\mathcal{(D)} $, que engloba a $ \mathcal{ALC} $ e, ainda, hierarquia de papéis, propriedades inversas, transitivas e funcionais e tipos de dados.
+Com essa nomenclatura, pode-se dar duas linguagens como exemplo \citep{logicaResina}. Uma delas é a $ \mathcal{SHIF}^\mathcal{(D)} $, que engloba a $ \mathcal{ALC} $ e, ainda, hierarquia de papéis, propriedades inversas, transitivas e funcionais e tipos de dados.
 
 Uma outra é a lógica $ \mathcal{SHOIN}^\mathcal{(D)}$, que envolve a  $ \mathcal{SHIF}^\mathcal{(D)} $ e restrições de cardinalidade em papéis.
 
 \section{Interpretação e Consequência Lógica}
 
-Uma interpretação $ \mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}})$ consiste em um conjunto domínio ($ \Delta^{\mathcal{I}} $) e uma função de interpretação $ \cdot^{\mathcal{I}} $ que atribui a toda descrição de conceito um subconjunto de $ \Delta^{\mathcal{I}} $, seguindo as seguintes equações\cite{logicaHorrocks}:
+Uma interpretação $ \mathcal{I} = (\Delta^{\mathcal{I}}, \cdot^{\mathcal{I}})$ consiste em um conjunto domínio ($ \Delta^{\mathcal{I}} $) e uma função de interpretação $ \cdot^{\mathcal{I}} $ que atribui a toda descrição de conceito um subconjunto de $ \Delta^{\mathcal{I}} $, seguindo as seguintes equações \citep{logicaHorrocks}:
 
 \begin{itemize}
 	\item $ \top^\mathcal{I} = \Delta^\mathcal{I} $
@@ -198,7 +198,7 @@ Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau
 
 Para descobrir se uma fórmula é insatisfatível, basta aplicar essas regras na sentença lógica. Se, no final, um \textit{Clash} (choque) for alcançado, isto é, quando temos um conceito e sua negação na \textit{ABox}, a sentença é insatisfatível.
 
-Koubarakis \cite{logicaKoubarakis} deu um exemplo para aplicar essas regras:
+Segue abaixo um exemplo para aplicar essas regras \citep{logicaKoubarakis}:
 
 	\begin{figure}[H]
 		\centering

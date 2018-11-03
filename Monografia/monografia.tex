@@ -1,4 +1,4 @@
-\documentclass[12pt, a4paper]{report}
+\documentclass[12pt, a4paper]{book}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
 \usepackage[table]{xcolor}
 \usepackage[margin=2cm]{geometry}
@@ -16,6 +16,22 @@
 \usepackage{algpseudocode}
 \usepackage{inconsolata}
 \usepackage{mathpazo}
+\usepackage{setspace}
+\usepackage[all]{hypcap}                    % soluciona o problema com o hyperref e capitulos
+\usepackage[round,sort]{natbib} % citação bibliográfica textual(plainnat-ime.bst)
+\usepackage{emptypage}  % para não colocar número de página em página vazia
+\fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
+
+% ---------------------------------------------------------------------------- %
+% Cabeçalhos similares ao TAOCP de Donald E. Knuth
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{#1}}{}}
+\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{#1}}{}}
+\renewcommand{\headrulewidth}{0pt}
+
+% ---------------------------------------------------------------------------- %
 
 \newcommand\kcont{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
@@ -23,7 +39,19 @@
 \newlength{\tabcont}
 \setlength{\parskip}{0.05in}
 
+\urlstyle{same} 
+
 \begin{document}
+	
+	\frontmatter 
+	% cabeçalho para as páginas das seções anteriores ao capítulo 1 (frontmatter)
+	\fancyhead[RO]{{\footnotesize\rightmark}\hspace{2em}\thepage}
+	\setcounter{tocdepth}{2}
+	\fancyhead[LE]{\thepage\hspace{2em}\footnotesize{\leftmark}}
+	\fancyhead[RE,LO]{}
+	\fancyhead[RO]{{\footnotesize\rightmark}\hspace{2em}\thepage}
+	
+	\onehalfspacing  % espaçamento
 	
 	% ---------------------------------------------------------------------------- %
 	% CAPA
@@ -79,8 +107,17 @@
 	\end{center}
 	\pagebreak
 	
+	\pagenumbering{roman}     % começamos a numerar 
+	
 	\chapter*{Resumo}
 	\chapter*{Abstract}
+	
+	\tableofcontents    % imprime o sumário
+	
+	\mainmatter
+	
+	\fancyhead[RE,LO]{\thesection}
+	
 	\chapter{Introdução}
 	
 	\include{Capitulos/Ontologias/ontologias}
@@ -96,7 +133,10 @@
 	\chapter{Análise de desempenhos}
 	\chapter*{Agradecimentos}
 	
-	\bibliographystyle{siam}
-	\bibliography{monografia.bib}
+	% Bibliografia
+	\backmatter \singlespacing   % espaçamento simples
+	\bibliographystyle{plainnat-ime} % citação bibliográfica textual
+	\bibliography{monografia.bib}  % associado ao arquivo: 'bibliografia.bib'
+
 	 
 \end{document}

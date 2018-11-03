@@ -23,15 +23,15 @@ Como se pode ver, a nova informação entra em choque direto com a inferência r
 
 De uma forma geral, esse campo da Inteligência Artificial estuda qualquer alteração dos estados epistêmicos, desde a simples adição de algum novo conhecimento que não entra em conflito com o que já está na ontologia. Além disso, ele lida também com a remoção segura de alguma informação. Para que uma remoção seja considerada segura, é necessário apagar, além da informação propriamente dita, aquelas que a implicam. 
 
-O estado epistêmico de um agente nada mais é do que o conjunto de tudo aquilo em que ele acredita e como as suas crenças se relacionam num certo instante. Pode-se entender um estado epistêmico também como uma representação idealizada do estado cognitivo de um agente em determinado momento, como explicou Gärdenfors \cite{revisaoGardenfors}.
+O estado epistêmico de um agente nada mais é do que o conjunto de tudo aquilo em que ele acredita e como as suas crenças se relacionam num certo instante. Pode-se entender um estado epistêmico também como uma representação idealizada do estado cognitivo de um agente em determinado momento, como explicou Gärdenfors \citep{revisaoGardenfors}.
 
-Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que possivelmente entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima \cite{logicaResina}.
+Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que possivelmente entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima \citep{logicaResina}.
 
-O paradigma AGM, que será usado neste trabalho, recebe este nome por causa das iniciais dos autores do artigo considerado o pontapé inicial desta área de pesquisa \cite{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas de $ K $. 
+O paradigma AGM, que será usado neste trabalho, recebe este nome por causa das iniciais dos autores do artigo considerado o pontapé inicial desta área de pesquisa  \citep{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas de $ K $. 
 
-Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. Com $ K $ sendo logicamente fechado, se $ K \models \psi $, sendo $ \psi $ uma sentença qualquer, tem-se que $ \psi \in K $. Um sistema de crenças em equilíbrio epistêmico é chamado de base de crenças.  O uso de bases de crenças aumenta a eficiência do reparo \cite{revisaoHansson}.
+Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. Com $ K $ sendo logicamente fechado, se $ K \models \psi $, sendo $ \psi $ uma sentença qualquer, tem-se que $ \psi \in K $. Um sistema de crenças em equilíbrio epistêmico é chamado de base de crenças.  O uso de bases de crenças aumenta a eficiência do reparo  \citep{revisaoHansson}.
 
-As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz \cite{revisaoRibeiro}:
+As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz \citep{revisaoRibeiro}:
 
 \begin{description}
 	\item[Tarskianicidade] A lógica é monotônica (todas as consequências dedutíveis continuam assim mesmo após a adição de alguma sentença), idempotente e satisfaz inclusão;
@@ -56,7 +56,7 @@ Existem três tipo de tratamento, descritos abaixo:
 	\item $ \alpha $ é indeterminada. Deste modo, $ K $ não conhece a sentença $ \alpha $, assim, $ \lnot \alpha \notin K $ e $ \alpha \notin K $.
 \end{enumerate}
 
-Existem também algumas questões metodológicas que precisam ser resolvidas, ou pelo menos observadas antes de alguma Revisão de Crenças. Gärdenfors \cite{revisaoGardenfors2} definiu algumas delas.
+Existem também algumas questões metodológicas que precisam ser resolvidas, ou pelo menos observadas antes de alguma Revisão de Crenças. Gärdenfors definiu algumas delas  \citep{revisaoGardenfors2}.
 
 A primeira é em relação à representação das crenças na base de dados. Vale notar que, como definido no \autoref{chap:ontologias}, é necessário o uso de alguma linguagem formal de representação. A maioria das bases de dados trabalha com fatos e regras como formas primitivas de informação. O mecanismo escolhido para a Revisão deve levar em conta o formalismo escolhido para a representação.
 
@@ -68,7 +68,7 @@ Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-s
 
 \section{Operações clássicas de Revisão de Crenças}
 
-Existem três operações clássicas de Revisão de Crenças \cite{revisaoGardenfors3}. São elas a Expansão, a Revisão e a Contração. Apenas a expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
+Existem três operações clássicas de Revisão de Crenças \citep{revisaoGardenfors3}. São elas a Expansão, a Revisão e a Contração. Apenas a expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
 
 Para as definições que serão feitas será usada uma lógica $ L $, que é baseada na Lógica de Primeira Ordem. As variáveis, que são as sentenças lógicas, serão representadas pelo alfabeto grego. Os conjuntos de crenças, com letras latinas maiúsculas.
 
@@ -103,7 +103,7 @@ Os postulados de racionalidade que regem a Contração seguem abaixo, com uma su
 
 Os seis primeiros postulados são os chamados postulados básicos. Os últimos dois são os postulados suplementares.
 
-Ainda para a Contração existem dois construtores especiais definidos \cite{logicaMatos}, que serão discutidos à frente.
+Ainda para a Contração existem dois construtores especiais definidos, que serão discutidos à frente \citep{logicaMatos}.
 
 \subsection{Revisão}
 
@@ -124,10 +124,10 @@ Como na operação anterior, o conjunto anterior precisa se mostrar consistente.
 
 \subsection{Relações entre as operações}
 
-A Revisão e a Contração podem ser construídas uma em função da outra, como escreveu Gärdenfors \cite{revisaoGardenfors}. Isso pode ser alcançado por duas relações:
+A Revisão e a Contração podem ser construídas uma em função da outra, como escreveu Gärdenfors \citep{revisaoGardenfors}. Isso pode ser alcançado por duas relações:
 
 \begin{description}
-	\item[Identidade de Levi] $ K \ast \alpha = (K - \lnot \alpha) + \alpha $ \\ Ela mostra que a Revisão por uma fórmula $ \alpha $ resulta no mesmo conjunto que a Con\-tra\-ção por $ \lnot \alpha $ e consecutiva Expansão por $ \alpha $. Essa é a fórmula da Revisão interna. Foi proposta, em 1993 \cite{revisaoHansson2}, a fórmula da Revisão externa, que é $ K \ast \alpha = (K + \alpha) - \lnot \alpha $. Ela significa que primeiro o conhecimento é adicionado à base e, posteriormente, é removido o que o contradiz. Observando as duas fórmulas, pode-se notar que não importa a ordem das operações, desde que seja feita a Contração pela negação e a Expansão pela afirmação. De qualquer jeito, o resultado será o mesmo do que o da Revisão.
+	\item[Identidade de Levi] $ K \ast \alpha = (K - \lnot \alpha) + \alpha $ \\ Ela mostra que a Revisão por uma fórmula $ \alpha $ resulta no mesmo conjunto que a Con\-tra\-ção por $ \lnot \alpha $ e consecutiva Expansão por $ \alpha $. Essa é a fórmula da Revisão interna. Foi proposta, em 1993, a fórmula da Revisão externa, que é $ K \ast \alpha = (K + \alpha) - \lnot \alpha $ \citep{revisaoHansson2}. Ela significa que primeiro o conhecimento é adicionado à base e, posteriormente, é removido o que o contradiz. Observando as duas fórmulas, pode-se notar que não importa a ordem das operações, desde que seja feita a Contração pela negação e a Expansão pela afirmação. De qualquer jeito, o resultado será o mesmo do que o da Revisão.
 	\item[Identidade de Harper] $ K - \alpha = (K \ast \lnot \alpha) \cap K $ \\ A Contração por uma fórmula pode ser obtida pela intersecção entre o conjunto resultante após uma Revisão pela negação da fórmula e o conjunto inicial.
 \end{description}
 
@@ -139,7 +139,7 @@ Existem dois construtores especiais para a Contração. Esses construtores são 
 
 \subsubsection{Para Teorias}
 
-Essa construção quer atingir o critério da mudança mínima. Tal critério é atingido por meio da obtenção de conjuntos maximais onde a sentença $ \alpha $ não é consequência lógica. A operação fornecerá um resultado baseado em um conjunto de conjuntos maximais, chamado de conjunto-resíduo \cite{revisaoCobe}.
+Essa construção quer atingir o critério da mudança mínima. Tal critério é atingido por meio da obtenção de conjuntos maximais onde a sentença $ \alpha $ não é consequência lógica. A operação fornecerá um resultado baseado em um conjunto de conjuntos maximais, chamado de conjunto-resíduo \citep{revisaoCobe}.
 
 A \textbf{Contração \textit{Partial Meet}} para Teorias é definida da seguinte forma: 
 
@@ -167,7 +167,7 @@ onde $ -_{\gamma} $ é a operação chamada de Contração \textit{Partial Meet}
 
 \subsubsection{Para Bases de Crenças}
 
-A operação definida acima pode ser generalizada para bases de crenças. Segundo Hansson \cite{revisaoHansson2}, uma operação $ -_{\gamma} $ para uma base $ B $ é uma Contração \textit{Partial Meet} se e só se satisfaz os seguintes postulados:
+A operação definida acima pode ser generalizada para bases de crenças. Uma operação $ -_{\gamma} $ para uma base $ B $ é uma Contração \textit{Partial Meet} se e só se satisfaz os seguintes postulados \citep{revisaoHansson2}:
 
 \begin{description}
 	\item[Inclusão] $ B -_{\gamma} \alpha \subseteq B$ \\ A operação não permite que novas sentenças sejam adicionadas ao conjunto, resultando em um conjunto com o mesmo número de sentenças ou menos.
@@ -186,7 +186,7 @@ A operação definida acima pode ser generalizada para bases de crenças. Segund
 
 \subsubsection{Para Teorias}
 
-Assim como a Contração \textit{Partial Meet}, a \textit{Kernel} precisa de algumas definições para ser discutida. Ela encontra conjuntos minimais que implicam a informação $ \alpha $ que se deseja contrair, e então remove pelo menos um elemento de cada um desses conjuntos, para que $ \alpha $ deixe de pertencer ao (ou deixe de ser consequência lógica do) conjunto. \cite{revisaoCobe}. 
+Assim como a Contração \textit{Partial Meet}, a \textit{Kernel} precisa de algumas definições para ser discutida. Ela encontra conjuntos minimais que implicam a informação $ \alpha $ que se deseja contrair, e então remove pelo menos um elemento de cada um desses conjuntos, para que $ \alpha $ deixe de pertencer ao (ou deixe de ser consequência lógica do) conjunto \citep{revisaoCobe}. 
 
 Ela é definida da seguinte forma:
 
@@ -233,16 +233,16 @@ Assim como generalização feita para a Contração \textit{Partial Meet} de teo
 
 Uma contração \textit{partial meet} pode ser aplicada a uma base de crenças e não resultar no conjunto desejado. Se a aplicarmos no conjunto $ K = \{\alpha_1 \land \alpha_2 \land ... \land \alpha_n\} $, o resultado será $ K - \alpha_i = \varnothing $, por \textbf{inclusão}. Esse não é o resultado da mesma operação sob o conjunto $ K' = \{\alpha_1, \alpha_2, ..., \alpha_n\} $, embora Cn$(K)$ = Cn$(K')$.
 	
-O que pode ser feito para evitar esse tipo de resultado é substituir o postulado da inclusão por um mais fraco \cite{revisaoHansson3}:
+O que pode ser feito para evitar esse tipo de resultado é substituir o postulado da inclusão por um mais fraco \citep{revisaoHansson3}:
 
 \begin{description}
 	\item[Inclusão lógica] Cn$(K - \alpha) \subseteq $ Cn$(K)$ 
 \end{description}
 
-Com isso, a operação executada será chamada de pseudocontração \cite{revisaoHansson4}.
+Com isso, a operação executada será chamada de pseudocontração \citep{revisaoHansson4}.
 \subsection{Pseudocontração SRW}
 
-Uma proposta de pseudocontração foi proposta em 2015 \cite{revisaoSantos}. Ela utiliza um operador de consequência lógica Cn*, tarskiano. Tal operação é chamada de Pseudocontração SRW. 
+Uma proposta de pseudocontração foi proposta em 2015 \citep{revisaoSantos}. Ela utiliza um operador de consequência lógica Cn*, tarskiano. Tal operação é chamada de Pseudocontração SRW. 
 
 Ela é definida da seguinte forma:
 

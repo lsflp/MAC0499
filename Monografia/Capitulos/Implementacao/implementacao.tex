@@ -122,6 +122,48 @@ Para o cálculo do conjunto-\textit{kernel}, usado na contração \textit{Kernel
 
 \subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a revisão}
 
+O cálculo do conjunto-\textit{kernel} da Revisão \textit{Kernel} é feito a partir de uma construção feita em 2008 \citep{revisaoRibeiro2}. Assim como os outros, consiste em duas funções:
+
+\begin{description}
+	\item[\textsc{RevisionKernelBlackBox}] É uma função que recebe o resultado de uma outra operação: a Expansão. Não é importante, no início, se o conjunto de entrada é consistente. Seu funcionamento é semelhante com os \textsc{BlackBox} anteriores. Possui uma parte de expansão e outra de encolhimento. A única diferença aqui, é que em vez de verificar se $ B' \vdash \alpha $ ($ B' $ um conjunto inicialmente vazio), checa-se se $ B' $ é consistente/coerente. A função devolve um conjunto minimal inconsistente. O algoritmo segue abaixo: \\
+	\begin{algorithmic}
+		\Function{RevisionKernelBlackBox}{$ B + \alpha $}
+		\State $ B' \gets \varnothing $
+		\ForAll{$ \beta \in B + \alpha $}
+		\State $ B' \gets B' \cup \{\beta\} $
+		\If{$ B' $ é inconsistente/incoerente}
+		\State Pare
+		\EndIf
+		\EndFor
+		\ForAll{$ \epsilon \in B' $}
+		\If{$ B' \setminus \{\epsilon\} $ é inconsistente/incoerente}
+		\State $ B' \gets B' \setminus \{\epsilon\}  $
+		\EndIf
+		\EndFor
+		\State \Return $ B' $
+		\EndFunction
+	\end{algorithmic}
+	\item[\textsc{RevisionKernelSet}] Essa função também recebe o resultado da Expansão $ B + \alpha $. Diferentemente do conjunto resíduo, aqui a árvore é construída em profundidade. Como todos os algoritmos recursivos, possui um caso base e um geral. O caso base é quando o conjunto de entrada é consistente, e não há nada a ser feito. Para o caso geral, ela chama a função definida acima, e para todos os elementos do conjunto definido abaixo como $ S $, ele remove um dos elementos e tenta achar o conjunto de subconjuntos minimais inconsistentes para essa nova base. Seu código está abaixo: \\
+	\begin{algorithmic}
+		\Function{RevisionKernelSet}{$ B + \alpha $}
+		\If{$ B + \alpha $ é consistente/coerente}
+		\State \Return $ \varnothing $
+		\EndIf
+		\State $ S \gets $ \Call{RevisionKernelBlackBox}{$ B + \alpha $}
+		\State $ B' \gets B' \cup \{S\} $
+		\ForAll{$ s \in S $}
+		\State $ B' \gets B' \cup $ \Call{RevisionKernelSet}{$ B + \alpha \setminus \{\beta\} $}
+		\EndFor
+		\State \Return $ B' $
+		\EndFunction
+	\end{algorithmic}
+\end{description}
+
+
+
+
+
+
 \section{Exemplos da execução}
 
 São feitos aqui alguns exemplos simples para ilustrar a funcionalidade do \textit{plug-in}. Todos os exemplos estão relacionados à ontologia discutida neste trabalho.

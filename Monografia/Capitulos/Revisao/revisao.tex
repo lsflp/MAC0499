@@ -167,8 +167,8 @@ onde $ -_{\sigma} $ é a operação chamada de Contração \textit{Kernel}, $ \s
 	\item[Conjunto-\textit{Kernel}] Sendo $ K $ um conjunto que está contido na lógica $ L $ e $ \alpha \in L $, o conjunto-\textit{Kernel}, denotado por $ K \kcont \alpha $ é o conjunto de todos os subconjuntos minimais de $ K $ que implicam $ \alpha $. Formalmente, para quaisquer conjuntos $ I $ e $ J $, $ J $ pertence a $ K \kcont \alpha $ se e somente se:
 	\begin{itemize}
 		\item $ J \subseteq K $;
-		\item $ \alpha \in \text{Cn}(Y) $;
-		\item para todo $ I \subsetneq J $ vale que $ \alpha \notin \text{Cn}(I) $
+		\item $ \alpha \in \text{Cn}(J) $;
+		\item para todo $ I \subsetneq J $, vale que $ \alpha \notin \text{Cn}(I) $.
 	\end{itemize} 	
 	\item[Função de incisão] É uma função $ \sigma $, para um conjunto de crenças $ K $, que seleciona no mínimo uma fórmula de cada elemento de um conjunto-\textit{Kernel}, ou seja, para todo $ \alpha \in L $:
 	\begin{itemize}
@@ -210,7 +210,7 @@ A \textbf{Contração \textit{Partial Meet}} para Teorias é definida da seguint
 onde $ -_{\gamma} $ é a operação chamada de Contração \textit{Partial Meet}, $ \gamma $ é uma função de seleção, e $ \bot $ é a representação de um conjunto-resíduo, definidas abaixo:
 
 \begin{description}
-	\item[Conjunto-resíduo] Definido como $ T \bot \alpha $, onde $ T $ é um conjunto que está contido na lógica $ L $ e $ \alpha \in L $. Ele é o conjunto de todos os subconjuntos maximais de $ T $ que não implicam $ \alpha $. Formalmente, para quaisquer conjuntos $ R $ e $ S $, o conjunto $ S $ pertence a $ T \bot \alpha $ se e somente se:
+	\item[Conjunto-Resíduo] Definido como $ T \bot \alpha $, onde $ T $ é um conjunto que está contido na lógica $ L $ e $ \alpha \in L $. Ele é o conjunto de todos os subconjuntos maximais de $ T $ que não implicam $ \alpha $. Formalmente, para quaisquer conjuntos $ R $ e $ S $, o conjunto $ S $ pertence a $ T \bot \alpha $ se e somente se:
 	\begin{itemize}
 		\item $ S \subseteq T $;
 		\item $ \alpha \notin \text{Cn}(S) $;
@@ -269,18 +269,29 @@ Nota-se que o postulado do sucesso é o mesmo da contração \textit{Partial Mee
 A Revisão \textit{Kernel} tem aspectos em comum com a Contração \textit{Kernel}, como pode-se imaginar. Ela é definida da seguinte maneira, para um conjunto $ K $ e uma sentença $ \alpha $ (\citep{revisaoRibeiro2}):
 
 \begin{center}
-	$ K \ast \alpha = $ {\color{red} Perguntar pro Fillipe},
+	$ K \ast_\sigma \alpha = K \setminus \sigma (K \krev \alpha)$ ,
 \end{center}
+
+onde $ \ast_{\sigma} $ é a operação chamada de Revisão \textit{Kernel}, $ \sigma $ é uma função de incisão, e $ \krev $ é a representação de um conjunto-resíduo para a revisão, como definido abaixo:
+
+\begin{description}
+	\item[Conjunto-\textit{Kernel} para a revisão] Definido como $ K \krev \alpha $, onde K é um conjunto contido na lógica $ L $ e $ \alpha \in L $. Ele é o conjunto de todos os subconjuntos minimais de K que são inconsistentes com $ \alpha $. Formalmente, para quaisquer conjuntos $ I $ e $ J $, $ J $ pertence a $ K \krev \alpha $ se e somente se:
+	\begin{itemize}
+		\item $ J \subseteq K $;
+		\item $ \alpha \in \text{Cn}(J) $;
+		\item para todo $ I \subsetneq J $, vale que $ \alpha \notin \text{Cn}(I) $.
+	\end{itemize}  
+\end{description}
 
 Essa operação satisfaz os seguintes postulados:
 
 \begin{description}
-	\item[Inclusão] $ K \ast \alpha \subseteq K + \alpha $ \\
+	\item[Inclusão] $ K \ast_\sigma \alpha \subseteq K + \alpha $ \\
 	Se $ \alpha $ for consistente com $ K $, a Revisão será, na verdade, uma Expansão. Caso contrário, algumas sentenças. Esse postulado impede a adição de sentenças irrelevantes para o conjunto.
-	\item[Sucesso] $ \alpha \in K \ast \alpha $\\
+	\item[Sucesso] $ \alpha \in K \ast_\sigma \alpha $\\
 	Também chamado de sucesso forte, obriga que $ \alpha $ esteja no conjunto gerado pela operação.
-	\item[Consistência fraca] Se $ \alpha $ é consistente/coerente, então $ K \ast \alpha $ será consistente/coerente. Se uma base de conhecimento é inconsistente, então existe algum conceito nela que é necessariamente vazio. Essa noção é chamada de coerência.
-	\item[\textit{Core-retainment}] Se $ \beta \in K \setminus K \ast \alpha $, então existe $ K' \subseteq K \cup \{\alpha\} $ tal que $ K' $ é consistente/coerente e $ K' \cup \{\beta\}$ não é consistente/coerente.
-	\item[Pré-expansão] $ K + \alpha \ast \alpha = K \ast \alpha $ \\
+	\item[Consistência fraca] Se $ \alpha $ é consistente/coerente, então $ K \ast_\sigma \alpha $ será consistente/coerente. Se uma base de conhecimento é inconsistente, então existe algum conceito nela que é necessariamente vazio. Essa noção é chamada de coerência.
+	\item[\textit{Core-retainment}] Se $ \beta \in K \setminus K \ast_\sigma \alpha $, então existe $ K' \subseteq K \cup \{\alpha\} $ tal que $ K' $ é consistente/coerente e $ K' \cup \{\beta\}$ não é consistente/coerente.
+	\item[Pré-expansão] $ K + \alpha \ast_\sigma \alpha = K \ast_\sigma \alpha $ \\
 	A Revisão tem o mesmo resultado que uma Expansão e posterior Revisão pela mesma fórmula. 
 \end{description}

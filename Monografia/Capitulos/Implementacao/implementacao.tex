@@ -5,8 +5,8 @@ O \textit{plug-in} construído para este trabalho é, na verdade, uma reunião d
 
 \begin{description}
 	\item[Contração] O \textit{plug-in} possui os dois construtores descritos neste trabalho, a contração \textit{Partial Meet} e a \textit{Kernel}. Ambas foram baseadas em implementações de algoritmos feitas na tese de doutorado de Cóbe  \citep{revisaoCobe}.
-	\item[Revisão] Para essa operação, os códigos feitos por Resina para o seu trabalho de mestrado \citep{logicaResina} foram reconstruídos. 
 	\item[Pseudocontração SRW] Essa operação foi completamente absorvida ao \textit{plug-in} do código feito por Matos, em seu trabalho de conclusão de curso. \citep{logicaMatos}
+	\item[Revisão \textit{Kernel}] Para essa operação, os códigos feitos por Resina para o seu trabalho de mestrado \citep{logicaResina} foram reconstruídos. 
 \end{description} 
 
 Todo o código-fonte está disponível no \href{https://github.com/lsflp/ontology-repair/}{GitHub}, assim como os arquivos
@@ -22,11 +22,9 @@ Para as lógicas internas, são necessários a \textit{OWL API} 5.1.6 \footnote{
 
 \section{Algoritmo \textit{BlackBox}}
 
-A implementação das três operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina, onde tiveram suas corretudes provadas \citep{logicaResina}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma. Ele possui algumas variações, para o cálculo do conjunto-resíduo, do conjunto-\textit{kernel} para a contração e do conjunto-\textit{kernel} da revisão.
+A implementação das quatro operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina, onde tiveram suas corretudes provadas \citep{logicaResina}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma. Ele possui algumas variações, para o cálculo do conjunto-resíduo, do conjunto-\textit{kernel} para a contração e do conjunto-\textit{kernel} da revisão.
 
 Para efeitos de otimização, foi colocado um limite tanto nas filas utilizadas nos algoritmos abaixo quanto nos conjuntos que serão retornados. Tais limites podem ser definidos pelo usuário, opcionalmente.
-
-As funções de seleção e de incisão utilizadas têm sua implementação bem simplificada, devolvendo qualquer elemento (apenas um) do conjunto-resíduo ou do conjunto-\textit{kernel}. 
 
 \subsection{\textit{BlackBox} para o conjunto-resíduo}
 
@@ -159,10 +157,11 @@ O cálculo do conjunto-\textit{kernel} da Revisão \textit{Kernel} é feito a pa
 	\end{algorithmic}
 \end{description}
 
+\section{Funções de seleção e incisão}
 
+Duas das operações precisam de uma função de seleção $ \gamma $. A implementação é flexível, a partir de uma interface. A função que foi codificada aqui devolve apenas um elemento do conjunto-resíduo.
 
-
-
+As outras duas operações necessitam de uma função de incisão $ \sigma $. A implementação foi feita da mesma maneira, só que aqui existem dois métodos diferentes para essa função. O primeiro é parecida com a da função $ \gamma $, ou seja, devolve apenas um elemento do conjunto-\textit{kernel}. Já o segundo devolve a união dos elementos do conjunto-\textit{kernel}. Essa é a im\-ple\-men\-ta\-ção que vai no padrão do \textit{plug-in}.
 
 \section{Exemplos da execução}
 
@@ -191,7 +190,7 @@ Tudo isso implica que \texttt{markRonson} também é um \texttt{Cantor}, o que e
 A operação pode ser feita com o seguinte comando:
 
 \begin{small}
-	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -srw -i pessoa.owl \\ -o output.owl -f "markRonson Type: Cantor"}
+	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -srw -i pessoa.owl -o output.owl \\ -f "markRonson Type: Cantor"}
 \end{small}
 
 Depois da operação, temos que \texttt{Compositor} deixa de ser subclasse de \texttt{Cantor}, e então, \texttt{markRonson} não pertence mais à classe \texttt{Cantor}.
@@ -217,7 +216,7 @@ Para a contração \textit{Partial Meet}, o exemplo utilizado tem as classes \te
 	\caption{A estrutura da ontologia.}
 \end{figure}
 
-Como definido anteriormente, na verdade, \texttt{Cancao} e \texttt{HinoNacional} são classes na mesma hierarquia. A operação é realizada com o seguinte comando:
+Como definido anteriormente, na verdade, \texttt{Cancao} e \texttt{HinoNacional} são classes na mesma hierarquia, portanto, precisamos remover \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Cancao}. A operação é realizada com o seguinte comando:
 
 \begin{small}
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --relevance -i musica.owl \\ -o output.owl -f "HinoNacional SubClassOf Cancao"}
@@ -260,4 +259,34 @@ Com o comando abaixo, a operação é realizada.
 	\caption{O resultado da operação.}
 \end{figure}
 
-\subsection{Revisão}
+\subsection{Revisão \textit{Kernel}}
+
+O exemplo usado para a Revisão \textit{Kernel} será simples também. Sejam um fragmento da ontologia de música os seguintes axiomas.
+
+\begin{itemize}
+	\item \texttt{FunkAmericano} $ \sqsubseteq $ \texttt{Cancao}
+	\item \texttt{FunkBrasileiro} $ \sqsubseteq $ \texttt{FunkAmericano}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/r1.png}
+	\caption{A estrutura da ontologia.}
+\end{figure}
+
+No entanto, hoje já se classifica o Funk Brasileiro como distinto do Funk Americano. Logo, vamos adicionar à nossa base que os dois subgêneros são disjuntos.
+
+Com o comando abaixo, acontece a operação:
+
+\begin{small}
+	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -r -i funk.owl -o output.owl \\ -f "FunkBrasileiro DisjointWith FunkAmericano"}
+\end{small}
+
+O resultado é visto abaixo. Note que a propriedade de disjunção está no produto final.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{Capitulos/Implementacao/r2.png}
+	\includegraphics[width=0.45\textwidth]{Capitulos/Implementacao/r3.png}
+	\caption{O resultado da operação e a presença da disjunção, na classe \texttt{FunkAmericano}, respectivamente.}
+\end{figure}

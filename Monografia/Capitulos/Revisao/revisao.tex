@@ -3,7 +3,7 @@
 
 \lettrine{A}{} área de pesquisa que estuda as alterações em estados de crenças é conhecida como Revisão de Crenças. Na campo das ontologias, essa área trata o problema da inconsistência. Como escrito anteriormente, uma ontologia (ou um sistema de crenças) fica inconsistente quando alguma informação incompatível com as crenças estabelecidas até o momento é incorporada.
 
-Para entender os estudos dessa área, seja o seguinte exemplo do assunto da ontologia descrita neste trabalho, assumindo que ela possui os fragmentos de conhecimento abaixo em alguma linguagem formal de representação.
+Para entender os estudos dessa área, seja o seguinte exemplo do assunto da ontologia descrita neste trabalho, assumindo que ela possui os fragmentos de conhecimento abaixo em alguma linguagem formal de representação:
 
 \begin{enumerate}
 	\item \textit{Toda música estadunidense pertence ao subgênero \textit{Country}.}
@@ -68,7 +68,7 @@ Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-s
 
 \section{Operações clássicas de Revisão de Crenças}
 
-Existem três operações clássicas de Revisão de Crenças \citep{revisaoGardenfors3}. São elas a Expansão, a Revisão e a Contração. Apenas a expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
+Existem três operações clássicas de Revisão de Crenças \citep{revisaoGardenfors3}. São elas a Expansão, a Revisão e a Contração. Apenas a Expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
 
 Para as definições que serão feitas será usada uma lógica $ L $, que é baseada na Lógica de Primeira Ordem. As variáveis, que são as sentenças lógicas, serão representadas pelo alfabeto grego. Os conjuntos de crenças, com letras latinas maiúsculas.
 
@@ -82,7 +82,7 @@ A informação $ \alpha $ era indeterminada. Depois da operação de Expansão, 
 
 \subsection{Contração}
 
-Esta operação é o contrário da anterior. Em vez de uma nova informação ser adicionada à base de conhecimento, deseja-se que algum conhecimento seja removido. A operação é caracterizada por $ K - \alpha $. No entanto, as analogias com a Expansão acabam por aí.
+Esta operação é o contrário da anterior. Em vez de uma nova informação ser adicionada à base de conhecimento, deseja-se que algum conhecimento seja removido. A operação é caracterizada por $ K - \alpha $. No entanto, as referências à Expansão acabam por aí.
 
 Às vezes, retirar $ \alpha $ de $ K $ não é suficiente. Nesses casos, é necessário desistir de algumas crenças do conjunto. As sentenças que são abandonadas são aquelas que implicam $ \alpha $. O critério da mudança mínima deve ser aplicado aqui, removendo o mínimo de sentenças possível, ou as que possuem prioridade menor.
 
@@ -116,7 +116,7 @@ Como na operação anterior, o conjunto anterior precisa se mostrar consistente.
 	\item[Sucesso] $ \alpha \in \text{Cn}(K \ast \alpha) $ \\ A operação garante que o conjunto resultante contenha a nova informação.
 	\item[Inclusão] $ K \ast \alpha \subseteq K + \alpha $ \\ A Revisão não adiciona nada a mais do que a Expansão adicionaria no conjunto.
 	\item[Preservação] Se $ \lnot \alpha \notin K $, então $ K + \alpha \subseteq K \ast \alpha $ \\ Quando a fórmula por que se deseja realizar a Revisão não está no conjunto, é garantido que tudo que seria acrescentado na Expansão será adicionado na Revisão. Juntando esse postulado com o \textbf{Inclusão}, temos que, sendo a Revisão feita por uma fórmula logicamente consistente com $ K $, o mesmo resultado seria alcançado por uma Expansão, ou seja, $ K + \alpha = K \ast \alpha $. 
-	\item[Consistência] $ K \ast \alpha = L \leftrightarrow \lnot \alpha \in \text{Cn}(\varnothing)$ \\ A operação de Revisão gera um conjunto consistente, e vice-versa. Neste postulado, $ L $ representa um conjunto consistente qualquer.
+	\item[Consistência] $ K \ast \alpha = L $ se e somente se $ \lnot \alpha \in \text{Cn}(\varnothing)$ \\ A operação de Revisão gera um conjunto consistente, e vice-versa. Neste postulado, $ L $ representa um conjunto consistente qualquer.
 	\item[Equivalência] Se $ \text{Cn}(\alpha) = \text{Cn}(\beta) $, então, $ K \ast \alpha = K \ast \beta $ \\ Se duas fórmulas possuem consequências lógicas iguais (são logicamente equivalentes), a Revisão por uma terá o mesmo resultado do que a Revisão pela outra.
 	\item[Conjunção] $ K \ast (\alpha \land \beta) \subseteq (K \ast \alpha) + \beta $ \\ O resultado de revisar pela conjunção de duas fórmulas está contido naquele obtido pela Revisão por uma fórmula e posterior Expansão pela outra.
 	\item[Vacuidade] Se $ \lnot \beta \notin K \ast \alpha $ então, $ (K \ast \alpha) + \beta \subseteq K \ast (\alpha \land \beta) $ \\ Se a negação de $ \beta $ não pertence ao resultado da Revisão por $ \alpha $, então a Revisão por $ \alpha $ e posterior Expansão por $ \beta $ resulta em um conjunto que está contido no que é obtido pela Revisão pela conjunção dessas fórmulas. Unindo com \textbf{Conjunção}, se a Revisão $ K \ast \alpha $ for feita não resultando em $ \lnot \beta $, e então a Expansão por $ \beta $ for realizada, o mesmo resultado seria alcançado pela Revisão de $ K $ por $ (\alpha \land \beta) $, ou seja, $ (K \ast \alpha) + \beta = K \ast (\alpha \land \beta) $    
@@ -124,9 +124,18 @@ Como na operação anterior, o conjunto anterior precisa se mostrar consistente.
 
 Existe um construtor para a operação da Revisão, que será discutido mais à frente.
 
-\subsection{Pseudocontração}
+\subsection{Relações entre operações}
 
-Uma contração \textit{partial meet} pode ser aplicada a uma base de crenças e não resultar no conjunto desejado. Se a aplicarmos no conjunto $ K = \{\alpha_1 \land \alpha_2 \land ... \land \alpha_n\} $, o resultado será $ K - \alpha_i = \varnothing $, por \textbf{inclusão}. Esse não é o resultado da mesma operação sob o conjunto $ K' = \{\alpha_1, \alpha_2, ..., \alpha_n\} $, embora Cn$(K)$ = Cn$(K')$.
+A Revisão e a Contração podem ser construídas uma em função da outra, como escreveu Gärdenfors \citep{revisaoGardenfors}. Isso pode ser alcançado por duas relações:
+
+\begin{description}
+	\item[Identidade de Levi] $ K \ast \alpha = (K - \lnot \alpha) + \alpha $ \\ Ela mostra que a Revisão por uma fórmula $ \alpha $ resulta no mesmo conjunto que a Con\-tra\-ção por $ \lnot \alpha $ e consecutiva Expansão por $ \alpha $. Essa é a fórmula da \textbf{Revisão Interna}. Foi proposta, em 1993, a fórmula da \textbf{Revisão Externa}, que é $ K \ast \alpha = (K + \alpha) - \lnot \alpha $ \citep{revisaoHansson2}. Ela significa que primeiro o conhecimento é adicionado à base e, posteriormente, é removido o que o contradiz. Observando as duas fórmulas, pode-se notar que não importa a ordem das operações, desde que seja feita a Contração pela negação e a Expansão pela afirmação. De qualquer jeito, o resultado será o mesmo do que o da Revisão.
+	\item[Identidade de Harper] $ K - \alpha = (K \ast \lnot \alpha) \cap K $ \\ A Contração por uma fórmula pode ser obtida pela intersecção entre o conjunto resultante após uma Revisão pela negação da fórmula e o conjunto inicial.
+\end{description}
+
+\section{Pseudocontração}
+
+Além das operações básicas, outras foram desenvolvidas. Pode acontecer de uma contração não ser a melhor operação a ser aplicada numa base de crenças, por exemplo. Considere o conjunto $ K = \{\alpha_1 \land \alpha_2 \land ... \land \alpha_n\} $. A aplicação da contração resultará em $ K - \alpha_i = \varnothing $, por \textbf{Inclusão}. Esse não é o resultado da mesma operação sob o conjunto $ K' = \{\alpha_1, \alpha_2, ..., \alpha_n\} $, embora Cn$(K)$ = Cn$(K')$.
 
 O que pode ser feito para evitar esse tipo de resultado é substituir o postulado da inclusão por um mais fraco \citep{revisaoHansson3}:
 
@@ -134,20 +143,11 @@ O que pode ser feito para evitar esse tipo de resultado é substituir o postulad
 	\item[Inclusão lógica] Cn$(K - \alpha) \subseteq $ Cn$(K)$ 
 \end{description}
 
-Com isso, a operação executada será chamada de pseudocontração \citep{revisaoHansson4}. Para esta operação, existe um construtor que será descrito neste trabalho.
-
-\subsection{Relações entre operações}
-
-A Revisão e a Contração podem ser construídas uma em função da outra, como escreveu Gärdenfors \citep{revisaoGardenfors}. Isso pode ser alcançado por duas relações:
-
-\begin{description}
-	\item[Identidade de Levi] $ K \ast \alpha = (K - \lnot \alpha) + \alpha $ \\ Ela mostra que a Revisão por uma fórmula $ \alpha $ resulta no mesmo conjunto que a Con\-tra\-ção por $ \lnot \alpha $ e consecutiva Expansão por $ \alpha $. Essa é a fórmula da Revisão interna. Foi proposta, em 1993, a fórmula da Revisão externa, que é $ K \ast \alpha = (K + \alpha) - \lnot \alpha $ \citep{revisaoHansson2}. Ela significa que primeiro o conhecimento é adicionado à base e, posteriormente, é removido o que o contradiz. Observando as duas fórmulas, pode-se notar que não importa a ordem das operações, desde que seja feita a Contração pela negação e a Expansão pela afirmação. De qualquer jeito, o resultado será o mesmo do que o da Revisão.
-	\item[Identidade de Harper] $ K - \alpha = (K \ast \lnot \alpha) \cap K $ \\ A Contração por uma fórmula pode ser obtida pela intersecção entre o conjunto resultante após uma Revisão pela negação da fórmula e o conjunto inicial.
-\end{description}
+Com isso, a operação executada será chamada de Pseudocontração \citep{revisaoHansson4}. Para esta operação, existe um construtor que será descrito neste trabalho.
 
 \section{Construtores para as operações}
 
-Como mencionado anteriormente, existem alguns construtores para as operações. Para a expansão isso não é necessário, já que para essa operação, basta adicionar um axioma, sem se preocupar com a consistência. Esses construtores são espécies de funções, que tentam passar uma ''receita'' de como fazer essa operação. 
+Como mencionado anteriormente, existem alguns construtores para as operações. Para a Expansão isso não é necessário, já que para essa operação, basta adicionar um axioma, sem se preocupar com a consistência. Esses construtores são espécies de funções, que tentam passar uma ''receita'' de como fazer essa operação. 
 
 \subsection{Contração \textit{Kernel}}
 
@@ -184,8 +184,8 @@ Com isso, pode-se concluir que a função de incisão escolhe, dentre os subconj
 Existe uma generalização para Bases de Crenças para a Contração \textit{Kernel}. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração \textit{Kernel} se e somente se satisfaz os seguintes postulados:
 
 \begin{description}
-	\item[Inclusão] $ B -_{\sigma} \alpha \subseteq B$ \\ Semelhante ao da Contração \textit{Partial Meet}.
-	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(B -_{\sigma} \alpha) $ \\ Funciona como no construtor anterior.
+	\item[Inclusão] $ B -_{\sigma} \alpha \subseteq B$ \\ A operação não permite que novas sentenças sejam adicionadas ao conjunto, resultando em um conjunto com o mesmo número de sentenças ou menos.
+	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(B -_{\sigma} \alpha) $ \\ A não ser que $ \alpha $ seja uma tautologia, ela não será consequência do no conjunto resultante da operação.
 	\item[\textit{Core-retainment}] Se $ \beta \in B \setminus (B -_{\sigma} \alpha) $, então existe $ B' \text{ tal que } B' \subseteq B $, onde:
 	\begin{itemize}
 		\item $ \alpha \notin \text{Cn}(B') $
@@ -230,8 +230,8 @@ onde $ -_{\gamma} $ é a operação chamada de Contração \textit{Partial Meet}
 A operação definida acima pode ser generalizada para bases de crenças. Uma operação $ -_{\gamma} $ para uma base $ B $ é uma Contração \textit{Partial Meet} se e só se satisfaz os seguintes postulados \citep{revisaoHansson2}:
 
 \begin{description}
-	\item[Inclusão] $ B -_{\gamma} \alpha \subseteq B$ \\ A operação não permite que novas sentenças sejam adicionadas ao conjunto, resultando em um conjunto com o mesmo número de sentenças ou menos.
-	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(B -_{\gamma} \alpha) $ \\ A não ser que $ \alpha $ seja uma tautologia, ela não será consequência do no conjunto resultante da operação.
+	\item[Inclusão] $ B -_{\gamma} \alpha \subseteq B$ \\ Semelhante ao da Contração \textit{Kernel}.
+	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(B -_{\gamma} \alpha) $ \\ Funciona como no construtor anterior.
 	\item[Relevância] Se $ \beta \in B \setminus (B -_{\gamma} \alpha) $ então existe  $ B' $ tal que $B -_{\gamma} \alpha \subseteq B' \subseteq B $, onde:
 	\begin{itemize}
 		\item $ \alpha \notin \text{Cn}(B') $
@@ -241,6 +241,38 @@ A operação definida acima pode ser generalizada para bases de crenças. Uma op
 	\item[Uniformidade] Se, para todo $B' \subseteq B $, valer que $ \alpha \in \text{Cn}(B') $, se e somente se $ \beta \in \text{Cn}(B') $, então $ B -_{\gamma} \alpha = B -_{\gamma} \beta $ \\
 	Análogo ao da Contração \textit{Kernel}. 
 	
+\end{description}
+
+\subsection{Revisão \textit{Kernel}}
+
+A Revisão \textit{Kernel} tem aspectos em comum com a Contração \textit{Kernel}, como pode-se imaginar. Ela é definida da seguinte maneira, para um conjunto $ K $ e uma sentença $ \alpha $ \citep{revisaoRibeiro2}:
+
+\begin{center}
+	$ K \ast_\sigma \alpha = K \setminus \sigma (K \krev \alpha)$ ,
+\end{center}
+
+onde $ \ast_{\sigma} $ é a operação chamada de Revisão \textit{Kernel}, $ \sigma $ é uma função de incisão, e $ \krev $ é a representação de um conjunto-\textit{kernel} para a revisão, como definido abaixo:
+
+\begin{description}
+	\item[Conjunto-\textit{Kernel} para a revisão] Definido como $ K \krev \alpha $, onde K é um conjunto contido na lógica $ L $ e $ \alpha \in L $. Ele é o conjunto de todos os subconjuntos minimais de K que são inconsistentes com $ \alpha $. Formalmente, para quaisquer conjuntos $ I $ e $ J $, $ J $ pertence a $ K \krev \alpha $ se e somente se:
+	\begin{itemize}
+		\item $ J \subseteq K $;
+		\item $ \alpha \in \text{Cn}(J) $;
+		\item para todo $ I \subsetneq J $, vale que $ \alpha \notin \text{Cn}(I) $.
+	\end{itemize}  
+\end{description}
+
+Essa operação satisfaz os seguintes postulados:
+
+\begin{description}
+	\item[Inclusão] $ K \ast_\sigma \alpha \subseteq K + \alpha $ \\
+	Se $ \alpha $ for consistente com $ K $, a Revisão será, na verdade, uma Expansão. Caso contrário, algumas sentenças. Esse postulado impede a adição de sentenças irrelevantes para o conjunto.
+	\item[Sucesso] $ \alpha \in K \ast_\sigma \alpha $\\
+	Também chamado de sucesso forte, obriga que $ \alpha $ esteja no conjunto gerado pela operação.
+	\item[Consistência fraca] Se $ \alpha $ é consistente/coerente, então $ K \ast_\sigma \alpha $ será consistente/coerente. Se uma base de conhecimento é inconsistente, então existe algum conceito nela que é necessariamente vazio. Essa noção é chamada de \textbf{Coerência}.
+	\item[\textit{Core-retainment}] Se $ \beta \in K \setminus K \ast_\sigma \alpha $, então existe $ K' \subseteq K \cup \{\alpha\} $ tal que $ K' $ é consistente/coerente e $ K' \cup \{\beta\}$ não é consistente/coerente.
+	\item[Pré-expansão] $ K + \alpha \ast_\sigma \alpha = K \ast_\sigma \alpha $ \\
+	A Revisão tem o mesmo resultado que uma Expansão e posterior Revisão pela mesma fórmula. 
 \end{description}
 
 \subsection{Pseudocontração SRW}
@@ -262,36 +294,4 @@ onde $ -_{\gamma} $ é a operação chamada de Pseudocontração SRW, $ \gamma $
 	\item[Sucesso] Se $ \alpha \notin \text{Cn}(\varnothing) $, então $ \alpha \notin \text{Cn}(K - \alpha) $
 \end{description}
 
-Nota-se que o postulado do sucesso é o mesmo da contração \textit{Partial Meet}. Isso ocorre porque é necessário que a fórmula pseudocontraída não seja classicamente implicada pelo conjunto resultante da operação. Os demais postulados são versões enfraquecidas dos postulados da contração \textit{Partial Meet}.
-
-\subsection{Revisão \textit{Kernel}}
-
-A Revisão \textit{Kernel} tem aspectos em comum com a Contração \textit{Kernel}, como pode-se imaginar. Ela é definida da seguinte maneira, para um conjunto $ K $ e uma sentença $ \alpha $ (\citep{revisaoRibeiro2}):
-
-\begin{center}
-	$ K \ast_\sigma \alpha = K \setminus \sigma (K \krev \alpha)$ ,
-\end{center}
-
-onde $ \ast_{\sigma} $ é a operação chamada de Revisão \textit{Kernel}, $ \sigma $ é uma função de incisão, e $ \krev $ é a representação de um conjunto-resíduo para a revisão, como definido abaixo:
-
-\begin{description}
-	\item[Conjunto-\textit{Kernel} para a revisão] Definido como $ K \krev \alpha $, onde K é um conjunto contido na lógica $ L $ e $ \alpha \in L $. Ele é o conjunto de todos os subconjuntos minimais de K que são inconsistentes com $ \alpha $. Formalmente, para quaisquer conjuntos $ I $ e $ J $, $ J $ pertence a $ K \krev \alpha $ se e somente se:
-	\begin{itemize}
-		\item $ J \subseteq K $;
-		\item $ \alpha \in \text{Cn}(J) $;
-		\item para todo $ I \subsetneq J $, vale que $ \alpha \notin \text{Cn}(I) $.
-	\end{itemize}  
-\end{description}
-
-Essa operação satisfaz os seguintes postulados:
-
-\begin{description}
-	\item[Inclusão] $ K \ast_\sigma \alpha \subseteq K + \alpha $ \\
-	Se $ \alpha $ for consistente com $ K $, a Revisão será, na verdade, uma Expansão. Caso contrário, algumas sentenças. Esse postulado impede a adição de sentenças irrelevantes para o conjunto.
-	\item[Sucesso] $ \alpha \in K \ast_\sigma \alpha $\\
-	Também chamado de sucesso forte, obriga que $ \alpha $ esteja no conjunto gerado pela operação.
-	\item[Consistência fraca] Se $ \alpha $ é consistente/coerente, então $ K \ast_\sigma \alpha $ será consistente/coerente. Se uma base de conhecimento é inconsistente, então existe algum conceito nela que é necessariamente vazio. Essa noção é chamada de coerência.
-	\item[\textit{Core-retainment}] Se $ \beta \in K \setminus K \ast_\sigma \alpha $, então existe $ K' \subseteq K \cup \{\alpha\} $ tal que $ K' $ é consistente/coerente e $ K' \cup \{\beta\}$ não é consistente/coerente.
-	\item[Pré-expansão] $ K + \alpha \ast_\sigma \alpha = K \ast_\sigma \alpha $ \\
-	A Revisão tem o mesmo resultado que uma Expansão e posterior Revisão pela mesma fórmula. 
-\end{description}
+Nota-se que o postulado do sucesso é o mesmo da contração \textit{Partial Meet}. Isso ocorre porque é necessário que a fórmula pseudocontraída não seja classicamente implicada pelo conjunto resultante da operação. Os demais postulados são versões enfraquecidas dos postulados da Contração \textit{Partial Meet}.

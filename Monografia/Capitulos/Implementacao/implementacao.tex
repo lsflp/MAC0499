@@ -4,15 +4,15 @@
 O \textit{plug-in} construído para este trabalho é, na verdade, uma reunião de implementações realizadas em trabalhos anteriores. As operações cobertas pelo \textit{plug-in} e suas respectivas construções anteriores são:
 
 \begin{description}
-	\item[Contração] O \textit{plug-in} possui os dois construtores descritos neste trabalho, a contração \textit{Partial Meet} e a \textit{Kernel}. Ambas foram baseadas em implementações de algoritmos feitas na tese de doutorado de Cóbe  \citep{revisaoCobe}.
+	\item[Contração] O \textit{plug-in} possui os dois construtores descritos neste trabalho, as Contrações \textit{Partial Meet} e a \textit{Kernel}. Ambas foram baseadas em implementações de algoritmos feitas na tese de doutorado de Cóbe  \citep{revisaoCobe}.
+	\item[Revisão \textit{Kernel}] Para essa operação, os códigos feitos por Resina para o seu trabalho de mestrado \citep{logicaResina} foram reconstruídos, com o auxílio dos estudos de Ribeiro \citep{revisaoRibeiro2}. 
 	\item[Pseudocontração SRW] Essa operação foi completamente absorvida ao \textit{plug-in} do código feito por Matos, em seu trabalho de conclusão de curso. \citep{logicaMatos}
-	\item[Revisão \textit{Kernel}] Para essa operação, os códigos feitos por Resina para o seu trabalho de mestrado \citep{logicaResina} foram reconstruídos. 
 \end{description} 
 
 Todo o código-fonte está disponível no \href{https://github.com/lsflp/ontology-repair/}{GitHub}, assim como os arquivos
 compilados e instruções de compilação e execução.
 
-O programa consiste em uma interface com o usuário pelo terminal. Ele recebe os parâmetros pela linha de comando. A saída é um arquivo OWL com uma ontologia que pode ser aberto no Protégé. As informações de entrada e saída podem ser acessadas no \href{https://github.com/lsflp/ontology-repair/blob/master/README.md}{README} do projeto.
+O programa consiste em uma interface com o usuário pelo terminal. Ele recebe os parâmetros pela linha de comando. A saída é um arquivo OWL com uma ontologia que pode ser aberto no \textit{Protégé}. As informações de entrada e saída podem ser acessadas no \href{https://github.com/lsflp/ontology-repair/blob/master/README.md}{README} do projeto.
 
 \section{Desenvolvimento}
 
@@ -22,7 +22,7 @@ Para as lógicas internas, são necessários a \textit{OWL API} 5.1.6 \footnote{
 
 \section{Algoritmo \textit{BlackBox}}
 
-A implementação das quatro operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina, onde tiveram suas corretudes provadas \citep{logicaResina}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma. Ele possui algumas variações, para o cálculo do conjunto-resíduo, do conjunto-\textit{kernel} para a contração e do conjunto-\textit{kernel} da revisão.
+A implementação das quatro operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina, onde tiveram suas corretudes provadas \citep{logicaResina}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma, ou se a base é consistente. Ele possui algumas variações, para o cálculo do conjunto-resíduo para a Contração \textit{Partial Meet}, do conjunto-\textit{kernel} para a Contração \textit{Kernel} e do conjunto-\textit{kernel} da Revisão \textit{Kernel}.
 
 Para efeitos de otimização, foi colocado um limite tanto nas filas utilizadas nos algoritmos abaixo quanto nos conjuntos que serão retornados. Tais limites podem ser definidos pelo usuário, opcionalmente.
 
@@ -31,7 +31,7 @@ Para efeitos de otimização, foi colocado um limite tanto nas filas utilizadas 
 Para o cálculo do conjunto-resíduo, utilizado na contração \textit{Partial Meet} e na Pseudocontração SRW, foi utilizada a implementação adaptada por Matos da implementação original de Cóbe \citep{logicaMatos}. Ela consiste em duas funções:
 
 \begin{description}
-	\item[\textsc{RemainderBlackBox}] É uma função que recebe um conjunto de axiomas $ B $, uma sentença $ A $ e um conjunto de axiomas $ X $, tal que $ X \nvdash A $ e constrói um elemento do conjunto resíduo $ (B \bot A) $, que contém todos os elementos de $ X $. O conjunto devolvido $ X' $ é tal que $ X' \subseteq X \in B \bot A $. O método começa com $ X $  e acrescenta todos os axiomas de $ B $ que não façam o conjunto resultante implicar $ A $. De acordo como o laço principal é implementado, resultados diferentes podem ser alcançados. No entanto, isso não é um problema, porque a função que chama esta só pede um item do conjunto resíduo. O seu código segue abaixo: \\
+	\item[\textsc{RemainderBlackBox}] É uma função que recebe um conjunto de axiomas $ B $, uma sentença $ A $ e um conjunto de axiomas $ X $, tal que $ X \nvdash A $, e constrói um elemento do conjunto resíduo $ (B \bot A) $, que contém todos os elementos de $ X $. O conjunto devolvido $ X' $ é tal que $ X' \subseteq X \in B \bot A $. O método começa com $ X $  e acrescenta todos os axiomas de $ B $ que não façam o conjunto resultante implicar $ A $. De acordo como o laço principal é implementado, resultados diferentes podem ser alcançados. No entanto, isso não é um problema, porque a função que chama esta só pede um item do conjunto-resíduo. O seu código segue abaixo: \\
 	\begin{algorithmic}
 		\Function{RemainderBlackBox}{B, A, X}
 		\State $ X' \gets X$
@@ -159,76 +159,13 @@ O cálculo do conjunto-\textit{kernel} da Revisão \textit{Kernel} é feito a pa
 
 \section{Funções de seleção e incisão}
 
-Duas das operações precisam de uma função de seleção $ \gamma $. A implementação é flexível, a partir de uma interface. A função que foi codificada aqui devolve apenas um elemento do conjunto-resíduo.
+Duas das operações precisam de uma função de seleção $ \gamma $. A implementação é flexível, a partir de uma interface. A função que está codificada aqui, foi trazida de um trabalho anterior \citep{logicaMatos}, e devolve apenas um elemento do conjunto-resíduo.
 
-As outras duas operações necessitam de uma função de incisão $ \sigma $. A implementação foi feita da mesma maneira, só que aqui existem dois métodos diferentes para essa função. O primeiro é parecida com a da função $ \gamma $, ou seja, devolve apenas um elemento do conjunto-\textit{kernel}. Já o segundo devolve a união dos elementos do conjunto-\textit{kernel}. Essa é a im\-ple\-men\-ta\-ção que vai no padrão do \textit{plug-in}.
+As outras duas operações necessitam de uma função de incisão $ \sigma $. A implementação foi feita da mesma maneira, só que aqui existem dois métodos diferentes para essa função. O primeiro é parecida com a da função $ \gamma $, ou seja, devolve apenas um elemento do conjunto-\textit{kernel}. Já o segundo devolve a união dos elementos do conjunto-\textit{kernel}. Essa última é a im\-ple\-men\-ta\-ção que vai no padrão do \textit{plug-in}.
 
 \section{Exemplos da execução}
 
 São feitos aqui alguns exemplos simples para ilustrar a funcionalidade do \textit{plug-in}. Todos os exemplos estão relacionados à ontologia discutida neste trabalho.
-
-\subsection{Pseudocontração SRW}
-
-Para a Pseudocontração SRW, serão consideradas as classes \texttt{Cantor} e \texttt{Compositor} da ontologia musical, e o seguinte axioma: \texttt{Compositor} $ \sqsubseteq $ \texttt{Cantor}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw1.png}
-	\caption{A estrutura da ontologia.}
-\end{figure}
-
-Ela possui um indivíduo, \texttt{markRonson}, pertencente à classe \texttt{Compositor}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw2.png}
-	\caption{A instância da ontologia.}
-\end{figure}
-
-Tudo isso implica que \texttt{markRonson} também é um \texttt{Cantor}, o que está errado. 
-
-A operação pode ser feita com o seguinte comando:
-
-\begin{small}
-	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -srw -i pessoa.owl -o output.owl \\ -f "markRonson Type: Cantor"}
-\end{small}
-
-Depois da operação, temos que \texttt{Compositor} deixa de ser subclasse de \texttt{Cantor}, e então, \texttt{markRonson} não pertence mais à classe \texttt{Cantor}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw3.png}
-	\caption{O resultado da operação.}
-\end{figure}
-
-\subsection{Contração \textit{Partial Meet}}
-
-Para a contração \textit{Partial Meet}, o exemplo utilizado tem as classes \texttt{Musica}, \texttt{Cancao} e \texttt{HinoNacional}, e os seguintes axiomas: 
-
-\begin{itemize}
-	\item \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Cancao}
-	\item \texttt{Cancao} $ \sqsubseteq $ \texttt{Musica}
-\end{itemize}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/cpm1.png}
-	\caption{A estrutura da ontologia.}
-\end{figure}
-
-Como definido anteriormente, na verdade, \texttt{Cancao} e \texttt{HinoNacional} são classes na mesma hierarquia, portanto, precisamos remover \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Cancao}. A operação é realizada com o seguinte comando:
-
-\begin{small}
-	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --relevance -i musica.owl \\ -o output.owl -f "HinoNacional SubClassOf Cancao"}
-\end{small}
-
-Após a sua execução, acontece o desejado, mas aparentemente, esse não é o melhor resultado.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/cpm2.png}
-	\caption{O resultado da operação.}
-\end{figure}
 
 \subsection{Contração \textit{Kernel}}
 
@@ -256,6 +193,36 @@ Com o comando abaixo, a operação é realizada.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/ck2.png}
+	\caption{O resultado da operação.}
+\end{figure}
+
+
+\subsection{Contração \textit{Partial Meet}}
+
+Para a contração \textit{Partial Meet}, o exemplo utilizado tem as classes \texttt{Musica}, \texttt{Cancao} e \texttt{HinoNacional}, e os seguintes axiomas: 
+
+\begin{itemize}
+	\item \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Cancao}
+	\item \texttt{Cancao} $ \sqsubseteq $ \texttt{Musica}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/cpm1.png}
+	\caption{A estrutura da ontologia.}
+\end{figure}
+
+Como definido anteriormente, na verdade, \texttt{Cancao} e \texttt{HinoNacional} são classes na mesma hierarquia, portanto, precisamos remover \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Cancao}. A operação é realizada com o seguinte comando:
+
+\begin{small}
+	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --relevance -i musica.owl \\ -o output.owl -f "HinoNacional SubClassOf Cancao"}
+\end{small}
+
+Após a sua execução, acontece o desejado, mas aparentemente, esse não é o melhor resultado.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/cpm2.png}
 	\caption{O resultado da operação.}
 \end{figure}
 
@@ -289,4 +256,38 @@ O resultado é visto abaixo. Note que a propriedade de disjunção está no prod
 	\includegraphics[width=0.45\textwidth]{Capitulos/Implementacao/r2.png}
 	\includegraphics[width=0.45\textwidth]{Capitulos/Implementacao/r3.png}
 	\caption{O resultado da operação e a presença da disjunção, na classe \texttt{FunkAmericano}, respectivamente.}
+\end{figure}
+
+\subsection{Pseudocontração SRW}
+
+Para a Pseudocontração SRW, serão consideradas as classes \texttt{Cantor} e \texttt{Compositor} da ontologia musical, e o seguinte axioma: \texttt{Compositor} $ \sqsubseteq $ \texttt{Cantor}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw1.png}
+	\caption{A estrutura da ontologia.}
+\end{figure}
+
+Ela possui um indivíduo, \texttt{markRonson}, pertencente à classe \texttt{Compositor}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw2.png}
+	\caption{A instância da ontologia.}
+\end{figure}
+
+Tudo isso implica que \texttt{markRonson} também é um \texttt{Cantor}, o que está errado. 
+
+A operação pode ser feita com o seguinte comando:
+
+\begin{small}
+	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -srw -i pessoa.owl -o output.owl \\ -f "markRonson Type: Cantor"}
+\end{small}
+
+Depois da operação, temos que \texttt{Compositor} deixa de ser subclasse de \texttt{Cantor}, e então, \texttt{markRonson} não pertence mais à classe \texttt{Cantor}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw3.png}
+	\caption{O resultado da operação.}
 \end{figure}

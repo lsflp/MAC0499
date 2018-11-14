@@ -26,7 +26,7 @@ No entanto, é necessário certo cuidado com essa compreensão. Os conceitos, na
 
 \section{Conceitos, papéis e indivíduos}
 
-As LD possuem um jeito próprio de organizar o conhecimento. Elas usam três definições para retratar o que é desejado \citep{logicaMatos}. Cada uma delas é utilizada na construção de uma ontologia. São, a seguir:
+As LDs possuem um jeito próprio de organizar o conhecimento. Elas usam três definições para retratar o que é desejado \citep{logicaVan}. Cada uma delas é utilizada na construção de uma ontologia. São, a seguir:
 
 \begin{description}
 	\item[Conceitos] Também chamados de classes, representam um conjunto de indivíduos. Nas ontologias, são equivalentes às Classes.
@@ -42,9 +42,9 @@ A outra parte é a \textit{ABox}, e nela fica o conhecimento assertivo, ou seja,
 
 \section{$\mathcal{ALC}$ e outras linguagens}
 
-As pesquisas na área de Representação de Conhecimento levaram à confecção das chamadas Linguagens Terminológicas de Representação. Uma delas é a KL-ONE de Brachman, que possui uma semântica clara, além de separar o conhecimento assertivo e terminológico. %Citar o home
+As pesquisas na área de Representação de Conhecimento levaram à confecção das chamadas Linguagens Terminológicas de Representação. Uma delas é a KL-ONE de Brachman \cite{logicaBrachman}, que possui uma semântica clara, além de separar o conhecimento assertivo e terminológico.
 
-Tais estudos levaram ao desenvolvimento da $\mathcal{ALC}$. Essa linguagem, cuja sigla significa \textit{Attributive Concept Language with Complements}, é uma das Lógicas de Descrição mais básicas que existem, embora seja uma das mais utilizadas para as atividades que envolvem raciocínio lógico. 
+Tais estudos levaram ao desenvolvimento da $\mathcal{ALC}$ \cite{logicaSchmidt}. Essa linguagem, cuja sigla significa \textit{Attributive Concept Language with Complements}, é uma das Lógicas de Descrição mais básicas que existem, embora seja uma das mais utilizadas para as atividades que envolvem raciocínio lógico. 
 
 Ela contempla os seguintes construtores, para quaisquer conceitos \texttt{A} e \texttt{B} e qualquer papel \texttt{r}, como visto na Tabela \ref{tab:alc}.
 
@@ -106,9 +106,7 @@ A $ \mathcal{ALC} $ é base para outras linguagens mais expressivas, que são co
 	\item $ ^\mathcal{(D)} $: usa propriedades de tipo de dados.
 \end{itemize}
 
-Com essa nomenclatura, pode-se dar duas linguagens como exemplo \citep{logicaResina}. Uma delas é a $ \mathcal{SHIF}^\mathcal{(D)} $, que engloba a $ \mathcal{ALC} $ e, ainda, hierarquia de papéis, propriedades inversas, transitivas e funcionais e tipos de dados.
-
-Uma outra é a lógica $ \mathcal{SHOIN}^\mathcal{(D)}$, que envolve a  $ \mathcal{SHIF}^\mathcal{(D)} $ e restrições de cardinalidade em papéis.
+Um exemplo de linguagem com essa nomenclatura é a $ \mathcal{SHIF}^\mathcal{(D)} $, que engloba a $ \mathcal{ALC} $ e, ainda, hierarquia de papéis, propriedades inversas, transitivas e funcionais e tipos de dados. Outro exemplo é a lógica $ \mathcal{SHOIN}^\mathcal{(D)}$, que envolve a  $ \mathcal{SHIF}^\mathcal{(D)} $ e restrições de cardinalidade em papéis.
 
 \section{Interpretação e Consequência Lógica}
 
@@ -188,7 +186,7 @@ Usando a ontologia de música como exemplo, pode-se ver como essa tradução é 
 
 \section{Consistência}
 
-Após uma Base de Conhecimento ser feita, é necessário que ela seja consistente, ou seja, ela não pode se contradizer. A inconsistência acontece quando a inferência de um conceito e sua negação, ao mesmo tempo, é possível. 
+Após uma Base de Conhecimento ser criada, é necessário que ela seja consistente, ou seja, ela não pode se contradizer. A inconsistência acontece quando a inferência de uma asserção e sua negação, ao mesmo tempo, é possível (por exemplo, \texttt{A($ a $)} e $ \lnot $\texttt{A($ a $)}).
 
 Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau} para Lógicas de Descrição. Com elas, é possível determinar de maneira algorítmica a consistência de uma Base de Conhecimento. São elas:
 
@@ -199,7 +197,7 @@ Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau
 	\item[Regra \texttt{PARA TODO} (ou \textit{$ \forall $-rule})] Quando se $(\forall \texttt{r.A})(a)$ e \texttt{r}$ (a,b) $ estão em $ \mathcal{A} $, mas \texttt{A}$ (b) $ não está, esse último será colocado em $ \mathcal{A} $.  
 \end{description}
 
-Para descobrir se uma fórmula é insatisfatível, basta aplicar essas regras na sentença lógica. Se, no final, um \textit{Clash} (choque) for alcançado, isto é, quando temos um conceito e sua negação na \textit{ABox}, a sentença é insatisfatível.
+Para descobrir se uma fórmula é insatisfatível, basta aplicar essas regras na sentença lógica. Se, no final, um \textit{Clash} (conflito) for alcançado, isto é, quando temos uma asserção e sua negação na \textit{ABox}, a sentença é insatisfatível.
 
 Segue, na figura \ref{img:Tableau}, um exemplo para aplicar essas regras \citep{logicaKoubarakis}:
 

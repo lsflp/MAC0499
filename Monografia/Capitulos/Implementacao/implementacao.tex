@@ -169,7 +169,7 @@ São feitos aqui alguns exemplos simples para ilustrar a funcionalidade do \text
 
 \subsection{Contração \textit{Kernel}}
 
-Para a contração \textit{Kernel}, será usado um exemplo análogo. As classes estudadas aqui são \texttt{Cancao}, \texttt{Pop} e \texttt{SynthPop}. Os axiomas da ontologia são:
+Para a contração \textit{Kernel}, será usado um exemplo análogo. As classes estudadas aqui são \texttt{Cancao}, \texttt{Pop} e \texttt{SynthPop}. Os axiomas da ontologia são os listados abaixo, e sua representação está na Figura \ref{img:ck1}.
 
 \begin{itemize}
 	\item \texttt{SynthPop} $ \sqsubseteq $ \texttt{Pop}
@@ -181,10 +181,11 @@ Suponha que o subgênero \texttt{SynthPop} evoluiu e está distante do \texttt{P
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/ck1.png}
-	\caption{As classes da ontologia.}
+	\caption{As classes da ontologia de gêneros musicais.}
+	\label{img:ck1}
 \end{figure}
 
-Com o comando abaixo, a operação é realizada.
+Com o comando abaixo, a operação é realizada. O resultado está na Figura \ref{img:ck2}.
 
 \begin{small}
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --core-retainment -i cancao.owl \\ -o output.owl -f "SynthPop SubClassOf Pop"}
@@ -193,7 +194,8 @@ Com o comando abaixo, a operação é realizada.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/ck2.png}
-	\caption{O resultado da operação.}
+	\caption{O resultado da operação Contração \textit{Kernel}.}
+	\label{img:ck2}
 \end{figure}
 
 
@@ -206,10 +208,13 @@ Para a contração \textit{Partial Meet}, o exemplo utilizado tem as classes \te
 	\item \texttt{Cancao} $ \sqsubseteq $ \texttt{Musica}
 \end{itemize}
 
+Sua representação fica como na Figura \ref{img:cpm1}.
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/cpm1.png}
-	\caption{A estrutura da ontologia.}
+	\caption{A estrutura da ontologia de tipos de música.}
+	\label{img:cpm1}
 \end{figure}
 
 Como definido anteriormente, na verdade, \texttt{Cancao} e \texttt{HinoNacional} são classes na mesma hierarquia, portanto, precisamos remover \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Cancao}. A operação é realizada com o seguinte comando:
@@ -218,17 +223,18 @@ Como definido anteriormente, na verdade, \texttt{Cancao} e \texttt{HinoNacional}
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --relevance -i musica.owl \\ -o output.owl -f "HinoNacional SubClassOf Cancao"}
 \end{small}
 
-Após a sua execução, acontece o desejado, mas aparentemente, esse não é o melhor resultado.
+Após a sua execução, acontece o desejado, mas aparentemente, esse não é o melhor resultado, como pode ser visto na Figura \ref{img:cpm2}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/cpm2.png}
-	\caption{O resultado da operação.}
+	\caption{O resultado da operação Contração \textit{Partial Meet}.}
+	\label{img:cpm2}
 \end{figure}
 
 \subsection{Revisão \textit{Kernel}}
 
-O exemplo usado para a Revisão \textit{Kernel} será simples também. Sejam um fragmento da ontologia de música os seguintes axiomas.
+O exemplo usado para a Revisão \textit{Kernel} será simples também. Sejam um fragmento da ontologia de música os axiomas abaixo e representação como na Figura \ref{img:r1}.
 
 \begin{itemize}
 	\item \texttt{FunkAmericano} $ \sqsubseteq $ \texttt{Cancao}
@@ -238,7 +244,8 @@ O exemplo usado para a Revisão \textit{Kernel} será simples também. Sejam um 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/r1.png}
-	\caption{A estrutura da ontologia.}
+	\caption{A estrutura da outra ontologia de gêneros musicais.}
+	\label{img:r1}
 \end{figure}
 
 No entanto, hoje já se classifica o Funk Brasileiro como distinto do Funk Americano. Logo, vamos adicionar à nossa base que os dois subgêneros são disjuntos.
@@ -249,31 +256,34 @@ Com o comando abaixo, acontece a operação:
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -r -i funk.owl -o output.owl \\ -f "FunkBrasileiro DisjointWith FunkAmericano"}
 \end{small}
 
-O resultado é visto abaixo. Note que a propriedade de disjunção está no produto final.
+O resultado é visto abaixo. Note que a propriedade de disjunção está no produto final. Ambos os produtos podem ser observados na Figura \ref{img:r2}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.45\textwidth]{Capitulos/Implementacao/r2.png}
 	\includegraphics[width=0.45\textwidth]{Capitulos/Implementacao/r3.png}
-	\caption{O resultado da operação e a presença da disjunção, na classe \texttt{FunkAmericano}, respectivamente.}
+	\caption{O resultado da operação Revisão \textit{Kernel} e a presença da disjunção, na classe \texttt{FunkAmericano}, respectivamente.}
+	\label{img:r2}
 \end{figure}
 
 \subsection{Pseudocontração SRW}
 
-Para a Pseudocontração SRW, serão consideradas as classes \texttt{Cantor} e \texttt{Compositor} da ontologia musical, e o seguinte axioma: \texttt{Compositor} $ \sqsubseteq $ \texttt{Cantor}.
+Para a Pseudocontração SRW, serão consideradas as classes \texttt{Cantor} e \texttt{Compositor} da ontologia musical, e o seguinte axioma: \texttt{Compositor} $ \sqsubseteq $ \texttt{Cantor}, com a representação exibida na Figura \ref{img:srw1}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw1.png}
-	\caption{A estrutura da ontologia.}
+	\caption{A estrutura da ontologia sobre ocupações na área de música.}
+	\label{img:srw1}
 \end{figure}
 
-Ela possui um indivíduo, \texttt{markRonson}, pertencente à classe \texttt{Compositor}.
+Ela possui um indivíduo, \texttt{markRonson}, pertencente à classe \texttt{Compositor}, como se mostra na Figura \ref{img:srw2}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw2.png}
 	\caption{A instância da ontologia.}
+	\label{img:srw2}
 \end{figure}
 
 Tudo isso implica que \texttt{markRonson} também é um \texttt{Cantor}, o que está errado. 
@@ -284,10 +294,11 @@ A operação pode ser feita com o seguinte comando:
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -srw -i pessoa.owl -o output.owl \\ -f "markRonson Type: Cantor"}
 \end{small}
 
-Depois da operação, temos que \texttt{Compositor} deixa de ser subclasse de \texttt{Cantor}, e então, \texttt{markRonson} não pertence mais à classe \texttt{Cantor}.
+Depois da operação, temos que \texttt{Compositor} deixa de ser subclasse de \texttt{Cantor}, e então, \texttt{markRonson} não pertence mais à classe \texttt{Cantor}, como se observa na Figura \ref{img:srw3}.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Implementacao/srw3.png}
-	\caption{O resultado da operação.}
+	\caption{O resultado da operação Pseudocontração SRW.}
+	\label{img:srw3}
 \end{figure}

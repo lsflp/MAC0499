@@ -5,30 +5,15 @@
 
 Importado da Filosofia, esse conceito começa a ser trabalhado muito antes da época dos computadores. Aristóteles já estudava Ontologia em suas Categorias \citep{ontoDahlberg}. No entanto, apenas em 1606, com o livro \textit{Ogdoas Scholastica}, de Jacob Lorhard, foi que a palavra em si realmente surgiu. Esse termo ficou popular em 1729 com o livro \textit{Philosophia Prima: sive Ontologia}, de Christian Wolff, com a definição "\textit{Ontology or First Philosophy is the science of Being in general or as Being}" \footnote{"Ontologia ou Filosofia Primeira é a ciência do ser em real ou como um ser."}  \citep{ontoNickles}.
 
-Para a Ciência da Computação, a definição é um pouco diferente, embora possua muita semelhança com o conceito já explícito. Guarino definiu ontologia como "um artefato de engenharia, constituído por um vocabulário específico usado para descrever uma certa realidade, mais uma série de pressupostos explícitos acerca do significado que se atribui a esse vocabulário" \citep{ontoGuarino}. Logo, uma ontologia seria uma reunião de sentenças lógicas que exibem alguma informação sobre alguma área do mundo para resolver algum problema relacionado a ela.
+Para a Ciência da Computação, a definição é um pouco diferente, embora possua muita semelhança com o conceito já explícito. Guarino definiu ontologia como "um artefato de engenharia, constituído por um vocabulário específico usado para descrever uma certa realidade, mais uma série de pressupostos explícitos acerca do significado que se atribui a esse vocabulário" \citep{ontoGuarino}. Logo, uma ontologia é uma reunião de sentenças lógicas que exibem alguma informação sobre alguma área do mundo para resolver algum problema relacionado a ela.
 
-Fazendo um paralelo entre ambas as disciplinas, pode-se observar que, enquanto a primeira faz um estudo sistemático da existência, na segunda existe um foco maior em o que pode ser representado.
+Fazendo um paralelo entre ambas as disciplinas, pode-se observar que, enquanto a primeira faz um estudo sistemático da existência, na segunda existe um foco maior no que pode ser representado.
 
-As ontologias são estudadas na área de Inteligência Artificial, que está preocupada com a automação do comportamento inteligente. Na prática, elas funcionam como um sistema "\textit{tell and ask}". Algumas coisas são contadas para os agentes inteligentes (uma entidade autônoma com comportamento que simula inteligência), e então, perguntas podem ser feitas para eles, embora não precisem saber todas as respostas. 
+As ontologias são estudadas na área de Inteligência Artificial, que está preocupada com a automação do comportamento inteligente. Na prática, elas funcionam como um sistema ''\textit{tell and ask}'' \cite{ontoRussel}. Algumas coisas são contadas para os agentes inteligentes (uma entidade autônoma com comportamento que simula inteligência), e então, perguntas podem ser feitas para eles, embora não precisem saber todas as respostas. 
 
-Surgiram de um contexto onde os cientistas desejam modelar e representar o mundo para as máquinas, e isso ocorre desde a origem dos computadores. Como cada pessoa possui uma visão de mundo, cada modelagem será diferente de algum jeito. Por isso, a construção de ontologias é um tópico que merece estudo. Atualmente, esta área é bastante pesquisada por sua aplicação com Web Semântica. 
+Surgiram de um contexto onde os cientistas desejam modelar e representar o mundo para as máquinas, e isso ocorre desde a origem dos computadores. Como cada pessoa possui uma visão de mundo, cada modelagem será diferente de algum jeito. Por isso, a construção de ontologias é um tópico que merece estudo.
 
-As ontologias denotam uma "especificação explícita de uma conceitualização"  \citep{ontoGruber}, e, uma vez construídas, permitem comunicação, compartilhamento e reúso de conhecimentos. Elas interessam várias áreas do conhecimento, tais como a ciência da computação, filosofia, engenharia de dados, \textit{data science}, lógica e linguística.
-
-\section{Definições preliminares}
-
-Smith definiu alguns conceitos que nos auxiliam a compreender melhor o que é uma ontologia \citep{ontoSmith}.
-
-\begin{description}
-	\item[Representação] Seria uma ideia, uma imagem, um registro, ou uma descrição que se refere, ou é sobre, ou pretende referir a alguma entidade externa à representação.
-	\item[Representação Composta] É uma representação constituída de sub-representações como as suas partes, da mesma maneira em que os parágrafos são feitos de sentenças e as sentenças de palavras. A menor sub-representação se chama unidade representacional, que pode ser um ícone, um símbolo, um nome, entre outros.
-	\item[Representação Cognitiva] É uma representação cujas unidades representacionais são ideias, pensamentos ou crenças na mente de algum sujeito pensante.
-	\item[Artefato Representacional] É uma representação fixa em algum meio de modo que pode servir para fazer representações cognitivas que existem em mentes separados. Exemplos: um texto, um diagrama, um mapa, uma lista, entre outros.
-	\item[Porção de Realidade] Termo que compreende universais únicos e particulares e suas com\-bi\-na\-ções mais ou menos complexas.
-	\item[Domínio] É uma porção da realidade que forma o assunto de estudo de uma ciência ou tecnologia. Ex: Radiologia, História, Arqueologia, etc..
-	\item[Taxonomia] É um artefato representacional em um grafo na forma de árvore com os nós representando universais ou classes e as arestas sendo relações "\textit{is-a}" ou "\textit{part-of}", que serão tratadas mais adiante.
-	\item[Ontologia] É um artefato representacional que compreende uma taxonomia própria, cujas unidades representacionais são usadas para designar uma combinação de universais, classes definidas e relações entre eles.
-\end{description} 
+As ontologias denotam uma "especificação explícita de uma conceitualização"  \citep{ontoGruber}, e, uma vez construídas, permitem comunicação, compartilhamento e reúso de conhecimentos.
 
 \section{Conceitualização}
 	
@@ -38,36 +23,7 @@ Para Guarino e Giaretta, uma Conceitualização pode ser entendida como “uma e
 
 Pode-se inferir que uma Conceitualização é uma modelagem de parte de algum domínio do conhecimento. O domínio nada mais seria do que alguma disciplina, como a Geografia, Música, Enologia, entre outros. Tal modelagem é feita a partir de alguma linguagem formal de representação (em geral, Lógicas de Descrição) e deve levar em conta a generalidade que se aplica ao domínio escolhido.
 
-Vale lembrar que, embora sejam amplamente utilizadas na vida real, as linguagens naturais não são consideradas linguagens formais. Isso tem uma explicação simples. Basta lembrar das figuras de linguagem, como a metáfora e o eufemismo, amplamente usadas nos discursos escrito e falado. 
-
-Debruyne fez um estudo mais sistemático sobre o que seria uma Con\-cei\-tu\-a\-li\-za\-ção \citep{ontoDebruyne}. Tal estudo foi baseado na pesquisa de Guarino \citep{ontoGuarino}. Para facilitar o entendimento das definições que virão a seguir, é necessário entender dois conceitos vindos da Filosofia:
-
-\begin{description}
-	\item[Contexto Intensional] Ocorre quando um termo não pode ser substituído sem que a verdade sobre a sentença seja ameaçada. Por exemplo, embora saibamos que Clark Kent é o Super-Homem e também é um jornalista, a sentença a seguir é falsa, pois o Super-Homem não é um jornalista:
-	\begin{itemize}
-		\item Lois Lane acredita que o Super-Homem irá investigar uma notícia com ela. 
-	\end{itemize}
-	\item[Contexto Extensional] Se refere à extensão de um termo, que é o conjunto de objetos que ele denota. Um contexto é extensional se alguma expressão $ e $ aparece e pode ser substituída por uma expressão $ e' $ com a mesma extensão mantendo o seu valor verdadeiro. Por exemplo: 
-	% e'
-	\begin{itemize}
-		\item Violão é um instrumento musical.
-		\item Piano é um instrumento musical.
-	\end{itemize}
-	Acima, temos que \textit{instrumento musical} é uma extensão de \textit{Violão} e de \textit{Piano}.	
-\end{description}
-
-Feito este esclarecimento, seguem as definições de Guarino.
-
-\begin{description}
-	\item[Noção Extensional de Conceitualização] É um par $(D,R)$, onde $D$ é um domínio e $R$ são as relações relevantes que existem nesse domínio.
-	\item[Espaço Domínio] Um par $(D,W)$, com $ D $ representando um domínio e $ W $ sendo os mundos possíveis dentro dele, ou seja, os conjuntos máximos de estados das coisas desse domínio.
-	\item[Relação Conceitual] Dado um espaço domínio $ (D,W) $, uma relação conceitual $ \rho^n $ de aridade $ n $ em $ (D,W) $ é definida como uma função total $ \rho^n : W \to 2^{D^n}$ de $ W $ para o conjunto de todas as relações $ n $-árias em $ D $.
-	\item[Noção Intensional de Conceitualização] Uma Conceitualização para $ D $ é definida como uma tripla ordenada $ C=(D,W,R) $, onde $ R $ é um conjunto de relações conceituais do espaço domínio $ (D,R) $. \\ \\
-	Definindo uma Linguagem Lógica $ L $ com um Vocabulário $ V $, teremos:
-	\item[Interpretação Extensional de uma Linguagem] Um modelo para $ L $ é definido como uma estrutura $ (S,I) $, onde $ S=(D,R) $ é uma estrutura de mundo e $ I : V \to D \cup R $ é uma função de interpretação atribuindo elementos de D para símbolos constantes de $ V $ e elementos de $ R $ para símbolos predicados de $ V $.
-	\item[Interpretação Intensional de uma Linguagem] Por meio de uma estrutura $ (C, I) $, onde $ C $ é uma Conceitualização como definido no item 3, e $ I $ é uma função de interpretação como definido no item acima, teremos que uma interpretação intensional é um compromisso ontológico $ K $ para $ L $. 
-	\item[Conjunto de modelos pretendidos de uma linguagem de acordo com um compromisso] \hfill \\ O conjunto $ I_K(L) $ de todos os modelos pretendidos de uma linguagem $ L $ que são compatíveis com um compromisso $ K = (C,I) $ são todos os modelos de $ L $ que são compatíveis com $ K $. O compromisso garante consistência.
-\end{description}
+Vale lembrar que, embora sejam amplamente utilizadas na vida real, as linguagens naturais (como a língua portuguesa e a lingua inglesa) não são consideradas linguagens formais. Isso tem uma explicação simples. Basta lembrar das figuras de linguagem, como a metáfora e o eufemismo, amplamente usadas nos discursos escrito e falado. 
 
 \section{Construindo uma ontologia}
 
@@ -79,14 +35,14 @@ Gruber fez uma proposta de critérios de \textit{design} para ontologias com o o
 
 \begin{description}
 	\item[Clareza] Uma ontologia deve ter uma linguagem clara e efetiva na definição de seus termos. Tal definição deve ser objetiva. Embora ela possa vir de situações sociais ou requisitos computacionais, ela deve ser independente destes contextos. Usar uma linguagem lógica, é um meio para este fim, ou seja, quando for possível fazer uma definição usando axiomas lógicos, isso deve ser feito. Onde possível, uma definição completa (com condições necessárias e suficientes) é preferível a uma definição parcial (com condições necessárias ou suficientes). Todas devem ser documentadas usando linguagem natural.
-	\item[Coerência] Uma ontologia deve permitir inferências consistentes com suas definições. No mínimo, os axiomas usados nas definições devem ser logicamente consistentes. A coerência também deve ser aplicada aos conceitos informais, definidos na linguagem natural da documentação e nos exemplos. Se uma sentença que pode ser inferida contradiz uma definição ou exemplo dado informalmente, a ontologia é incoerente.
+	\item[Coesão] Uma ontologia deve permitir inferências consistentes com suas definições. No mínimo, os axiomas usados nas definições devem ser logicamente consistentes. A coerência também deve ser aplicada aos conceitos informais, definidos na linguagem natural da documentação e nos exemplos. Se uma sentença que pode ser inferida contradiz uma definição ou exemplo dado informalmente, a ontologia não é coesa.
 	\item[Estendibilidade] Uma ontologia deve ser projetada para ser capaz de antecipar o uso de conhecimento compartilhado. Ela deve oferecer uma fundação conceitual de modo que o novo conhecimento possa ser apoiado nela e que a ontologia possa ser estendida e especializada, ou seja, novos termos podem ser definidos usando o vocabulário existente, de modo que a revisão das crenças do conhecimento anterior possa ser evitada ao máximo.
 	\item[Viés mínimo de codificação] A Conceitualização deve ser especificada num nível de conhecimento que não dependa de uma codificação que utiliza um nível de símbolos particulares. Um viés de codificação ocorre quando as escolhas de representação são feitas por pura conveniência de notação ou de implementação. Como agentes de conhecimento podem ser implementados em diferentes sistemas e estilos de representação, isso deve ser minimizado.
 	\item[Compromisso ontológico mínimo] Isso faz com que ela suporte as atividades de compartilhamento de conhecimento desejadas. Quanto menos suposições sobre o mundo modelado, melhor. Isso permite que as partes comprometidas com a ontologia sejam livres para especializar e instanciar a ontologia o quanto quiserem. Já que isso é baseado no uso consistente do vocabulário, ele pode ser minimizado usando uma teoria fraca (genérica) e definindo apenas os conceitos necessários para a comunicação do conhecimento consistente com esta teoria.
 \end{description}
 
-É possível notar que todos esses critérios não poderão ser atendidos ao mesmo tempo, portanto, alguns \textit{trade-offs} deverão ser feitos.
-Podemos ter um conflito, por exemplo, entre os critérios 1 e 3, já que o máximo de clareza implica que as definições terão a sua interpretação restrita.
+É possível notar que todos esses critérios poderão não ser atendidos ao mesmo tempo, portanto, alguns \textit{trade-offs} deverão ser feitos.
+Podemos ter um conflito, por exemplo, entre os critérios \textbf{Clareza} e \textbf{Estendibilidade}, já que o máximo de clareza implica que as definições terão a sua interpretação restrita.
 
 \subsection{Componentes de uma ontologia}
 
@@ -95,23 +51,21 @@ Computacionalmente falando, as ontologias possuem cinco partes. Para ilustrá-la
 \begin{description}
 	\item[Classes] Descrevem os conceitos de um certo domínio do discurso. São o foco das ontologias. São uma coleção de todos os particulares aos quais é possível aplicar um termo geral. Por exemplo: a classe \texttt{Cantor}.
 	\item[Propriedades] São atributos que descrevem características do conceito a que uma classe se refere. Em nosso exemplo, a classe \texttt{Cantor} possui as propriedades \texttt{Nome}, \\ \texttt{RitmoPredominante} e \texttt{Idade}.
-	\item[Relações] Ontologias são constituídas de relações hierárquicas. Por exemplo \texttt{Cantor} $ \to $ \texttt{Pessoa}. A hierarquia de classes representa uma relação “\textit{is-a}” \citep{ontoFranca}. Tais relações são transitivas. Existem também as relações "\textit{part-of}", que já estão dentro da Teoria dos Conjuntos. Uma classe é parte da outra se a compõe.
-	\item[Restrições] São os tipos das propriedades, por exemplo: enquanto para \texttt{Nome} e \\ \texttt{RitmoPredominante} uma \textit{string} seja suficiente, para a Idade, um inteiro já está de bom tamanho.
-	\item[Instância] é um indivíduo (por exemplo, \texttt{MariahCarey}), de um conjunto universal (cantores, músicos, pessoas). Vale lembrar que uma instância não é uma subclasse.
+	\item[Relações] Ontologias são constituídas de relações hierárquicas. Por exemplo \texttt{Cantor} $ \to $ \texttt{Pes\-so\-a}. A hierarquia de classes representa uma relação “\textit{is-a}” \citep{ontoFranca}. Tais relações são transitivas. Existem outras relações, como \texttt{Cantor canta Musica} e \texttt{Compositor compoe Musica}.
+	\item[Restrições] São os tipos das propriedades, por exemplo: enquanto para \texttt{Nome} e \\ \texttt{RitmoPredominante} uma \textit{string} seja suficiente, para a Idade, um inteiro já está de bom tamanho. Além disso, as restrições podem ser referentes às classes. Exemplo: a releção \texttt{canta} tem domínio \texttt{Cantor.}
+	\item[Instância] é um indivíduo (por exemplo, \texttt{MariahCarey}), de uma classe (como \texttt{Cantor}, \texttt{Com\-po\-si\-tor} ou \texttt{Pessoa}). Vale lembrar que uma instância não é uma subclasse.
 \end{description}
 
-Como já vimos acima, uma classe pode ter nomes diferentes, pois não é ele que define uma classe. Sinônimos e palavras em línguas distintas não representam classes diferentes.
+Uma classe pode ter nomes diferentes em certo idiomas (por exemplo, \texttt{Cantor} e \texttt{Singer} seriam a mesma classe). Isso não é um problema pois não é o nome que define uma classe. Sinônimos e palavras em línguas distintas não representam classes diferentes.
 
-Várias classes subordinadas a uma superclasse são consideradas irmãs. Elas devem ter o mesmo nível de generalidade. Por exemplo, seja uma classe \texttt{Musica}. Suas subclasses podem ser \texttt{Cancao} e \texttt{MusicaAmericana}, e não \texttt{Cancao}, \texttt{MusicaAmericana} e \texttt{MusicaBrasileira} (a última é subclasse da penúltima).
-
-Os conceitos definidos até aqui mostram um jeito de caracterizar ontologias, que é pelo número de termos que ela possui. Uma outra métrica é o número de axiomas lógicos que ela possui. 
+Várias classes subordinadas a uma superclasse são consideradas irmãs. Elas devem ter o mesmo nível de generalidade. Por exemplo, seja uma classe \texttt{Musica}. Suas subclasses podem ser \texttt{Cancao}, \texttt{MusicaArgentina} e \texttt{MusicaBrasileira}. Tais classes são irmãs.
 
 Existem três processos para definir as classes e a hierarquia, a seguir:
 
 \begin{description}
-	\item[\textit{Top-down}] Vai das classes mais genéricas para as mais específicas. Um exemplo seria criar os ritmos gerais e depois aprofundar para os regionais.
-	\item[\textit{Bottom-up}] Vai das classes mais específicas para as mais genéricas, agrupando as específicas já criadas. Na ontologia estudada aqui, seria possível começar dos ritmos regionais e depois agrupá-los por suas semelhanças.
-	\item[Vai-e-Vem] Define conceitos simples para generalizá-los e especificá-los. Seria uma com\-bi\-na\-ção dos dois primeiros itens.
+	\item[\textit{Top-down}] Vai das classes mais genéricas para as mais específicas. Um exemplo seria criar as classes \texttt{Musica}, \texttt{Pessoa}, entre outras.
+	\item[\textit{Bottom-up}] Vai das classes mais específicas para as mais genéricas, agrupando as específicas já criadas. Na ontologia estudada aqui, é possível começar das músicas já conhecidas para então separá-las por ritmos.
+	\item[Vai-e-Vem] Define conceitos simples para generalizá-los e especificá-los. É uma com\-bi\-na\-ção dos dois primeiros itens.
 \end{description}
 
 \subsection{Montando a ontologia}
@@ -134,11 +88,9 @@ Teoricamente, o processo nunca acaba. Na prática, ele é interrompido quando a 
 
 Ainda em relação às classes, algumas observações podem ser feitas. A primeira é em relação à herança múltipla. Ela acontece quando uma classe é subclasse de várias outras classes, por exemplo, a classe \texttt{PopBrasileiro}, pode pertencer à classe \texttt{Pop} e à classe \texttt{MusicaBrasileira}. Isso é aceitável, pois no mundo real, acontece várias vezes e de diversas maneiras.
 
-Outro aspecto interessante é o de Classe Abstrata. Uma classe desse tipo não pode ter instâncias diretas. Em nossa ontologia, podemos ter classes de músicas regionais. A classe \texttt{Musica} pode ter varias subclasses, tais como \texttt{MusicaArgentina} e \texttt{MusicaBrasileira}, entre outras. Note que essas classes são abstratas, pois no mundo real, não existe mais de um tipo de Música Brasileira, como o conjunto de ritmos definido pelo senso comum, que possa pertencer ao conceito \texttt{MusicaBrasileira}.
+As ontologias podem representar classes disjuntas. Classes disjuntas são aquelas que não possuem uma intersecção. Em nossa ontologia, \texttt{Cantor} e \texttt{Compositor} não são disjuntas. No entanto, \texttt{Cancao} e \texttt{HinoNacional} são classes disjuntas.
 
-As ontologias possuem suporte a classes disjuntas. Classes disjuntas são aquelas que não possuem uma intersecção. Em nossa ontologia, \texttt{Cantor} e \texttt{Compositor} não são disjuntas. No entanto, \texttt{Cancao} e \texttt{HinoNacional} são classes disjuntas.
-
-Para os nomes das classes, não há uma convenção específica, só há um consenso de manter um padrão de nomenclatura é algo bom. Para fazer isso, pode-se usar \texttt{snake\textunderscore case}, \texttt{camelCase} ou usar espaços na grafia. Além disso, deve-se prestar atenção se o nome de uma classe possui o nome de sua superclasse ou não.
+Para os nomes das classes, não há uma convenção específica, só há um consenso de que manter um padrão de nomenclatura é algo bom. Para fazer isso, pode-se usar \texttt{snake\textunderscore case}, \texttt{camelCase} ou usar espaços na grafia.
 
 Uma ontologia não precisa ter toda a informação existente sobre o domínio. Não é necessário especializar ou generalizar mais do que seja necessário para a aplicação. Além disso, as classes não precisam ter todas as propriedades possíveis e nem carregar todas as distinções que estão no mundo. Isso significa que a ontologia deve ser o modelo mais simples para o problema que se deseja resolver.
 
@@ -146,11 +98,9 @@ Algumas relações podem ter uma inversa, assim como ocorre com funções matem�
 
 \section{Usabilidade de uma ontologia}
 
-A criação de uma ontologia é feita por uma equipe interdisciplinar, geralmente composta por \textit{experts} da área que se deseja cobrir e técnicos para a confecção de ontologias (vindos da área de Computação). Isso não limita a equipe de possuir profissionais de mais áreas. Uma ontologia é feita para que qualquer pessoa possa acessar suas informações.
+A criação de uma ontologia é feita por uma equipe interdisciplinar, geralmente composta por \textit{experts} da área que se deseja cobrir e técnicos para a confecção de ontologias (vindos da área de Computação). Isso não impede a equipe de possuir profissionais de mais áreas. Uma ontologia é feita para que qualquer pessoa possa acessar suas informações.
 
-É possível achar os usuários de uma ontologia, mas nem sempre o seu autor. O razoável é assumir que elas foram evoluindo com o passar do tempo. 
-
-Ontologias feitas sobre áreas de estudo (por exemplo, a Aviação) serão muito mais úteis do que aquelas feitas sobre acontecimentos (como a queda do voo TAM 3054). A existência dessa última nem faz sentido, já que as ontologias servem para modelar casos gerais, não particulares. Seria melhor, por exemplo, construir uma ontologia sobre acidentes de avião e seus conceitos.
+Ontologias feitas sobre áreas de estudo (por exemplo, a Aviação) são muito mais úteis do que aquelas feitas sobre acontecimentos (como a queda do voo TAM 3054). A existência dessa última nem faz sentido, já que as ontologias servem para modelar casos gerais, não particulares. É melhor, por exemplo, construir uma ontologia sobre acidentes de avião e seus conceitos.
 
 \section{Problemas relacionados}
 

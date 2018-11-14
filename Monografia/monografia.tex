@@ -17,9 +17,9 @@
 \usepackage{inconsolata}
 \usepackage{mathpazo}
 \usepackage{setspace}
-\usepackage[all]{hypcap}                    % soluciona o problema com o hyperref e capitulos
-\usepackage[round,sort]{natbib} % citação bibliográfica textual(plainnat-ime.bst)
-\usepackage{emptypage}  % para não colocar número de página em página vazia
+\usepackage[all]{hypcap}
+\usepackage[round,sort]{natbib}
+\usepackage{emptypage}
 \fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
 
 % ---------------------------------------------------------------------------- %
@@ -46,7 +46,8 @@
 \begin{document}
 	
 	\frontmatter 
-	% cabeçalho para as páginas das seções anteriores ao capítulo 1 (frontmatter)
+	
+	% Cabeçalho para as páginas das seções anteriores ao capítulo 1 (frontmatter)
 	\fancyhead[RO]{{\footnotesize\rightmark}\hspace{2em}\thepage}
 	\setcounter{tocdepth}{2}
 	\fancyhead[LE]{\thepage\hspace{2em}\footnotesize{\leftmark}}
@@ -56,7 +57,7 @@
 	\onehalfspacing  % espaçamento
 	
 	% ---------------------------------------------------------------------------- %
-	% CAPA
+	% Capa
 	\thispagestyle{empty}
 	\begin{center}
 		\vspace*{2.3cm}
@@ -81,7 +82,6 @@
 	
 	% ---------------------------------------------------------------------------- %
 	% Página de rosto
-	%
 	\newpage
 	\thispagestyle{empty}
 	\begin{center}
@@ -109,36 +109,47 @@
 	\end{center}
 	\pagebreak
 	
-	\pagenumbering{roman}     % começamos a numerar 
+	% ---------------------------------------------------------------------------- %
+	% Começo da numeração
+	\pagenumbering{roman} 
 	
-	\chapter*{Resumo}
-	\chapter*{Abstract}
+	% ---------------------------------------------------------------------------- %
+	% Resumos
+	\include{Capitulos/Resumo/portugues}
+	\include{Capitulos/Resumo/ingles}
 	
-	\tableofcontents    % imprime o sumário
+	% ---------------------------------------------------------------------------- %
+	% Impressão do sumário
+	\tableofcontents   
 	
+	% ---------------------------------------------------------------------------- %
+	%% Listas de figuras e tabelas criadas automaticamente
+	\listoffigures            
+	\listoftables
+	
+	% ---------------------------------------------------------------------------- %
+	% Monografia
 	\mainmatter
 	
 	\fancyhead[RE,LO]{\thesection}
 	
-	\chapter{Introdução}
-	
+	\include{Capitulos/Introducao/introducao}
 	\include{Capitulos/Ontologias/ontologias}
-	
 	\include{Capitulos/Logicas/logicas}
-	
 	\include{Capitulos/Revisao/revisao}
-	
 	\include{Capitulos/Ferramentas/ferramentas}
-	
 	\include{Capitulos/Implementacao/implementacao}
+	\include{Capitulos/Testes/testes}
+	\include{Capitulos/Agradecimentos/agradecimentos}
 	
-	\chapter{Análise de desempenhos}
-	\chapter*{Agradecimentos}
-	
+	% ---------------------------------------------------------------------------- %
 	% Bibliografia
-	\backmatter \singlespacing   % espaçamento simples
-	\bibliographystyle{plainnat-ime} % citação bibliográfica textual
-	\bibliography{monografia.bib}  % associado ao arquivo: 'bibliografia.bib'
+	%% Espaçamento simples
+	\backmatter \singlespacing
+	%% Citação bibliográfica textual   
+	\bibliographystyle{plainnat-ime}
+	%% Associado ao arquivo: 'monografia.bib'
+	\bibliography{monografia.bib}  
 
 	 
 \end{document}

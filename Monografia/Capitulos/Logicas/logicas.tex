@@ -5,18 +5,19 @@
 
 Existe um consenso, já mencionado no \autoref{chap:ontologias}, de que linguagens formais são uma maneira boa de caracterizar axiomas lógicos para a modelagem de uma ontologia. O principal formalismo utilizado para representar conhecimento, com um cuidado especial para as terminologias, são as Lógicas de Descrição (doravante, LD).
 
-Essas lógicas são um subconjunto da Lógica de Primeira Ordem (a partir de agora, LPO), que por sua vez, estende a Lógica Proposicional. As LD são utilizadas por sua expressividade. Para anotar que uma \texttt{Cancao} ou um \texttt{HinoNacional} são uma \texttt{Musica}, usando a ontologia que está sendo desenvolvida neste trabalho, podem ser utilizadas as seguintes sentenças, usando as lógicas até agora citadas:
+Essas lógicas são um subconjunto da Lógica de Primeira Ordem (a partir de agora, LPO), que por sua vez, estende a Lógica Proposicional. As LD são utilizadas por sua expressividade. Para anotar que uma \texttt{Cancao} ou um \texttt{HinoNacional} são uma \texttt{Musica}, usando a ontologia que está sendo desenvolvida neste trabalho, podem ser utilizadas as seguintes sentenças, usando as lógicas até agora citadas, na Tabela \ref{tab:equiv}.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|l|l|l}
 		\cline{1-2}
-		Lógica                           & Sentença                                                                             & \\ \cline{1-2}
+		\textbf{Lógica}                           & \textbf{Sentença}                                                                             & \\ \cline{1-2}
 		Proposicional                    & $c \lor h \to m$                                                                     & \\ \cline{1-2}
 		de Primeira Ordem                & $\forall x(\texttt{Cancao}(x) \lor \texttt{HinoNacional}(x) \to \texttt{Musica}(x))$ & \\ \cline{1-2}
 		de Descrição ($ \mathcal{ALC} $) & \texttt{Cancao} $\sqcup$ \texttt{HinoNacional} $\sqsubseteq$ \texttt{Musica}         & \\ \cline{1-2}
 	\end{tabular}
-\caption{A mesma sentença expressa em diferentes lógicas}
+	\caption{A mesma sentença expressa em diferentes lógicas}
+	\label{tab:equiv}
 \end{table}
 
 Pode-se observar que a notação da LD permite que o entendimento de suas sentenças seja feito usando a Teoria dos Conjuntos. A última sentença da tabela leva a entender que a ''união'' dos ''conjuntos'' \texttt{Cancao} e \texttt{HinoNacional} está contida no ''conjunto'' \texttt{Musica}.
@@ -45,13 +46,13 @@ As pesquisas na área de Representação de Conhecimento levaram à confecção 
 
 Tais estudos levaram ao desenvolvimento da $\mathcal{ALC}$. Essa linguagem, cuja sigla significa \textit{Attributive Concept Language with Complements}, é uma das Lógicas de Descrição mais básicas que existem, embora seja uma das mais utilizadas para as atividades que envolvem raciocínio lógico. 
 
-Ela contempla os seguintes construtores, para quaisquer conceitos \texttt{A} e \texttt{B} e qualquer papel \texttt{r}:
+Ela contempla os seguintes construtores, para quaisquer conceitos \texttt{A} e \texttt{B} e qualquer papel \texttt{r}, como visto na Tabela \ref{tab:alc}.
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|l}
+	\begin{tabular}{|l|c|l}
 		\cline{1-2}
-		Nome               & Notação                          &  \\ \cline{1-2}
+		\textbf{Nome}               & \textbf{Notação}                          &  \\ \cline{1-2}
 		Conceito Universal & $ \top $                         &  \\ \cline{1-2}
 		Conceito Vazio     & $ \bot $                         &  \\ \cline{1-2}
 		Conceito Atômico   & \texttt{A}                       &  \\ \cline{1-2}
@@ -62,6 +63,7 @@ Ela contempla os seguintes construtores, para quaisquer conceitos \texttt{A} e \
 		Existencial        & $\exists$ \texttt{r.A}           &  \\ \cline{1-2}
 	\end{tabular}
 	\caption{Construtores da Lógica $ \mathcal{ALC} $}
+	\label{tab:alc}
 \end{table}
 
 Essa representação também permite que sejam escritos axiomas terminológicos, tais como a subsunção, denotada por $ \texttt{A} \sqsubseteq \texttt{B} $, e a equivalência, caracterizada como $ \texttt{A} \equiv \texttt{B} $ e que significa $ \texttt{A} \sqsubseteq \texttt{B} $ e $ \texttt{B} \sqsubseteq \texttt{A} $. Para o conhecimento assertivo também existem axiomas, tanto para conceitos ($\texttt{A}(x)$), quanto para papéis ($\texttt{r}(x,y)$).
@@ -155,13 +157,13 @@ As LD, como definido anteriormente, são um subconjunto das LPO. Portanto, toda 
 
 Tal relação se estende até às definições que ela utiliza em sua constituição. Os conceitos, papéis e indivíduos acima citados, correspondem, respectivamente, a predicados unários, predicados binários e constantes em Lógica de Primeira Ordem.
 
-Com essa elucidação, é possível elaborar uma tabela que mostra as principais equivalências entre LD e LPO, com intenção de usá-la para uma eventual tradução entre as lógicas. Definindo $t_x$ como a interpretação em $x$ de uma sentença, já que é necessária uma variável livre para a tradução, teremos:
+Com essa elucidação, é possível elaborar uma tabela que mostra as principais equivalências entre LD e LPO, com intenção de usá-la para uma eventual tradução entre as lógicas. Definindo $t_x$ como a interpretação em $x$ de uma sentença, já que é necessária uma variável livre para a tradução, teremos o resultado da Tabela \ref{tab:trad}.
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|c|c|c|c|l}
+	\begin{tabular}{|l|c|c|c|l}
 		\cline{1-4}
-		Conceito     & LD                                    & Tradução                                 & LPO                                              &  \\ \cline{1-4}
+		\textbf{Conceito}     & \textbf{LD}                                    & \textbf{Tradução}                                 & \textbf{LPO}                                            &  \\ \cline{1-4}
 		Classe       & \texttt{A}                            & $t_x(\texttt{A})$                        & $A(x)$                                           &  \\ \cline{1-4}
 		União        & \texttt{A} $ \sqcup $ \texttt{B}      & $t_x(\texttt{A} \sqcup \texttt{B})$      & $A(x) \lor B(x)$                                 &  \\ \cline{1-4}
 		Intersecção  & \texttt{A} $ \sqcap $ \texttt{B}      & $t_x(\texttt{A} \sqcap \texttt{B})$      & $A(x) \land B(x)$                                &  \\ \cline{1-4}
@@ -171,6 +173,7 @@ Com essa elucidação, é possível elaborar uma tabela que mostra as principais
 		Equivalência & \texttt{A} $ \equiv $ \texttt{B}      & $t_x(\texttt{A} \equiv \texttt{B})$      & $\forall x(t_x(A) \longleftrightarrow t_x(B))$   &  \\ \cline{1-4}
 	\end{tabular}
 	\caption{Tabela para tradução entre LD e LPO}
+	\label{tab:trad}
 \end{table}
 
 Usando a ontologia de música como exemplo, pode-se ver como essa tradução é aplicada:

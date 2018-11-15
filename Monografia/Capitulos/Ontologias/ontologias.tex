@@ -50,7 +50,7 @@ Computacionalmente falando, as ontologias possuem cinco partes. Para ilustrá-la
 
 \begin{description}
 	\item[Classes] Descrevem os conceitos de um certo domínio do discurso. São o foco das ontologias. São uma coleção de todos os particulares aos quais é possível aplicar um termo geral. Por exemplo: a classe \texttt{Cantor}.
-	\item[Propriedades] São atributos que descrevem características do conceito a que uma classe se refere. Em nosso exemplo, a classe \texttt{Cantor} possui as propriedades \texttt{Nome}, \\ \texttt{RitmoPredominante} e \texttt{Idade}.
+	\item[Propriedades] São atributos que descrevem características do conceito a que uma classe se refere. Em nosso exemplo, a classe \texttt{Pessoa} possui as propriedades \texttt{Nome} e \texttt{Idade}. A classe \texttt{Cantor} pode ter a propriedade \texttt{RitmoPredominante}.
 	\item[Relações] Ontologias são constituídas de relações hierárquicas. Por exemplo \texttt{Cantor} $ \to $ \texttt{Pes\-so\-a}. A hierarquia de classes representa uma relação “\textit{is-a}” \citep{ontoFranca}. Tais relações são transitivas. Existem outras relações, como \texttt{Cantor canta Musica} e \texttt{Compositor compoe Musica}.
 	\item[Restrições] São os tipos das propriedades, por exemplo: enquanto para \texttt{Nome} e \\ \texttt{RitmoPredominante} uma \textit{string} seja suficiente, para a Idade, um inteiro já está de bom tamanho. Além disso, as restrições podem ser referentes às classes. Exemplo: a releção \texttt{canta} tem domínio \texttt{Cantor.}
 	\item[Instância] é um indivíduo (por exemplo, \texttt{MariahCarey}), de uma classe (como \texttt{Cantor}, \texttt{Com\-po\-si\-tor} ou \texttt{Pessoa}). Vale lembrar que uma instância não é uma subclasse.
@@ -94,7 +94,7 @@ Para os nomes das classes, não há uma convenção específica, só há um cons
 
 Uma ontologia não precisa ter toda a informação existente sobre o domínio. Não é necessário especializar ou generalizar mais do que seja necessário para a aplicação. Além disso, as classes não precisam ter todas as propriedades possíveis e nem carregar todas as distinções que estão no mundo. Isso significa que a ontologia deve ser o modelo mais simples para o problema que se deseja resolver.
 
-Algumas relações podem ter uma inversa, assim como ocorre com funções matemáticas. Uma relação que possui uma inversa pode ser \texttt{Cantor canta Musica}, com sua inversa sendo \texttt{Musica cantadaPor Cantor}.
+Algumas relações podem ter uma inversa, assim como ocorre com funções matemáticas. Uma relação que possui uma inversa pode ser \texttt{Cantor canta Musica}, com sua inversa sendo \texttt{Musica cantadaPor Cantor}, e a relação \texttt{Compositor compoe Musica} pode ter a inversa \texttt{Musica compostaPor Compositor}.
 
 \section{Usabilidade de uma ontologia}
 
@@ -119,6 +119,6 @@ A ontologia desenvolvida nesse capítulo segue na Figura \ref{img:Esquema}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.6\textwidth]{Capitulos/Ontologias/OntologiaMusica}
-	\caption{Esquema de classes de uma ontologia sobre Música}
+	\caption{Esquema de classes de uma ontologia sobre Música. As linhas tracejadas indicam as subclasses e as setas, as relações.}
 	\label{img:Esquema}
 \end{figure}

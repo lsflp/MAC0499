@@ -29,7 +29,7 @@ Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece
 
 O paradigma AGM, que será usado neste trabalho, recebe este nome por causa das iniciais dos autores do artigo considerado o pontapé inicial desta área de pesquisa  \citep{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas de $ K $. 
 
-Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio dos estados epistêmicos. Com $ K $ sendo logicamente fechado, se $ K \models \psi $, sendo $ \psi $ uma sentença qualquer, tem-se que $ \psi \in K $. Um sistema de crenças em equilíbrio epistêmico é chamado de base de crenças.  O uso de bases de crenças aumenta a eficiência do reparo  \citep{revisaoHansson}.
+Quando $ K = \text{Cn}(K) $, diz-se que há um equilíbrio do estado epistêmico. Com $ K $ sendo logicamente fechado, se $ K \models \psi $, sendo $ \psi $ uma sentença qualquer, tem-se que $ \psi \in K $. O uso de conjuntos logicamente fechados aumenta a eficiência do reparo \citep{revisaoHansson}, já que não é necessário realizar inferências sobre os axiomas.
 
 As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal que $ L $ é uma linguagem fechada em relação aos conectivos lógicos $ \land $, $ \lor $, $ \to $ e $ \lnot $ e que satisfaz \citep{revisaoRibeiro}:
 
@@ -37,7 +37,7 @@ As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal
 	\item[Tarskianicidade] A lógica é monotônica (todas as consequências dedutíveis continuam assim mesmo após a adição de alguma sentença), idempotente e satisfaz inclusão;
 	\item[Dedução] $ \alpha \in \text{Cn}(K \cup \{\beta\}) $ se e somente se $ \beta \to \alpha \in \text{Cn}(K) $, onde $ \alpha $ e $ \beta $ são sentenças lógicas;
 	\item[Compacidade] se $ \alpha \in \text{Cn}(K) $, então existe $ K’ \subseteq K $ finito tal que $ \alpha \in \text{Cn}(K’) $;
-	\item[Supraclassicalidade] Toda consequência da lógica $ (L, \text{Cn}) $ é também uma consequência da lógica proposicional.
+	\item[Supraclassicalidade] Toda consequência da lógica $ (L, \text{Cn}) $ é também uma consequência da lógica proposicional. Vale observar que essa propriedade não serve para Lógicas de Descrição.
 \end{description} 
 
 \section{Tratamento da informação}
@@ -50,10 +50,10 @@ Existem três tipo de tratamento, descritos abaixo:
 	\item $ \alpha $ é aceita pelo conjunto de crenças. Isso pode acontecer de duas maneiras diferentes:
 	\begin{enumerate}
 		\item $ \alpha $ é aceita explicitamente. Quando isso acontece, temos que $ \alpha \in K $;
-		\item $ \alpha $ é aceita implicitamente. Esse caso ocorre quando $ \alpha \in \text{Cn}(K) \setminus K $.
+		\item $ \alpha $ é aceita implicitamente. Esse caso ocorre quando $ \alpha \in \text{Cn}(K) \setminus K $, para Bases de Crenças.
 	\end{enumerate}
-	\item $ \alpha $ é rejeitada. Aqui, temos que $ \lnot \alpha \in K $. 
-	\item $ \alpha $ é indeterminada. Deste modo, $ K $ não conhece a sentença $ \alpha $, assim, $ \lnot \alpha \notin K $ e $ \alpha \notin K $.
+	\item $ \alpha $ é rejeitada. Aqui, temos que $ \lnot \alpha \in K $ ou que $ \lnot \alpha \in \text{Cn}(K) \setminus K $, para Bases de Crenças. 
+	\item $ \alpha $ é indeterminada. Deste modo, $ K $ não conhece a sentença $ \alpha $, assim, $ \lnot \alpha \notin \text{Cn}(K) $ e $ \alpha \notin \text{Cn}(K) $.
 \end{enumerate}
 
 Existem também algumas questões metodológicas que precisam ser resolvidas, ou pelo menos observadas antes de alguma Revisão de Crenças. Gärdenfors definiu algumas delas  \citep{revisaoGardenfors2}.
@@ -64,13 +64,13 @@ Uma outra questão se preocupa com os elementos explicitamente representados na 
 
 A última questão é referente a qual retração fazer, ou seja, qual edição fazer na base de dados. A lógica, propriamente dita, não é suficiente para definir quais são os melhores elementos para serem removidos ou mantidos. Uma das ideias referentes a isso é que a quantidade informação perdida durante o reparo seja a mínima possível. 
 
-Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-se remover as que possuem menor prioridade, em detrimento daquelas com maior importância. Tudo isso depende de como o sistema de crenças está estruturada.
+Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-se remover as que possuem menor prioridade, em detrimento daquelas com maior importância. Tudo isso depende de como o sistema de crenças está estruturado.
 
 \section{Operações clássicas de Revisão de Crenças}
 
 Existem três operações clássicas de Revisão de Crenças \citep{revisaoGardenfors3}. São elas a Expansão, a Revisão e a Contração. Apenas a Expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
 
-Para as definições que serão feitas será usada uma lógica $ L $, que é baseada na Lógica de Primeira Ordem. As variáveis, que são as sentenças lógicas, serão representadas pelo alfabeto grego. Os conjuntos de crenças, com letras latinas maiúsculas.
+Para as definições que serão feitas será usada uma lógica $ L $, que é baseada na Lógica de Primeira Ordem ou Proposicional. As variáveis, que são as sentenças lógicas, serão representadas pelo alfabeto grego. Os conjuntos de crenças, com letras latinas maiúsculas.
 
 \subsection{Expansão}
 
@@ -78,11 +78,11 @@ A única operação definida diretamente recebe a notação $ K + \alpha $. Ela 
 
 O conjunto resultante é, portanto, formado pelo fecho lógico da união do conjunto inicial com a informação nova, o que significa que $ K + \alpha = \text{Cn}(K \cup \alpha) $. Vale ressaltar que o operação não exige que o conjunto permaneça consistente.
 
-A informação $ \alpha $ era indeterminada. Depois da operação de Expansão, tal conhecimento passa a ser aceito.
+A informação $ \alpha $ não era necessariamente indeterminada. Pode ser que ela já estivesse na base. Depois da operação de Expansão, de qualquer modo, $ \alpha $ fica aceito.
 
 \subsection{Contração}
 
-Esta operação é o contrário da anterior. Em vez de uma nova informação ser adicionada à base de conhecimento, deseja-se que algum conhecimento seja removido. A operação é caracterizada por $ K - \alpha $. No entanto, as referências à Expansão acabam por aí.
+Esta operação é o contrário da anterior. Em vez de uma nova informação ser adicionada à base de conhecimento, deseja-se que algum conhecimento seja removido. A operação é representada por $ K - \alpha $. No entanto, as referências à Expansão acabam por aí.
 
 Às vezes, retirar $ \alpha $ de $ K $ não é suficiente. Nesses casos, é necessário desistir de algumas crenças do conjunto. As sentenças que são abandonadas são aquelas que implicam $ \alpha $. O critério da mudança mínima deve ser aplicado aqui, removendo o mínimo de sentenças possível, ou as que possuem prioridade menor.
 
@@ -122,20 +122,20 @@ Como na operação anterior, o conjunto anterior precisa se mostrar consistente.
 	\item[Vacuidade] Se $ \lnot \beta \notin K \ast \alpha $ então, $ (K \ast \alpha) + \beta \subseteq K \ast (\alpha \land \beta) $ \\ Se a negação de $ \beta $ não pertence ao resultado da Revisão por $ \alpha $, então a Revisão por $ \alpha $ e posterior Expansão por $ \beta $ resulta em um conjunto que está contido no que é obtido pela Revisão pela conjunção dessas fórmulas. Unindo com \textbf{Conjunção}, se a Revisão $ K \ast \alpha $ for feita não resultando em $ \lnot \beta $, e então a Expansão por $ \beta $ for realizada, o mesmo resultado seria alcançado pela Revisão de $ K $ por $ (\alpha \land \beta) $, ou seja, $ (K \ast \alpha) + \beta = K \ast (\alpha \land \beta) $    
 \end{description}
 
-Existe um construtor para a operação da Revisão, que será discutido mais à frente.
+Existem alguns construtores para a operação da Revisão. Um deles será discutido mais à frente.
 
 \subsection{Relações entre operações}
 
 A Revisão e a Contração podem ser construídas uma em função da outra, como escreveu Gärdenfors \citep{revisaoGardenfors}. Isso pode ser alcançado por duas relações:
 
 \begin{description}
-	\item[Identidade de Levi] $ K \ast \alpha = (K - \lnot \alpha) + \alpha $ \\ Ela mostra que a Revisão por uma fórmula $ \alpha $ resulta no mesmo conjunto que a Con\-tra\-ção por $ \lnot \alpha $ e consecutiva Expansão por $ \alpha $. Essa é a fórmula da \textbf{Revisão Interna}. Foi proposta, em 1993, a fórmula da \textbf{Revisão Externa}, que é $ K \ast \alpha = (K + \alpha) - \lnot \alpha $ \citep{revisaoHansson2}. Ela significa que primeiro o conhecimento é adicionado à base e, posteriormente, é removido o que o contradiz. Observando as duas fórmulas, pode-se notar que não importa a ordem das operações, desde que seja feita a Contração pela negação e a Expansão pela afirmação. De qualquer jeito, o resultado será o mesmo do que o da Revisão.
+	\item[Identidade de Levi] $ K \ast \alpha = (K - \lnot \alpha) + \alpha $ \\ Ela mostra que a Revisão por uma fórmula $ \alpha $ resulta no mesmo conjunto que a Con\-tra\-ção por $ \lnot \alpha $ e consecutiva Expansão por $ \alpha $, para conjuntos logicamente fechados.
 	\item[Identidade de Harper] $ K - \alpha = (K \ast \lnot \alpha) \cap K $ \\ A Contração por uma fórmula pode ser obtida pela intersecção entre o conjunto resultante após uma Revisão pela negação da fórmula e o conjunto inicial.
 \end{description}
 
 \section{Pseudocontração}
 
-Além das operações básicas, outras foram desenvolvidas. Pode acontecer de uma contração não ser a melhor operação a ser aplicada numa base de crenças, por exemplo. Considere o conjunto $ K = \{\alpha_1 \land \alpha_2 \land ... \land \alpha_n\} $. A aplicação da contração resultará em $ K - \alpha_i = \varnothing $, por \textbf{Inclusão}. Esse não é o resultado da mesma operação sob o conjunto $ K' = \{\alpha_1, \alpha_2, ..., \alpha_n\} $, embora Cn$(K)$ = Cn$(K')$.
+Além das operações básicas, outras foram desenvolvidas. Pode acontecer de uma contração não ser a melhor operação a ser aplicada numa base de crenças, por exemplo. Considere o conjunto $ K = \{\alpha_1 \land \alpha_2 \land ... \land \alpha_n\} $. A aplicação da contração resultará em $ K - \alpha_i = \varnothing $, por \textbf{Sucesso} e \textbf{Inclusão}. Esse não é o resultado da mesma operação sob o conjunto $ K' = \{\alpha_1, \alpha_2, ..., \alpha_n\} $, embora Cn$(K)$ = Cn$(K')$.
 
 O que pode ser feito para evitar esse tipo de resultado é substituir o postulado da inclusão por um mais fraco \citep{revisaoHansson3}:
 
@@ -153,7 +153,7 @@ Como mencionado anteriormente, existem alguns construtores para as operações. 
 
 \subsubsection{Para Teorias}
 
-A contração \textit{Kernel} precisa de algumas definições para ser discutida. Ela encontra conjuntos minimais que implicam a informação $ \alpha $ que se deseja contrair, e então remove pelo menos um elemento de cada um desses conjuntos, para que $ \alpha $ deixe de pertencer ao (ou deixe de ser consequência lógica do) conjunto \citep{revisaoCobe}. 
+A contração \textit{Kernel} precisa de algumas definições para ser discutida. Ela encontra conjuntos minimais que implicam a informação $ \alpha $ que se deseja contrair, e então remove pelo menos um elemento de cada um desses conjuntos, para que $ \alpha $ deixe de pertencer ao (ou deixe de ser consequência lógica do) conjunto \citep{revisaoHansson5}. 
 
 Ela é definida da seguinte forma:
 
@@ -177,11 +177,11 @@ onde $ -_{\sigma} $ é a operação chamada de Contração \textit{Kernel}, $ \s
 	\end{itemize}
 \end{description}
 
-Com isso, pode-se concluir que a função de incisão escolhe, dentre os subconjuntos maximais de $ K $ tais que $ K \models \alpha $, os ''piores'' de cada, de acordo com algum critério arbitrário. As remoções desses escolhidos do conjunto fornecem o resultado da operação.
+Com isso, pode-se concluir que a função de incisão escolhe, dentre os subconjuntos maximais de $ K $ tais que $ K \models \alpha $, os ''piores'' de cada, de acordo com algum critério arbitrário. As remoções desses escolhidos do conjunto fornecem o resultado da operação. A função de incisão é baseada em hierarquia. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração se e somente se satisfaz os oito postulados de racionalidade dessa operação.
 
 \subsubsection{Para Bases de Crenças}
 
-Existe uma generalização para Bases de Crenças para a Contração \textit{Kernel}. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração \textit{Kernel} se e somente se satisfaz os seguintes postulados:
+Existe uma generalização para Bases de Crenças para a Contração \textit{Kernel}. A construção é a mesma, mas as propriedades mudam. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração \textit{Kernel} se e somente se satisfaz os seguintes postulados:
 
 \begin{description}
 	\item[Inclusão] $ B -_{\sigma} \alpha \subseteq B$ \\ A operação não permite que novas sentenças sejam adicionadas ao conjunto, resultando em um conjunto com o mesmo número de sentenças ou menos.
@@ -199,7 +199,7 @@ Existe uma generalização para Bases de Crenças para a Contração \textit{Ker
 
 \subsubsection{Para Teorias}
 
-Essa construção quer atingir o critério da mudança mínima. Tal critério é atingido por meio da obtenção de conjuntos maximais onde a sentença $ \alpha $ não é consequência lógica. A operação fornecerá um resultado baseado em um conjunto de conjuntos maximais, chamado de conjunto-resíduo \citep{revisaoCobe}.
+Essa construção quer atingir o critério da mudança mínima. Tal critério é atingido por meio da obtenção de conjuntos maximais onde a sentença $ \alpha $ não é consequência lógica. A operação fornecerá um resultado baseado em um conjunto de conjuntos maximais, chamado de conjunto-resíduo \citep{revisaoAGM}.
 
 A \textbf{Contração \textit{Partial Meet}} para Teorias é definida da seguinte forma: 
 
@@ -223,11 +223,11 @@ onde $ -_{\gamma} $ é a operação chamada de Contração \textit{Partial Meet}
 	\end{itemize}
 \end{description}
 
-É possível entender, portanto, que o conjunto resultante da Contração \textit{Partial Meet} é a intersecção dos subconjuntos maximais que não implicam $ \alpha $ escolhidos pela função de seleção $ \gamma $ e são as crenças em que o agente acredita de forma mais arraigada, ou seja, as crenças que possuem mais implicantes. Fazendo uma conexão com os postulados da Con\-tra\-ção, uma operação $ - $ satisfaz os seis postulados básicos se e somente se $ - $ é uma Contração \textit{Partial Meet}.
+É possível entender, portanto, que o conjunto resultante da Contração \textit{Partial Meet} é a intersecção dos subconjuntos maximais que não implicam $ \alpha $ escolhidos pela função de seleção $ \gamma $ e são as crenças em que o agente acredita de forma mais arraigada, ou seja, as crenças que possuem mais implicantes. A função de seleção é baseada em relações transitivas. Um operador $ -_{\gamma} $ para uma base $ B $ qualquer é uma Contração se e somente se satisfaz os oito postulados de racionalidade dessa operação.
 
 \subsubsection{Para Bases de Crenças}
 
-A operação definida acima pode ser generalizada para bases de crenças. Uma operação $ -_{\gamma} $ para uma base $ B $ é uma Contração \textit{Partial Meet} se e só se satisfaz os seguintes postulados \citep{revisaoHansson2}:
+A operação definida acima pode ser generalizada para bases de crenças. A construção é a mesma, mas as propriedades mudam. Uma operação $ -_{\gamma} $ para uma base $ B $ é uma Contração \textit{Partial Meet} se e só se satisfaz os seguintes postulados \citep{revisaoHansson2}:
 
 \begin{description}
 	\item[Inclusão] $ B -_{\gamma} \alpha \subseteq B$ \\ Semelhante ao da Contração \textit{Kernel}.
@@ -259,7 +259,8 @@ onde $ \ast_{\sigma} $ é a operação chamada de Revisão \textit{Kernel}, $ \s
 		\item $ J \subseteq K $;
 		\item $ \alpha \in \text{Cn}(J) $;
 		\item para todo $ I \subsetneq J $, vale que $ \alpha \notin \text{Cn}(I) $.
-	\end{itemize}  
+	\end{itemize}
+	Sua construção só é possível porque falta \textbf{Supraclassicalidade} para as Lógicas de Descrição.  
 \end{description}
 
 Essa operação satisfaz os seguintes postulados:

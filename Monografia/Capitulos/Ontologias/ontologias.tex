@@ -11,7 +11,7 @@ Fazendo um paralelo entre ambas as disciplinas, pode-se observar que, enquanto a
 
 As ontologias são estudadas na área de Inteligência Artificial, que está preocupada com a automação do comportamento inteligente. Na prática, elas funcionam como um sistema ''\textit{tell and ask}'' \cite{ontoRussel}. Algumas coisas são contadas para os agentes inteligentes (uma entidade autônoma com comportamento que simula inteligência), e então, perguntas podem ser feitas para eles, embora não precisem saber todas as respostas. 
 
-Surgiram de um contexto onde os cientistas desejam modelar e representar o mundo para as máquinas, e isso ocorre desde a origem dos computadores. Como cada pessoa possui uma visão de mundo, cada modelagem será diferente de algum jeito. Por isso, a construção de ontologias é um tópico que merece estudo.
+Elas surgiram de um contexto onde os cientistas desejam modelar e representar o mundo para as máquinas, e isso ocorre desde a origem dos computadores. Como cada pessoa possui uma visão de mundo, cada modelagem será diferente de algum jeito. Por isso, a construção de ontologias é um tópico que merece estudo.
 
 As ontologias denotam uma "especificação explícita de uma conceitualização"  \citep{ontoGruber}, e, uma vez construídas, permitem comunicação, compartilhamento e reúso de conhecimentos.
 
@@ -52,7 +52,7 @@ Computacionalmente falando, as ontologias possuem cinco partes. Para ilustrá-la
 	\item[Classes] Descrevem os conceitos de um certo domínio do discurso. São o foco das ontologias. São uma coleção de todos os particulares aos quais é possível aplicar um termo geral. Por exemplo: a classe \texttt{Cantor}.
 	\item[Propriedades] São atributos que descrevem características do conceito a que uma classe se refere. Em nosso exemplo, a classe \texttt{Pessoa} possui as propriedades \texttt{Nome} e \texttt{Idade}. A classe \texttt{Cantor} pode ter a propriedade \texttt{RitmoPredominante}.
 	\item[Relações] Ontologias são constituídas de relações hierárquicas. Por exemplo \texttt{Cantor} $ \to $ \texttt{Pes\-so\-a}. A hierarquia de classes representa uma relação “\textit{is-a}” \citep{ontoFranca}. Tais relações são transitivas. Existem outras relações, como \texttt{Cantor canta Musica} e \texttt{Compositor compoe Musica}.
-	\item[Restrições] São os tipos das propriedades, por exemplo: enquanto para \texttt{Nome} e \\ \texttt{RitmoPredominante} uma \textit{string} seja suficiente, para a Idade, um inteiro já está de bom tamanho. Além disso, as restrições podem ser referentes às classes. Exemplo: a releção \texttt{canta} tem domínio \texttt{Cantor.}
+	\item[Restrições] São os tipos das propriedades, por exemplo: enquanto para \texttt{Nome} e \texttt{Ritmo\-Pre\-do\-mi\-nan\-te} uma \textit{string} seja suficiente, para a \texttt{Idade}, um inteiro já está de bom tamanho. Além disso, as restrições podem ser referentes às classes. Exemplo: a relação \texttt{canta} tem domínio \texttt{Cantor.}
 	\item[Instância] é um indivíduo (por exemplo, \texttt{MariahCarey}), de uma classe (como \texttt{Cantor}, \texttt{Com\-po\-si\-tor} ou \texttt{Pessoa}). Vale lembrar que uma instância não é uma subclasse.
 \end{description}
 
@@ -64,7 +64,7 @@ Existem três processos para definir as classes e a hierarquia, a seguir:
 
 \begin{description}
 	\item[\textit{Top-down}] Vai das classes mais genéricas para as mais específicas. Um exemplo seria criar as classes \texttt{Musica}, \texttt{Pessoa}, entre outras.
-	\item[\textit{Bottom-up}] Vai das classes mais específicas para as mais genéricas, agrupando as específicas já criadas. Na ontologia estudada aqui, é possível começar das músicas já conhecidas para então separá-las por ritmos.
+	\item[\textit{Bottom-up}] Vai das classes mais específicas para as mais genéricas, agrupando as específicas já criadas. Na ontologia estudada aqui, é possível começar de músicas conhecidas para então, separá-las por ritmos.
 	\item[Vai-e-Vem] Define conceitos simples para generalizá-los e especificá-los. É uma com\-bi\-na\-ção dos dois primeiros itens.
 \end{description}
 

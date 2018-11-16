@@ -25,7 +25,7 @@ De uma forma geral, esse campo da Inteligência Artificial estuda qualquer alter
 
 O estado epistêmico de um agente nada mais é do que o conjunto de tudo aquilo em que ele acredita e como as suas crenças se relacionam num certo instante. Pode-se entender um estado epistêmico também como uma representação idealizada do estado cognitivo de um agente em determinado momento, como explicou Gärdenfors \citep{revisaoGardenfors}.
 
-Uma alteração do estado epistêmico seria, portanto, uma revisão que acontece quando o agente recebe uma nova informação que possivelmente entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima \citep{logicaResina}.
+Uma alteração do estado epistêmico é, portanto, uma revisão que acontece quando o agente recebe uma nova informação que possivelmente entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima \citep{logicaResina}.
 
 O paradigma AGM, que será usado neste trabalho, recebe este nome por causa das iniciais dos autores do artigo considerado o pontapé inicial desta área de pesquisa  \citep{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas de $ K $. 
 
@@ -267,7 +267,7 @@ Essa operação satisfaz os seguintes postulados:
 
 \begin{description}
 	\item[Inclusão] $ K \ast_\sigma \alpha \subseteq K + \alpha $ \\
-	Se $ \alpha $ for consistente com $ K $, a Revisão será, na verdade, uma Expansão. Caso contrário, algumas sentenças. Esse postulado impede a adição de sentenças irrelevantes para o conjunto.
+	Se $ \alpha $ for consistente com $ K $, a Revisão será, na verdade, uma Expansão. Esse postulado impede a adição de sentenças irrelevantes para o conjunto.
 	\item[Sucesso] $ \alpha \in K \ast_\sigma \alpha $\\
 	Também chamado de sucesso forte, obriga que $ \alpha $ esteja no conjunto gerado pela operação.
 	\item[Consistência fraca] Se $ \alpha $ é consistente/coerente, então $ K \ast_\sigma \alpha $ será consistente/coerente. Se uma base de conhecimento é inconsistente, então existe algum conceito nela que é necessariamente vazio. Essa noção é chamada de \textbf{Coerência}.

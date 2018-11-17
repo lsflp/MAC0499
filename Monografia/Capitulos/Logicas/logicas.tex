@@ -5,7 +5,7 @@
 
 Existe um consenso, já mencionado no \autoref{chap:ontologias}, de que linguagens formais são uma maneira boa de caracterizar axiomas lógicos para a modelagem de uma ontologia. O principal formalismo utilizado para representar conhecimento, com um cuidado especial para as terminologias, são as Lógicas de Descrição (doravante, LD).
 
-Essas lógicas são um subconjunto da Lógica de Primeira Ordem (a partir de agora, LPO), que por sua vez, estende a Lógica Proposicional. As LD são utilizadas por sua expressividade. Para anotar que uma \texttt{Cancao} ou um \texttt{HinoNacional} são uma \texttt{Musica}, usando a ontologia que está sendo desenvolvida neste trabalho, podem ser utilizadas as seguintes sentenças, usando as lógicas até agora citadas, na Tabela \ref{tab:equiv}.
+Essas lógicas são um subconjunto da Lógica de Primeira Ordem (a partir de agora, LPO), que por sua vez, estende a Lógica Proposicional. As LD são utilizadas por sua expressividade. Para anotar que uma \texttt{Cancao} ou um \texttt{HinoNacional} são uma \texttt{Musica}, usando a ontologia que está sendo desenvolvida neste trabalho, podem ser utilizadas as seguintes sentenças, usando as lógicas até agora citadas, na \autoref{tab:equiv}.
 
 \begin{table}[H]
 	\centering
@@ -46,7 +46,7 @@ As pesquisas na área de Representação de Conhecimento levaram à confecção 
 
 Tais estudos levaram ao desenvolvimento da $\mathcal{ALC}$ \citep{logicaSchmidt}. Essa linguagem, cuja sigla significa \textit{Attributive Concept Language with Complements}, é uma das Lógicas de Descrição mais básicas que existem, embora seja uma das mais utilizadas para as atividades que envolvem raciocínio lógico. 
 
-Ela contempla os seguintes construtores, para quaisquer conceitos \texttt{A} e \texttt{B} e qualquer papel \texttt{r}, como visto na Tabela \ref{tab:alc}.
+Ela contempla os seguintes construtores, para quaisquer conceitos \texttt{A} e \texttt{B} e qualquer papel \texttt{r}, como visto na \autoref{tab:alc}.
 
 \begin{table}[H]
 	\centering
@@ -155,7 +155,7 @@ As LD, como definido anteriormente, são um subconjunto das LPO. Portanto, toda 
 
 Tal relação se estende até às definições que ela utiliza em sua constituição. Os conceitos, papéis e indivíduos acima citados, correspondem, respectivamente, a predicados unários, predicados binários e constantes em Lógica de Primeira Ordem.
 
-Com essa elucidação, é possível elaborar uma tabela que mostra as principais equivalências entre LD e LPO, com intenção de usá-la para uma eventual tradução entre as lógicas. Definindo $t_x$ como a interpretação em $x$ de uma sentença, já que é necessária uma variável livre para a tradução, teremos o resultado da Tabela \ref{tab:trad}.
+Com essa elucidação, é possível elaborar uma tabela que mostra as principais equivalências entre LD e LPO, com intenção de usá-la para uma eventual tradução entre as lógicas. Definindo $t_x$ como a interpretação em $x$ de uma sentença, já que é necessária uma variável livre para a tradução, teremos o resultado da \autoref{tab:trad}.
 
 \begin{table}[H]
 	\centering
@@ -199,7 +199,7 @@ Para verificar tal propriedade, podem ser aplicadas as regras de \textit{tableau
 
 Para descobrir se uma fórmula é insatisfatível, basta aplicar essas regras na sentença lógica. Se, no final, um \textit{Clash} (conflito) for alcançado, isto é, quando temos uma asserção e sua negação na \textit{ABox}, a sentença é insatisfatível.
 
-Segue, na figura \ref{img:Tableau}, um exemplo para aplicar essas regras \citep{logicaKoubarakis}:
+Segue, na \autoref{img:Tableau}, um exemplo para aplicar essas regras \citep{logicaKoubarakis}:
 
 	\begin{figure}[H]
 		\centering

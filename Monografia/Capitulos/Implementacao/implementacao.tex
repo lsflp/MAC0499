@@ -22,55 +22,13 @@ Para as lógicas internas, são necessários a \textit{OWL API} 5.1.6 \footnote{
 
 \section{Algoritmo \textit{BlackBox}}
 
-A implementação das quatro operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina, onde tiveram suas corretudes provadas \citep{logicaResina}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma, ou se a base é consistente. Ele possui algumas variações, para o cálculo do conjunto-resíduo para a Contração \textit{Partial Meet}, do conjunto-\textit{kernel} para a Contração \textit{Kernel} e do conjunto-\textit{kernel} da Revisão \textit{Kernel}.
+A implementação das quatro operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina, onde tiveram suas corretudes provadas \citep{logicaResina}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma, ou se a base é consistente. Ele possui variações para o cálculo do conjunto-resíduo ou para o cálculo do conjunto-\textit{kernel};
 
-Para efeitos de otimização, foi colocado um limite tanto nas filas utilizadas nos algoritmos abaixo quanto nos conjuntos que serão retornados. Tais limites podem ser definidos pelo usuário, opcionalmente.
+Para efeitos de otimização, foi colocado um limite tanto nas filas utilizadas em alguns dos algoritmos abaixo quanto nos conjuntos que serão retornados. Tais limites podem ser definidos pelo usuário, opcionalmente.
 
-\subsection{\textit{BlackBox} para o conjunto-resíduo}
+\subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a Contração}
 
-Para o cálculo do conjunto-resíduo, utilizado na contração \textit{Partial Meet} e na Pseudocontração SRW, foi utilizada a implementação adaptada por Matos da implementação original de Cóbe \citep{logicaMatos}. Ela consiste em duas funções:
-
-\begin{description}
-	\item[\textsc{RemainderBlackBox}] É uma função que recebe um conjunto de axiomas $ B $, uma sentença $ A $ e um conjunto de axiomas $ X $, tal que $ X \nvdash A $, e constrói um elemento do conjunto resíduo $ (B \bot A) $, que contém todos os elementos de $ X $. O conjunto devolvido $ X' $ é tal que $ X' \subseteq X \in B \bot A $. O método começa com $ X $  e acrescenta todos os axiomas de $ B $ que não façam o conjunto resultante implicar $ A $. De acordo como o laço principal é implementado, resultados diferentes podem ser alcançados. No entanto, isso não é um problema, porque a função que chama esta só pede um item do conjunto-resíduo. O seu código segue abaixo: \\
-	\begin{algorithmic}
-		\Function{RemainderBlackBox}{B, A, X}
-		\State $ X' \gets X$
-		\ForAll{$ \beta \in B \setminus X $}
-		\If{$ X' \cup \{\beta\} \nvdash A $}
-		\State $ X' \gets X' \cup \{\beta\} $
-		\EndIf 
-		\EndFor
-		\State \Return $ X' $
-		\EndFunction
-	\end{algorithmic}
-
-	\item[\textsc{RemainderSet}] Usando a função acima, ela constrói o conjunto-resíduo. Seja $ X $ um conjunto, tal que $ X \nvdash A$, inicialmente vazio. Implicitamente, uma árvore é construída. Sua raiz é um elemento do conjunto-resíduo obtido a partir de $ X $, e para cada axioma $ s $ fora desse conjunto, se $ X \cup \{s\} \nvdash A $, o algoritmo cria um nó filho na árvore com um conjunto-resíduo obtido a partir de $ X' = X \cup \{s\} $. Como se deseja apenas gerar o conjunto, a árvore não é construída por completo. Ao invés disso, os elementos são criados como se a árvore fosse percorrida por uma busca em largura, por isso o uso da fila. O seu código segue abaixo: \\
-	\begin{algorithmic}
-		\Function{RemainderSet}{B, A}
-		\State $ fila \gets $ fila vazia
-		\State $ S \gets $ \Call{RemainderBlackBox}{B, A, $ \varnothing $}
-		\State $ remainder \gets \{S\} $
-		\ForAll{$ s \in B \setminus S $}
-		\State coloque $ s $ em $ fila $
-		\EndFor
-		\While{$ fila $ não está vazia}
-		\State {$ Hn \gets $ o próximo de $ fila $}
-		\If{$ Hn \nvdash A $}
-		\State $ S \gets $ \Call{RemainderBlackBox}{B, A, Hn}
-		\State $ remainder \gets remainder \cup \{S\} $
-		\ForAll{$ s \in B \setminus S $}
-		\State coloque $ Hn \cup \{s\} $ em $ fila $
-		\EndFor
-		\EndIf
-		\EndWhile
-		\State \Return $ remainder $
-		\EndFunction
-	\end{algorithmic}
-\end{description}
-
-\subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a contração}
-
-Para o cálculo do conjunto-\textit{kernel}, usado na contração \textit{Kernel}, foi utilizada uma adaptação implementação do código de Cóbe \citep{logicaMatos}. Ela consiste em duas funções:
+Para o cálculo do conjunto-\textit{kernel}, usado na Contração \textit{Kernel}, foi utilizada uma adaptação implementação do código de Cóbe \citep{logicaMatos}. Ela consiste em duas funções:
 
 \begin{description}
 	\item[\textsc{KernelBlackBox}] É uma função que recebe um conjunto de axiomas $ B $ e uma sentença $ A $. Ela constrói um conjunto minimal de $ B $ que implica $ A $. Essa função é uma adaptação da estudada por Resina \citep{logicaResina}, e se divide em duas partes: expansão, onde são adicionam todos os axiomas de B, caso $ B \vdash A $, a um conjunto $ B' $, definido previamente como vazio; e encolhimento, onde cada elemento $ \beta $ de $ B' $ é analisado individualmente. Caso $ B' \setminus \{\beta\}$ implique $ A $, $ \beta $ é apagado de $ B' $. Logo, o conjunto devolvido é um conjunto minimal de $ B $ que implica $ A $, portanto, um elemento do Kernel. Seu código é o seguinte: \\
@@ -88,7 +46,7 @@ Para o cálculo do conjunto-\textit{kernel}, usado na contração \textit{Kernel
 		\EndFunction
 	\end{algorithmic}
 
-	\item[\textsc{KernelSet}] É uma função que recebe os mesmos parâmetros citados acima, e utiliza a função supracitada. Ela começa com um elemento do Kernel. Assim como o construtor do conjunto-resíduo, ele constrói uma árvore, fazendo percorrendo em largura. Para cada elemento $ Hn $ da fila, o algoritmo o remove de $ B $ e, se $ B $ ainda implica $ A $, computa-se o menor subconjunto S de $ B \setminus Hn $ que implica $ A $, e então, tem-se em S um novo elemento do Kernel. Depois disso, $ B $ é restaurado. Seu código está abaixo: \\
+	\item[\textsc{KernelSet}] É uma função que recebe os mesmos parâmetros citados acima, e utiliza a função supracitada. Ela começa com um elemento do Kernel. Assim como o construtor do conjunto-resíduo, ele constrói uma árvore, percorrendo em largura. Para cada elemento $ Hn $ da fila, o algoritmo o remove de $ B $ e, se $ B $ ainda implica $ A $, computa-se o menor subconjunto S de $ B \setminus Hn $ que implica $ A $, e então, tem-se em S um novo elemento do Kernel. Depois disso, $ B $ é restaurado. Seu código está abaixo: \\
 	
 	\begin{algorithmic}
 		\Function{KernelSet}{B, A}
@@ -118,7 +76,49 @@ Para o cálculo do conjunto-\textit{kernel}, usado na contração \textit{Kernel
 	\end{algorithmic}
 \end{description}
 
-\subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a revisão}
+\subsection{\textit{BlackBox} para o conjunto-resíduo}
+
+Para o cálculo do conjunto-resíduo, utilizado na Contração \textit{Partial Meet} e na Pseudocontração SRW, foi utilizada a implementação adaptada por Matos da implementação original de Cóbe \citep{logicaMatos}. Ela consiste em duas funções:
+
+\begin{description}
+	\item[\textsc{RemainderBlackBox}] É uma função que recebe um conjunto de axiomas $ B $, uma sentença $ A $ e um conjunto de axiomas $ X $, tal que $ X \nvdash A $, e constrói um elemento do conjunto resíduo $ (B \bot A) $, que contém todos os elementos de $ X $. O conjunto devolvido $ X' $ é tal que $ X' \subseteq X \in B \bot A $. O método começa com $ X $  e acrescenta todos os axiomas de $ B $ que não façam o conjunto resultante implicar $ A $. De acordo como o laço principal é implementado, resultados diferentes podem ser alcançados. No entanto, isso não é um problema, porque a função que chama esta só pede um item do conjunto-resíduo. O seu código segue abaixo: \\
+	\begin{algorithmic}
+		\Function{RemainderBlackBox}{B, A, X}
+		\State $ X' \gets X$
+		\ForAll{$ \beta \in B \setminus X $}
+		\If{$ X' \cup \{\beta\} \nvdash A $}
+		\State $ X' \gets X' \cup \{\beta\} $
+		\EndIf 
+		\EndFor
+		\State \Return $ X' $
+		\EndFunction
+	\end{algorithmic}
+	
+	\item[\textsc{RemainderSet}] Usando a função acima, ela constrói o conjunto-resíduo. Seja $ X $ um conjunto, tal que $ X \nvdash A$, inicialmente vazio. Implicitamente, uma árvore é construída. Sua raiz é um elemento do conjunto-resíduo obtido a partir de $ X $, e para cada axioma $ s $ fora desse conjunto, se $ X \cup \{s\} \nvdash A $, o algoritmo cria um nó filho na árvore com um conjunto-resíduo obtido a partir de $ X' = X \cup \{s\} $. Como se deseja apenas gerar o conjunto, a árvore não é construída por completo. Ao invés disso, os elementos são criados como se a árvore fosse percorrida por uma busca em largura, por isso o uso da fila. O seu código segue abaixo: \\
+	\begin{algorithmic}
+		\Function{RemainderSet}{B, A}
+		\State $ fila \gets $ fila vazia
+		\State $ S \gets $ \Call{RemainderBlackBox}{B, A, $ \varnothing $}
+		\State $ remainder \gets \{S\} $
+		\ForAll{$ s \in B \setminus S $}
+		\State coloque $ s $ em $ fila $
+		\EndFor
+		\While{$ fila $ não está vazia}
+		\State {$ Hn \gets $ o próximo de $ fila $}
+		\If{$ Hn \nvdash A $}
+		\State $ S \gets $ \Call{RemainderBlackBox}{B, A, Hn}
+		\State $ remainder \gets remainder \cup \{S\} $
+		\ForAll{$ s \in B \setminus S $}
+		\State coloque $ Hn \cup \{s\} $ em $ fila $
+		\EndFor
+		\EndIf
+		\EndWhile
+		\State \Return $ remainder $
+		\EndFunction
+	\end{algorithmic}
+\end{description}
+
+\subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a Revisão}
 
 O cálculo do conjunto-\textit{kernel} da Revisão \textit{Kernel} é feito a partir de uma construção feita em 2008 \citep{revisaoRibeiro2}. Assim como os outros, consiste em duas funções:
 
@@ -169,7 +169,7 @@ São feitos aqui alguns exemplos simples para ilustrar a funcionalidade do \text
 
 \subsection{Contração \textit{Kernel}}
 
-Para a contração \textit{Kernel}, será usado um exemplo análogo. As classes estudadas aqui são \texttt{Cancao}, \texttt{Pop} e \texttt{SynthPop}. Os axiomas da ontologia são os listados abaixo, e sua representação está na Figura \ref{img:ck1}.
+Para a Contração \textit{Kernel}, será usado um exemplo análogo. As classes estudadas aqui são \texttt{Cancao}, \texttt{Pop} e \texttt{SynthPop}. Os axiomas da ontologia são os listados abaixo, e sua representação está na \autoref{img:ck1}.
 
 \begin{itemize}
 	\item \texttt{SynthPop} $ \sqsubseteq $ \texttt{Pop}
@@ -185,7 +185,7 @@ Suponha que o subgênero \texttt{SynthPop} evoluiu e está distante do \texttt{P
 	\label{img:ck1}
 \end{figure}
 
-Com o comando abaixo, a operação é realizada. O resultado está na Figura \ref{img:ck2}.
+Com o comando abaixo, a operação é realizada. O resultado está na \autoref{img:ck2}.
 
 \begin{small}
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --core-retainment -i cancao.owl \\ -o output.owl -f "SynthPop SubClassOf Pop"}
@@ -201,14 +201,14 @@ Com o comando abaixo, a operação é realizada. O resultado está na Figura \re
 
 \subsection{Contração \textit{Partial Meet}}
 
-Para a contração \textit{Partial Meet}, o exemplo utilizado tem as classes \texttt{Musica}, \texttt{Cancao} e \texttt{HinoNacional}, e os seguintes axiomas: 
+Para a Contração \textit{Partial Meet}, o exemplo utilizado tem as classes \texttt{Musica}, \texttt{Cancao} e \texttt{HinoNacional}, e os seguintes axiomas: 
 
 \begin{itemize}
 	\item \texttt{HinoNacional} $ \sqsubseteq $ \texttt{Cancao}
 	\item \texttt{Cancao} $ \sqsubseteq $ \texttt{Musica}
 \end{itemize}
 
-Sua representação fica como na Figura \ref{img:cpm1}.
+Sua representação fica como na \autoref{img:cpm1}.
 
 \begin{figure}[H]
 	\centering
@@ -223,7 +223,7 @@ Como definido anteriormente, na verdade, \texttt{Cancao} e \texttt{HinoNacional}
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -c --relevance -i musica.owl \\ -o output.owl -f "HinoNacional SubClassOf Cancao"}
 \end{small}
 
-Após a sua execução, acontece o desejado, mas aparentemente, esse não é o melhor resultado, como pode ser visto na Figura \ref{img:cpm2}.
+Após a sua execução, acontece o desejado, mas aparentemente, esse não é o melhor resultado, como pode ser visto na \autoref{img:cpm2}.
 
 \begin{figure}[H]
 	\centering
@@ -234,7 +234,7 @@ Após a sua execução, acontece o desejado, mas aparentemente, esse não é o m
 
 \subsection{Revisão \textit{Kernel}}
 
-O exemplo usado para a Revisão \textit{Kernel} será simples também. Sejam um fragmento da ontologia de música os axiomas abaixo e representação como na Figura \ref{img:r1}.
+O exemplo usado para a Revisão \textit{Kernel} será simples também. Sejam um fragmento da ontologia de música os axiomas abaixo e representação como na \autoref{img:r1}.
 
 \begin{itemize}
 	\item \texttt{FunkAmericano} $ \sqsubseteq $ \texttt{Cancao}
@@ -256,7 +256,7 @@ Com o comando abaixo, acontece a operação:
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -r -i funk.owl -o output.owl \\ -f "FunkBrasileiro DisjointWith FunkAmericano"}
 \end{small}
 
-O resultado é visto abaixo. Note que a propriedade de disjunção está no produto final. Ambos os produtos podem ser observados na Figura \ref{img:r2}.
+O resultado é visto abaixo. Note que a propriedade de disjunção está no produto final. Ambos os produtos podem ser observados na \autoref{img:r2}.
 
 \begin{figure}[H]
 	\centering
@@ -269,7 +269,7 @@ O resultado é visto abaixo. Note que a propriedade de disjunção está no prod
 \subsection{Pseudocontração SRW}
 \label{sect:srw}
 
-Para a Pseudocontração SRW, serão consideradas as classes \texttt{Cantor} e \texttt{Compositor} da ontologia musical, e o seguinte axioma: \texttt{Compositor} $ \sqsubseteq $ \texttt{Cantor}, com a representação exibida na Figura \ref{img:srw1}.
+Para a Pseudocontração SRW, serão consideradas as classes \texttt{Cantor} e \texttt{Compositor} da ontologia musical, e o seguinte axioma: \texttt{Compositor} $ \sqsubseteq $ \texttt{Cantor}, com a representação exibida na \autoref{img:srw1}.
 
 \begin{figure}[H]
 	\centering
@@ -278,7 +278,7 @@ Para a Pseudocontração SRW, serão consideradas as classes \texttt{Cantor} e \
 	\label{img:srw1}
 \end{figure}
 
-Ela possui um indivíduo, \texttt{markRonson}, pertencente à classe \texttt{Compositor}, como se mostra na Figura \ref{img:srw2}.
+Ela possui um indivíduo, \texttt{markRonson}, pertencente à classe \texttt{Compositor}, como se mostra na \autoref{img:srw2}.
 
 \begin{figure}[H]
 	\centering
@@ -295,7 +295,7 @@ A operação pode ser feita com o seguinte comando:
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -srw -i pessoa.owl -o output.owl \\ -f "markRonson Type: Cantor"}
 \end{small}
 
-Depois da operação, temos que \texttt{Compositor} deixa de ser subclasse de \texttt{Cantor}, e então, \texttt{markRonson} não pertence mais à classe \texttt{Cantor}, como se observa na Figura \ref{img:srw3}.
+Depois da operação, temos que \texttt{Compositor} deixa de ser subclasse de \texttt{Cantor}, e então, \texttt{markRonson} não pertence mais à classe \texttt{Cantor}, como se observa na \autoref{img:srw3}.
 
 \begin{figure}[H]
 	\centering

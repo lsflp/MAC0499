@@ -1,7 +1,7 @@
 \chapter{Análise de Desempenhos}
 \label{chap:testes}
 
-\lettrine{P}{ara} entender como o \textit{plug-in} se comporta em situações diferentes, foram feitos testes. Ele se dividem em dois tipos: os de performance, que visam verificar em quanto tempo o \textit{plug-in} realiza as quatro operações implementadas; e os de comparação, que foram executados para ver os diferentes resultados que as operações podem fornecer, para condições semelhantes. 
+\lettrine{F}{oram} feitos testes para entender como o \textit{plug-in} se comporta em situações diferentes. Eles se dividem em dois tipos: os de performance, que visam verificar em quanto tempo o \textit{plug-in} realiza as quatro operações implementadas; e os de comparação, que foram executados para ver os diferentes resultados que as operações podem fornecer, para condições semelhantes. 
 
 \section{Testes de Performance}
 
@@ -24,7 +24,7 @@ Para a Revisão Kernel, a fórmula usada foi \texttt{"B1 DisjointWith C"}. Em to
 
 \subsection{Contração \textit{Kernel}}
 
-Para a contração \textit{Kernel} foram utilizados os seguintes argumentos:
+Para a Contração \textit{Kernel} foram utilizados os seguintes argumentos:
 
 \begin{itemize}
 	\item \texttt{-t -c --core-retainment -i SmallKernelWith5classes.owl -o output.owl \\ -f "A SubClassOf B1"}
@@ -33,7 +33,7 @@ Para a contração \textit{Kernel} foram utilizados os seguintes argumentos:
 	\item \texttt{-t -c --core-retainment -i SmallKernelWith30classes.owl -o output.owl \\ -f "A SubClassOf B1"}
 \end{itemize}
 
-Foi gerado um gráfico, na Figura \ref{img:graficock}, que mostra a evolução do tempo de execução médio. Estão tabulados na Tabela \ref{tab:ck}, além das médias, os intervalos de confiança.
+Foi gerado um gráfico, na \autoref{img:graficock}, que mostra a evolução do tempo de execução médio. Estão tabulados na \autoref{tab:ck}, além das médias, os intervalos de confiança.
 
 \begin{figure}[H]
 	\centering
@@ -58,7 +58,7 @@ Foi gerado um gráfico, na Figura \ref{img:graficock}, que mostra a evolução d
 
 \subsection{Contração \textit{Partial Meet}}
 
-Para a contração \textit{Partial Meet} foram utilizados os seguintes argumentos:
+Para a Contração \textit{Partial Meet} foram utilizados os seguintes argumentos:
 
 \begin{itemize}
 	\item \texttt{-t -c --relevance -i SmallKernelWith5classes.owl -o output.owl \\ -f "A SubClassOf B1"}
@@ -67,7 +67,7 @@ Para a contração \textit{Partial Meet} foram utilizados os seguintes argumento
 	\item \texttt{-t -c --relevance -i SmallKernelWith30classes.owl -o output.owl \\ -f "A SubClassOf B1"}
 \end{itemize}
 
-Como na subseção anterior, foi gerado um gráfico, na Figura \ref{img:graficocpm}, que mostra a evolução do tempo de execução médio. Na tabela \ref{tab:cpm} estão presentes as médias e os intervalos de confiança.
+Como na subseção anterior, foi gerado um gráfico, na \autoref{img:graficocpm}, que mostra a evolução do tempo de execução médio. Na \autoref{tab:cpm} estão presentes as médias e os intervalos de confiança.
 
 \begin{figure}[H]
 	\centering
@@ -101,7 +101,7 @@ Para a Pseudocontração SRW foram utilizados os seguintes argumentos:
 	\item \texttt{-t -srw -i SmallKernelWith30classes.owl -o output.owl -f "A SubClassOf B1"}
 \end{itemize}
 
-Há um gráfico, na Figura \ref{img:graficosrw}, que mostra a evolução do tempo de execução médio. Na tabela \ref{tab:srw} as médias e os intervalos de confiança podem ser vistos.
+Há um gráfico, na \autoref{img:graficosrw}, que mostra a evolução do tempo de execução médio. Na \autoref{tab:srw} as médias e os intervalos de confiança podem ser vistos.
 
 \begin{figure}[H]
 	\centering
@@ -135,7 +135,7 @@ Para a Revisão \textit{Kernel} foram utilizados os seguintes argumentos:
 	\item \texttt{-t -r -i SmallKernelWith30classes.owl -o output.owl -f "A SubClassOf B1"}
 \end{itemize}
 
-Na Figura \ref{img:graficork} pode ser vista a evolução do tempo de execução médio. Na tabela \ref{tab:rk} estão presentes as médias e os intervalos de confiança.
+Na \autoref{img:graficork} pode ser vista a evolução do tempo de execução médio. Na \autoref{tab:rk} estão presentes as médias e os intervalos de confiança.
 
 \begin{figure}[H]
 	\centering
@@ -164,9 +164,9 @@ Esses testes são, na verdade, a execução de diferentes operações sobre fór
 
 \subsection{Comparação das subclasses de Pessoa}
 
-Para essa comparação, o exemplo da subseção \ref{sect:srw} será revisitado, sem nenhuma alteração. Os resultados obtidos foram bem interessantes.
+Para essa comparação, o arquivo de exemplo da \autoref{sect:srw} será revisitado, sem nenhuma alteração. Os resultados obtidos foram bem interessantes.
 
-A execução da Contração \textit{Kernel}, com a mesma fórmula, forneceu na resposta a mesma estrutura de classes da entrada, como pode ser visto na Figura \ref{fig:compckcantor1}. Foi mantido o axioma \texttt{Compositor(markRonson)}, como pode se observar na Figura \ref{fig:compckcantor2}. A classe \texttt{Cantor} ficou sem a instância, algo exibido pela Figura \ref{fig:compckcantor3}.
+A execução da Contração \textit{Kernel}, com a mesma fórmula, forneceu na resposta a mesma estrutura de classes da entrada, como pode ser visto na \autoref{fig:compckcantor1}. Foi mantido o axioma \texttt{Compositor(markRonson)}, como pode se observar na \autoref{fig:compckcantor2}. A classe \texttt{Cantor} ficou sem a instância, algo exibido pela \autoref{fig:compckcantor3}.
 
 \begin{figure}[H]
 	\centering
@@ -195,7 +195,7 @@ A Revisão foi feita pela fórmula \texttt{"Cantor DisjointWith Compositor"}. O 
 
 \subsection{Comparação de classes em \texttt{HinoNacional}}
 
-Para essa comparação, foi feito um novo exemplo, com os seguintes axiomas: \texttt{MusicaBelica} $ \sqsubseteq $ \texttt{HinoNacional} e \texttt{Marcha} $ \sqsubseteq $ \texttt{MusicaBelica}. Sua hierarquia pode ser observada na Figura \ref{fig:comphino}. 
+Para essa comparação, foi feito um novo exemplo, com os seguintes axiomas: \texttt{MusicaBelica} $ \sqsubseteq $ \texttt{HinoNacional} e \texttt{Marcha} $ \sqsubseteq $ \texttt{MusicaBelica}. Sua hierarquia pode ser observada na \autoref{fig:comphino}. 
 
 \begin{figure}[H]
 	\centering
@@ -206,7 +206,7 @@ Para essa comparação, foi feito um novo exemplo, com os seguintes axiomas: \te
 
 As fórmulas utilizadas para a Contração \textit{Kernel}, Contração \textit{Partial Meet} e Pseudocontração SRW foram a mesma \texttt{"Marcha SubClassOf HinoNacional"}. As operações devolveram resultados diferentes.
 
-Tanto a Contração \textit{Kernel} quanto a Pseudocontração SRW forneceram o mesmo resultado, deixando todas as classes como irmãs, como exibido na figura \ref{fig:compckhino}.
+Tanto a Contração \textit{Kernel} quanto a Pseudocontração SRW forneceram o mesmo resultado, deixando todas as classes como irmãs, como exibido na \autoref{fig:compckhino}.
 
 \begin{figure}[H]
 	\centering
@@ -215,7 +215,7 @@ Tanto a Contração \textit{Kernel} quanto a Pseudocontração SRW forneceram o 
 	\label{fig:compckhino}
 \end{figure}
 
-Já a Contração \textit{Partial Meet} fornece um resultado mais brando, mantendo o axioma \texttt{Marcha} $ \sqsubseteq $ \texttt{MusicaBelica}. Esse resultado parece ser mais promissor do que o anterior. Na Figura \ref{fig:compcpmhino}, é possível observar como fica a hierarquia.
+Já a Contração \textit{Partial Meet} fornece um resultado mais brando, mantendo o axioma \texttt{Marcha} $ \sqsubseteq $ \texttt{MusicaBelica}. Esse resultado parece ser mais promissor do que o anterior. Na \autoref{fig:compcpmhino}, é possível observar como fica a hierarquia.
 
 \begin{figure}[H]
 	\centering
@@ -224,7 +224,7 @@ Já a Contração \textit{Partial Meet} fornece um resultado mais brando, manten
 	\label{fig:compcpmhino}
 \end{figure}
 
-No outro oposto, temos a Revisão \textit{Kernel}. Seu resultado é o mais radical. A fórmula utilizada foi \texttt{"Marcha DisjointWith HinoNacional"}. Pode-se observar, na Figura \ref{fig:comprkhino}, que esse axioma está presente na ontologia. No entanto, os outros dois axiomas não estão mais na ontologia, e a classe \texttt{MusicaBelica} também não existe mais na estrutura. Algo semelhante havia ocorrido nos testes de performance.
+No outro oposto, temos a Revisão \textit{Kernel}. Seu resultado é o mais radical. A fórmula utilizada foi \texttt{"Marcha DisjointWith HinoNacional"}. Pode-se observar, na \autoref{fig:comprkhino}, que esse axioma está presente na ontologia, pelo postulado \textbf{Sucesso}. No entanto, os outros dois axiomas não estão mais na ontologia, e a classe \texttt{MusicaBelica} também não existe mais na estrutura. Algo semelhante havia ocorrido nos testes de performance.
 
 \begin{figure}[H]
 	\centering

@@ -1,26 +1,40 @@
 \documentclass[12pt, a4paper]{book}
 \usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
-\usepackage[table]{xcolor}
-\usepackage[margin=2cm]{geometry}
 \usepackage{graphicx}
 \usepackage{multicol}
 \usepackage{mathtools}
-\usepackage{palatino}
 \usepackage[utf8]{inputenc}
 \usepackage[brazil]{babel}
-\usepackage[pdftex]{hyperref}
 \usepackage{lettrine}
 \usepackage{float}
 \usepackage{caption}
 \usepackage{subcaption}
 \usepackage{algpseudocode}
-\usepackage{inconsolata}
+%\usepackage[sfdefault]{FiraSans} 
+%\usepackage{FiraMono}
+%\usepackage[T1]{fontenc}
+%\renewcommand*\oldstylenums[1]{{\firaoldstyle #1}}
+%\usepackage[cm]{sfmath}
+\usepackage{palatino}
 \usepackage{mathpazo}
+\usepackage{inconsolata}
 \usepackage{setspace}
+\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=DarkGreen,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=green,bookmarksopen=true]{hyperref}
 \usepackage[all]{hypcap}
 \usepackage[round,sort]{natbib}
 \usepackage{emptypage}
 \fontsize{60}{62}\usefont{OT1}{cmr}{m}{n}{\selectfont}
+\usepackage[T1]{fontenc}
+\usepackage{indentfirst}
+\usepackage{makeidx}
+\usepackage[nottoc]{tocbibind}
+\usepackage{type1cm}
+\usepackage{listings}
+\usepackage{titletoc}
+\usepackage[fixlanguage]{babelbib}
+\usepackage[font=small,format=plain,labelfont=bf,textfont=it]{caption}
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage[a4paper,top=2.54cm,bottom=2.0cm,left=2.0cm,right=2.54cm]{geometry}
 
 % ---------------------------------------------------------------------------- %
 % Cabeçalhos similares ao TAOCP de Donald E. Knuth
@@ -35,12 +49,9 @@
 
 \newcommand\kcont{\protect\mathpalette{\protect\independenT}{\perp}}
 \def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
-
 \newcommand{\krev}{\downarrow\downarrow}
-
 \newlength{\tabcont}
 \setlength{\parskip}{0.05in}
-
 \urlstyle{same} 
 
 \begin{document}

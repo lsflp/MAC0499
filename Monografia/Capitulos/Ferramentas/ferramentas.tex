@@ -39,18 +39,18 @@ A segunda versão também possui sublinguagens \citep{ferramentasOWL2}. Elas sã
 
 \section{\textit{Protégé}}
 
+O \href{https://protege.stanford.edu}{\textit{Protégé}} é um editor semântico, compatível com a OWL 2. Ele foi desenvolvido pelo Centro de Pesquisa para Informática Biomédica da Universidade de Stanford, em colaboração com alguns programadores da Universidade de Manchester \footnote{\url{https://protege.stanford.edu/about.php}}. Sua primeira versão foi lançada em 1999, e a atual é de 2017. Seu logotipo está exibido na \autoref{img:Protege}.
+
+Seguindo os princípios do \textit{Software} Livre, ele é um arcabouço gratuito e de código aberto, feito para a construção de sistemas inteligentes, com o uso ou não de uma interface gráfica.
+
+Assim como o ambiente de desenvolvimento integrado Eclipse, o \textit{Protégé} é bastante flexível porque é possível desenvolver uma grande variedade de \textit{plug-ins} para serem acoplados a ele.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Ferramentas/protege}
 	\caption{O logotipo do \textit{Protégé}.}
 	\label{img:Protege}
 \end{figure}
-
-O \href{https://protege.stanford.edu}{\textit{Protégé}} é um editor semântico, compatível com a OWL 2. Ele foi desenvolvido pelo Centro de Pesquisa para Informática Biomédica da Universidade de Stanford, em colaboração com alguns programadores da Universidade de Manchester \footnote{\url{https://protege.stanford.edu/about.php}}. Sua primeira versão foi lançada em 1999, e a atual é de 2017. Seu logotipo está exibido na \autoref{img:Protege}
-
-Seguindo os princípios do \textit{Software} Livre, ele é um arcabouço gratuito e de código aberto, feito para a construção de sistemas inteligentes, com o uso ou não de uma interface gráfica.
-
-Assim como o ambiente de desenvolvimento integrado Eclipse, o \textit{Protégé} é bastante flexível porque é possível desenvolver uma grande variedade de \textit{plug-ins} para serem acoplados a ele.
 
 Para exemplificar alguns recursos do \textit{Protégé}, será usada, como exemplo, parte da ontologia criada neste estudo:
 
@@ -81,7 +81,7 @@ Para exemplificar alguns recursos do \textit{Protégé}, será usada, como exemp
 
 No \textit{Protégé}, a ontologia fica como na \autoref{img:Representacao}.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\begin{subfigure}{.3\textwidth}
 		\centering
@@ -108,7 +108,7 @@ Um aspecto interessante sobre esse arcabouço é o uso de \textit{plug-ins} de r
 
 No fragmento da ontologia, temos que \texttt{MarinaAndTheDiamonds \textbf{canta} Primadonna}. É possível inferir que \texttt{Primadonna \textbf{cantadaPor} MarinaAndTheDiamonds}. O \textit{Protégé} consegue fazer isso com o auxílio do raciocinador, como exibido na \autoref{img:Raciocinador}.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering
@@ -134,7 +134,7 @@ Vale notar que as buscas funcionam apenas com a terminologia e as asserções gr
 
 No exemplo utilizado, temos que \texttt{MarinaAndTheDiamonds} canta música de dois ritmos diferentes. Para descobrir quais são as músicas \texttt{Pop} que ela canta, pode-se rodar uma consulta, como na mostrada na \autoref{img:Consulta}.
 
-\begin{figure}[H]
+\begin{figure}
 	\centering
 	\begin{subfigure}{.7\textwidth}
 		\centering

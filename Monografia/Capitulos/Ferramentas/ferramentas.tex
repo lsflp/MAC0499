@@ -20,7 +20,7 @@ Abaixo estão algumas características das duas versões da OWL.
 A primeira versão possui três sublinguagens \citep{ferramentasOWL1}. Cada uma possui suas particularidades:
 
 \begin{itemize}
-	\item \textit{Lite}: Sublinguagem mais simples, feita para hierarquias de classificação com restringimentos simples. Suporta restrições de cardinalidade simples (apenas 0 ou 1).  Foi demonstrado que OWL-Lite é equivalente a $ \mathcal{SHIF^{(D)}} $ \citep{ferramentasGrau}.
+	\item \textit{Lite}: Sublinguagem mais simples, feita para hierarquias de classificação com restrições simples. Suporta restrições de cardinalidade simples (apenas 0 ou 1).  Foi demonstrado que OWL-Lite é equivalente a $ \mathcal{SHIF^{(D)}} $ \citep{ferramentasGrau}.
 	\item DL: É equivalente a $ \mathcal{SHOIN^{(D)}} $. Oferece expressividade máxima evitando alguns problemas de decidibilidade. Inclui todos os construtores da OWL. Possui mais complexidade formal do que a sublinguagem \textit{Lite}.
 	\item \textit{Full}: Versão mais completa, oferecendo expressividade máxima e a liberdade sintática do RDF, só que sem garantias computacionais. Nessa sublinguagem, pode acontecer de uma Classe ser tratada como uma coleção de indivíduos ou como um indivíduo, o que acarreta problemas de decidibilidade. Não corresponde a nenhuma lógica de descrição.
 \end{itemize}
@@ -45,7 +45,7 @@ Seguindo os princípios do \textit{Software} Livre, ele é um arcabouço gratuit
 
 Assim como o ambiente de desenvolvimento integrado Eclipse, o \textit{Protégé} é bastante flexível porque é possível desenvolver uma grande variedade de \textit{plug-ins} para serem acoplados a ele.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.5\textwidth]{Capitulos/Ferramentas/protege}
 	\caption{O logotipo do \textit{Protégé}.}
@@ -81,7 +81,7 @@ Para exemplificar alguns recursos do \textit{Protégé}, será usada, como exemp
 
 No \textit{Protégé}, a ontologia fica como na \autoref{img:Representacao}.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}{.3\textwidth}
 		\centering
@@ -108,7 +108,7 @@ Um aspecto interessante sobre esse arcabouço é o uso de \textit{plug-ins} de r
 
 No fragmento da ontologia, temos que \texttt{MarinaAndTheDiamonds \textbf{canta} Primadonna}. É possível inferir que \texttt{Primadonna \textbf{cantadaPor} MarinaAndTheDiamonds}. O \textit{Protégé} consegue fazer isso com o auxílio do raciocinador, como exibido na \autoref{img:Raciocinador}.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\begin{subfigure}{.5\textwidth}
 		\centering

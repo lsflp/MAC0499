@@ -22,16 +22,16 @@ Para as lógicas internas, são necessários a \textit{OWL API} 5.1.6 \footnote{
 
 \section{Algoritmo \textit{BlackBox}}
 
-A implementação das quatro operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina, onde tiveram suas corretudes provadas \citep{logicaResina}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma, ou se a base é consistente. Ele possui variações para o cálculo do conjunto-resíduo ou para o cálculo do conjunto-\textit{kernel};
+A implementação das quatro operações tem a sua parte principal em um algoritmo \textit{BlackBox}, baseados nos estudos de Resina, que provou sua correção \citep{logicaResina}. Ele é chamado assim pois não precisa de um motor de inferência. É necessário apenas decidir se uma base de conhecimento implica certo axioma, ou se a base é consistente. Ele possui variações para o cálculo do conjunto-resíduo ou para o cálculo do conjunto-\textit{kernel};
 
 Para efeitos de otimização, foi colocado um limite tanto nas filas utilizadas em alguns dos algoritmos abaixo quanto nos conjuntos que serão retornados. Tais limites podem ser definidos pelo usuário, opcionalmente.
 
 \subsection{\textit{BlackBox} para o conjunto-\textit{kernel} para a Contração}
 
-Para o cálculo do conjunto-\textit{kernel}, usado na Contração \textit{Kernel}, foi utilizada uma adaptação implementação do código de Cóbe \citep{logicaMatos}. Ela consiste em duas funções:
+Para o cálculo do conjunto-\textit{kernel}, usado na Contração \textit{Kernel}, foi utilizada uma adaptação do código de Cóbe \citep{revisaoCobe}. Ela consiste em duas funções:
 
 \begin{description}
-	\item[\textsc{KernelBlackBox}] É uma função que recebe um conjunto de axiomas $ B $ e uma sentença $ A $. Ela constrói um conjunto minimal de $ B $ que implica $ A $. Essa função é uma adaptação da estudada por Resina \citep{logicaResina}, e se divide em duas partes: expansão, onde são adicionam todos os axiomas de B, caso $ B \vdash A $, a um conjunto $ B' $, definido previamente como vazio; e encolhimento, onde cada elemento $ \beta $ de $ B' $ é analisado individualmente. Caso $ B' \setminus \{\beta\}$ implique $ A $, $ \beta $ é apagado de $ B' $. Logo, o conjunto devolvido é um conjunto minimal de $ B $ que implica $ A $, portanto, um elemento do Kernel. Seu código é o seguinte: \\
+	\item[\textsc{KernelBlackBox}] É uma função que recebe um conjunto de axiomas $ B $ e uma sentença $ A $. Ela constrói um conjunto minimal de $ B $ que implica $ A $. Essa função é uma adaptação da estudada por Resina \citep{logicaResina}, e se divide em duas partes: expansão, onde são adicionados todos os axiomas de B, caso $ B \vdash A $, a um conjunto $ B' $, definido previamente como vazio; e encolhimento, onde cada elemento $ \beta $ de $ B' $ é analisado individualmente. Caso $ B' \setminus \{\beta\}$ implique $ A $, $ \beta $ é apagado de $ B' $. Logo, o conjunto devolvido é um conjunto minimal de $ B $ que implica $ A $, portanto, um elemento do Kernel. Seu código é o seguinte: \\
 	\begin{algorithmic}
 		\Function{KernelBlackBox}{B, A}
 		\State $ B' \gets \varnothing $
@@ -256,7 +256,7 @@ Com o comando abaixo, acontece a operação:
 	\texttt{java -jar ontologyrepair-1.0.0-SNAPSHOT.jar -r -i funk.owl -o output.owl \\ -f "FunkBrasileiro DisjointWith FunkAmericano"}
 \end{small}
 
-O resultado é visto abaixo. Note que a propriedade de disjunção está no produto final. Ambos os produtos podem ser observados na \autoref{img:r2}.
+O resultado é visto na \autoref{img:r2}. Note que a propriedade de disjunção está no produto final.
 
 \begin{figure}[H]
 	\centering

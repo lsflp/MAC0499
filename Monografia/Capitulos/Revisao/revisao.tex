@@ -25,7 +25,7 @@ De uma forma geral, esse campo da Inteligência Artificial estuda qualquer alter
 
 O estado epistêmico de um agente nada mais é do que o conjunto de tudo aquilo em que ele acredita e como as suas crenças se relacionam num certo instante. Pode-se entender um estado epistêmico também como uma representação idealizada do estado cognitivo de um agente em determinado momento, como explicou Gärdenfors \citep{revisaoGardenfors}.
 
-Uma alteração do estado epistêmico é, portanto, uma revisão que acontece quando o agente recebe uma nova informação que possivelmente entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima \citep{logicaResina}.
+Uma alteração do estado epistêmico é, portanto, uma revisão que acontece quando o agente recebe uma nova informação que possivelmente entra em choque com as informações que ele possui no estado atual. Essa revisão deve manter as crenças antigas ao máximo, fazendo assim, uma mudança mínima \citep{revisaoGardenfors}.
 
 O paradigma AGM, que será usado neste trabalho, recebe este nome por causa das iniciais dos autores do artigo considerado o pontapé inicial desta área de pesquisa  \citep{revisaoAGM}. Nela, os estados de crenças são representados por conjuntos logicamente fechados de sentenças, ou seja, conjuntos $ K $ tais $ K = \text{Cn}(K) $, onde $ \text{Cn}(K) $ representa o conjunto de todas as consequências lógicas de $ K $. 
 
@@ -42,17 +42,13 @@ As sentenças que serão trabalhadas são de uma lógica $ (L, \text{Cn}) $, tal
 
 \section{Tratamento da informação}
 
-Antes de ver como é possível tratar as inconsistências causadas pela entrada de alguma informação nova, é necessário observar como uma sentença $ \alpha $ qualquer é tratada em algum conjuntos de crenças $ K $.
+Antes de ver como é possível tratar as inconsistências causadas pela entrada de alguma informação nova, é necessário observar como uma sentença $ \alpha $ qualquer é tratada em algum conjunto de crenças $ K $.
 
 Existem três tipo de tratamento, descritos abaixo:
 
 \begin{enumerate}
-	\item $ \alpha $ é aceita pelo conjunto de crenças. Isso pode acontecer de duas maneiras diferentes:
-	\begin{enumerate}
-		\item $ \alpha $ é aceita explicitamente. Quando isso acontece, temos que $ \alpha \in K $;
-		\item $ \alpha $ é aceita implicitamente. Esse caso ocorre quando $ \alpha \in \text{Cn}(K) \setminus K $, para Bases de Crenças.
-	\end{enumerate}
-	\item $ \alpha $ é rejeitada. Aqui, temos que $ \lnot \alpha \in K $ ou que $ \lnot \alpha \in \text{Cn}(K) \setminus K $, para Bases de Crenças. 
+	\item $ \alpha $ é aceita pelo conjunto de crenças.
+	\item $ \alpha $ é rejeitada. Aqui, temos que $ \lnot \alpha \in K $. 
 	\item $ \alpha $ é indeterminada. Deste modo, $ K $ não conhece a sentença $ \alpha $, assim, $ \lnot \alpha \notin \text{Cn}(K) $ e $ \alpha \notin \text{Cn}(K) $.
 \end{enumerate}
 
@@ -60,17 +56,15 @@ Existem também algumas questões metodológicas que precisam ser resolvidas, ou
 
 A primeira é em relação à representação das crenças na base de dados. Vale notar que, como definido no \autoref{chap:ontologias}, é necessário o uso de alguma linguagem formal de representação. A maioria das bases de dados trabalha com fatos e regras como formas primitivas de informação. O mecanismo escolhido para a Revisão deve levar em conta o formalismo escolhido para a representação.
 
-Uma outra questão se preocupa com os elementos explicitamente representados na base de crenças e os que podem ser derivados desses. Existem bases que dão algum \textit{status} especial aos elementos explícitos, e outras que dão a mesma importância para todos. 
-
-A última questão é referente a qual retração fazer, ou seja, qual edição fazer na base de dados. A lógica, propriamente dita, não é suficiente para definir quais são os melhores elementos para serem removidos ou mantidos. Uma das ideias referentes a isso é que a quantidade informação perdida durante o reparo seja a mínima possível. 
+Uma outra é referente a qual retração fazer, ou seja, qual edição fazer na base de dados. A lógica, propriamente dita, não é suficiente para definir quais são os melhores elementos para serem removidos ou mantidos. Uma das ideias referentes a isso é que a quantidade informação perdida durante o reparo seja a mínima possível. 
 
 Nas bases de dados que dão diferentes prioridades para as suas crenças, pode-se remover as que possuem menor prioridade, em detrimento daquelas com maior importância. Tudo isso depende de como o sistema de crenças está estruturado.
 
 \section{Operações clássicas de Revisão de Crenças}
 
-Existem três operações clássicas de Revisão de Crenças \citep{revisaoGardenfors3}. São elas a Expansão, a Revisão e a Contração. Apenas a Expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
+Existem três operações clássicas de Revisão de Crenças \citep{revisaoGardenfors2}. São elas a Expansão, a Revisão e a Contração. Apenas a Expansão é definida diretamente, enquanto as duas últimas são definidas por postulados. 
 
-Para as definições que serão feitas será usada uma lógica $ L $, que é baseada na Lógica de Primeira Ordem ou Proposicional. As variáveis, que são as sentenças lógicas, serão representadas pelo alfabeto grego. Os conjuntos de crenças, com letras latinas maiúsculas.
+Para as definições que serão feitas será usada uma lógica $ L $. As variáveis, que são as sentenças lógicas, serão representadas pelo alfabeto grego. Os conjuntos de crenças, por letras latinas maiúsculas.
 
 \subsection{Expansão}
 
@@ -82,7 +76,7 @@ A informação $ \alpha $ não era necessariamente indeterminada. Pode ser que e
 
 \subsection{Contração}
 
-Esta operação é o contrário da anterior. Em vez de uma nova informação ser adicionada à base de conhecimento, deseja-se que algum conhecimento seja removido. A operação é representada por $ K - \alpha $. No entanto, as referências à Expansão acabam por aí.
+Esta operação é o contrário da anterior. Em vez de uma nova informação ser adicionada à base de conhecimento, deseja-se que algum conhecimento seja removido. A operação é representada por $ K - \alpha $.
 
 Às vezes, retirar $ \alpha $ de $ K $ não é suficiente. Nesses casos, é necessário desistir de algumas crenças do conjunto. As sentenças que são abandonadas são aquelas que implicam $ \alpha $. O critério da mudança mínima deve ser aplicado aqui, removendo o mínimo de sentenças possível, ou as que possuem prioridade menor.
 
@@ -107,9 +101,9 @@ Ainda para a Contração existem dois construtores especiais definidos, que ser�
 
 \subsection{Revisão}
 
-A Revisão, assim como a Expansão, tem a ver com adicionar alguma crença $ \alpha $ ao conjunto $ K $. O conjunto resultante é indicado por $ K \ast \alpha $. A nova informação $ \alpha $ era rejeitada ou indeterminada e passa a ser aceita, ou vice-versa.
+A Revisão, assim como a Expansão, tem a ver com adicionar alguma crença $ \alpha $ ao conjunto $ K $. O conjunto resultante é indicado por $ K \ast \alpha $. A nova informação $ \alpha $ era rejeitada ou indeterminada e passa a ser aceita.
 
-Como na operação anterior, o conjunto anterior precisa se mostrar consistente. É necessário apagar o mínimo possível das fórmulas de $ K $. De mesmo modo que a Contração, ela não é definida diretamente, mas sim por oito postulados, os seis primeiros, básicos, e os dois últimos, suplementares. São eles:
+Como na operação anterior, o conjunto final precisa se mostrar consistente. É necessário apagar o mínimo possível das fórmulas de $ K $. De mesmo modo que a Contração, ela não é definida diretamente, mas sim por oito postulados, os seis primeiros, básicos, e os dois últimos, suplementares. São eles:
 
 \begin{description}
 	\item[Fecho] $ K \ast \alpha = \text{Cn}(K \ast \alpha) $ \\ Após a Revisão, o fecho lógico do conjunto é mantido.
@@ -143,7 +137,7 @@ O que pode ser feito para evitar esse tipo de resultado é substituir o postulad
 	\item[Inclusão lógica] Cn$(K - \alpha) \subseteq $ Cn$(K)$ 
 \end{description}
 
-Com isso, a operação executada será chamada de Pseudocontração \citep{revisaoHansson4}. Para esta operação, existe um construtor que será descrito neste trabalho.
+Com isso, a operação executada será chamada de Pseudocontração \citep{revisaoHansson4}. Um construtor para essa operação será descrito nesse capítulo.
 
 \section{Construtores para as operações}
 
@@ -177,11 +171,11 @@ onde $ -_{\sigma} $ é a operação chamada de Contração \textit{Kernel}, $ \s
 	\end{itemize}
 \end{description}
 
-Com isso, pode-se concluir que a função de incisão escolhe, dentre os subconjuntos maximais de $ K $ tais que $ K \models \alpha $, os ''piores'' de cada, de acordo com algum critério arbitrário. As remoções desses escolhidos do conjunto fornecem o resultado da operação. A função de incisão é baseada em hierarquia. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração se e somente se satisfaz os oito postulados de racionalidade dessa operação.
+Com isso, pode-se concluir que a função de incisão escolhe, dentre os subconjuntos minimais de $ K $ tais que $ K \models \alpha $, os ''piores'' elementos de cada, de acordo com alguma hierarquia. As remoções desses escolhidos do conjunto fornecem o resultado da operação. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração se e somente se satisfaz os oito postulados de racionalidade dessa operação.
 
 \subsubsection{Para Bases de Crenças}
 
-Existe uma generalização para Bases de Crenças para a Contração \textit{Kernel}. A construção é a mesma, mas as propriedades mudam. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração \textit{Kernel} se e somente se satisfaz os seguintes postulados:
+Existe uma generalização para Bases de Crenças da Contração \textit{Kernel}. A construção é a mesma, mas as propriedades mudam. Um operador $ -_{\sigma} $ para uma base $ B $ qualquer é uma Contração \textit{Kernel} se e somente se satisfaz os seguintes postulados:
 
 \begin{description}
 	\item[Inclusão] $ B -_{\sigma} \alpha \subseteq B$ \\ A operação não permite que novas sentenças sejam adicionadas ao conjunto, resultando em um conjunto com o mesmo número de sentenças ou menos.
@@ -244,6 +238,8 @@ A operação definida acima pode ser generalizada para bases de crenças. A cons
 \end{description}
 
 \subsection{Revisão \textit{Kernel}}
+
+Normalmente, se usa a identidade de Levi para construir a Revisão a partir da Contração. No entanto, como as Lógicas de Descrição não possuem negação de fórmulas, a Revisão deve ser definida de forma independente.
 
 A Revisão \textit{Kernel} tem aspectos em comum com a Contração \textit{Kernel}, como pode-se imaginar. Ela é definida da seguinte maneira, para um conjunto $ K $ e uma sentença $ \alpha $ \citep{revisaoRibeiro2}:
 

@@ -129,10 +129,10 @@ Há um gráfico, na \autoref{img:graficosrw}, que mostra a evolução do tempo d
 Para a Revisão \textit{Kernel} foram utilizados os seguintes argumentos:
 
 \begin{itemize}
-	\item \texttt{-t -r -i SmallKernelWith5classes.owl -o output.owl -f "A SubClassOf B1"}
-	\item \texttt{-t -r -i SmallKernelWith10classes.owl -o output.owl -f "A SubClassOf B1"}
-	\item \texttt{-t -r -i SmallKernelWith20classes.owl -o output.owl -f "A SubClassOf B1"}
-	\item \texttt{-t -r -i SmallKernelWith30classes.owl -o output.owl -f "A SubClassOf B1"}
+	\item \texttt{-t -r -i SmallKernelWith5classes.owl -o output.owl -f "A DisjointWith B1"}
+	\item \texttt{-t -r -i SmallKernelWith10classes.owl -o output.owl -f "A DisjointWith B1"}
+	\item \texttt{-t -r -i SmallKernelWith20classes.owl -o output.owl -f "A DisjointWith B1"}
+	\item \texttt{-t -r -i SmallKernelWith30classes.owl -o output.owl -f "A DisjointWith B1"}
 \end{itemize}
 
 Na \autoref{img:graficork} pode ser vista a evolução do tempo de execução médio. Na \autoref{tab:rk} estão presentes as médias e os intervalos de confiança.
@@ -204,7 +204,7 @@ Para essa comparação, foi feito um novo exemplo, com os seguintes axiomas: \te
 	\label{fig:comphino}
 \end{figure}
 
-As fórmulas utilizadas para a Contração \textit{Kernel}, Contração \textit{Partial Meet} e Pseudocontração SRW foram a mesma \texttt{"Marcha SubClassOf HinoNacional"}. As operações devolveram resultados diferentes.
+As fórmulas utilizadas para a Contração \textit{Kernel}, Contração \textit{Partial Meet} e Pseudocontração SRW foram a mesma: \texttt{"Marcha SubClassOf HinoNacional"}. As operações devolveram resultados diferentes.
 
 Tanto a Contração \textit{Kernel} quanto a Pseudocontração SRW forneceram o mesmo resultado, deixando todas as classes como irmãs, como exibido na \autoref{fig:compckhino}.
 

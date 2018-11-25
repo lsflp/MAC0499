@@ -47,10 +47,10 @@ Foi gerado um gráfico, na \autoref{img:graficock}, que mostra a evolução do t
 	\begin{tabular}{|l|l|l|}
 		\hline
 		\textbf{Nº de classes}  & \textbf{Tempo médio de execução (ms)} & \textbf{Intervalo de Confiança} \\ \hline
-		5                                                 & 190,238                          & {[}181,7, 198,8{]}              \\ \hline
-		10                                                & 317,126                          & {[}311,5, 322,8{]}              \\ \hline
-		20                                                & 476,483                          & {[}472,0, 481,0{]}              \\ \hline
-		30                                                & 777,018                          & {[}764,8, 789,2{]}              \\ \hline
+		5                                                 & 159,096                          & {[}156,6, 161,6{]}              \\ \hline
+		10                                                & 262,287                          & {[}253,3, 271,3{]}              \\ \hline
+		20                                                & 477,965                          & {[}472,7, 483,2{]}              \\ \hline
+		30                                                & 668,720                          & {[}663,3, 674,1{]}              \\ \hline
 	\end{tabular}
 	\caption{Resultados da performance da Contração \textit{Kernel} com arquivos de tamanhos diferentes.}
 	\label{tab:ck}
@@ -166,26 +166,20 @@ Esses testes são, na verdade, a execução de diferentes operações sobre fór
 
 Para essa comparação, o arquivo de exemplo da \autoref{sect:srw} será revisitado, sem nenhuma alteração. Os resultados obtidos foram bem interessantes.
 
-A execução da Contração \textit{Kernel}, com a mesma fórmula, forneceu na resposta a mesma estrutura de classes da entrada, como pode ser visto na \autoref{fig:compckcantor1}. Foi mantido o axioma \texttt{Compositor(markRonson)}, como pode se observar na \autoref{fig:compckcantor2}. A classe \texttt{Cantor} ficou sem a instância, algo exibido pela \autoref{fig:compckcantor3}.
+A execução da Contração \textit{Kernel}, com a mesma fórmula, forneceu na resposta uma estrutura de classes diferente da que veio na entrada, como pode ser visto na \autoref{fig:compckcantor1}. A classes \texttt{Cantor} e \texttt{Compositor} ficaram sem a instância, algo exibido pela \autoref{fig:compckcantor3}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Capitulos/Testes/compckcantor1}
-	\caption{A estrutura de classes foi mantida.}
+	\includegraphics[width=0.3\linewidth]{Capitulos/Testes/compckcantor1}
+	\caption{A estrutura de classes foi alterada.}
 	\label{fig:compckcantor1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.5\linewidth]{Capitulos/Testes/compckcantor2}
-	\caption{A instância \texttt{markRonson} continua na classe \texttt{Compositor}.}
-	\label{fig:compckcantor2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\linewidth]{Capitulos/Testes/compckcantor3}
-	\caption{A classe \texttt{Cantor} fica sem nenhuma instância.}
+	\includegraphics[width=0.44\linewidth]{Capitulos/Testes/compckcantor3}
+	\includegraphics[width=0.48\linewidth]{Capitulos/Testes/compckcantor2}
+	\caption{As classes \texttt{Cantor} e \texttt{Compositor} ficaram sem nenhuma instância.}
 	\label{fig:compckcantor3}
 \end{figure}
 

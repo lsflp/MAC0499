@@ -56,7 +56,7 @@ Existem também algumas questões metodológicas que precisam ser resolvidas, ou
 
 A primeira é em relação à representação das crenças na base de dados. Vale notar que, como definido no \autoref{chap:ontologias}, é necessário o uso de alguma linguagem formal de representação. A maioria das bases de dados trabalha com fatos e regras como formas primitivas de informação. O mecanismo escolhido para a Revisão deve levar em conta o formalismo escolhido para a representação.
 
-Uma outra é referente a qual retração fazer, ou seja, qual edição fazer na base de dados. A lógica, propriamente dita, não é suficiente para definir quais são os melhores elementos para serem removidos ou mantidos. Uma das ideias referentes a isso é que a quantidade informação perdida durante o reparo seja a mínima possível. 
+Uma outra é referente a qual retração fazer, ou seja, qual edição fazer na base de dados. A lógica, propriamente dita, não é suficiente para definir quais são os melhores elementos para serem removidos ou mantidos. Uma das ideias referentes a isso é que a quantidade de informação perdida durante o reparo seja a mínima possível. 
 
 Hansson propôs o uso de bases de crenças \citep{revisaoHansson6}. Tais bases são conjuntos de sentenças não necessariamente fechadas por Cn. Isso permite diferenciar crenças explícitas e implícitas.	
 
@@ -72,7 +72,7 @@ Para as definições que serão feitas será usada uma lógica $ L $. As variáv
 
 A única operação definida diretamente recebe a notação $ K + \alpha $. Ela é também a mais simples, já que representa a chegada de algum conhecimento à base sem que os anteriores sofram modificações. Além disso, as crenças que podem ser inferidas também são adicionadas.
 
-O conjunto resultante é, portanto, formado pelo fecho lógico da união do conjunto inicial com a informação nova, o que significa que $ K + \alpha = \text{Cn}(K \cup \alpha) $. Vale ressaltar que o operação não exige que o conjunto permaneça consistente.
+O conjunto resultante é, portanto, formado pelo fecho lógico da união do conjunto inicial com a informação nova, o que significa que $ K + \alpha = \text{Cn}(K \cup \alpha) $. Vale ressaltar que a operação não exige que o conjunto permaneça consistente.
 
 A informação $ \alpha $ não era necessariamente indeterminada. Pode ser que ela já estivesse na base. Depois da operação de Expansão, de qualquer modo, $ \alpha $ fica aceito.
 
